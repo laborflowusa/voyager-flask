@@ -5,18 +5,15 @@ import os
 
 app = Flask(__name__, static_folder='public', static_url_path='')
 
-# Supabase configuration
-SUPABASE_URL = os.environ.get("SUPABASE_URL", "https://kwuidjidzeehevigvgwb.supabase.co")
-SUPABASE_KEY = os.environ.get("SUPABASE_ANON_KEY", "")
+# Hardcoded Supabase credentials
+SUPABASE_URL = "https://kwuidjidzeehevigvgwb.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3dWlkamlkemVlaGV2aWd2Z3diIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MjMxNzMsImV4cCI6MjA5MjI5OTE3M30.1HRlRYVgc4-Br_T70-SwlVGGluUtLZLi6-9h7SWxpb0"
+
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
-
-@app.route('/privacy.html')
-def privacy():
-    return app.send_static_file('privacy.html')
 
 @app.route('/api/get_link')
 def get_link():
@@ -39,4 +36,4 @@ def get_link():
     })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    app.run(host='0.0.0.0', port=5000, debug=True)
