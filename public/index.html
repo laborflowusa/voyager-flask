@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VOYAGER-X - Travel Deals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f7f7f7;
+            border-radius: 10px;
+            display: none;
+        }
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌍 VOYAGER-X</h1>
+        <p>Your personal AI travel deal finder</p>
+        <button onclick="getDeal()">Find My Deal ✈️</button>
+        <div class="result" id="result">
+            <p>✨ Your personalized travel deal:</p>
+            <a id="dealLink" href="#" target="_blank">Click here to claim your deal</a>
+        </div>
+        <div class="disclaimer">
+            This site contains affiliate links. We may earn a commission if you book through these links.<br>
+            <a href="/privacy.html" style="color:#999;">Privacy Policy</a>
+        </div>
+    </div>
+
+    <script>
+        function getUserId() {
+            let userId = localStorage.getItem('voyagerx_user_id');
+            if (!userId) {
+                userId = 'user_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('voyagerx_user_id', userId);
+            }
+            return userId;
+        }
+
+        async function getDeal() {
+            const userId = getUserId();
+            const resultDiv = document.getElementById('result');
+            const dealLink = document.getElementById('dealLink');
+            
+            resultDiv.style.display = 'none';
+            
+            try {
+                const response = await fetch(`/api/get_link?user_id=${userId}`);
+                const data = await response.json();
+                
+                if (data.affiliate_link) {
+                    dealLink.href = data.affiliate_link;
+                    dealLink.textContent = data.affiliate_link;
+                    resultDiv.style.display = 'block';
+                } else {
+                    alert('No deals available');
+                }
+            } catch (error) {
+                alert('Error finding deals: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
