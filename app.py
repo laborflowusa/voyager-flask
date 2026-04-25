@@ -14,6 +14,13 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
+@app.route('/privacy.html')
+def privacy():
+    return app.send_static_file('privacy.html')
+
+@app.route('/blog/<path:filename>')
+def serve_blog(filename):
+    return app.send_from_directory('public/blog', filename)
 
 @app.route('/api/get_link')
 def get_link():
