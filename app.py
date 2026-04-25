@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request
 from supabase import create_client
 import random
 import os
@@ -14,13 +14,14 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
+
 @app.route('/privacy.html')
 def privacy():
     return app.send_static_file('privacy.html')
 
 @app.route('/blog/<path:filename>')
 def serve_blog(filename):
-    return app.send_from_directory('public/blog', filename)
+    return app.send_static_file(f'blog/{filename}')
 
 @app.route('/api/get_link')
 def get_link():
