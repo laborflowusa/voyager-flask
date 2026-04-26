@@ -43,7 +43,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* TOP BAR */
   .topbar {
     background: var(--ink);
     color: var(--gold-light);
@@ -55,7 +54,6 @@
 
   .topbar strong { font-weight: 500; color: #fff; }
 
-  /* NAV */
   nav {
     background: var(--parchment);
     border-bottom: 1px solid var(--border);
@@ -94,14 +92,12 @@
 
   .nav-cta:hover { background: var(--ink-soft); }
 
-  /* LAYOUT */
   .container {
     max-width: 760px;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
 
-  /* HERO */
   .hero {
     padding: 3.5rem 0 2.5rem;
     border-bottom: 1px solid var(--border);
@@ -160,7 +156,6 @@
     letter-spacing: 0.06em;
   }
 
-  /* URGENT BANNER */
   .urgent {
     background: var(--amber-bg);
     border: 1px solid rgba(122,79,0,0.2);
@@ -497,10 +492,8 @@
   @media (max-width: 600px) {
     nav { padding: 0.9rem 1rem; }
     .mom-grid, .decision-grid, .stat-grid { grid-template-columns: 1fr; }
-    .pro-tip { grid-column: 1; }
     h2 { font-size: 1.4rem; }
     .hero h1 { font-size: 1.75rem; }
-    .save-hero .save-amount { font-size: 2.75rem; }
   }
 </style>
 </head>
@@ -537,7 +530,7 @@
 
   <div class="share-nudge">
     <div class="share-nudge-text"><strong>Forward this to your partner.</strong> It answers the real questions — "Will the kids be bored?" "Will we get any alone time?" "What's actually worth the extra money?"</div>
-    <button class="share-btn" onclick="getDeal()">Send this guide ↗</button>
+    <button class="share-btn" onclick="shareGuide()">Send this guide ↗</button>
   </div>
 
   <p class="prose">You're not looking for a floating casino with a pool. You're looking for a vacation where every single person has a genuinely good time — and you also get to feel like you're on vacation, not just managing logistics.</p>
@@ -653,6 +646,15 @@
             localStorage.setItem('voyagerx_user_id', userId);
         }
         window.location.href = 'https://voyager-flask.onrender.com';
+    }
+
+    function shareGuide() {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            alert('Link copied! Send this guide to your partner.');
+        }).catch(() => {
+            alert('Press Ctrl+C to copy the link from your browser bar.');
+        });
     }
 </script>
 
