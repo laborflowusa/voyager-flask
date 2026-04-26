@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Cruises 2026: The Honest Parent's Guide | Voyager</title>
+<meta name="description" content="21.7 million families will cruise in 2026. Real kids club ratings, hidden fee warnings, and which cruise line actually gives parents a break. Disney to Carnival, we rate them all.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9922A;
+    --gold-light: #F2D28A;
+    --ink: #1A1714;
+    --ink-soft: #3D3830;
+    --parchment: #FAF7F2;
+    --parchment-dark: #F0EBE0;
+    --muted: #7A7167;
+    --border: rgba(26,23,20,0.12);
+    --green: #2D6A4F;
+    --green-bg: #EAF4EE;
+    --green-text: #1A4731;
+    --red-bg: #FAEAEA;
+    --red-text: #7A1F1F;
+    --amber-bg: #FEF3DC;
+    --amber-text: #7A4F00;
+    --blue-bg: #EAF1FA;
+    --blue-text: #1A3F6F;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--ink);
+    color: var(--gold-light);
+    text-align: center;
+    padding: 10px 1rem;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+
+  .topbar strong { font-weight: 500; color: #fff; }
+
+  /* NAV */
+  nav {
+    background: var(--parchment);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--gold-light);
+    border: none;
+    padding: 9px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--ink-soft); }
+
+  /* LAYOUT */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 3.5rem 0 2.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 20px;
+  }
+
+  .tag-amber { background: var(--amber-bg); color: var(--amber-text); }
+  .tag-blue { background: var(--blue-bg); color: var(--blue-text); }
+  .tag-green { background: var(--green-bg); color: var(--green-text); }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--ink);
+    margin-bottom: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 600px;
+    margin-bottom: 1.25rem;
+  }
+
+  .meta {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* URGENT BANNER */
+  .urgent {
+    background: var(--amber-bg);
+    border: 1px solid rgba(122,79,0,0.2);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0 2rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .urgent-icon { font-size: 18px; flex-shrink: 0; }
+
+  .urgent-body { font-size: 14px; color: var(--amber-text); line-height: 1.65; }
+  .urgent-body strong { font-weight: 500; }
+
+  .share-nudge {
+    background: var(--blue-bg);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    border-left: 3px solid #4A90D9;
+  }
+
+  .share-nudge-text { font-size: 13px; color: var(--blue-text); line-height: 1.6; flex: 1; min-width: 200px; }
+  .share-nudge-text strong { font-weight: 500; }
+
+  .share-btn {
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(26,63,111,0.25);
+    background: #fff;
+    color: var(--blue-text);
+    cursor: pointer;
+    white-space: nowrap;
+    font-weight: 400;
+  }
+
+  .prose {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    margin-bottom: 1.4rem;
+  }
+
+  .prose strong { font-weight: 500; color: var(--ink); }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 2.75rem 0 0.9rem;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  .cta-block {
+    background: var(--ink);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    margin: 2.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(201,146,42,0.15) 0%, transparent 60%);
+  }
+
+  .cta-block h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: #fff;
+    margin: 0 0 0.6rem;
+    position: relative;
+  }
+
+  .cta-block p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--gold);
+    color: var(--ink);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .cta-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .cta-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 10px;
+    position: relative;
+  }
+
+  .data-table-wrap { overflow-x: auto; margin: 1.25rem 0; }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    min-width: 480px;
+  }
+
+  .data-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    background: var(--parchment-dark);
+  }
+
+  .data-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-soft);
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+
+  .data-table tr:last-child td {
+    border-bottom: none;
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--parchment-dark);
+  }
+
+  .win-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: var(--green-bg);
+    color: var(--green-text);
+    white-space: nowrap;
+  }
+
+  .mom-callout {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    background: #fff;
+  }
+
+  .mom-callout-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .mom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .mom-col { background: var(--parchment-dark); border-radius: var(--radius-sm); padding: 1rem; }
+
+  .mom-col-title { font-size: 13px; font-weight: 500; margin-bottom: 8px; color: var(--ink); }
+
+  .mom-col-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  .stat-grid {
+    display: flex;
+    gap: 12px;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    flex: 1;
+    background: #fff;
+    padding: 1.2rem;
+    border-radius: var(--radius);
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+
+  .stat-number {
+    font-family: 'Fraunces', serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1.2;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.25rem 0; }
+
+  .decision-col {
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+  }
+
+  .decision-disney { background: var(--blue-bg); }
+  .decision-royal { background: var(--green-bg); }
+
+  .decision-title { font-size: 13px; font-weight: 500; margin-bottom: 10px; color: var(--ink); }
+
+  .decision-item {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 7px;
+    line-height: 1.55;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .decision-item::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .pullquote {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink);
+    border-left: 3px solid var(--gold);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    margin: 2rem 0;
+    line-height: 1.65;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 1.1rem 0;
+  }
+
+  .faq-item:last-child { border-bottom: none; }
+
+  .faq-q { font-size: 15px; font-weight: 500; margin-bottom: 6px; color: var(--ink); }
+
+  .faq-a { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+  .closing-line {
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--muted);
+    margin: 2rem 0 0.5rem;
+  }
+
+  .disclosure {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.75;
+    padding: 1.5rem 0 2rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    font-style: italic;
+  }
+
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  footer .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+  }
+
+  footer .footer-logo span { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    nav { padding: 0.9rem 1rem; }
+    .mom-grid, .decision-grid, .stat-grid { grid-template-columns: 1fr; }
+    .pro-tip { grid-column: 1; }
+    h2 { font-size: 1.4rem; }
+    .hero h1 { font-size: 1.75rem; }
+    .save-hero .save-amount { font-size: 2.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  21.7 million Americans will sail in 2026 — up 4.5% from last year. Family cabins are selling fast. <strong>Voyager</strong> tracks live availability daily.
+</div>
+
+<nav>
+  <div class="nav-logo">Voy<span>a</span>ger</div>
+  <button class="nav-cta" onclick="getDeal()">👉 Find My Deal</button>
+</nav>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-tags">
+      <span class="tag tag-blue">Family Travel</span>
+      <span class="tag tag-amber">Summer 2026</span>
+      <span class="tag tag-green">Kids Club Ratings</span>
+    </div>
+    <h1>Family Cruises 2026:<br><em>The Honest Parent's Guide</em></h1>
+    <p class="hero-sub">21.7 million families will cruise in 2026. Real kids club quality, nickel‑and‑dime traps, and which line actually gives mom and dad a break. Disney to Carnival, we rate them all.</p>
+    <div class="meta">Published April 2026 &nbsp;·&nbsp; 12 min read &nbsp;·&nbsp; Kids club ratings updated for 2026</div>
+  </div>
+
+  <div class="urgent">
+    <div class="urgent-icon">⚡</div>
+    <div class="urgent-body">
+      <strong>Record demand for summer 2026 sailings.</strong> Family suites and connecting cabins are already disappearing for spring break and summer weeks. If you're planning to sail, the deal window is open now.
+    </div>
+  </div>
+
+  <div class="share-nudge">
+    <div class="share-nudge-text"><strong>Forward this to your partner.</strong> It answers the real questions — "Will the kids be bored?" "Will we get any alone time?" "What's actually worth the extra money?"</div>
+    <button class="share-btn">Send this guide ↗</button>
+  </div>
+
+  <p class="prose">You're not looking for a floating casino with a pool. You're looking for a vacation where every single person has a genuinely good time — and you also get to feel like you're on vacation, not just managing logistics.</p>
+
+  <p class="prose">I've broken down the five best family cruise lines for 2026, rated the kids clubs honestly, exposed the nickel-and-dime traps that blindside first-timers, and highlighted which lines actually deliver parents-only time — and which just claim they do.</p>
+
+  <div class="cta-block">
+    <h3>Not sure which line fits your family?</h3>
+    <p>Tell Voyager your kids' ages, budget, and vacation style — it scans live pricing across every major family line and finds your best deal. One click, no email required.</p>
+    <button class="cta-btn" onclick="getDeal()">👉 Find My Family Cruise Deal</button>
+    <div class="cta-note">No email. No spam. Just a real deal.</div>
+  </div>
+
+  <div class="pullquote">"A good family cruise is one where everyone — including the parents — comes back actually rested."</div>
+
+  <div class="mom-callout">
+    <div class="mom-callout-label">The honest parent calculation</div>
+    <div class="mom-grid">
+      <div class="mom-col">
+        <div class="mom-col-title">What moms are really weighing</div>
+        <div class="mom-col-body">Is the kids club trustworthy and actually engaging? Will I get any real downtime? Is this going to cost me $3,000 more than the advertised price? Will I come home feeling rested?</div>
+      </div>
+      <div class="mom-col">
+        <div class="mom-col-title">What dads are really thinking</div>
+        <div class="mom-col-body">I want the kids to be thrilled. I want my partner to actually relax. I want to not feel upsold every time I turn around. I want to feel like I found the right ship — not the default.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-number">21.7M</div><div class="stat-label">Americans cruising in 2026 — all‑time record forecast</div></div>
+    <div class="stat-card"><div class="stat-number">72%</div><div class="stat-label">of U.S. passengers choose the Caribbean — widest family options</div></div>
+    <div class="stat-card"><div class="stat-number">$914</div><div class="stat-label">Average hidden add‑on cost per family if you're not careful</div></div>
+  </div>
+
+  <h2>The five best family cruise lines for 2026</h2>
+
+  <h3>✨ Disney Cruise Line — The Magic & Under‑10 Family</h3>
+  <p class="prose"><strong>Best for:</strong> Families with kids ages 3–12 who are Disney obsessed. The character meet-and-greets alone justify the premium for this age group.</p>
+  <p class="prose"><strong>Kids club rating:</strong> Ages 3–10: 9.7 | Teens: 8.5</p>
+  <p class="prose">Disney Cruise Line is the only line where the ship itself is the destination. Character dining, Broadway-caliber shows, the Oceaneer Club (which kids genuinely don't want to leave), and Castaway Cay combine to create an experience no other line can replicate for young children. The adults-only areas are genuinely excellent, meaning parents actually do get downtime. It costs more. It's worth it for the right family at the right age.</p>
+
+  <h3>🏄 Royal Caribbean — The Thrill-Seekers & All‑Ages Family</h3>
+  <p class="prose"><strong>Best for:</strong> Families with wide age ranges — toddlers to teenagers. Royal Caribbean's ships have the most total onboard activities of any line.</p>
+  <p class="prose"><strong>Kids club rating:</strong> Ages 3–12: 9.0 | Teens: 9.5</p>
+  <p class="prose">Royal Caribbean's Icon of the Seas and Wonder of the Seas are the most activity-dense ships ever built — rock climbing, surf simulators, waterslides, ice skating, mini golf, laser tag. Perfect Day at CocoCay is the best private island at sea. Watch for add-on upselling — budget carefully and buy packages in advance online at a 20–30% discount.</p>
+
+  <h3>💰 Carnival — The Budget-Smart Family</h3>
+  <p class="prose"><strong>Best for:</strong> Budget-conscious families who want an excellent cruise without paying premium prices. Best first cruise option.</p>
+  <p class="prose"><strong>Kids club rating:</strong> Ages 2–11: 8.2 | Teens: 7.5</p>
+  <p class="prose">Carnival gets a bad reputation it doesn't entirely deserve. The base price is genuinely the best value in the industry for Caribbean family travel. Ships are fun, food is solid, kids programs are well-run. The honest caveat: ships are louder and more party-oriented. The savings are real — a family of four can save $1,500–$2,500 vs. Disney.</p>
+
+  <h3>🕊️ Norwegian — The Freedom & Flexibility Family</h3>
+  <p class="prose"><strong>Best for:</strong> Families who hate rigid schedules. "Freestyle cruising" — no fixed dining times, no dress codes.</p>
+  <p class="prose"><strong>Kids club rating:</strong> Ages 3–12: 8.3 | Teens: 8.0</p>
+  <p class="prose">Norwegian is the right choice for families who bristle at regimented cruising. Kids clubs are well-reviewed, and "Free At Sea" promotions are the best deal in cruising when timed right — they can include free specialty dining, drink packages, and Wi-Fi.</p>
+
+  <h3>🌍 MSC Cruises — The European Experience Family</h3>
+  <p class="prose"><strong>Best for:</strong> Families who want a European cruise experience at a price point significantly below premium lines. Particularly strong for Mediterranean itineraries.</p>
+  <p class="prose"><strong>Kids club rating:</strong> Ages 3–12: 8.0 | Teens: 7.2</p>
+  <p class="prose">MSC is the underrated pick. Mediterranean itineraries are excellent, pricing is dramatically lower than comparable sailings. The honest caveat: MSC has a more international, European atmosphere. Some families love this; others find the energy different. If Europe is your destination, MSC is the smartest way to introduce your kids to it.</p>
+
+  <div class="cta-block">
+    <h3>Which line is right for your family?</h3>
+    <p>Voyager scans live availability across all five lines — plus current promotions, kids-sail-free deals, and cabin upgrade offers. Tell it your family's ages and budget and it finds the best deal right now.</p>
+    <button class="cta-btn" onclick="getDeal()">👉 Find My Family Cruise Deal</button>
+    <div class="cta-note">No email. No spam. No upsells.</div>
+  </div>
+
+  <div class="data-table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Cruise line</th><th>Best for</th><th>Kids club</th><th>Starting price/pp</th></tr></thead>
+      <tbody>
+        <tr><td>Disney Cruise Line</td><td>Ages 3–12, magic seekers</td><td>9.7 / 10</td><td>~$1,500</td></tr>
+        <tr><td>Royal Caribbean</td><td>All ages, thrill-seekers</td><td>9.5 / 10 teens</td><td>~$900</td></tr>
+        <tr><td>Carnival</td><td>Budget-smart families</td><td>8.2 / 10</td><td>~$600</td></tr>
+        <tr><td>Norwegian</td><td>Flexible, no-schedule families</td><td>8.3 / 10</td><td>~$800</td></tr>
+        <tr><td>MSC Cruises</td><td>European itineraries, value</td><td>8.0 / 10</td><td>~$700</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>The hidden fees that blindside first-time family cruisers</h2>
+  <p class="prose">This is the section most travel blogs skip. Don't let these catch you off guard — they can add $800–$1,500 to a family of four's total cost.</p>
+  <div class="prose"><strong>Daily gratuities / service charges</strong> — often $18–22 per person per day → ~$504–$616 for a family of four<br>
+  <strong>Specialty dining</strong> — beyond main dining room → $30–60 per person<br>
+  <strong>Drink packages</strong> — even non-alcoholic/soda for kids → $10–25 per day per person<br>
+  <strong>Wi-Fi packages</strong> — often $20–35/day per device → $140–245 per week<br>
+  <strong>Parking at the departure port</strong> — if driving → $20–35 per day</div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">What's the best family cruise line for kids under 5?</div><div class="faq-a">Disney Cruise Line is the clear answer. The Oceaneer Club accepts children from age 3 and has the highest staff-to-child ratio. Royal Caribbean's Adventure Ocean is also excellent for this age if budget is a concern.</div></div>
+  <div class="faq-item"><div class="faq-q">Which cruise line is best for teenagers?</div><div class="faq-a">Royal Caribbean wins this category clearly. The Vibe teen lounge on their larger ships is genuinely excellent — teens actually want to go there and hang out independently.</div></div>
+  <div class="faq-item"><div class="faq-q">How do I actually get alone time as a parent on a cruise?</div><div class="faq-a">Book the evening kids club sessions in advance — most lines offer supervised kids club hours until 10pm or later specifically so parents can have dinner and time alone. This is the best-kept secret in family cruising.</div></div>
+  <div class="faq-item"><div class="faq-q">Does Voyager track kids-sail-free and family deals specifically?</div><div class="faq-a">Yes. Kids-sail-free promotions, third and fourth passenger discounts, and connecting cabin offers are among the most time-limited deals. Voyager scans these daily and surfaces them when they're available for your travel dates.</div></div>
+
+  <div class="closing-line">Click Voyager above. Let me find your family's next adventure.</div>
+  <div class="disclosure">Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. Kids club ratings reflect aggregated parent reviews and independent research as of early 2026. Prices are approximate starting rates and subject to change — always confirm current pricing before booking.</div>
+</div>
+
+<footer>
+  <div class="footer-logo">Voy<span>a</span>ger</div>
+  <div>Real deals. No noise. Built for families who travel smart.</div>
+</footer>
+
+<script>
+    function getDeal() {
+        let userId = localStorage.getItem('voyagerx_user_id');
+        if (!userId) {
+            userId = 'user_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('voyagerx_user_id', userId);
+        }
+        window.location.href = 'https://voyager-flask.onrender.com';
+    }
+</script>
+
+</body>
+</html>
