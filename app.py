@@ -19,6 +19,10 @@ def index():
 def privacy():
     return app.send_static_file('privacy.html')
 
+@app.route('/blog/<path:filename>')
+def serve_blog(filename):
+    return app.send_static_file(f'blog/{filename}')
+
 @app.route('/api/get_link')
 def get_link():
     user_id = request.args.get('user_id', 'anonymous')
