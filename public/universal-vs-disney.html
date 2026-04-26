@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -689,7 +689,7 @@
 
   <div class="share-nudge">
     <div class="share-nudge-text"><strong>Planning this trip together?</strong> Send this to whoever's doing the research in your family — it's the only comparison guide they'll need. All numbers are verified for 2026.</div>
-    <button class="share-btn">Send this guide ↗</button>
+    <button class="share-btn" onclick="shareGuide()">Send this guide ↗</button>
   </div>
 
   <p class="prose">You know exactly how the conversation starts. Someone says Disney. Someone else says it costs too much. The kids want both. And suddenly you're four browser tabs deep at 11pm comparing ticket prices that don't make any sense.</p>
@@ -721,15 +721,15 @@
       <tbody>
         <tr>
           <td>4-day park tickets (family of 4)</td>
-          <td>~$2,234</td>
-          <td>~$1,040</td>
-          <td><span class="win-badge">Universal saves $1,194</span></td>
+          <td>~$2,234</td
+          <td>~$1,040</td
+          <td><span class="win-badge">Universal saves $1,194</span></td
         </tr>
         <tr>
           <td>3-night on-site hotel</td
-          <td>$1,200 (Pop Century)</td>
-          <td>$900 (Cabana Bay)</td>
-          <td><span class="win-badge">Universal saves $300</span></td>
+          <td>$1,200 (Pop Century)</td
+          <td>$900 (Cabana Bay)</td
+          <td><span class="win-badge">Universal saves $300</span></td
         </tr>
         <tr>
           <td>Food — quick service, 4 days</td
@@ -927,6 +927,15 @@
             localStorage.setItem('voyagerx_user_id', userId);
         }
         window.location.href = 'https://voyager-flask.onrender.com';
+    }
+
+    function shareGuide() {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            alert('Link copied! Send this guide to your partner.');
+        }).catch(() => {
+            alert('Press Ctrl+C to copy the link from your browser bar.');
+        });
     }
 </script>
 
