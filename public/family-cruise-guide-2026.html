@@ -332,17 +332,6 @@
     background: var(--parchment-dark);
   }
 
-  .win-badge {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
-    padding: 3px 9px;
-    border-radius: 20px;
-    background: var(--green-bg);
-    color: var(--green-text);
-    white-space: nowrap;
-  }
-
   .mom-callout {
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -396,36 +385,6 @@
     font-size: 12px;
     color: var(--muted);
     margin-top: 6px;
-  }
-
-  .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.25rem 0; }
-
-  .decision-col {
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    border: 1px solid var(--border);
-  }
-
-  .decision-disney { background: var(--blue-bg); }
-  .decision-royal { background: var(--green-bg); }
-
-  .decision-title { font-size: 13px; font-weight: 500; margin-bottom: 10px; color: var(--ink); }
-
-  .decision-item {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 7px;
-    line-height: 1.55;
-    padding-left: 14px;
-    position: relative;
-  }
-
-  .decision-item::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    font-size: 11px;
-    color: var(--muted);
   }
 
   .pullquote {
@@ -491,7 +450,7 @@
 
   @media (max-width: 600px) {
     nav { padding: 0.9rem 1rem; }
-    .mom-grid, .decision-grid, .stat-grid { grid-template-columns: 1fr; }
+    .mom-grid, .stat-grid { grid-template-columns: 1fr; }
     h2 { font-size: 1.4rem; }
     .hero h1 { font-size: 1.75rem; }
   }
@@ -606,11 +565,31 @@
         <tr><th>Cruise line</th><th>Best for</th><th>Kids club</th><th>Starting price/pp</th></tr>
       </thead>
       <tbody>
-        <tr><td>Disney Cruise Line</td><td>Ages 3–12, magic seekers</td><td>9.7 / 10</td><td>~$1,500</td></tr>
-        <tr><td>Royal Caribbean</td><td>All ages, thrill-seekers</td><td>9.5 / 10 teens</td><td>~$900</td></tr>
-        <tr><td>Carnival</td><td>Budget-smart families</td><td>8.2 / 10</td><td>~$600</td></tr>
-        <tr><td>Norwegian</td><td>Flexible, no-schedule families</td><td>8.3 / 10</td><td>~$800</td></tr>
-        <tr><td>MSC Cruises</td><td>European itineraries, value</td><td>8.0 / 10</td><td>~$700</td></tr>
+        <tr><td
+          <td>Ages 3–12, magic seekers</td
+          <td>9.7 / 10</td
+          <td>~$1,500</td
+        </tr>
+        <tr><td
+          <td>All ages, thrill-seekers</td
+          <td>9.5 / 10 teens</td
+          <td>~$900</td
+        </tr>
+        <tr><td
+          <td>Budget-smart families</td
+          <td>8.2 / 10</td
+          <td>~$600</td
+        </tr>
+        <tr><td
+          <td>Flexible, no-schedule families</td
+          <td>8.3 / 10</td
+          <td>~$800</td
+        </tr>
+        <tr><td
+          <td>European itineraries, value</td
+          <td>8.0 / 10</td
+          <td>~$700</td
+        </tr>
       </tbody>
     </table>
   </div>
@@ -640,12 +619,6 @@
 
 <script>
     function getDeal() {
-        console.log("getDeal function triggered");
-        let userId = localStorage.getItem('voyagerx_user_id');
-        if (!userId) {
-            userId = 'user_' + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem('voyagerx_user_id', userId);
-        }
         window.location.href = 'https://voyager-flask.onrender.com';
     }
 
@@ -658,5 +631,6 @@
         });
     }
 </script>
+
 </body>
 </html>
