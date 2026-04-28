@@ -640,6 +640,7 @@
 
 <script>
     function getDeal() {
+        console.log("getDeal function triggered");
         let userId = localStorage.getItem('voyagerx_user_id');
         if (!userId) {
             userId = 'user_' + Math.random().toString(36).substr(2, 9);
@@ -657,6 +658,5 @@
         });
     }
 </script>
-
 </body>
 </html>
