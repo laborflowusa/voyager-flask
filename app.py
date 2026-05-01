@@ -80,7 +80,6 @@ def voyager_chat():
     if not OPENROUTER_API_KEY:
         return jsonify({'error': 'OpenRouter API key not configured'}), 500
 
-    # List of free models in order of reliability
     models_to_try = [
         "openai/gpt-oss-20b:free",
         "google/gemma-4-31b:free",
@@ -113,22 +112,33 @@ def voyager_chat():
                 result = response.json()
                 reply = result['choices'][0]['message']['content']
 
-                # Extract recommendation JSON if present
+                # Improved JSON extraction
                 recommendation = None
-                if '"recommendation_ready": true' in reply:
-                    try:
-                        start = reply.index('{')
-                        end = reply.rindex('}') + 1
-                        recommendation = json.loads(reply[start:end])
-                        # Ensure affiliate_category is set
+                try:
+                    # Try to find JSON anywhere in the response
+                    start = reply.find('{')
+                    end = reply.rfind('}') + 1
+                    if start != -1 and end > start:
+                        json_str = reply[start:end]
+                        recommendation = json.loads(json_str)
+                        # Validate required fields
                         if recommendation.get('recommendation_ready'):
                             if 'affiliate_category' not in recommendation:
                                 recommendation['affiliate_category'] = 'universal_tickets'
-                    except Exception:
-                        pass
+                except Exception as e:
+                    print(f"JSON parse error: {e}")
+
+                # Clean the reply for display (remove JSON if present)
+                display_reply = reply
+                if recommendation:
+                    # Remove the JSON block from the displayed message
+                    json_part = json.dumps(recommendation)
+                    display_reply = reply.replace(json_part, '').strip()
+                    if not display_reply:
+                        display_reply = "Here's your personalized recommendation!"
 
                 return jsonify({
-                    'reply': reply,
+                    'reply': display_reply,
                     'recommendation': recommendation
                 })
             else:
@@ -139,9 +149,4 @@ def voyager_chat():
             last_error = str(e)
             continue
 
-    # If all models fail
     return jsonify({'error': f'All models failed. Last error: {last_error}'}), 500
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
