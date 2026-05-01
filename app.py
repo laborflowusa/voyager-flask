@@ -16,8 +16,12 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 
-# Ultra-short system prompt
-VOYAGER_SYSTEM_PROMPT = """You are Voyager. Ask for: family size, budget, travel month, must-do experiences, park preference.
+# Multi-language system prompt
+VOYAGER_SYSTEM_PROMPT = """You are Voyager, a family travel assistant for Orlando theme parks.
+
+IMPORTANT: Detect the user's language from their first message. Respond in the SAME language they use. If they write in Spanish, reply in Spanish. If they write in French, reply in French. Default to English.
+
+Ask for: family size, budget, travel month, must-do experiences, park preference.
 
 After 5 answers, output ONLY this JSON, nothing else:
 {"recommendation_ready":true,"park":"Universal","summary":"2 sentences","savings":"Save $X","best_deal":"Tip","affiliate_category":"universal_tickets"}
