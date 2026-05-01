@@ -94,12 +94,8 @@ def voyager_chat():
     if not OPENROUTER_API_KEY:
         return jsonify({'error': 'OpenRouter API key not configured'}), 500
 
-    # List of free models to try in order (most reliable first)
-    models_to_try = [
-        "google/gemini-2.0-flash-lite-preview-02-05:free",
-        "meta-llama/llama-3.2-1b-instruct:free",
-        "microsoft/phi-3.5-mini-128k-instruct:free",
-        "mistralai/mistral-7b-instruct:free"
+        models_to_try = [
+        "tencent/hy3-preview:free",
     ]
 
     last_error = None
