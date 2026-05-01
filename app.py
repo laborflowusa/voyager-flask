@@ -94,7 +94,8 @@ def voyager_chat():
     if not OPENROUTER_API_KEY:
         return jsonify({'error': 'OpenRouter API key not configured'}), 500
 
-        models_to_try = [
+    # List of free models to try in order
+    models_to_try = [
         "tencent/hy3-preview:free",
     ]
 
@@ -147,5 +148,7 @@ def voyager_chat():
 
     # If all models fail
     return jsonify({'error': f'All models failed. Last error: {last_error}'}), 500
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
