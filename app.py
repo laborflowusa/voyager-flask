@@ -102,7 +102,7 @@ def voyager_chat():
                 "Content-Type": "application/json"
             },
             json={
-                "model": "google/gemini-2.0-flash-free",
+                "model": "microsoft/phi-3-mini-128k-instruct:free",
                 "messages": [
                     {"role": "system", "content": VOYAGER_SYSTEM_PROMPT},
                     *messages
