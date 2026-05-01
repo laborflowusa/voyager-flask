@@ -16,27 +16,13 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 # OpenRouter API key from environment variable
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 
-# Voyager AI system prompt
-VOYAGER_SYSTEM_PROMPT = """You are Voyager, a friendly and knowledgeable family travel assistant specializing in Orlando theme parks and cruises. Your job is to ask families the right questions and return a personalized travel recommendation with real 2026 pricing.
+# Ultra-short system prompt to save tokens
+VOYAGER_SYSTEM_PROMPT = """You are Voyager. Ask for: family size, budget, travel month, must-do experiences, park preference.
 
-You collect information conversationally across these steps:
-1. Family size and kids ages
-2. Budget (total trip budget)
-3. Travel dates
-4. Must-have experiences (thrill rides, character meets, Harry Potter, etc.)
-5. Park preference or open to suggestion
+After 5 answers, output ONLY this JSON, nothing else:
+{"recommendation_ready":true,"park":"Universal","summary":"2 sentences","savings":"Save $X","best_deal":"Tip","affiliate_category":"universal_tickets"}
 
-Once you have all 5 pieces of information, return a JSON block at the end of your message in this exact format:
-{
-  "recommendation_ready": true,
-  "park": "Universal" or "Disney" or "Both",
-  "summary": "2-3 sentence personalized recommendation",
-  "savings": "estimated savings vs alternative",
-  "best_deal": "specific actionable booking tip",
-  "affiliate_category": "universal_tickets" or "disney_tickets" or "hotel" or "cruise"
-}
-
-Before you have all 5 pieces, just ask naturally — one question at a time. Be warm, concise, and helpful. Never pushy. Always honest."""
+One question at a time. Keep responses very short."""
 
 
 # ─── Routes ───────────────────────────────────────────────────────────────────
@@ -94,11 +80,11 @@ def voyager_chat():
     if not OPENROUTER_API_KEY:
         return jsonify({'error': 'OpenRouter API key not configured'}), 500
 
-    # List of free models that are currently fast and reliable
+    # List of free models in order of reliability
     models_to_try = [
-        "nvidia/nemotron-3-nano-30b-a3b:free",
+        "openai/gpt-oss-20b:free",
         "google/gemma-4-31b:free",
-        "openai/gpt-oss-20b:free"
+        "nvidia/nemotron-3-nano-30b-a3b:free"
     ]
 
     last_error = None
@@ -117,9 +103,10 @@ def voyager_chat():
                         {"role": "system", "content": VOYAGER_SYSTEM_PROMPT},
                         *messages
                     ],
-                    "max_tokens": 1000
+                    "max_tokens": 1500,
+                    "temperature": 0.7
                 },
-                timeout=15
+                timeout=20
             )
 
             if response.status_code == 200:
@@ -133,6 +120,10 @@ def voyager_chat():
                         start = reply.index('{')
                         end = reply.rindex('}') + 1
                         recommendation = json.loads(reply[start:end])
+                        # Ensure affiliate_category is set
+                        if recommendation.get('recommendation_ready'):
+                            if 'affiliate_category' not in recommendation:
+                                recommendation['affiliate_category'] = 'universal_tickets'
                     except Exception:
                         pass
 
