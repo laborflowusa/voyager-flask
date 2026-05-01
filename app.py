@@ -4,6 +4,7 @@ import random
 import os
 import json
 import requests
+import re
 
 app = Flask(__name__, static_folder='public', static_url_path='')
 
@@ -13,13 +14,10 @@ SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-# OpenRouter API key
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 
-# System prompt
-VOYAGER_SYSTEM_PROMPT = """You are Voyager, a family travel assistant for Orlando theme parks.
-
-Ask for: family size, budget, travel month, must-do experiences, park preference.
+# Ultra-short system prompt
+VOYAGER_SYSTEM_PROMPT = """You are Voyager. Ask for: family size, budget, travel month, must-do experiences, park preference.
 
 After 5 answers, output ONLY this JSON, nothing else:
 {"recommendation_ready":true,"park":"Universal","summary":"2 sentences","savings":"Save $X","best_deal":"Tip","affiliate_category":"universal_tickets"}
@@ -88,20 +86,25 @@ def voyager_chat():
                 if resp.status_code == 200:
                     result = resp.json()
                     reply = result['choices'][0]['message']['content']
+                    
+                    # Try to extract JSON
                     recommendation = None
-
-                    # Extract JSON
-                    if '"recommendation_ready": true' in reply:
+                    # Look for JSON pattern
+                    json_match = re.search(r'\{[^{}]*"recommendation_ready"[^{}]*\}', reply)
+                    if json_match:
                         try:
-                            start = reply.find('{')
-                            end = reply.rfind('}') + 1
-                            if start != -1 and end > start:
-                                recommendation = json.loads(reply[start:end])
+                            recommendation = json.loads(json_match.group())
                         except:
                             pass
-
-                    return jsonify({'reply': reply, 'recommendation': recommendation})
-
+                    
+                    # Clean reply: remove the JSON part
+                    clean_reply = reply
+                    if json_match:
+                        clean_reply = reply.replace(json_match.group(), '').strip()
+                        if not clean_reply:
+                            clean_reply = "Here's your personalized recommendation!"
+                    
+                    return jsonify({'reply': clean_reply, 'recommendation': recommendation})
             except:
                 continue
 
