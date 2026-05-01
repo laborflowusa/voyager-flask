@@ -94,9 +94,11 @@ def voyager_chat():
     if not OPENROUTER_API_KEY:
         return jsonify({'error': 'OpenRouter API key not configured'}), 500
 
-    # List of free models to try in order
+    # List of free models that are currently fast and reliable
     models_to_try = [
-        "tencent/hy3-preview:free",
+        "nvidia/nemotron-3-nano-30b-a3b:free",
+        "google/gemma-4-31b:free",
+        "openai/gpt-oss-20b:free"
     ]
 
     last_error = None
@@ -117,7 +119,7 @@ def voyager_chat():
                     ],
                     "max_tokens": 1000
                 },
-                timeout=30
+                timeout=15
             )
 
             if response.status_code == 200:
