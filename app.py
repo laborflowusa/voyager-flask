@@ -94,50 +94,62 @@ def voyager_chat():
     if not OPENROUTER_API_KEY:
         return jsonify({'error': 'OpenRouter API key not configured'}), 500
 
-    try:
-        response = requests.post(
-            url="https://openrouter.ai/api/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json"
-            },
-            json={
-                "model": "microsoft/phi-3-mini-128k-instruct:free",
-                "messages": [
-                    {"role": "system", "content": VOYAGER_SYSTEM_PROMPT},
-                    *messages
-                ],
-                "max_tokens": 1000
-            }
-        )
-        
-        result = response.json()
-        
-        if 'error' in result:
-            return jsonify({'error': result['error'].get('message', 'Unknown error')}), 500
-        
-        reply = result['choices'][0]['message']['content']
+    # List of free models to try in order (most reliable first)
+    models_to_try = [
+        "google/gemini-2.0-flash-lite-preview-02-05:free",
+        "meta-llama/llama-3.2-1b-instruct:free",
+        "microsoft/phi-3.5-mini-128k-instruct:free",
+        "mistralai/mistral-7b-instruct:free"
+    ]
 
-        # Extract recommendation JSON if present
-        recommendation = None
-        if '"recommendation_ready": true' in reply:
-            try:
-                start = reply.index('{')
-                end = reply.rindex('}') + 1
-                recommendation = json.loads(reply[start:end])
-            except Exception:
-                pass
+    last_error = None
 
-        return jsonify({
-            'reply': reply,
-            'recommendation': recommendation
-        })
+    for model in models_to_try:
+        try:
+            response = requests.post(
+                url="https://openrouter.ai/api/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Content-Type": "application/json"
+                },
+                json={
+                    "model": model,
+                    "messages": [
+                        {"role": "system", "content": VOYAGER_SYSTEM_PROMPT},
+                        *messages
+                    ],
+                    "max_tokens": 1000
+                },
+                timeout=30
+            )
 
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+            if response.status_code == 200:
+                result = response.json()
+                reply = result['choices'][0]['message']['content']
 
+                # Extract recommendation JSON if present
+                recommendation = None
+                if '"recommendation_ready": true' in reply:
+                    try:
+                        start = reply.index('{')
+                        end = reply.rindex('}') + 1
+                        recommendation = json.loads(reply[start:end])
+                    except Exception:
+                        pass
 
-# ─── Entry point ──────────────────────────────────────────────────────────────
+                return jsonify({
+                    'reply': reply,
+                    'recommendation': recommendation
+                })
+            else:
+                last_error = f"Model {model} returned {response.status_code}"
+                continue
 
+        except Exception as e:
+            last_error = str(e)
+            continue
+
+    # If all models fail
+    return jsonify({'error': f'All models failed. Last error: {last_error}'}), 500
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
