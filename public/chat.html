@@ -6,7 +6,17 @@
   <title>Voyager — Find My Deal</title>
   <meta name="verification" content="9f524bb0698e027c6a06487ed314bd2f" />
   <meta name="robots" content="noindex, nofollow" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -135,6 +145,31 @@
     }
     .nav-links a:hover {
       color: var(--accent);
+    }
+
+    #google_translate_element {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background: rgba(0,0,0,0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    #google_translate_element select {
+      background: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    @media (max-width: 600px) {
+      #google_translate_element {
+        bottom: 10px;
+        right: 10px;
+        padding: 4px 8px;
+      }
     }
 
     .progress-bar {
@@ -682,5 +717,8 @@
     }, 600);
   });
 </script>
+
+<div id="google_translate_element"></div>
+
 </body>
-</html> 
+</html>
