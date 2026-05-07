@@ -45,6 +45,10 @@ def index():
 def privacy():
     return app.send_static_file('privacy.html')
 
+@app.route('/chat.html')
+def chat():
+    return app.send_static_file('chat.html')
+
 @app.route('/blog/<path:filename>')
 def serve_blog(filename):
     return app.send_static_file(f'blog/{filename}')
@@ -52,6 +56,41 @@ def serve_blog(filename):
 @app.route('/<path:filename>.html')
 def serve_html(filename):
     return app.send_static_file(f'{filename}.html')
+
+
+# Sitemap route
+@app.route('/sitemap.xml')
+def sitemap():
+    base_url = "https://voyager-flask.onrender.com"
+    pages = [
+        "/",
+        "/chat.html",
+        "/universal-vs-disney.html",
+        "/family-cruise-guide-2026.html",
+        "/couples-cruise-guide-2026.html",
+        "/celebrate-mom.html",
+        "/privacy.html"
+    ]
+    sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    sitemap_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    for page in pages:
+        sitemap_content += '  <url>\n'
+        sitemap_content += f'    <loc>{base_url}{page}</loc>\n'
+        sitemap_content += '    <lastmod>2026-05-07</lastmod>\n'
+        sitemap_content += '    <changefreq>weekly</changefreq>\n'
+        sitemap_content += '    <priority>0.8</priority>\n'
+        sitemap_content += '  </url>\n'
+    sitemap_content += '</urlset>'
+    return app.response_class(sitemap_content, mimetype='application/xml')
+
+
+# Robots.txt route
+@app.route('/robots.txt')
+def robots():
+    robots_content = 'User-agent: *\n'
+    robots_content += 'Allow: /\n'
+    robots_content += 'Sitemap: https://voyager-flask.onrender.com/sitemap.xml\n'
+    return app.response_class(robots_content, mimetype='text/plain')
 
 
 @app.route('/api/get_link')
