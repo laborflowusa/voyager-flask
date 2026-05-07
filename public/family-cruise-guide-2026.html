@@ -7,6 +7,17 @@
 <meta name="description" content="21.7 million families will cruise in 2026. Real kids club ratings, hidden fee warnings, and which cruise line actually gives parents a break. Disney to Carnival, we rate them all.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Google Translate Script -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -91,6 +102,31 @@
   }
 
   .nav-cta:hover { background: var(--ink-soft); }
+
+  #google_translate_element {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background: rgba(0,0,0,0.7);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+  #google_translate_element select {
+    background: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    #google_translate_element {
+      bottom: 10px;
+      right: 10px;
+      padding: 4px 8px;
+    }
+  }
 
   .container {
     max-width: 760px;
@@ -591,20 +627,8 @@
   <div class="faq-item"><div class="faq-q">How do I actually get alone time as a parent on a cruise?</div><div class="faq-a">Book the evening kids club sessions in advance — most lines offer supervised kids club hours until 10pm or later specifically so parents can have dinner and time alone. This is the best-kept secret in family cruising.</div></div>
   <div class="faq-item"><div class="faq-q">Does Voyager track kids-sail-free and family deals specifically?</div><div class="faq-a">Yes. Kids-sail-free promotions, third and fourth passenger discounts, and connecting cabin offers are among the most time-limited deals. Voyager scans these daily and surfaces them when they're available for your travel dates.</div></div>
 
-  <p style="text-align: center; margin: 20px 0;"><strong>🎟️ Don't miss out on Epic Universe!</strong> <a href="https://gyg.me/KBoe1F8i" target="_blank">Get your Universal Orlando tickets here →</a></p>
-
   <div class="closing-line">Click Voyager above. Let me find your family's next adventure.</div>
   <div class="disclosure">Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. Kids club ratings reflect aggregated parent reviews and independent research as of early 2026. Prices are approximate starting rates and subject to change — always confirm current pricing before booking.</div>
-
-  <!-- NEW AMAZON GEAR SECTION -->
-  <div style="background: #f7f7f7; padding: 20px; border-radius: 10px; margin: 20px 0;">
-      <h3>🧳 Packing for Your Cruise?</h3>
-      <p>Here are some top-rated travel essentials from Amazon:</p>
-      <ul>
-          <li><a href="https://amzn.to/3QIBkPC" target="_blank">Packing Cubes (Best Seller)</a></li>
-      </ul>
-  </div>
-
 </div>
 
 <footer>
@@ -626,6 +650,8 @@
         });
     }
 </script>
+
+<div id="google_translate_element"></div>
 
 </body>
 </html>
