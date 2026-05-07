@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,6 +7,17 @@
 <meta name="description" content="Real 2026 ticket prices, Epic Universe opening data, and the honest mom calculation. Universal saves families $1,200+ on tickets alone. Find out which park is right for your family.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Google Translate Script -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -93,6 +104,31 @@
   }
 
   .nav-cta:hover { background: var(--ink-soft); }
+
+  #google_translate_element {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background: rgba(0,0,0,0.7);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+  #google_translate_element select {
+    background: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    #google_translate_element {
+      bottom: 10px;
+      right: 10px;
+      padding: 4px 8px;
+    }
+  }
 
   /* LAYOUT */
   .container {
@@ -645,7 +681,6 @@
 
   footer .footer-logo span { color: var(--gold); }
 
-  /* RESPONSIVE */
   @media (max-width: 600px) {
     nav { padding: 0.9rem 1rem; }
     .upgrade-grid, .decision-grid, .mom-grid { grid-template-columns: 1fr; }
@@ -907,7 +942,6 @@
   </div>
 
   <div class="closing-line">Click Voyager above. Let me find your family's next adventure.</div>
-<p style="text-align: center; margin: 20px 0;"><strong>🎟️ Don't wait – Epic Universe tickets are selling fast!</strong> <a href="https://gyg.me/KBoe1F8i" target="_blank">Get your Universal Orlando tickets here →</a></p>
 
   <div class="disclosure">
     Disclosure: This post contains affiliate links. If you book through these links, Voyager may earn a commission at no extra cost to you. We only recommend what we've actually researched and would book for our own families. Voyager is our own deal-finding tool — built to cut through the noise and surface real savings faster. Ticket prices reflect verified 2026 data and are subject to change; always confirm current pricing before booking.
@@ -922,11 +956,6 @@
 
 <script>
     function getDeal() {
-        let userId = localStorage.getItem('voyagerx_user_id');
-        if (!userId) {
-            userId = 'user_' + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem('voyagerx_user_id', userId);
-        }
         window.location.href = 'https://voyager-flask.onrender.com';
     }
 
@@ -939,6 +968,8 @@
         });
     }
 </script>
+
+<div id="google_translate_element"></div>
 
 </body>
 </html>
