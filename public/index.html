@@ -13,6 +13,25 @@
             background: #f0f4f8;
             color: #1a2a3a;
         }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            padding: 12px 24px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-links a {
+            color: #1a4a6f;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -113,10 +132,23 @@
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
             .container { padding: 15px; }
+            .nav-links { gap: 10px; padding: 10px 16px; }
+            .nav-links a { font-size: 11px; }
         }
     </style>
 </head>
 <body>
+
+<div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/chat.html">AI Chat</a>
+    <a href="/universal-vs-disney.html">Universal vs. Disney</a>
+    <a href="/family-cruise-guide-2026.html">Family Cruise Guide</a>
+    <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
+    <a href="/celebrate-mom.html">Celebrate Mom</a>
+    <a href="/privacy.html">Privacy</a>
+</div>
+
 <header>
     <h1>🧭 VOYAGER-X</h1>
     <div class="tagline">Real travel deals. Honest advice. No spam.</div>
@@ -186,7 +218,7 @@
     </div>
 
     <div class="disclosure">
-        Disclosure: VOYAGER-X uses affiliate links. If you book through our links, we may earn a commission at no extra cost to you. We only recommend what we have researched and believe delivers real value.
+        Disclosure: VOYAGER-X uses affiliate links. If you book through our links, we may earn a commission at no extra cost to you. We only recommend what we have researched and believes delivers real value.
     </div>
 </div>
 
@@ -194,5 +226,6 @@
     <p>© 2026 VOYAGER-X | <a href="/privacy.html">Privacy Policy</a> | <a href="/chat.html">AI Deal Finder</a></p>
     <p>Real deals. No noise. Built for families and couples who travel smart.</p>
 </footer>
+
 </body>
 </html>
