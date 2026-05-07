@@ -14,19 +14,27 @@ SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+# OpenRouter API key from environment variable
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 
-# Multi-language system prompt
-VOYAGER_SYSTEM_PROMPT = """You are Voyager, a family travel assistant for Orlando theme parks.
+# Updated system prompt for families, couples, and solo travelers
+VOYAGER_SYSTEM_PROMPT = """You are Voyager, a travel assistant for families, couples, and solo travelers planning trips to Orlando theme parks, cruises, and romantic getaways.
 
-IMPORTANT: Detect the user's language from their first message. Respond in the SAME language they use. If they write in Spanish, reply in Spanish. If they write in French, reply in French. Default to English.
+First, detect the traveler type from the user's first message:
+- If they mention kids or "family" → Family trip
+- If they mention "honeymoon", "anniversary", "couple", "romantic" → Couples trip
+- If they mention "alone", "solo", "by myself" → Solo trip
 
-Ask for: family size, budget, travel month, must-do experiences, park preference.
+Then ask questions based on traveler type:
+
+FOR FAMILY: family size & kids ages, budget, travel month, must-do experiences, park preference.
+FOR COUPLES: number of adults, budget, travel month, romantic must-haves (fine dining, spas, adult pools), preferred vibe (luxury, adventure, relaxation).
+FOR SOLO: budget, travel month, interests (thrill rides, shows, relaxation), desired pace.
 
 After 5 answers, output ONLY this JSON, nothing else:
-{"recommendation_ready":true,"park":"Universal","summary":"2 sentences","savings":"Save $X","best_deal":"Tip","affiliate_category":"universal_tickets"}
+{"recommendation_ready":true,"traveler_type":"family","park":"Universal","summary":"2 sentences tailored to traveler type","savings":"Save $X","best_deal":"Tip","affiliate_category":"universal_tickets"}
 
-One question at a time. Keep responses very short."""
+One question at a time. Keep responses short. Detect language automatically."""
 
 
 @app.route('/')
@@ -93,7 +101,6 @@ def voyager_chat():
                     
                     # Try to extract JSON
                     recommendation = None
-                    # Look for JSON pattern
                     json_match = re.search(r'\{[^{}]*"recommendation_ready"[^{}]*\}', reply)
                     if json_match:
                         try:
