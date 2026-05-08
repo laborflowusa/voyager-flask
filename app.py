@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from supabase import create_client
 import random
 import os
@@ -41,17 +41,27 @@ One question at a time. Keep responses short. Detect language automatically."""
 def index():
     return app.send_static_file('index.html')
 
+
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    """Serve static files (images, CSS, etc.) from the static folder"""
+    return send_from_directory('static', filename)
+
+
 @app.route('/privacy.html')
 def privacy():
     return app.send_static_file('privacy.html')
+
 
 @app.route('/chat.html')
 def chat():
     return app.send_static_file('chat.html')
 
+
 @app.route('/blog/<path:filename>')
 def serve_blog(filename):
     return app.send_static_file(f'blog/{filename}')
+
 
 @app.route('/<path:filename>.html')
 def serve_html(filename):
