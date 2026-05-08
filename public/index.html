@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOYAGER-X – AI Travel Deals for Families & Couples | Disney, Universal, Cruises</title><meta name="google-site-verification" content="TGpWkHEwiodMUCcCHaThDbRay5z30KBOmsSOeyox2XA" />
+    <title>VOYAGER-X – AI Travel Deals for Families & Couples | Disney, Universal, Cruises</title>
     <meta name="description" content="VOYAGER-X finds the best travel deals for Disney World, Universal Orlando, cruises, and hotels. AI-powered deal finder. Real 2026 prices. No email required.">
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -31,6 +42,30 @@
         }
         .nav-links a:hover {
             color: #ff6b35;
+        }
+        #google_translate_element {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+        #google_translate_element select {
+            background: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        @media (max-width: 600px) {
+            #google_translate_element {
+                bottom: 10px;
+                right: 10px;
+                padding: 4px 8px;
+            }
         }
         .container {
             max-width: 1200px;
@@ -218,7 +253,7 @@
     </div>
 
     <div class="disclosure">
-        Disclosure: VOYAGER-X uses affiliate links. If you book through our links, we may earn a commission at no extra cost to you. We only recommend what we have researched and believe delivers real value.
+        Disclosure: VOYAGER-X uses affiliate links. If you book through our links, we may earn a commission at no extra cost to you. We only recommend what we have researched and believes delivers real value.
     </div>
 </div>
 
@@ -226,6 +261,8 @@
     <p>© 2026 VOYAGER-X | <a href="/privacy.html">Privacy Policy</a> | <a href="/chat.html">AI Deal Finder</a></p>
     <p>Real deals. No noise. Built for families and couples who travel smart.</p>
 </footer>
+
+<div id="google_translate_element"></div>
 
 </body>
 </html>

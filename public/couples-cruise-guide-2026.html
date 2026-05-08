@@ -7,6 +7,17 @@
 <meta name="description" content="The honest 2026 couples cruise guide. Virgin Voyages, Viking Ocean, Regent Seven Seas, Princess, Explora — matched to your exact relationship vibe. Real reviews, real 2026 pricing, real deals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Google Translate Script -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -19,6 +30,32 @@
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--cream); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  /* Google Translate Widget Styles */
+  #google_translate_element {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background: rgba(0,0,0,0.7);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+  #google_translate_element select {
+    background: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    #google_translate_element {
+      bottom: 10px;
+      right: 10px;
+      padding: 4px 8px;
+    }
+  }
 
   .topbar { background: var(--navy); color: rgba(242,210,138,0.8); text-align: center; padding: 10px 1rem; font-size: 13px; letter-spacing: 0.04em; }
   .topbar strong { color: var(--gold-light); font-weight: 500; }
@@ -495,7 +532,7 @@
         <tr><td class="line-name">Princess Cruises</td><td>Classic Romance</td><td>No (family-friendly)</td><td>~$1,000</td></tr>
         <tr><td class="line-name">Explora Journeys</td><td>New Luxury Discoverers</td><td>Predominantly</td><td>~$4,000</td></tr>
       </tbody>
-    </tr>
+    </table>
   </div>
 
   <hr class="divider">
@@ -602,6 +639,9 @@
         });
     }
 </script>
+
+<!-- Google Translate Widget -->
+<div id="google_translate_element"></div>
 
 </body>
 </html>
