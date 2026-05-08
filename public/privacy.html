@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Privacy Policy - VOYAGER-X</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Privacy Policy - VOYAGER-X</title>
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
         body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; background: #f0f0f0; }
         .container { background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
@@ -11,6 +23,32 @@
         a { color: #667eea; }
         .footer { margin-top: 30px; font-size: 12px; color: #999; text-align: center; }
         .urgency-banner { background: #667eea; color: white; padding: 10px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+
+        /* Google Translate Widget Styles */
+        #google_translate_element {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+        #google_translate_element select {
+            background: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        @media (max-width: 600px) {
+            #google_translate_element {
+                bottom: 10px;
+                right: 10px;
+                padding: 4px 8px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -33,5 +71,9 @@
         <p>Email: laborflowusa@gmail.com</p>
         <div class="footer"><a href="/">← Back to VOYAGER-X</a> | <a href="/privacy.html">Privacy Policy</a></div>
     </div>
+
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element"></div>
+
 </body>
 </html>
