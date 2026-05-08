@@ -7,6 +7,17 @@
 <meta name="description" content="A celebration of mothers — not just on Mother's Day, but every day. Birthday, just because, thinking of her, missing her. Give the gift of a moment, a memory, a place she'll never forget.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Google Translate Script -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -86,6 +97,32 @@ nav {
 .nav-link:hover { color: var(--ink); }
 .nav-cta { background: var(--rose-deep); color: #FDF3F4; border: none; padding: 9px 20px; border-radius: var(--radius-sm); font-size: 12px; font-family: 'Jost', sans-serif; font-weight: 400; cursor: pointer; letter-spacing: 0.03em; text-decoration: none; display: inline-block; transition: opacity 0.2s; }
 .nav-cta:hover { opacity: 0.88; }
+
+/* GOOGLE TRANSLATE WIDGET STYLES */
+#google_translate_element {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background: rgba(0,0,0,0.7);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+#google_translate_element select {
+  background: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  #google_translate_element {
+    bottom: 10px;
+    right: 10px;
+    padding: 4px 8px;
+  }
+}
 
 /* HERO — FULL EDITORIAL */
 .hero {
@@ -1350,6 +1387,9 @@ function showOcc(id) {
   event.target.classList.add('active');
 }
 </script>
+
+<!-- Google Translate Widget -->
+<div id="google_translate_element"></div>
 
 </body>
 </html>
