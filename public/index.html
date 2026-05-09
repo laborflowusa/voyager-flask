@@ -11,21 +11,21 @@
     <meta property="og:description" content="VOYAGER-X finds the best travel deals for Disney World, Universal Orlando, cruises, and hotels. No email required. Real 2026 prices.">
     <meta property="og:url" content="https://voyager-flask.onrender.com/">
     <meta property="og:type" content="website">
-    <!-- !!! IMPORTANT: Replace the URL below with the actual URL of your image !!! -->
     <meta property="og:image" content="https://voyager-flask.onrender.com/static/voyager-social-preview.png">
-    <!-- Recommended image dimensions: 1200 x 630 pixels -->
-    
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
-    <!-- Twitter Card Meta Tags (Optional but recommended) -->
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="VOYAGER-X – AI Travel Deals for Families & Couples">
     <meta name="twitter:description" content="VOYAGER-X finds the best travel deals for Disney World, Universal Orlando, cruises, and hotels. No email required.">
-    <!-- !!! IMPORTANT: Use the same image URL as above !!! -->
     <meta name="twitter:image" content="https://voyager-flask.onrender.com/static/voyager-social-preview.png">
     
-    <!-- Google Translate Script -->
+    <!-- Preconnect for Google Translate (saves ~300ms) -->
+    <link rel="preconnect" href="https://translate.googleapis.com">
+    <link rel="preconnect" href="https://translate-pa.googleapis.com">
+    
+    <!-- Google Translate Script with defer (saves ~880ms on mobile) -->
     <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -35,15 +35,16 @@
       }, 'google_translate_element');
     }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+    
     <style>
-        /* ... [Your site's existing styles remain unchanged] ... */
+        /* FIXED: Better color contrast for accessibility */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background: #f0f4f8;
-            color: #1a2a3a;
+            color: #0a1a2a; /* darker for better contrast */
         }
         .nav-links {
             display: flex;
@@ -60,9 +61,10 @@
             font-size: 14px;
             font-weight: 500;
             transition: color 0.2s;
+            padding: 8px 4px; /* increased tap target */
         }
         .nav-links a:hover {
-            color: #ff6b35;
+            color: #d15219; /* darker orange for contrast */
         }
         #google_translate_element {
             position: fixed;
@@ -88,7 +90,8 @@
                 padding: 4px 8px;
             }
         }
-        .container {
+        /* FIXED: Changed div.container to main for landmark */
+        main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -136,9 +139,10 @@
             font-size: 2.5rem;
             margin-bottom: 15px;
         }
+        /* FIXED: Darker button for better contrast */
         .cta-button {
             display: inline-block;
-            background: #ff6b35;
+            background: #d15219;
             color: white;
             padding: 14px 32px;
             border-radius: 50px;
@@ -148,7 +152,7 @@
             transition: background 0.2s;
         }
         .cta-button:hover {
-            background: #e55a2b;
+            background: #b04515;
         }
         .blog-links {
             display: grid;
@@ -166,11 +170,16 @@
             margin: 0 0 10px 0;
             color: #1a4a6f;
         }
+        /* FIXED: Darker link color for contrast */
         .blog-card a {
-            color: #ff6b35;
+            color: #c24510;
             text-decoration: none;
             font-weight: bold;
         }
+        .blog-card a:hover {
+            color: #8a3010;
+        }
+        /* FIXED: Better footer link tap targets */
         footer {
             text-align: center;
             padding: 30px;
@@ -179,15 +188,25 @@
             border-top: 1px solid #ddd;
             margin-top: 40px;
         }
+        footer a {
+            color: #1a4a6f;
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 4px;
+            margin: 0 2px;
+        }
+        footer a:hover {
+            color: #d15219;
+        }
         .disclosure {
             font-size: 12px;
-            color: #888;
+            color: #6a6a6a; /* improved contrast */
             margin-top: 20px;
             text-align: center;
         }
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
-            .container { padding: 15px; }
+            main { padding: 15px; }
             .nav-links { gap: 10px; padding: 10px 16px; }
             .nav-links a { font-size: 11px; }
         }
@@ -195,7 +214,7 @@
 </head>
 <body>
 
-<div class="nav-links">
+<nav class="nav-links" aria-label="Main navigation">
     <a href="/">Home</a>
     <a href="/chat.html">AI Chat</a>
     <a href="/universal-vs-disney.html">Universal vs. Disney</a>
@@ -203,14 +222,15 @@
     <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
     <a href="/celebrate-mom.html">Celebrate Mom</a>
     <a href="/privacy.html">Privacy</a>
-</div>
+</nav>
 
 <header>
     <h1>🧭 VOYAGER-X</h1>
     <div class="tagline">Real travel deals. Honest advice. No spam.</div>
 </header>
 
-<div class="container">
+<!-- FIXED: Changed div to main for landmark -->
+<main>
     <div class="intro">
         <h2>Helping Families & Couples Find the Best Travel Deals Since 2026</h2>
         <p>VOYAGER-X compares live pricing across 50+ travel partners including Disney World, Universal Orlando, cruises, and hotels. We publish original research, honest cost breakdowns, and upgrade recommendations – so you know exactly what to expect before you book.</p>
@@ -254,17 +274,18 @@
         <div class="blog-card">
             <h3>🎢 Universal vs. Disney</h3>
             <p>Which park saves you $1,200+? We crunched the numbers for 2026.</p>
-            <a href="/universal-vs-disney.html">Read more →</a>
+            <!-- FIXED: Unique link text for accessibility/SEO -->
+            <a href="/universal-vs-disney.html">Read Universal vs. Disney guide →</a>
         </div>
         <div class="blog-card">
             <h3>🚢 Family Cruise Guide</h3>
             <p>Disney, Royal Caribbean, Carnival, Norwegian, MSC – rated by real parents.</p>
-            <a href="/family-cruise-guide-2026.html">Read more →</a>
+            <a href="/family-cruise-guide-2026.html">Read Family Cruise guide →</a>
         </div>
         <div class="blog-card">
             <h3>💍 Couples Cruise Guide</h3>
             <p>Romance on the high seas – five cruise lines matched to your vibe.</p>
-            <a href="/couples-cruise-guide-2026.html">Read more →</a>
+            <a href="/couples-cruise-guide-2026.html">Read Couples Cruise guide →</a>
         </div>
         <div class="blog-card">
             <h3>🌹 A Celebration of Mothers</h3>
@@ -276,7 +297,7 @@
     <div class="disclosure">
         Disclosure: VOYAGER-X uses affiliate links. If you book through our links, we may earn a commission at no extra cost to you. We only recommend what we have researched and <strong>believe</strong> delivers real value.
     </div>
-</div>
+</main>
 
 <footer>
     <p>© 2026 VOYAGER-X | <a href="/privacy.html">Privacy Policy</a> | <a href="/chat.html">AI Deal Finder</a></p>
