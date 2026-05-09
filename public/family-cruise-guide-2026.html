@@ -471,6 +471,74 @@ function googleTranslateElementInit() {
     margin: 2rem 0 0.5rem;
   }
 
+  /* AMAZON BOX STYLES */
+  .amazon-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .amazon-box-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .amazon-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  .amazon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .amazon-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: var(--parchment);
+    border-radius: var(--radius-sm);
+    align-items: flex-start;
+  }
+  .amazon-emoji {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .amazon-item-name {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .amazon-item-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 5px;
+    line-height: 1.5;
+  }
+  .amazon-item-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .amazon-item-link:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    .amazon-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* DISCLOSURE - FIXED: Better contrast */
   .disclosure {
     font-size: 12px;
@@ -624,11 +692,31 @@ function googleTranslateElementInit() {
         <tr><th>Cruise line</th><th>Best for</th><th>Kids club</th><th>Starting price/pp</th></tr>
       </thead>
       <tbody>
-        <tr><td>Disney Cruise Line</td><td>Ages 3–12, magic seekers</td><td>9.7 / 10</td><td>~$1,500</td></tr>
-        <tr><td>Royal Caribbean</td><td>All ages, thrill-seekers</td><td>9.5 / 10 teens</td><td>~$900</td></tr>
-        <tr><td>Carnival Cruise Line</td><td>Budget-smart families</td><td>8.2 / 10</td><td>~$600</td></tr>
-        <tr><td>Norwegian Cruise Line</td><td>Flexible, no-schedule families</td><td>8.3 / 10</td><td>~$800</td></tr>
-        <tr><td>MSC Cruises</td><td>European itineraries, value</td><td>8.0 / 10</td><td>~$700</td></tr>
+        <tr><td
+          <td>Ages 3–12, magic seekers</td
+          <td>9.7 / 10</td
+          <td>~$1,500</td
+        </tr>
+        <tr><td
+          <td>All ages, thrill-seekers</td
+          <td>9.5 / 10 teens</td
+          <td>~$900</td
+        </tr>
+        <tr><td
+          <td>Budget-smart families</td
+          <td>8.2 / 10</td
+          <td>~$600</td
+        </tr>
+        <tr><td
+          <td>Flexible, no-schedule families</td
+          <td>8.3 / 10</td
+          <td>~$800</td
+        </tr>
+        <tr><td
+          <td>European itineraries, value</td
+          <td>8.0 / 10</td
+          <td>~$700</td
+        </tr>
       </tbody>
     </table>
   </div>
@@ -640,6 +728,16 @@ function googleTranslateElementInit() {
   <strong>Drink packages</strong> — even non-alcoholic/soda for kids → $10–25 per day per person<br>
   <strong>Wi-Fi packages</strong> — often $20–35/day per device → $140–245 per week<br>
   <strong>Parking at the departure port</strong> — if driving → $20–35 per day</div>
+
+  <!-- AMAZON ESSENTIALS SECTION - DYNAMIC FROM SUPABASE -->
+  <div class="amazon-box">
+    <div class="amazon-box-title">🧳 Cruise Packing Essentials — What Every Family Actually Needs</div>
+    <div class="amazon-sub">Recommended by frequent cruisers. All Prime eligible, all chosen because you'll actually use them.</div>
+    <div class="amazon-grid" id="amazon-grid">
+      <div class="amazon-item">Loading Amazon essentials...</div>
+    </div>
+    <div class="amazon-note" style="font-size: 11px; color: #6a6a6a; margin-top: 12px; text-align: center;">As an Amazon Associate, Voyager earns from qualifying purchases.</div>
+  </div>
 
   <h2>Frequently asked questions</h2>
   <div class="faq-item"><div class="faq-q">What's the best family cruise line for kids under 5?</div><div class="faq-a">Disney Cruise Line is the clear answer. The Oceaneer Club accepts children from age 3 and has the highest staff-to-child ratio. Royal Caribbean's Adventure Ocean is also excellent for this age if budget is a concern.</div></div>
@@ -670,6 +768,45 @@ function googleTranslateElementInit() {
             alert('Press Ctrl+C to copy the link from your browser bar.');
         });
     }
+
+    function trackClick(linkId) {
+        fetch(`/api/click/${linkId}`, { method: 'POST' })
+            .catch(err => console.error('Click tracking failed:', err));
+    }
+
+    // Fetch affiliate links from Supabase
+    fetch('/api/links/family-cruise')
+        .then(response => response.json())
+        .then(links => {
+            const container = document.getElementById('amazon-grid');
+            if (container && links.length > 0) {
+                container.innerHTML = '';
+                links.forEach(link => {
+                    const item = document.createElement('div');
+                    item.className = 'amazon-item';
+                    const emoji = link.name.includes('Packing') ? '🎒' : (link.name.includes('Phone') ? '🌊' : '📦');
+                    const desc = link.name.includes('Packing') ? '42,000+ reviews. Save space in cruise cabins.' : '#1 Top Rated. 110,000+ reviews. Waterproof for beach days.';
+                    item.innerHTML = `
+                        <span class="amazon-emoji">${emoji}</span>
+                        <div>
+                            <div class="amazon-item-name">${link.name}</div>
+                            <div class="amazon-item-desc">${desc}</div>
+                            <a class="amazon-item-link" href="${link.url}" target="_blank" rel="noopener sponsored" onclick="trackClick(${link.id})">Shop on Amazon →</a>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+            } else if (container) {
+                container.innerHTML = '<div class="amazon-item">Check back soon for packing essentials!</div>';
+            }
+        })
+        .catch(error => {
+            console.error('Error loading affiliate links:', error);
+            const container = document.getElementById('amazon-grid');
+            if (container) {
+                container.innerHTML = '<div class="amazon-item">Unable to load essentials. Please refresh.</div>';
+            }
+        });
 </script>
 
 <div id="google_translate_element"></div>
