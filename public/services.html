@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Services | Fast, SEO-Optimized Websites | Voyager</title>
+    <meta name="description" content="I build fast (99/100 PageSpeed), SEO-optimized (100/100), affiliate-ready websites. Custom development, performance optimization, and technical SEO. Free consultation.">
+    
+    <!-- Preconnect for Google Translate -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://translate.googleapis.com">
+    <link rel="preconnect" href="https://translate-pa.googleapis.com">
+    
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'DM Sans', Arial, sans-serif;
+            background: #f0f4f8;
+            color: #0a1a2a;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            padding: 12px 24px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-links a {
+            color: #1a4a6f;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+            padding: 8px 4px;
+        }
+        .nav-links a:hover {
+            color: #d15219;
+        }
+
+        /* Google Translate Widget */
+        #google_translate_element {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+        #google_translate_element select {
+            background: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        @media (max-width: 600px) {
+            #google_translate_element {
+                bottom: 10px;
+                right: 10px;
+                padding: 4px 8px;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #0d2b3e;
+            margin-bottom: 16px;
+        }
+        .hero h1 span {
+            color: #d15219;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #4a627a;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Proof Badges */
+        .proof-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #e0e8f0;
+        }
+        .badge .score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a4a6f;
+        }
+        .badge .label {
+            font-size: 0.9rem;
+            color: #6a7a8a;
+            margin-top: 8px;
+        }
+        .badge .note {
+            font-size: 0.75rem;
+            color: #34a853;
+            margin-top: 5px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e0e8f0;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: #0d2b3e;
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            color: #4a627a;
+            margin-bottom: 16px;
+        }
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #d15219;
+            margin-bottom: 16px;
+        }
+        .service-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+        .service-list li {
+            padding: 6px 0;
+            color: #4a627a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .service-list li::before {
+            content: "✓";
+            color: #34a853;
+            font-weight: bold;
+        }
+
+        /* Guarantee Box */
+        .guarantee {
+            background: linear-gradient(135deg, #0d2b3e, #1a4a6f);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+        }
+        .guarantee h2 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+        .guarantee p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid #e0e8f0;
+        }
+        .portfolio h2 {
+            font-size: 1.8rem;
+            color: #0d2b3e;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .portfolio-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+        .portfolio-item {
+            text-align: center;
+        }
+        .portfolio-item img {
+            max-width: 100%;
+            border-radius: 12px;
+            border: 1px solid #e0e8f0;
+        }
+        .portfolio-item a {
+            display: inline-block;
+            margin-top: 12px;
+            color: #1a4a6f;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #e0e8f0;
+        }
+        .contact h2 {
+            font-size: 1.8rem;
+            color: #0d2b3e;
+            margin-bottom: 16px;
+        }
+        .contact p {
+            color: #4a627a;
+            margin-bottom: 24px;
+        }
+        .contact-email {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d15219;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #d15219;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.2s;
+            margin: 10px;
+        }
+        .cta-button:hover {
+            background: #8a3010;
+        }
+        .cta-button-outline {
+            background: transparent;
+            border: 2px solid #d15219;
+            color: #d15219;
+        }
+        .cta-button-outline:hover {
+            background: #d15219;
+            color: white;
+        }
+
+        /* FAQ Section */
+        .faq {
+            margin: 50px 0;
+        }
+        .faq h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #0d2b3e;
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #e0e8f0;
+        }
+        .faq-question {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #0d2b3e;
+            margin-bottom: 8px;
+        }
+        .faq-answer {
+            color: #4a627a;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #6a6a6a;
+            font-size: 0.8rem;
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+        }
+        footer a {
+            color: #1a4a6f;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .container { padding: 24px 16px; }
+            .proof-badges { gap: 15px; }
+            .badge { padding: 15px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/chat.html">AI Chat</a>
+    <a href="/universal-vs-disney.html">Universal vs. Disney</a>
+    <a href="/family-cruise-guide-2026.html">Family Cruise Guide</a>
+    <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
+    <a href="/celebrate-mom.html">Celebrate Mom</a>
+    <a href="/services.html">Services</a>
+    <a href="/privacy.html">Privacy</a>
+</div>
+
+<div class="container">
+
+    <div class="hero">
+        <h1>I Build Websites That <span>Actually Perform</span></h1>
+        <p>Most websites are slow, hard to find on Google, and don't make money. Mine aren't. I build fast, SEO-optimized, affiliate-ready websites that outperform 99% of the internet.</p>
+    </div>
+
+    <div class="proof-badges">
+        <div class="badge">
+            <div class="score">99/100</div>
+            <div class="label">PageSpeed Score (Mobile)</div>
+            <div class="note">⬆ Top 1% of websites</div>
+        </div>
+        <div class="badge">
+            <div class="score">100/100</div>
+            <div class="label">SEO Score</div>
+            <div class="note">⬆ Perfect Google optimization</div>
+        </div>
+        <div class="badge">
+            <div class="score">1.7s</div>
+            <div class="label">Largest Contentful Paint</div>
+            <div class="note">⬆ Faster than 90% of sites</div>
+        </div>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">⚡</div>
+            <h3>Performance Optimization</h3>
+            <p>Your website is slow. Visitors are leaving. Google is penalizing you. I fix that.</p>
+            <div class="service-price">From $500</div>
+            <ul class="service-list">
+                <li>PageSpeed score 90+ guaranteed</li>
+                <li>Core Web Vitals fixed</li>
+                <li>Render-blocking resources eliminated</li>
+                <li>Mobile + desktop optimization</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🔍</div>
+            <h3>SEO Technical Audit & Fix</h3>
+            <p>Your site isn't ranking because the technical foundation is broken. I fix what Google looks for.</p>
+            <div class="service-price">From $300</div>
+            <ul class="service-list">
+                <li>Title tags + meta descriptions</li>
+                <li>Sitemap.xml + robots.txt</li>
+                <li>Heading hierarchy (H1/H2/H3)</li>
+                <li>Internal linking strategy</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🏗️</div>
+            <h3>Complete Website Build</h3>
+            <p>From scratch to deployed. Custom, responsive, fast, SEO-optimized, and ready to earn.</p>
+            <div class="service-price">From $3,000</div>
+            <ul class="service-list">
+                <li>Custom HTML/CSS/JavaScript</li>
+                <li>Fully responsive design</li>
+                <li>Google Translate integration</li>
+                <li>Deployed to production</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🔗</div>
+            <h3>Affiliate System Integration</h3>
+            <p>Turn your content into income. I set up professional affiliate tracking and links.</p>
+            <div class="service-price">From $1,000</div>
+            <ul class="service-list">
+                <li>CJ Affiliate integration</li>
+                <li>Awin + Travelpayouts setup</li>
+                <li>Amazon Associates</li>
+                <li>Custom tracking dashboards</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🗄️</div>
+            <h3>Database + API Setup</h3>
+            <p>Dynamic content, user tracking, click analytics — I build the backend you need.</p>
+            <div class="service-price">From $500</div>
+            <ul class="service-list">
+                <li>Supabase integration</li>
+                <li>Custom API endpoints</li>
+                <li>Click tracking + analytics</li>
+                <li>Row-level security</li>
+            </ul>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📈</div>
+            <h3>Ongoing Maintenance</h3>
+            <p>Keep your site fast, secure, and up-to-date. Monthly care for peace of mind.</p>
+            <div class="service-price">From $200/month</div>
+            <ul class="service-list">
+                <li>Monthly speed check + fixes</li>
+                <li>SEO updates</li>
+                <li>Link health monitoring</li>
+                <li>Priority support</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="guarantee">
+        <h2>My Performance Guarantee</h2>
+        <p>After I finish your website, it will score 90+ on Google PageSpeed Insights (mobile). If it doesn't, I work for free until it does. No excuses. No fine print.</p>
+    </div>
+
+    <div class="portfolio">
+        <h2>Recent Work</h2>
+        <div class="portfolio-showcase">
+            <div class="portfolio-item">
+                <div style="background: #0d2b3e; color: white; padding: 20px; border-radius: 12px; width: 280px;">
+                    <div style="font-size: 2rem;">🧭</div>
+                    <div style="font-weight: bold;">VOYAGER-X</div>
+                    <div style="font-size: 12px; opacity: 0.7;">Travel Deals Platform</div>
+                    <div style="margin-top: 10px; font-size: 11px;">99/100 PageSpeed • 100/100 SEO</div>
+                </div>
+                <a href="https://voyager-flask.onrender.com" target="_blank">View Live Project →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">How fast can you fix my existing site?</div>
+            <div class="faq-answer">Most performance optimizations take 2-5 days depending on the site's complexity. I'll give you a timeline upfront.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do I need to know anything technical?</div>
+            <div class="faq-answer">No. I handle everything. You just tell me what you want, and I build it. I'll even show you how to update content if you want.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What platforms do you work with?</div>
+            <div class="faq-answer">I build custom HTML/CSS sites (like VOYAGER-X) and can also optimize WordPress, Shopify, or any platform. I focus on the frontend and backend performance.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do you offer payment plans?</div>
+            <div class="faq-answer">Yes. 50% upfront, 50% upon completion. For larger projects ($3,000+), we can do 30/30/40.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">What happens after you finish?</div>
+            <div class="faq-answer">I provide 30 days of free support. You can also sign up for my monthly maintenance plan for ongoing peace of mind.</div>
+        </div>
+    </div>
+
+    <div class="contact">
+        <h2>Ready to Get Started?</h2>
+        <p>Let's talk about your project. No obligation. No pressure. Just a conversation about what's possible.</p>
+        <div class="contact-email">laborflowusa@gmail.com</div>
+        <a href="mailto:laborflowusa@gmail.com" class="cta-button">Email Me →</a>
+        <a href="https://voyager-flask.onrender.com" class="cta-button cta-button-outline">View Portfolio →</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Willis Gonzalez | Web Developer & Performance SEO Specialist</p>
+    <p><a href="/">Back to VOYAGER-X</a> | <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<div id="google_translate_element"></div>
+
+</body>
+</html>

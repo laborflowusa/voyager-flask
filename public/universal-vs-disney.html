@@ -72,7 +72,7 @@ function googleTranslateElementInit() {
 
   .topbar strong { font-weight: 500; color: #fff; }
 
-  /* FIXED: Nav with better tap targets */
+  /* FIXED: Nav with better tap targets and page links */
   nav {
     background: var(--parchment);
     border-bottom: 1px solid var(--border);
@@ -96,6 +96,25 @@ function googleTranslateElementInit() {
   }
 
   .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+    padding: 8px 4px;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold);
+  }
 
   /* FIXED: Darker button for better contrast */
   .nav-cta {
@@ -769,6 +788,8 @@ function googleTranslateElementInit() {
     h2 { font-size: 1.4rem; }
     .hero h1 { font-size: 1.75rem; }
     .save-hero .save-amount { font-size: 2.75rem; }
+    .nav-links { gap: 10px; }
+    .nav-links a { font-size: 11px; }
   }
 </style>
 </head>
@@ -780,6 +801,16 @@ function googleTranslateElementInit() {
 
 <nav>
   <div class="nav-logo">Voy<span>a</span>ger</div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/chat.html">AI Chat</a>
+    <a href="/universal-vs-disney.html">Universal vs. Disney</a>
+    <a href="/family-cruise-guide-2026.html">Family Cruise Guide</a>
+    <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
+    <a href="/celebrate-mom.html">Celebrate Mom</a>
+    <a href="/services.html">Services</a>
+    <a href="/privacy.html">Privacy</a>
+  </div>
   <button class="nav-cta" onclick="getDeal()">👉 Find My Deal</button>
 </nav>
 
@@ -933,6 +964,7 @@ function googleTranslateElementInit() {
 
   <hr class="divider">
 
+  <!-- The wildcard that changes everything this summer -->
   <h2>The wildcard that changes everything this summer</h2>
 
   <div class="epic-block">
