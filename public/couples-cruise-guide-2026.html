@@ -67,15 +67,69 @@ function googleTranslateElementInit() {
   .topbar { background: var(--navy); color: rgba(242,210,138,0.8); text-align: center; padding: 10px 1rem; font-size: 13px; letter-spacing: 0.04em; }
   .topbar strong { color: var(--gold-light); font-weight: 500; }
 
-  /* FIXED: Nav with better tap targets */
-  nav { background: var(--cream); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 10px; }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--navy); text-decoration: none; }
+  /* FIXED: Nav with better tap targets and Services link */
+  nav {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--navy);
+    text-decoration: none;
+  }
+
   .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-  .nav-link { font-size: 12px; color: var(--muted); text-decoration: none; padding: 8px 12px; border-radius: var(--radius-sm); transition: color 0.2s; }
-  .nav-link:hover { color: var(--navy); }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold);
+  }
+
   /* FIXED: Darker button for better contrast */
-  .nav-cta { background: var(--navy); color: var(--gold-light); border: none; padding: 10px 22px; border-radius: var(--radius-sm); font-size: 13px; font-family: 'Jost', sans-serif; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .nav-cta {
+    background: var(--navy);
+    color: var(--gold-light);
+    border: none;
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
   .nav-cta:hover { background: #1a2f4a; }
 
   /* LAYOUT - FIXED: Changed div.container to main for landmark */
@@ -229,7 +283,8 @@ function googleTranslateElementInit() {
     .hero-visual-text h1 { font-size: 1.6rem; }
     h2 { font-size: 1.45rem; }
     .comp-table { font-size: 11px; }
-    .nav-links { display: none; }
+    .nav-links { gap: 10px; }
+    .nav-links a { font-size: 12px; }
   }
 </style>
 </head>
@@ -242,9 +297,14 @@ function googleTranslateElementInit() {
 <nav>
   <a class="nav-logo" href="/">Voy<span>a</span>ger</a>
   <div class="nav-links">
-    <a class="nav-link" href="/universal-vs-disney.html">Disney vs Universal</a>
-    <a class="nav-link" href="/family-cruise-guide-2026.html">Family Cruises</a>
-    <a class="nav-link" href="/couples-cruise-guide-2026.html">Couples Cruises</a>
+    <a href="/">Home</a>
+    <a href="/chat.html">AI Chat</a>
+    <a href="/universal-vs-disney.html">Universal vs. Disney</a>
+    <a href="/family-cruise-guide-2026.html">Family Cruises</a>
+    <a href="/couples-cruise-guide-2026.html">Couples Cruises</a>
+    <a href="/celebrate-mom.html">Celebrate Mom</a>
+    <a href="/services.html">Services</a>
+    <a href="/privacy.html">Privacy</a>
   </div>
   <a class="nav-cta" href="/">👉 Find My Deal</a>
 </nav>
@@ -311,18 +371,9 @@ function googleTranslateElementInit() {
   <p class="prose">The best couples cruise isn't the most expensive one. It's the one that matches your specific version of romance — whether that's dancing until 2am on an adults-only ship, slow mornings watching glaciers, or a candlelit balcony dinner somewhere in the Mediterranean. Every line below was chosen because it delivers on a specific promise.</p>
 
   <div class="stat-bar">
-    <div class="stat-item">
-      <div class="stat-num">21.7M</div>
-      <div class="stat-label">Americans cruising in 2026 — record forecast</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">72%</div>
-      <div class="stat-label">of U.S. passengers choose the Caribbean</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">5★</div>
-      <div class="stat-label">U.S. News ranking for Viking — 5th consecutive year</div>
-    </div>
+    <div class="stat-item"><div class="stat-num">21.7M</div><div class="stat-label">Americans cruising in 2026 — record forecast</div></div>
+    <div class="stat-item"><div class="stat-num">72%</div><div class="stat-label">of U.S. passengers choose the Caribbean</div></div>
+    <div class="stat-item"><div class="stat-num">5★</div><div class="stat-label">U.S. News ranking for Viking — 5th consecutive year</div></div>
   </div>
 
   <hr class="divider">
@@ -344,28 +395,13 @@ function googleTranslateElementInit() {
     </div>
     <div class="cruise-card-body">
       <div class="cruise-details">
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Best for</div>
-          <div class="cruise-detail-val">Couples in their 30s–40s who want nightlife, exceptional food, and zero school groups at the pool</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Top destinations</div>
-          <div class="cruise-detail-val">Caribbean (Bahamas, Puerto Rico, Dominican Republic), Mediterranean from Barcelona</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Price range</div>
-          <div class="cruise-detail-val">~$1,200–$2,800/person for 4–7 nights. All dining included — no extra food charges ever.</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Standout feature</div>
-          <div class="cruise-detail-val">Every dining experience (20+ restaurants) is included. Zero nickel-and-diming on food.</div>
-        </div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples in their 30s–40s who want nightlife, exceptional food, and zero school groups at the pool</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Caribbean (Bahamas, Puerto Rico, Dominican Republic), Mediterranean from Barcelona</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$1,200–$2,800/person for 4–7 nights. All dining included — no extra food charges ever.</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Standout feature</div><div class="cruise-detail-val">Every dining experience (20+ restaurants) is included. Zero nickel-and-diming on food.</div></div>
       </div>
       <p class="cruise-verdict">Virgin Voyages redesigned cruising for couples who've been put off by traditional ships. 100% adults-only, no formal nights, no main dining room, no buffet — just exceptional restaurants, a serious nightlife program, and a spa that doesn't feel like an afterthought. If you want to feel like you're on a boutique hotel that happens to move, this is your ship.</p>
-      <div class="cruise-meta-row">
-        <span class="commission-badge">~2–4% commission via CruiseDirect</span>
-        <a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Virgin Voyages Deals →</a>
-      </div>
+      <div class="cruise-meta-row"><span class="commission-badge">~2–4% commission via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Virgin Voyages Deals →</a></div>
     </div>
   </div>
 
@@ -384,28 +420,13 @@ function googleTranslateElementInit() {
     </div>
     <div class="cruise-card-body">
       <div class="cruise-details">
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Best for</div>
-          <div class="cruise-detail-val">Intellectually curious couples who want longer port times, enrichment lectures, and ships that feel intimate not industrial</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Top destinations</div>
-          <div class="cruise-detail-val">Mediterranean, Northern Europe, Iceland, Japan — deeply curated itineraries in every region</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Ship size</div>
-          <div class="cruise-detail-val">930 guests max — roughly one-third the size of mainstream ships. You'll know your crew by name.</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Price range</div>
-          <div class="cruise-detail-val">~$3,000–$8,000+/person depending on itinerary. Includes many excursions and beverages.</div>
-        </div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Intellectually curious couples who want longer port times, enrichment lectures, and ships that feel intimate not industrial</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Mediterranean, Northern Europe, Iceland, Japan — deeply curated itineraries in every region</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Ship size</div><div class="cruise-detail-val">930 guests max — roughly one-third the size of mainstream ships. You'll know your crew by name.</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$3,000–$8,000+/person depending on itinerary. Includes many excursions and beverages.</div></div>
       </div>
       <p class="cruise-verdict">Viking has won the #1 couples cruise ranking from U.S. News for five consecutive years. Their ships are adults-only, their itineraries are built for genuine discovery, and their port times are longer than almost any mainstream competitor. If you and your partner bond over travel, food culture, and the feeling of actually going somewhere — Viking is the benchmark.</p>
-      <div class="cruise-meta-row">
-        <span class="commission-badge">~3% via CruiseDirect</span>
-        <a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Viking Ocean Deals →</a>
-      </div>
+      <div class="cruise-meta-row"><span class="commission-badge">~3% via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Viking Ocean Deals →</a></div>
     </div>
   </div>
 
@@ -424,28 +445,13 @@ function googleTranslateElementInit() {
     </div>
     <div class="cruise-card-body">
       <div class="cruise-details">
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Best for</div>
-          <div class="cruise-detail-val">Couples celebrating a milestone — anniversary, retirement, significant birthday — who want zero planning friction</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">What's truly included</div>
-          <div class="cruise-detail-val">Round-trip airfare, shore excursions, all dining, premium beverages, gratuities, pre-cruise hotel night</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Top destinations</div>
-          <div class="cruise-detail-val">Mediterranean, Caribbean, Southeast Asia, Antarctica — the full luxury range</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Price range</div>
-          <div class="cruise-detail-val">~$6,000–$15,000+/person — the all-in value is exceptional when you calculate what's included</div>
-        </div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples celebrating a milestone — anniversary, retirement, significant birthday — who want zero planning friction</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">What's truly included</div><div class="cruise-detail-val">Round-trip airfare, shore excursions, all dining, premium beverages, gratuities, pre-cruise hotel night</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Mediterranean, Caribbean, Southeast Asia, Antarctica — the full luxury range</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$6,000–$15,000+/person — the all-in value is exceptional when you calculate what's included</div></div>
       </div>
       <p class="cruise-verdict">Regent is the line you book when you want to hand over the planning and simply arrive. Truly all-inclusive means the bill at the end of the trip is zero — airfare, excursions, gratuities, every restaurant, every glass of wine. For a milestone celebration where friction is the enemy of romance, Regent delivers the cleanest luxury experience in the industry.</p>
-      <div class="cruise-meta-row">
-        <span class="commission-badge">~3% via CruiseDirect</span>
-        <a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Regent Seven Seas Deals →</a>
-      </div>
+      <div class="cruise-meta-row"><span class="commission-badge">~3% via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Regent Seven Seas Deals →</a></div>
     </div>
   </div>
 
@@ -464,28 +470,13 @@ function googleTranslateElementInit() {
     </div>
     <div class="cruise-card-body">
       <div class="cruise-details">
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Best for</div>
-          <div class="cruise-detail-val">Couples who want a classic, familiar cruise experience with modern touches and genuine romance programming</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Standout feature</div>
-          <div class="cruise-detail-val">"Ultimate Balcony Dining" — a private dinner served on your stateroom balcony, fully set with linens and a dedicated server. ~$100/couple.</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Top destinations</div>
-          <div class="cruise-detail-val">Caribbean, Alaska, Mediterranean, Mexico — one of the widest route networks of any line</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Price range</div>
-          <div class="cruise-detail-val">~$1,000–$3,500/person — best value mid-range couples option with a strong onboard experience</div>
-        </div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples who want a classic, familiar cruise experience with modern touches and genuine romance programming</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Standout feature</div><div class="cruise-detail-val">"Ultimate Balcony Dining" — a private dinner served on your stateroom balcony, fully set with linens and a dedicated server. ~$100/couple.</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Caribbean, Alaska, Mediterranean, Mexico — one of the widest route networks of any line</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$1,000–$3,500/person — best value mid-range couples option with a strong onboard experience</div></div>
       </div>
       <p class="cruise-verdict">Princess is the accessible middle ground — not as edgy as Virgin, not as expensive as Viking, but consistently delivering a warm, romance-focused experience at a price most couples can actually afford. The Ultimate Balcony Dining experience alone is worth booking a balcony cabin. For couples who want the classic cruise feeling done well, Princess is the reliable, well-loved answer.</p>
-      <div class="cruise-meta-row">
-        <span class="commission-badge">~3% via CJ Affiliate</span>
-        <a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Princess Cruises Deals →</a>
-      </div>
+      <div class="cruise-meta-row"><span class="commission-badge">~3% via CJ Affiliate</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Princess Cruises Deals →</a></div>
     </div>
   </div>
 
@@ -504,28 +495,13 @@ function googleTranslateElementInit() {
     </div>
     <div class="cruise-card-body">
       <div class="cruise-details">
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Best for</div>
-          <div class="cruise-detail-val">Couples who want the feel of a private yacht charter without the full price — intimate, unhurried, design-forward</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Standout feature</div>
-          <div class="cruise-detail-val">Largest thermal spa complex at sea per guest ratio. Spacious suites designed around the view. Slower pace, longer port times.</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Top destinations</div>
-          <div class="cruise-detail-val">Mediterranean, Caribbean, Northern Europe — focused on less-crowded ports bigger ships can't reach</div>
-        </div>
-        <div class="cruise-detail">
-          <div class="cruise-detail-label">Price range</div>
-          <div class="cruise-detail-val">~$4,000–$10,000+/person — premium but below Regent's full all-inclusive tier</div>
-        </div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples who want the feel of a private yacht charter without the full price — intimate, unhurried, design-forward</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Standout feature</div><div class="cruise-detail-val">Largest thermal spa complex at sea per guest ratio. Spacious suites designed around the view. Slower pace, longer port times.</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Mediterranean, Caribbean, Northern Europe — focused on less-crowded ports bigger ships can't reach</div></div>
+        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$4,000–$10,000+/person — premium but below Regent's full all-inclusive tier</div></div>
       </div>
       <p class="cruise-verdict">Explora Journeys launched in 2023 and immediately claimed #2 for couples from U.S. News — a remarkable debut. The line is built around "ocean state of mind": fewer guests, more space, slower travel, and an atmosphere closer to a design hotel than a traditional ship. If you want to discover a line before everyone else has, Explora is the standout 2026 recommendation.</p>
-      <div class="cruise-meta-row">
-        <span class="commission-badge">Via CruiseDirect or luxury travel networks</span>
-        <a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Explora Journeys Deals →</a>
-      </div>
+      <div class="cruise-meta-row"><span class="commission-badge">Via CruiseDirect or luxury travel networks</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Explora Journeys Deals →</a></div>
     </div>
   </div>
 
@@ -541,14 +517,7 @@ function googleTranslateElementInit() {
 
   <div class="comp-table-wrap">
     <table class="comp-table">
-      <thead>
-        <tr>
-          <th>Cruise line</th>
-          <th>Couple persona</th>
-          <th>Adults-only?</th>
-          <th>Starting price/pp</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Cruise line</th><th>Couple persona</th><th>Adults-only?</th><th>Starting price/pp</th></tr></thead>
       <tbody>
         <tr><td class="line-name">Virgin Voyages</td><td>Trendy &amp; Adventurous</td><td>✅ Yes — 100%</td><td>~$1,200</td></tr>
         <tr><td class="line-name">Viking Ocean</td><td>Culture &amp; Discovery</td><td>✅ Yes — 100%</td><td>~$3,000</td></tr>
