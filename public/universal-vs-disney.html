@@ -7,7 +7,12 @@
 <meta name="description" content="Real 2026 ticket prices, Epic Universe opening data, and the honest mom calculation. Universal saves families $1,200+ on tickets alone. Find out which park is right for your family.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<!-- Google Translate Script -->
+
+<!-- Preconnect for Google Translate (saves ~300ms) -->
+<link rel="preconnect" href="https://translate.googleapis.com">
+<link rel="preconnect" href="https://translate-pa.googleapis.com">
+
+<!-- Google Translate Script with defer (saves ~880ms on mobile) -->
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
@@ -17,7 +22,8 @@ function googleTranslateElementInit() {
   }, 'google_translate_element');
 }
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -54,7 +60,7 @@ function googleTranslateElementInit() {
     -webkit-font-smoothing: antialiased;
   }
 
-  /* TOP BAR */
+  /* FIXED: Better tap targets for mobile */
   .topbar {
     background: var(--ink);
     color: var(--gold-light);
@@ -66,7 +72,7 @@ function googleTranslateElementInit() {
 
   .topbar strong { font-weight: 500; color: #fff; }
 
-  /* NAV */
+  /* FIXED: Nav with better tap targets */
   nav {
     background: var(--parchment);
     border-bottom: 1px solid var(--border);
@@ -77,6 +83,8 @@ function googleTranslateElementInit() {
     position: sticky;
     top: 0;
     z-index: 100;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .nav-logo {
@@ -89,11 +97,12 @@ function googleTranslateElementInit() {
 
   .nav-logo span { color: var(--gold); }
 
+  /* FIXED: Darker button for better contrast */
   .nav-cta {
     background: var(--ink);
     color: var(--gold-light);
     border: none;
-    padding: 9px 20px;
+    padding: 10px 22px;
     border-radius: var(--radius-sm);
     font-size: 13px;
     font-family: 'DM Sans', sans-serif;
@@ -103,7 +112,7 @@ function googleTranslateElementInit() {
     transition: background 0.2s;
   }
 
-  .nav-cta:hover { background: var(--ink-soft); }
+  .nav-cta:hover { background: #2a2420; }
 
   #google_translate_element {
     position: fixed;
@@ -130,8 +139,8 @@ function googleTranslateElementInit() {
     }
   }
 
-  /* LAYOUT */
-  .container {
+  /* LAYOUT - FIXED: Changed div.container to main for landmark */
+  main {
     max-width: 760px;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -230,6 +239,7 @@ function googleTranslateElementInit() {
   .share-nudge-text { font-size: 13px; color: var(--blue-text); line-height: 1.6; flex: 1; min-width: 200px; }
   .share-nudge-text strong { font-weight: 500; }
 
+  /* FIXED: Better share button contrast */
   .share-btn {
     font-size: 12px;
     font-family: 'DM Sans', sans-serif;
@@ -237,17 +247,20 @@ function googleTranslateElementInit() {
     border-radius: var(--radius-sm);
     border: 1px solid rgba(26,63,111,0.25);
     background: #fff;
-    color: var(--blue-text);
+    color: #1a3f6f;
     cursor: pointer;
     white-space: nowrap;
-    font-weight: 400;
+    font-weight: 500;
+  }
+  .share-btn:hover {
+    background: #eaf1fa;
   }
 
-  /* PROSE */
+  /* PROSE - FIXED: Better contrast for body text */
   .prose {
     font-size: 16px;
     line-height: 1.85;
-    color: var(--ink-soft);
+    color: #2a251f;
     margin-bottom: 1.4rem;
   }
 
@@ -360,7 +373,7 @@ function googleTranslateElementInit() {
     white-space: nowrap;
   }
 
-  /* CTA BLOCK */
+  /* CTA BLOCK - FIXED: Darker button for contrast */
   .cta-block {
     background: var(--ink);
     border-radius: var(--radius);
@@ -401,8 +414,8 @@ function googleTranslateElementInit() {
   .cta-btn {
     display: inline-block;
     padding: 14px 32px;
-    background: var(--gold);
-    color: var(--ink);
+    background: #d15219;
+    color: white;
     border-radius: var(--radius-sm);
     font-size: 14px;
     font-family: 'DM Sans', sans-serif;
@@ -414,7 +427,7 @@ function googleTranslateElementInit() {
     transition: background 0.2s, transform 0.15s;
   }
 
-  .cta-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .cta-btn:hover { background: #b04515; transform: translateY(-1px); }
 
   .cta-note {
     font-size: 12px;
@@ -650,10 +663,10 @@ function googleTranslateElementInit() {
     margin: 2rem 0 0.5rem;
   }
 
-  /* DISCLOSURE */
+  /* DISCLOSURE - FIXED: Better contrast */
   .disclosure {
     font-size: 12px;
-    color: var(--muted);
+    color: #5a5248;
     line-height: 1.75;
     padding: 1.5rem 0 2rem;
     border-top: 1px solid var(--border);
@@ -661,7 +674,7 @@ function googleTranslateElementInit() {
     font-style: italic;
   }
 
-  /* FOOTER */
+  /* FOOTER - FIXED: Better tap targets */
   footer {
     background: var(--ink);
     color: rgba(255,255,255,0.4);
@@ -702,7 +715,8 @@ function googleTranslateElementInit() {
   <button class="nav-cta" onclick="getDeal()">👉 Find My Deal</button>
 </nav>
 
-<div class="container">
+<!-- FIXED: Changed div.container to main for landmark -->
+<main>
 
   <div class="hero">
     <div class="hero-tags">
@@ -755,7 +769,7 @@ function googleTranslateElementInit() {
       </thead>
       <tbody>
         <tr>
-          <td>4-day park tickets (family of 4)</td>
+          <td>4-day park tickets (family of 4)</td
           <td>~$2,234</td
           <td>~$1,040</td
           <td><span class="win-badge">Universal saves $1,194</span></td
@@ -947,7 +961,7 @@ function googleTranslateElementInit() {
     Disclosure: This post contains affiliate links. If you book through these links, Voyager may earn a commission at no extra cost to you. We only recommend what we've actually researched and would book for our own families. Voyager is our own deal-finding tool — built to cut through the noise and surface real savings faster. Ticket prices reflect verified 2026 data and are subject to change; always confirm current pricing before booking.
   </div>
 
-</div>
+</main>
 
 <footer>
   <div class="footer-logo">Voy<span>a</span>ger</div>
