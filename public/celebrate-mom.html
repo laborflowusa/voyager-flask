@@ -72,7 +72,7 @@ body::before {
   opacity: 0.4;
 }
 
-/* FIXED: Better tap targets for mobile */
+/* FIXED: Better tap targets for mobile with Services link */
 nav {
   background: var(--parchment);
   border-bottom: 1px solid var(--border);
@@ -98,9 +98,9 @@ nav {
 
 .nav-logo span { color: var(--rose); font-style: italic; }
 
-.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
 /* FIXED: Increased tap target size */
-.nav-link { font-family: 'Jost', sans-serif; font-size: 12px; color: var(--muted); text-decoration: none; padding: 8px 12px; border-radius: var(--radius-sm); transition: color 0.2s; }
+.nav-link { font-family: 'Jost', sans-serif; font-size: 12px; color: var(--muted); text-decoration: none; padding: 8px 12px; border-radius: var(--radius-sm); transition: color 0.2s; font-weight: 500; }
 .nav-link:hover { color: var(--ink); }
 /* FIXED: Darker button for better contrast */
 .nav-cta { background: #7A1F35; color: #FDF3F4; border: none; padding: 10px 22px; border-radius: var(--radius-sm); font-size: 12px; font-family: 'Jost', sans-serif; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; text-decoration: none; display: inline-block; transition: background 0.2s; }
@@ -853,7 +853,8 @@ footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: cente
 
 @media (max-width: 640px) {
   nav { padding: 0.9rem 1rem; }
-  .nav-links { display: none; }
+  .nav-links { gap: 10px; }
+  .nav-links a { font-size: 11px; }
   .hero { min-height: 85vh; padding: 3rem 1.5rem 3rem; }
   .grandma-grid { grid-template-columns: 1fr; }
   .exp-details { grid-template-columns: 1fr; }
@@ -868,9 +869,14 @@ footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: cente
 <nav>
   <a class="nav-logo" href="/">Voy<span>a</span>ger</a>
   <div class="nav-links">
-    <a class="nav-link" href="/universal-vs-disney.html">Disney vs Universal</a>
+    <a class="nav-link" href="/">Home</a>
+    <a class="nav-link" href="/chat.html">AI Chat</a>
+    <a class="nav-link" href="/universal-vs-disney.html">Universal vs. Disney</a>
     <a class="nav-link" href="/family-cruise-guide-2026.html">Family Cruises</a>
     <a class="nav-link" href="/couples-cruise-guide-2026.html">Couples Cruises</a>
+    <a class="nav-link" href="/celebrate-mom.html">Celebrate Mom</a>
+    <a class="nav-link" href="/services.html">Services</a>
+    <a class="nav-link" href="/privacy.html">Privacy</a>
   </div>
   <a class="nav-cta" href="/">Find a Gift for Mom</a>
 </nav>
@@ -921,36 +927,12 @@ footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: cente
     <h2>Every Day Is Someone's<br><em>Reason to Celebrate Her</em></h2>
 
     <div class="reason-grid">
-      <div class="reason-card">
-        <span class="reason-icon">🌸</span>
-        <div class="reason-title">Mother's Day</div>
-        <div class="reason-desc">The day the world remembers to say what should be said every single day.</div>
-      </div>
-      <div class="reason-card">
-        <span class="reason-icon">🎂</span>
-        <div class="reason-title">Her Birthday</div>
-        <div class="reason-desc">Another year of everything she's given. Give her something just for her this time.</div>
-      </div>
-      <div class="reason-card">
-        <span class="reason-icon">💭</span>
-        <div class="reason-title">Just Because</div>
-        <div class="reason-desc">No occasion needed. You thought of her. That is reason enough.</div>
-      </div>
-      <div class="reason-card">
-        <span class="reason-icon">🎓</span>
-        <div class="reason-title">A Milestone Moment</div>
-        <div class="reason-desc">Graduation. Empty nest. A chapter closing. A new one beginning. Celebrate with her.</div>
-      </div>
-      <div class="reason-card">
-        <span class="reason-icon">🕊️</span>
-        <div class="reason-title">In Her Memory</div>
-        <div class="reason-desc">For those who celebrate her in spirit — a trip taken in her honor, a moment lived as she would have wanted.</div>
-      </div>
-      <div class="reason-card">
-        <span class="reason-icon">💝</span>
-        <div class="reason-title">No Reason At All</div>
-        <div class="reason-desc">The most powerful gift you can give: making someone feel seen on an ordinary Wednesday.</div>
-      </div>
+      <div class="reason-card"><span class="reason-icon">🌸</span><div class="reason-title">Mother's Day</div><div class="reason-desc">The day the world remembers to say what should be said every single day.</div></div>
+      <div class="reason-card"><span class="reason-icon">🎂</span><div class="reason-title">Her Birthday</div><div class="reason-desc">Another year of everything she's given. Give her something just for her this time.</div></div>
+      <div class="reason-card"><span class="reason-icon">💭</span><div class="reason-title">Just Because</div><div class="reason-desc">No occasion needed. You thought of her. That is reason enough.</div></div>
+      <div class="reason-card"><span class="reason-icon">🎓</span><div class="reason-title">A Milestone Moment</div><div class="reason-desc">Graduation. Empty nest. A chapter closing. A new one beginning. Celebrate with her.</div></div>
+      <div class="reason-card"><span class="reason-icon">🕊️</span><div class="reason-title">In Her Memory</div><div class="reason-desc">For those who celebrate her in spirit — a trip taken in her honor, a moment lived as she would have wanted.</div></div>
+      <div class="reason-card"><span class="reason-icon">💝</span><div class="reason-title">No Reason At All</div><div class="reason-desc">The most powerful gift you can give: making someone feel seen on an ordinary Wednesday.</div></div>
     </div>
 
     <div class="pullquote">
@@ -990,28 +972,13 @@ footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: cente
             <div class="exp-price-badge">From $500 gift certificate</div>
           </div>
           <div class="exp-details">
-            <div class="exp-detail">
-              <div class="exp-detail-label">Perfect for</div>
-              <div class="exp-detail-val">Any mom who's ever paused at a cruise brochure, saved a sailing post, or said "one day I want to do that"</div>
-            </div>
-            <div class="exp-detail">
-              <div class="exp-detail-label">How to give it</div>
-              <div class="exp-detail-val">A CruiseDirect gift certificate — she chooses her own ship, dates, and cabin. No wrong choice.</div>
-            </div>
-            <div class="exp-detail">
-              <div class="exp-detail-label">Why it lands differently</div>
-              <div class="exp-detail-val">Most moms book everything for everyone else. This is the one where someone says "this is yours — just for you."</div>
-            </div>
-            <div class="exp-detail">
-              <div class="exp-detail-label">Best cruise lines for moms</div>
-              <div class="exp-detail-val">Princess (classic romance), Virgin Voyages (adults-only luxury), Carnival (best value, Caribbean sunshine)</div>
-            </div>
+            <div class="exp-detail"><div class="exp-detail-label">Perfect for</div><div class="exp-detail-val">Any mom who's ever paused at a cruise brochure, saved a sailing post, or said "one day I want to do that"</div></div>
+            <div class="exp-detail"><div class="exp-detail-label">How to give it</div><div class="exp-detail-val">A CruiseDirect gift certificate — she chooses her own ship, dates, and cabin. No wrong choice.</div></div>
+            <div class="exp-detail"><div class="exp-detail-label">Why it lands differently</div><div class="exp-detail-val">Most moms book everything for everyone else. This is the one where someone says "this is yours — just for you."</div></div>
+            <div class="exp-detail"><div class="exp-detail-label">Best cruise lines for moms</div><div class="exp-detail-val">Princess (classic romance), Virgin Voyages (adults-only luxury), Carnival (best value, Caribbean sunshine)</div></div>
           </div>
           <p class="exp-story">Picture her on a balcony somewhere between Nassau and Cozumel. The water is that exact shade of blue she's seen in photos and never quite believed was real. She has nowhere to be. No one needs anything from her right now. She lifts her coffee — it's still warm — and watches the horizon move. <strong>This is the moment you're giving her.</strong></p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">CruiseDirect · ~3% commission · 45-day cookie</span>
-            <a class="exp-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Give Her the Cruise →</a>
-          </div>
+          <div class="exp-bottom"><span class="exp-affiliate">CruiseDirect · ~3% commission · 45-day cookie</span><a class="exp-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Give Her the Cruise →</a></div>
         </div>
       </div>
 
@@ -1027,20 +994,11 @@ footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: cente
             <div class="exp-price-badge">From $1,500/couple</div>
           </div>
           <div class="exp-details">
-            <div class="exp-detail">
-              <div class="exp-detail-label">Perfect for</div>
-              <div class="exp-detail-val">Moms celebrating a milestone with their partner — anniversary, retirement, a big birthday — who deserve total luxury</div>
-            </div>
-            <div class="exp-detail">
-              <div class="exp-detail-label">What's included</div>
-              <div class="exp-detail-val">All meals, all drinks, all activities, all transfers. She arrives and everything is already taken care of.</div>
-            </div>
+            <div class="exp-detail"><div class="exp-detail-label">Perfect for</div><div class="exp-detail-val">Moms celebrating a milestone with their partner — anniversary, retirement, a big birthday — who deserve total luxury</div></div>
+            <div class="exp-detail"><div class="exp-detail-label">What's included</div><div class="exp-detail-val">All meals, all drinks, all activities, all transfers. She arrives and everything is already taken care of.</div></div>
           </div>
           <p class="exp-story">She has spent years taking care of everyone else's needs before her own. A Sandals resort is the rare place where, from the moment she arrives, the answer to every question is already yes. The food is there. The drinks are poured. The beach is right outside. <strong>All she has to do is exist in it.</strong></p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">Sandals Direct · ~4–5% commission</span>
-            <a class="exp-btn" href="https://www.sandals.com" target="_blank" rel="noopener">Book Sandals for Her →</a>
-          </div>
+          <div class="exp-bottom"><span class="exp-affiliate">Sandals Direct · ~4–5% commission</span><a class="exp-btn" href="https://www.sandals.com" target="_blank" rel="noopener">Book Sandals for Her →</a></div>
         </div>
       </div>
 
@@ -1056,20 +1014,11 @@ footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: cente
             <div class="exp-price-badge">From $109/person</div>
           </div>
           <div class="exp-details">
-            <div class="exp-detail">
-              <div class="exp-detail-label">Perfect for</div>
-              <div class="exp-detail-val">The mom who loves making memories with her kids and grandkids — the one who wants everyone together, somewhere unforgettable</div>
-            </div>
-            <div class="exp-detail">
-              <div class="exp-detail-label">Epic Universe just opened</div>
-              <div class="exp-detail-val">Super Nintendo World, How to Train Your Dragon, Ministry of Magic — brand new in 2026. She gets to be the one who took everyone first.</div>
-            </div>
+            <div class="exp-detail"><div class="exp-detail-label">Perfect for</div><div class="exp-detail-val">The mom who loves making memories with her kids and grandkids — the one who wants everyone together, somewhere unforgettable</div></div>
+            <div class="exp-detail"><div class="exp-detail-label">Epic Universe just opened</div><div class="exp-detail-val">Super Nintendo World, How to Train Your Dragon, Ministry of Magic — brand new in 2026. She gets to be the one who took everyone first.</div></div>
           </div>
           <p class="exp-story">There will come a day when the kids are grown and scattered and the chances to all be together somewhere extraordinary are fewer and further between. <strong>This summer is not that day.</strong> Give her the tickets. Watch her face when everyone walks in together. That expression — that's the whole gift.</p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">GetYourGuide · affiliate commission</span>
-            <a class="exp-btn" href="https://gyg.me/KBoe1F8i" target="_blank" rel="noopener">Get Universal Tickets →</a>
-          </div>
+          <div class="exp-bottom"><span class="exp-affiliate">GetYourGuide · affiliate commission</span><a class="exp-btn" href="https://gyg.me/KBoe1F8i" target="_blank" rel="noopener">Get Universal Tickets →</a></div>
         </div>
       </div>
 
@@ -1085,20 +1034,11 @@ footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: cente
             <div class="exp-price-badge">From $100</div>
           </div>
           <div class="exp-details">
-            <div class="exp-detail">
-              <div class="exp-detail-label">Perfect for</div>
-              <div class="exp-detail-val">The mom who needs to step away from her daily life and breathe somewhere new — solo, with her partner, or with you</div>
-            </div>
-            <div class="exp-detail">
-              <div class="exp-detail-label">How flexible is it</div>
-              <div class="exp-detail-val">Completely. She redeems it for any hotel on Booking.com — that's millions of properties in every destination on earth.</div>
-            </div>
+            <div class="exp-detail"><div class="exp-detail-label">Perfect for</div><div class="exp-detail-val">The mom who needs to step away from her daily life and breathe somewhere new — solo, with her partner, or with you</div></div>
+            <div class="exp-detail"><div class="exp-detail-label">How flexible is it</div><div class="exp-detail-val">Completely. She redeems it for any hotel on Booking.com — that's millions of properties in every destination on earth.</div></div>
           </div>
           <p class="exp-story">Sometimes the most loving thing you can give someone is options. Not a specific trip with a fixed itinerary and a pressure to love it — but the means to go wherever her heart pulls her, when the timing finally feels right. <strong>She'll know exactly where she wants to go. She's known for years.</strong></p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">Booking.com affiliate</span>
-            <a class="exp-btn" href="https://www.booking.com" target="_blank" rel="noopener">Give Her the Freedom →</a>
-          </div>
+          <div class="exp-bottom"><span class="exp-affiliate">Booking.com affiliate</span><a class="exp-btn" href="https://www.booking.com" target="_blank" rel="noopener">Give Her the Freedom →</a></div>
         </div>
       </div>
 
@@ -1114,20 +1054,11 @@ footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: cente
             <div class="exp-price-badge">From $45</div>
           </div>
           <div class="exp-details">
-            <div class="exp-detail">
-              <div class="exp-detail-label">Perfect for</div>
-              <div class="exp-detail-val">The mom who never books anything just for herself — spa days, wellness retreats, sunset cruises, food tours, cooking classes</div>
-            </div>
-            <div class="exp-detail">
-              <div class="exp-detail-label">How it works</div>
-              <div class="exp-detail-val">Instant digital voucher. She browses hundreds of local experiences in her city or any destination she's visiting and redeems when ready.</div>
-            </div>
+            <div class="exp-detail"><div class="exp-detail-label">Perfect for</div><div class="exp-detail-val">The mom who never books anything just for herself — spa days, wellness retreats, sunset cruises, food tours, cooking classes</div></div>
+            <div class="exp-detail"><div class="exp-detail-label">How it works</div><div class="exp-detail-val">Instant digital voucher. She browses hundreds of local experiences in her city or any destination she's visiting and redeems when ready.</div></div>
           </div>
           <p class="exp-story">She gives out her time freely — to her children, her grandchildren, her work, her community. A spa day is two hours that belong only to her. No phone ringing. No one needing anything. Just warmth and quiet and the rare, almost forgotten feeling of being completely taken care of. <strong>She deserves that. She's always deserved that.</strong></p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">GetYourGuide affiliate</span>
-            <a class="exp-btn" href="https://www.getyourguide.com" target="_blank" rel="noopener">Give Her the Experience →</a>
-          </div>
+          <div class="exp-bottom"><span class="exp-affiliate">GetYourGuide affiliate</span><a class="exp-btn" href="https://www.getyourguide.com" target="_blank" rel="noopener">Give Her the Experience →</a></div>
         </div>
       </div>
 
@@ -1136,104 +1067,19 @@ footer { background: var(--ink); color: rgba(255,255,255,0.3); text-align: cente
     <!-- CRUISE TAB -->
     <div id="cruise" class="occ-panel">
       <p class="prose" style="margin-bottom:1.5rem;">She's been imagining a cruise for longer than she's admitted. Here are the lines that were built for exactly her kind of journey.</p>
-      <div class="exp-card">
-        <div class="exp-card-band band-rose"></div>
-        <div class="exp-card-body">
-          <div class="exp-card-top">
-            <div class="exp-card-left">
-              <div class="exp-occasion">Adults-Only Luxury · Best for Moms Traveling with a Partner</div>
-              <div class="exp-name">Virgin Voyages or Princess Cruises</div>
-              <div class="exp-tagline">No kids, no buffets, no schedules. Just her, her person, and the open sea.</div>
-            </div>
-            <div class="exp-price-badge">From $1,000/person</div>
-          </div>
-          <p class="exp-story">Virgin Voyages is 100% adults-only with 20+ restaurants all included — perfect for the mom who wants to feel like a traveler, not a tourist. Princess Cruises is the classic romantic choice with their legendary Ultimate Balcony Dining — a private dinner served just for two on your cabin balcony as the sea moves beneath you. Both are available through CruiseDirect with live 2026 pricing.</p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">CruiseDirect · ~3% commission</span>
-            <a class="exp-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Her Cruise →</a>
-          </div>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-card-band band-gold"></div>
-        <div class="exp-card-body">
-          <div class="exp-card-top">
-            <div class="exp-card-left">
-              <div class="exp-occasion">Family Cruise · Best for the Mom Who Wants Everyone Together</div>
-              <div class="exp-name">Royal Caribbean or Disney Cruise Line</div>
-              <div class="exp-tagline">The family cruise she's been wanting to plan. Give her the certificate — she'll build the memory.</div>
-            </div>
-            <div class="exp-price-badge">From $900/person</div>
-          </div>
-          <p class="exp-story">Royal Caribbean's Perfect Day at CocoCay private island is genuinely one of the most joyful days a family can share — warm Caribbean water, everyone together, no one managing logistics. Disney Cruise Line is the gold standard for families with younger children. A CruiseDirect gift certificate covers both — she chooses the line, the ship, and the dates that work for her family.</p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">CruiseDirect · ~3% commission</span>
-            <a class="exp-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Give the Family Cruise →</a>
-          </div>
-        </div>
-      </div>
+      <div class="exp-card"><div class="exp-card-band band-rose"></div><div class="exp-card-body"><div class="exp-card-top"><div class="exp-card-left"><div class="exp-occasion">Adults-Only Luxury · Best for Moms Traveling with a Partner</div><div class="exp-name">Virgin Voyages or Princess Cruises</div><div class="exp-tagline">No kids, no buffets, no schedules. Just her, her person, and the open sea.</div></div><div class="exp-price-badge">From $1,000/person</div></div><p class="exp-story">Virgin Voyages is 100% adults-only with 20+ restaurants all included — perfect for the mom who wants to feel like a traveler, not a tourist. Princess Cruises is the classic romantic choice with their legendary Ultimate Balcony Dining — a private dinner served just for two on your cabin balcony as the sea moves beneath you. Both are available through CruiseDirect with live 2026 pricing.</p><div class="exp-bottom"><span class="exp-affiliate">CruiseDirect · ~3% commission</span><a class="exp-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Her Cruise →</a></div></div></div>
+      <div class="exp-card"><div class="exp-card-band band-gold"></div><div class="exp-card-body"><div class="exp-card-top"><div class="exp-card-left"><div class="exp-occasion">Family Cruise · Best for the Mom Who Wants Everyone Together</div><div class="exp-name">Royal Caribbean or Disney Cruise Line</div><div class="exp-tagline">The family cruise she's been wanting to plan. Give her the certificate — she'll build the memory.</div></div><div class="exp-price-badge">From $900/person</div></div><p class="exp-story">Royal Caribbean's Perfect Day at CocoCay private island is genuinely one of the most joyful days a family can share — warm Caribbean water, everyone together, no one managing logistics. Disney Cruise Line is the gold standard for families with younger children. A CruiseDirect gift certificate covers both — she chooses the line, the ship, and the dates that work for her family.</p><div class="exp-bottom"><span class="exp-affiliate">CruiseDirect · ~3% commission</span><a class="exp-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Give the Family Cruise →</a></div></div></div>
     </div>
 
     <!-- GETAWAY TAB -->
     <div id="getaway" class="occ-panel">
-      <div class="exp-card">
-        <div class="exp-card-band band-navy"></div>
-        <div class="exp-card-body">
-          <div class="exp-card-top">
-            <div class="exp-card-left">
-              <div class="exp-occasion">Weekend Away · Total Freedom</div>
-              <div class="exp-name">Hotel Gift Card — She Picks Everything</div>
-              <div class="exp-tagline">Booking.com gift card — redeemable anywhere in the world, any time, with no expiry pressure.</div>
-            </div>
-            <div class="exp-price-badge">$100–$500+</div>
-          </div>
-          <p class="exp-story">The beauty of a hotel gift card isn't just the trip it funds. It's the weeks of planning she gets to enjoy before she even goes — browsing properties, imagining herself in each one, building the kind of anticipation that is its own form of happiness. Give her the card. Watch her light up as she starts searching. The joy begins the moment she opens it.</p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">Booking.com affiliate</span>
-            <a class="exp-btn" href="https://www.booking.com" target="_blank" rel="noopener">Get Hotel Gift Card →</a>
-          </div>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-card-band band-purple"></div>
-        <div class="exp-card-body">
-          <div class="exp-card-top">
-            <div class="exp-card-left">
-              <div class="exp-occasion">Luxury All-Inclusive · The Ultimate Getaway</div>
-              <div class="exp-name">Sandals Resort Booking</div>
-              <div class="exp-tagline">Adults-only, all-inclusive, Caribbean. The word "no" doesn't exist here.</div>
-            </div>
-            <div class="exp-price-badge">From $1,500/couple</div>
-          </div>
-          <p class="exp-story">Sandals is the rare place built entirely around the idea of two people being completely happy together with nothing required of them. She has been happy in situations that required everything of her for a very long time. She deserves to see what happiness feels like when it asks nothing in return.</p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">Sandals Direct · ~4–5% commission</span>
-            <a class="exp-btn" href="https://www.sandals.com" target="_blank" rel="noopener">Book Sandals →</a>
-          </div>
-        </div>
-      </div>
+      <div class="exp-card"><div class="exp-card-band band-navy"></div><div class="exp-card-body"><div class="exp-card-top"><div class="exp-card-left"><div class="exp-occasion">Weekend Away · Total Freedom</div><div class="exp-name">Hotel Gift Card — She Picks Everything</div><div class="exp-tagline">Booking.com gift card — redeemable anywhere in the world, any time, with no expiry pressure.</div></div><div class="exp-price-badge">$100–$500+</div></div><p class="exp-story">The beauty of a hotel gift card isn't just the trip it funds. It's the weeks of planning she gets to enjoy before she even goes — browsing properties, imagining herself in each one, building the kind of anticipation that is its own form of happiness. Give her the card. Watch her light up as she starts searching. The joy begins the moment she opens it.</p><div class="exp-bottom"><span class="exp-affiliate">Booking.com affiliate</span><a class="exp-btn" href="https://www.booking.com" target="_blank" rel="noopener">Get Hotel Gift Card →</a></div></div></div>
+      <div class="exp-card"><div class="exp-card-band band-purple"></div><div class="exp-card-body"><div class="exp-card-top"><div class="exp-card-left"><div class="exp-occasion">Luxury All-Inclusive · The Ultimate Getaway</div><div class="exp-name">Sandals Resort Booking</div><div class="exp-tagline">Adults-only, all-inclusive, Caribbean. The word "no" doesn't exist here.</div></div><div class="exp-price-badge">From $1,500/couple</div></div><p class="exp-story">Sandals is the rare place built entirely around the idea of two people being completely happy together with nothing required of them. She has been happy in situations that required everything of her for a very long time. She deserves to see what happiness feels like when it asks nothing in return.</p><div class="exp-bottom"><span class="exp-affiliate">Sandals Direct · ~4–5% commission</span><a class="exp-btn" href="https://www.sandals.com" target="_blank" rel="noopener">Book Sandals →</a></div></div></div>
     </div>
 
     <!-- FAMILY TAB -->
     <div id="family" class="occ-panel">
-      <div class="exp-card">
-        <div class="exp-card-band band-sage"></div>
-        <div class="exp-card-body">
-          <div class="exp-card-top">
-            <div class="exp-card-left">
-              <div class="exp-occasion">For the Mom Who Lives for Her People</div>
-              <div class="exp-name">Universal Orlando — The Whole Family, All Together</div>
-              <div class="exp-tagline">Epic Universe is open. Give her the trip that gets everyone in the same place at the same time.</div>
-            </div>
-            <div class="exp-price-badge">From $109/person</div>
-          </div>
-          <p class="exp-story">Some moms don't want spa days and quiet resorts. They want the noise and the laughter and the chaos of everyone together in one extraordinary place. They want to watch their grandchildren's faces when they first see something that makes their jaw drop. Give her that. Give her the tickets. Let her be the one who made it happen.</p>
-          <div class="exp-bottom">
-            <span class="exp-affiliate">GetYourGuide affiliate</span>
-            <a class="exp-btn" href="https://gyg.me/KBoe1F8i" target="_blank" rel="noopener">Get Universal Tickets →</a>
-          </div>
-        </div>
-      </div>
+      <div class="exp-card"><div class="exp-card-band band-sage"></div><div class="exp-card-body"><div class="exp-card-top"><div class="exp-card-left"><div class="exp-occasion">For the Mom Who Lives for Her People</div><div class="exp-name">Universal Orlando — The Whole Family, All Together</div><div class="exp-tagline">Epic Universe is open. Give her the trip that gets everyone in the same place at the same time.</div></div><div class="exp-price-badge">From $109/person</div></div><p class="exp-story">Some moms don't want spa days and quiet resorts. They want the noise and the laughter and the chaos of everyone together in one extraordinary place. They want to watch their grandchildren's faces when they first see something that makes their jaw drop. Give her that. Give her the tickets. Let her be the one who made it happen.</p><div class="exp-bottom"><span class="exp-affiliate">GetYourGuide affiliate</span><a class="exp-btn" href="https://gyg.me/KBoe1F8i" target="_blank" rel="noopener">Get Universal Tickets →</a></div></div></div>
     </div>
 
     <!-- ESSENTIALS TAB -->
