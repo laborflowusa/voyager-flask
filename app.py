@@ -5,6 +5,7 @@ import os
 import json
 import requests
 import re
+import time
 
 app = Flask(__name__, static_folder='public', static_url_path='')
 
@@ -68,7 +69,7 @@ def serve_html(filename):
     return app.send_static_file(f'{filename}.html')
 
 
-# Sitemap route
+# Updated Sitemap route
 @app.route('/sitemap.xml')
 def sitemap():
     base_url = "https://voyager-flask.onrender.com"
@@ -81,14 +82,19 @@ def sitemap():
         "/celebrate-mom.html",
         "/privacy.html"
     ]
+    today = time.strftime('%Y-%m-%d')
     sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
     sitemap_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     for page in pages:
         sitemap_content += '  <url>\n'
         sitemap_content += f'    <loc>{base_url}{page}</loc>\n'
-        sitemap_content += '    <lastmod>2026-05-07</lastmod>\n'
-        sitemap_content += '    <changefreq>weekly</changefreq>\n'
-        sitemap_content += '    <priority>0.8</priority>\n'
+        sitemap_content += f'    <lastmod>{today}</lastmod>\n'
+        if page == "/":
+            sitemap_content += '    <priority>1.0</priority>\n'
+        elif page in ["/universal-vs-disney.html", "/family-cruise-guide-2026.html", "/couples-cruise-guide-2026.html"]:
+            sitemap_content += '    <priority>0.9</priority>\n'
+        else:
+            sitemap_content += '    <priority>0.8</priority>\n'
         sitemap_content += '  </url>\n'
     sitemap_content += '</urlset>'
     return app.response_class(sitemap_content, mimetype='application/xml')
@@ -103,73 +109,50 @@ def robots():
     return app.response_class(robots_content, mimetype='text/plain')
 
 
+# Get random affiliate link
 @app.route('/api/get_link')
 def get_link():
     try:
-        response = supabase.table('links').select('*').execute()
+        response = supabase.table('affiliate_links').select('*').eq('is_active', True).execute()
         links = response.data
         if not links:
             return jsonify({'affiliate_link': 'https://example.com/no-links'})
         selected = random.choice(links)
-        return jsonify({'affiliate_link': selected['url'], 'link_id': selected['id']})
+        # Increment click count
+        supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
+        return jsonify({'affiliate_link': selected['url'], 'name': selected['name']})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 
-@app.route('/api/voyager-chat', methods=['POST'])
-def voyager_chat():
+# Get link by category
+@app.route('/api/get_link/<category>')
+def get_link_by_category(category):
     try:
-        data = request.get_json()
-        messages = data.get('messages', [])
+        response = supabase.table('affiliate_links').select('*').eq('category', category).eq('is_active', True).execute()
+        links = response.data
+        if not links:
+            return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'No links found'}), 404
+        selected = random.choice(links)
+        # Increment click count
+        supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
+        return jsonify({'affiliate_link': selected['url'], 'name': selected['name'], 'category': category})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
-        if not messages:
-            return jsonify({'error': 'No messages provided'}), 400
 
-        if not OPENROUTER_API_KEY:
-            return jsonify({'error': 'OpenRouter API key not configured'}), 500
-
-        models = ["openai/gpt-oss-20b:free", "google/gemma-4-31b:free"]
-
-        for model in models:
-            try:
-                resp = requests.post(
-                    url="https://openrouter.ai/api/v1/chat/completions",
-                    headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}", "Content-Type": "application/json"},
-                    json={
-                        "model": model,
-                        "messages": [{"role": "system", "content": VOYAGER_SYSTEM_PROMPT}] + messages,
-                        "max_tokens": 1000,
-                        "temperature": 0.7
-                    },
-                    timeout=15
-                )
-
-                if resp.status_code == 200:
-                    result = resp.json()
-                    reply = result['choices'][0]['message']['content']
-                    
-                    # Try to extract JSON
-                    recommendation = None
-                    json_match = re.search(r'\{[^{}]*"recommendation_ready"[^{}]*\}', reply)
-                    if json_match:
-                        try:
-                            recommendation = json.loads(json_match.group())
-                        except:
-                            pass
-                    
-                    # Clean reply: remove the JSON part
-                    clean_reply = reply
-                    if json_match:
-                        clean_reply = reply.replace(json_match.group(), '').strip()
-                        if not clean_reply:
-                            clean_reply = "Here's your personalized recommendation!"
-                    
-                    return jsonify({'reply': clean_reply, 'recommendation': recommendation})
-            except:
-                continue
-
-        return jsonify({'error': 'All models failed'}), 500
-
+# Get link by page location (most targeted)
+@app.route('/api/get_link/for/<page>')
+def get_link_by_page(page):
+    try:
+        response = supabase.table('affiliate_links').select('*').eq('page_location', page).eq('is_active', True).execute()
+        links = response.data
+        if not links:
+            # Fallback to category-based if no page-specific links
+            return get_link_by_category('general')
+        selected = random.choice(links)
+        supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
+        return jsonify({'affiliate_link': selected['url'], 'name': selected['name'], 'page': page})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
