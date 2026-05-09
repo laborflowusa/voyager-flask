@@ -109,6 +109,18 @@ def robots():
     return app.response_class(robots_content, mimetype='text/plain')
 
 
+# ========== TEST ENDPOINT ==========
+
+@app.route('/api/test-db')
+def test_db():
+    try:
+        # Try to count rows in affiliate_links table
+        response = supabase.table('affiliate_links').select('*', count='exact').execute()
+        return jsonify({'connected': True, 'count': response.count, 'data': response.data[:3]})  # Show first 3 rows
+    except Exception as e:
+        return jsonify({'connected': False, 'error': str(e)}), 500
+
+
 # ========== AFFILIATE LINK API ENDPOINTS ==========
 
 # Get random affiliate link (original)
@@ -118,7 +130,7 @@ def get_link():
         response = supabase.table('affiliate_links').select('*').eq('is_active', True).execute()
         links = response.data
         if not links:
-            return jsonify({'affiliate_link': 'https://example.com/no-links'})
+            return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'No links found'})
         selected = random.choice(links)
         # Increment click count
         supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
@@ -134,7 +146,7 @@ def get_link_by_category(category):
         response = supabase.table('affiliate_links').select('*').eq('category', category).eq('is_active', True).execute()
         links = response.data
         if not links:
-            return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'No links found'}), 404
+            return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': f'No links found for category: {category}'}), 404
         selected = random.choice(links)
         supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
         return jsonify({'affiliate_link': selected['url'], 'name': selected['name'], 'category': category})
@@ -146,6 +158,7 @@ def get_link_by_category(category):
 @app.route('/api/links/<page>')
 def get_links_for_page(page):
     try:
+        # Try to filter by page_location column
         response = supabase.table('affiliate_links').select('*').eq('page_location', page).eq('is_active', True).execute()
         links = response.data
         return jsonify(links)
