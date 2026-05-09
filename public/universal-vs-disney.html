@@ -663,6 +663,74 @@ function googleTranslateElementInit() {
     margin: 2rem 0 0.5rem;
   }
 
+  /* AMAZON BOX STYLES */
+  .amazon-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .amazon-box-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .amazon-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  .amazon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .amazon-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: var(--parchment);
+    border-radius: var(--radius-sm);
+    align-items: flex-start;
+  }
+  .amazon-emoji {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .amazon-item-name {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .amazon-item-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 5px;
+    line-height: 1.5;
+  }
+  .amazon-item-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .amazon-item-link:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 600px) {
+    .amazon-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   /* DISCLOSURE - FIXED: Better contrast */
   .disclosure {
     font-size: 12px;
@@ -674,7 +742,7 @@ function googleTranslateElementInit() {
     font-style: italic;
   }
 
-  /* FOOTER - FIXED: Better tap targets */
+  /* FOOTER - FIXED: Better tap targets with expanded disclosure */
   footer {
     background: var(--ink);
     color: rgba(255,255,255,0.4);
@@ -923,6 +991,16 @@ function googleTranslateElementInit() {
 
   <p class="prose"><strong>For Universal:</strong> Seriously consider a Premier hotel with free Unlimited Express Pass — run the math on your specific trip length before assuming a cheaper off-site hotel saves money. Cabana Bay and Aventura are best value on-site options if you don't need Express Pass included.</p>
 
+  <!-- BEAT THE FLORIDA HEAT - AMAZON SECTION -->
+  <div class="amazon-box">
+    <div class="amazon-box-title">🌀 Beat the Florida Heat — Essential Gear for Theme Parks</div>
+    <div class="amazon-sub">Summer in Orlando is no joke. This is the gear that locals and frequent visitors swear by.</div>
+    <div class="amazon-grid" id="amazon-grid">
+      <div class="amazon-item">Loading recommendations...</div>
+    </div>
+    <div class="amazon-note" style="font-size: 11px; color: #6a6a6a; margin-top: 12px; text-align: center;">As an Amazon Associate, Voyager earns from qualifying purchases.</div>
+  </div>
+
   <hr class="divider">
 
   <h2>Frequently asked questions</h2>
@@ -966,6 +1044,10 @@ function googleTranslateElementInit() {
 <footer>
   <div class="footer-logo">Voy<span>a</span>ger</div>
   <div>Real deals. No noise. Built for families.</div>
+  <div style="font-size: 11px; margin-top: 12px; color: rgba(255,255,255,0.35); line-height: 1.5;">
+    We are a participant in the Amazon Services LLC Associates Program and other affiliate programs. 
+    As an affiliate, we earn from qualifying purchases at no extra cost to you.
+  </div>
 </footer>
 
 <script>
@@ -981,6 +1063,51 @@ function googleTranslateElementInit() {
             alert('Press Ctrl+C to copy the link from your browser bar.');
         });
     }
+
+    function trackClick(linkId) {
+        fetch(`/api/click/${linkId}`, { method: 'POST' })
+            .catch(err => console.error('Click tracking failed:', err));
+    }
+
+    // Fetch affiliate links from Supabase (universal-vs-disney page)
+    fetch('/api/links/universal-vs-disney')
+        .then(response => response.json())
+        .then(links => {
+            const container = document.getElementById('amazon-grid');
+            if (container && links.length > 0) {
+                container.innerHTML = '';
+                links.forEach(link => {
+                    // Only show Amazon products in this grid (filter by category)
+                    if (link.category === 'amazon') {
+                        const item = document.createElement('div');
+                        item.className = 'amazon-item';
+                        const emoji = link.name.includes('Fan') ? '🌀' : '📦';
+                        const desc = link.name.includes('Fan') ? '61,000+ reviews. Hands-free, 5 speeds, 4000mAh battery. Essential for Florida heat.' : 'Essential theme park gear.';
+                        item.innerHTML = `
+                            <span class="amazon-emoji">${emoji}</span>
+                            <div>
+                                <div class="amazon-item-name">${link.name}</div>
+                                <div class="amazon-item-desc">${desc}</div>
+                                <a class="amazon-item-link" href="${link.url}" target="_blank" rel="noopener sponsored" onclick="trackClick(${link.id})">Shop on Amazon →</a>
+                            </div>
+                        `;
+                        container.appendChild(item);
+                    }
+                });
+                if (container.children.length === 0) {
+                    container.innerHTML = '<div class="amazon-item">Check back soon for gear recommendations!</div>';
+                }
+            } else if (container) {
+                container.innerHTML = '<div class="amazon-item">Check back soon for gear recommendations!</div>';
+            }
+        })
+        .catch(error => {
+            console.error('Error loading affiliate links:', error);
+            const container = document.getElementById('amazon-grid');
+            if (container) {
+                container.innerHTML = '<div class="amazon-item">Unable to load recommendations. Please refresh.</div>';
+            }
+        });
 </script>
 
 <div id="google_translate_element"></div>
