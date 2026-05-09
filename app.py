@@ -109,7 +109,9 @@ def robots():
     return app.response_class(robots_content, mimetype='text/plain')
 
 
-# Get random affiliate link
+# ========== AFFILIATE LINK API ENDPOINTS ==========
+
+# Get random affiliate link (original)
 @app.route('/api/get_link')
 def get_link():
     try:
@@ -125,7 +127,7 @@ def get_link():
         return jsonify({'error': str(e)}), 500
 
 
-# Get link by category
+# Get link by category (e.g., /api/get_link/amazon)
 @app.route('/api/get_link/<category>')
 def get_link_by_category(category):
     try:
@@ -134,25 +136,103 @@ def get_link_by_category(category):
         if not links:
             return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'No links found'}), 404
         selected = random.choice(links)
-        # Increment click count
         supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
         return jsonify({'affiliate_link': selected['url'], 'name': selected['name'], 'category': category})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 
-# Get link by page location (most targeted)
-@app.route('/api/get_link/for/<page>')
-def get_link_by_page(page):
+# Get all links for a specific page (e.g., /api/links/family-cruise)
+@app.route('/api/links/<page>')
+def get_links_for_page(page):
     try:
         response = supabase.table('affiliate_links').select('*').eq('page_location', page).eq('is_active', True).execute()
         links = response.data
-        if not links:
-            # Fallback to category-based if no page-specific links
-            return get_link_by_category('general')
-        selected = random.choice(links)
-        supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
-        return jsonify({'affiliate_link': selected['url'], 'name': selected['name'], 'page': page})
+        return jsonify(links)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# Get Amazon links for a specific page
+@app.route('/api/amazon/<page>')
+def get_amazon_links(page):
+    try:
+        response = supabase.table('affiliate_links').select('*').eq('category', 'amazon').eq('page_location', page).eq('is_active', True).execute()
+        links = response.data
+        return jsonify(links)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# Track click on a specific link
+@app.route('/api/click/<int:link_id>', methods=['POST'])
+def track_click(link_id):
+    try:
+        response = supabase.table('affiliate_links').select('clicks').eq('id', link_id).execute()
+        if response.data:
+            current_clicks = response.data[0]['clicks']
+            supabase.table('affiliate_links').update({'clicks': current_clicks + 1}).eq('id', link_id).execute()
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# ========== AI CHAT ENDPOINT ==========
+
+@app.route('/api/voyager-chat', methods=['POST'])
+def voyager_chat():
+    try:
+        data = request.get_json()
+        messages = data.get('messages', [])
+
+        if not messages:
+            return jsonify({'error': 'No messages provided'}), 400
+
+        if not OPENROUTER_API_KEY:
+            return jsonify({'error': 'OpenRouter API key not configured'}), 500
+
+        models = ["openai/gpt-oss-20b:free", "google/gemma-4-31b:free"]
+
+        for model in models:
+            try:
+                resp = requests.post(
+                    url="https://openrouter.ai/api/v1/chat/completions",
+                    headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}", "Content-Type": "application/json"},
+                    json={
+                        "model": model,
+                        "messages": [{"role": "system", "content": VOYAGER_SYSTEM_PROMPT}] + messages,
+                        "max_tokens": 1000,
+                        "temperature": 0.7
+                    },
+                    timeout=15
+                )
+
+                if resp.status_code == 200:
+                    result = resp.json()
+                    reply = result['choices'][0]['message']['content']
+                    
+                    # Try to extract JSON
+                    recommendation = None
+                    json_match = re.search(r'\{[^{}]*"recommendation_ready"[^{}]*\}', reply)
+                    if json_match:
+                        try:
+                            recommendation = json.loads(json_match.group())
+                        except:
+                            pass
+                    
+                    # Clean reply: remove the JSON part
+                    clean_reply = reply
+                    if json_match:
+                        clean_reply = reply.replace(json_match.group(), '').strip()
+                        if not clean_reply:
+                            clean_reply = "Here's your personalized recommendation!"
+                    
+                    return jsonify({'reply': clean_reply, 'recommendation': recommendation})
+            except:
+                continue
+
+        return jsonify({'error': 'All models failed'}), 500
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
