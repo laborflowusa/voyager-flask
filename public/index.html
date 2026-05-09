@@ -38,13 +38,12 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     
     <style>
-        /* FIXED: Better color contrast for accessibility */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background: #f0f4f8;
-            color: #0a1a2a; /* darker for better contrast */
+            color: #0a1a2a;
         }
         .nav-links {
             display: flex;
@@ -61,10 +60,10 @@
             font-size: 14px;
             font-weight: 500;
             transition: color 0.2s;
-            padding: 8px 4px; /* increased tap target */
+            padding: 8px 4px;
         }
         .nav-links a:hover {
-            color: #d15219; /* darker orange for contrast */
+            color: #d15219;
         }
         #google_translate_element {
             position: fixed;
@@ -90,7 +89,6 @@
                 padding: 4px 8px;
             }
         }
-        /* FIXED: Changed div.container to main for landmark */
         main {
             max-width: 1200px;
             margin: 0 auto;
@@ -139,10 +137,10 @@
             font-size: 2.5rem;
             margin-bottom: 15px;
         }
-        /* FIXED: Darker button for better contrast */
+        /* FIXED: Darker button for better contrast (passes WCAG) */
         .cta-button {
             display: inline-block;
-            background: #d15219;
+            background: #8a3010;
             color: white;
             padding: 14px 32px;
             border-radius: 50px;
@@ -152,7 +150,7 @@
             transition: background 0.2s;
         }
         .cta-button:hover {
-            background: #b04515;
+            background: #6a2010;
         }
         .blog-links {
             display: grid;
@@ -170,7 +168,6 @@
             margin: 0 0 10px 0;
             color: #1a4a6f;
         }
-        /* FIXED: Darker link color for contrast */
         .blog-card a {
             color: #c24510;
             text-decoration: none;
@@ -179,7 +176,6 @@
         .blog-card a:hover {
             color: #8a3010;
         }
-        /* FIXED: Better footer link tap targets */
         footer {
             text-align: center;
             padding: 30px;
@@ -200,7 +196,7 @@
         }
         .disclosure {
             font-size: 12px;
-            color: #6a6a6a; /* improved contrast */
+            color: #6a6a6a;
             margin-top: 20px;
             text-align: center;
         }
@@ -229,7 +225,6 @@
     <div class="tagline">Real travel deals. Honest advice. No spam.</div>
 </header>
 
-<!-- FIXED: Changed div to main for landmark -->
 <main>
     <div class="intro">
         <h2>Helping Families & Couples Find the Best Travel Deals Since 2026</h2>
@@ -274,7 +269,6 @@
         <div class="blog-card">
             <h3>🎢 Universal vs. Disney</h3>
             <p>Which park saves you $1,200+? We crunched the numbers for 2026.</p>
-            <!-- FIXED: Unique link text for accessibility/SEO -->
             <a href="/universal-vs-disney.html">Read Universal vs. Disney guide →</a>
         </div>
         <div class="blog-card">
