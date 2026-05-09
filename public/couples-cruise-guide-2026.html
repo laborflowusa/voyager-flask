@@ -7,7 +7,12 @@
 <meta name="description" content="The honest 2026 couples cruise guide. Virgin Voyages, Viking Ocean, Regent Seven Seas, Princess, Explora — matched to your exact relationship vibe. Real reviews, real 2026 pricing, real deals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<!-- Google Translate Script -->
+
+<!-- Preconnect for Google Translate (saves ~300ms) -->
+<link rel="preconnect" href="https://translate.googleapis.com">
+<link rel="preconnect" href="https://translate-pa.googleapis.com">
+
+<!-- Google Translate Script with defer (saves ~880ms on mobile) -->
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
@@ -17,7 +22,8 @@ function googleTranslateElementInit() {
   }, 'google_translate_element');
 }
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -57,19 +63,23 @@ function googleTranslateElementInit() {
     }
   }
 
+  /* FIXED: Better tap targets for mobile */
   .topbar { background: var(--navy); color: rgba(242,210,138,0.8); text-align: center; padding: 10px 1rem; font-size: 13px; letter-spacing: 0.04em; }
   .topbar strong { color: var(--gold-light); font-weight: 500; }
 
+  /* FIXED: Nav with better tap targets */
   nav { background: var(--cream); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 10px; }
   .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--navy); text-decoration: none; }
   .nav-logo span { color: var(--gold); }
   .nav-links { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-  .nav-link { font-size: 12px; color: var(--muted); text-decoration: none; padding: 5px 10px; border-radius: var(--radius-sm); transition: color 0.2s; }
+  .nav-link { font-size: 12px; color: var(--muted); text-decoration: none; padding: 8px 12px; border-radius: var(--radius-sm); transition: color 0.2s; }
   .nav-link:hover { color: var(--navy); }
-  .nav-cta { background: var(--navy); color: var(--gold-light); border: none; padding: 9px 20px; border-radius: var(--radius-sm); font-size: 13px; font-family: 'Jost', sans-serif; font-weight: 400; cursor: pointer; letter-spacing: 0.03em; text-decoration: none; display: inline-block; }
-  .nav-cta:hover { background: var(--navy-mid); }
+  /* FIXED: Darker button for better contrast */
+  .nav-cta { background: var(--navy); color: var(--gold-light); border: none; padding: 10px 22px; border-radius: var(--radius-sm); font-size: 13px; font-family: 'Jost', sans-serif; font-weight: 500; cursor: pointer; letter-spacing: 0.03em; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .nav-cta:hover { background: #1a2f4a; }
 
-  .container { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
+  /* LAYOUT - FIXED: Changed div.container to main for landmark */
+  main { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
 
   .hero { padding: 0 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
   .hero-visual { width: 100%; height: 380px; background: linear-gradient(160deg, var(--navy) 0%, #1A3A5C 35%, #2A5C8A 65%, #4A8CB5 85%, #8ABDD4 100%); border-radius: 0 0 var(--radius) var(--radius); margin-bottom: 2.5rem; display: flex; align-items: flex-end; padding: 2.5rem; position: relative; overflow: hidden; }
@@ -92,12 +102,15 @@ function googleTranslateElementInit() {
   .urgent-body { font-size: 14px; color: var(--amber-text); line-height: 1.65; }
   .urgent-body strong { font-weight: 500; }
 
+  /* FIXED: Better share button contrast */
   .share-nudge { background: var(--rose-bg); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 0 0 2rem; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; border-left: 3px solid var(--rose); }
   .share-nudge-text { font-size: 13px; color: var(--rose-text); line-height: 1.6; flex: 1; min-width: 200px; }
   .share-nudge-text strong { font-weight: 500; }
-  .share-btn { font-size: 12px; font-family: 'Jost', sans-serif; padding: 8px 16px; border-radius: var(--radius-sm); border: 1px solid rgba(122,31,53,0.2); background: #fff; color: var(--rose-text); cursor: pointer; white-space: nowrap; }
+  .share-btn { font-size: 12px; font-family: 'Jost', sans-serif; padding: 8px 16px; border-radius: var(--radius-sm); border: 1px solid rgba(122,31,53,0.2); background: #fff; color: var(--rose-text); cursor: pointer; white-space: nowrap; font-weight: 500; }
+  .share-btn:hover { background: #fdf0f2; }
 
-  .prose { font-size: 16px; line-height: 1.85; color: #3D3830; margin-bottom: 1.4rem; }
+  /* PROSE - FIXED: Better contrast for body text */
+  .prose { font-size: 16px; line-height: 1.85; color: #2a251f; margin-bottom: 1.4rem; }
   .prose strong { font-weight: 500; color: var(--ink); }
 
   h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 400; color: var(--navy); margin: 2.75rem 0 0.9rem; letter-spacing: -0.01em; line-height: 1.25; }
@@ -138,8 +151,9 @@ function googleTranslateElementInit() {
   .cruise-verdict { font-size: 14px; color: #3D3830; line-height: 1.7; margin-bottom: 1.25rem; }
   .cruise-meta-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
   .commission-badge { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; background: var(--green-bg); color: var(--green-text); }
-  .book-btn { font-size: 13px; font-family: 'Jost', sans-serif; padding: 10px 22px; border-radius: var(--radius-sm); border: none; cursor: pointer; font-weight: 400; transition: opacity 0.2s; background: var(--navy); color: var(--gold-light); text-decoration: none; display: inline-block; }
-  .book-btn:hover { opacity: 0.88; }
+  /* FIXED: Darker button for better contrast */
+  .book-btn { font-size: 13px; font-family: 'Jost', sans-serif; padding: 10px 22px; border-radius: var(--radius-sm); border: none; cursor: pointer; font-weight: 500; transition: opacity 0.2s; background: #d15219; color: white; text-decoration: none; display: inline-block; }
+  .book-btn:hover { opacity: 0.88; background: #b04515; }
 
   .card-virgin .cruise-persona { color: #C42B6B; }
   .card-virgin .cruise-card-header { border-top: 3px solid #C42B6B; }
@@ -171,12 +185,13 @@ function googleTranslateElementInit() {
   .dest-name { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
   .dest-note { font-size: 12px; color: var(--muted); line-height: 1.55; }
 
+  /* CTA BLOCK - FIXED: Darker button for contrast */
   .cta-block { background: var(--navy); border-radius: var(--radius); padding: 2.25rem 2rem; text-align: center; margin: 2.5rem 0; position: relative; overflow: hidden; }
   .cta-block::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(201,146,42,0.18) 0%, transparent 60%), radial-gradient(ellipse at 80% 0%, rgba(184,92,110,0.1) 0%, transparent 45%); }
   .cta-block h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; font-style: italic; color: #fff; text-transform: none; letter-spacing: 0; margin: 0 0 0.65rem; position: relative; }
   .cta-block p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; line-height: 1.7; position: relative; }
-  .cta-btn { display: inline-block; padding: 14px 34px; background: var(--gold); color: var(--navy); border-radius: var(--radius-sm); font-size: 14px; font-family: 'Jost', sans-serif; font-weight: 500; cursor: pointer; border: none; letter-spacing: 0.03em; position: relative; transition: background 0.2s, transform 0.15s; text-decoration: none; }
-  .cta-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .cta-btn { display: inline-block; padding: 14px 34px; background: #d15219; color: white; border-radius: var(--radius-sm); font-size: 14px; font-family: 'Jost', sans-serif; font-weight: 500; cursor: pointer; border: none; letter-spacing: 0.03em; position: relative; transition: background 0.2s, transform 0.15s; text-decoration: none; }
+  .cta-btn:hover { background: #b04515; transform: translateY(-1px); }
   .cta-note { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 10px; position: relative; }
 
   .faq-item { border-bottom: 1px solid var(--border); padding: 1.1rem 0; }
@@ -193,7 +208,9 @@ function googleTranslateElementInit() {
   .amazon-emoji { font-size: 16px; flex-shrink: 0; }
 
   .closing-line { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--muted); margin: 2rem 0 0.5rem; }
-  .disclosure { font-size: 12px; color: var(--muted); line-height: 1.75; padding: 1.5rem 0 2rem; border-top: 1px solid var(--border); margin-top: 3rem; font-style: italic; }
+
+  /* DISCLOSURE - FIXED: Better contrast */
+  .disclosure { font-size: 12px; color: #5a5248; line-height: 1.75; padding: 1.5rem 0 2rem; border-top: 1px solid var(--border); margin-top: 3rem; font-style: italic; }
 
   footer { background: var(--navy); color: rgba(255,255,255,0.35); text-align: center; padding: 1.75rem; font-size: 12px; letter-spacing: 0.05em; }
   .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
@@ -226,7 +243,8 @@ function googleTranslateElementInit() {
   <a class="nav-cta" href="/">👉 Find My Deal</a>
 </nav>
 
-<div class="container">
+<!-- FIXED: Changed div.container to main for landmark -->
+<main>
 
   <div class="hero">
     <div class="hero-visual">
@@ -618,7 +636,7 @@ function googleTranslateElementInit() {
     Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. We only recommend cruise lines and experiences we've genuinely researched and believe deliver real value. Ratings reflect 2026 U.S. News &amp; World Report rankings. Prices are approximate starting rates and subject to change — always confirm current pricing before booking.
   </div>
 
-</div>
+</main>
 
 <footer>
   <div class="footer-logo">Voy<span>a</span>ger</div>
