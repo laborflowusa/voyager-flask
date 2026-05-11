@@ -194,7 +194,7 @@ def track_click(link_id):
         return jsonify({'error': str(e)}), 500
 
 
-# ========== AI CHAT ENDPOINT - RULE-BASED FALLBACK (WORKS 100%) ==========
+# ========== AI CHAT ENDPOINT - WITH STATE TRACKING ==========
 
 @app.route('/api/voyager-chat', methods=['POST'])
 def voyager_chat():
@@ -205,26 +205,45 @@ def voyager_chat():
         if not messages:
             return jsonify({'error': 'No messages provided'}), 400
         
-        # Get the last user message
-        last_message = messages[-1]['content'].lower()
+        # Count how many user messages have been sent (excluding the initial bot greeting)
+        user_messages = [m for m in messages if m['role'] == 'user']
+        stage = len(user_messages)
         
-        # Simple rule-based responses that always work
-        if any(word in last_message for word in ["family", "kids", "children", "ages", "old"]):
-            reply = "Great! How many people are in your family, and what are the ages of the kids?"
-        elif any(word in last_message for word in ["budget", "$", "money", "dollar", "spend"]):
-            reply = "What's your approximate budget for the trip? (Example: $3,000)"
-        elif any(word in last_message for word in ["month", "summer", "spring", "fall", "winter", "june", "july", "august", "may", "april", "march", "february", "january", "december", "november", "october", "september"]):
-            reply = "Which travel month works best for your family?"
-        elif any(word in last_message for word in ["harry potter", "thrill", "ride", "coaster", "universal", "disney", "potion", "wand", "magic"]):
-            reply = "Universal Orlando has amazing thrill rides and the Wizarding World of Harry Potter. Would you like me to show you some ticket options and deals?"
-        elif any(word in last_message for word in ["cruise", "ship", "boat", "sailing"]):
-            reply = "Cruises are a great option for families! I can help you find the best family cruise deals. Which departure port works best for you?"
-        elif any(word in last_message for word in ["hotel", "stay", "room", "resort", "accommodation"]):
-            reply = "I can help you find hotels near the parks. What's your nightly budget?"
-        elif "recommendation" in last_message or "deal" in last_message:
-            reply = "Based on what you've shared, I recommend Universal Orlando for the best value. A family of 4 can save over $1,500 compared to Disney. Would you like to see current ticket prices?"
+        # Stage 1: Ask about family size and ages
+        if stage == 0:
+            reply = "Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?"
+        
+        elif stage == 1:
+            reply = "What's your overall budget for the trip?"
+        
+        elif stage == 2:
+            reply = "When are you planning to visit? (Month or season)"
+        
+        elif stage == 3:
+            reply = "What are the must-do experiences or attractions for your family? (e.g., thrill rides, characters, shows, Harry Potter)"
+        
+        elif stage >= 4:
+            # Extract info from previous messages
+            family_info = user_messages[0]['content'] if len(user_messages) > 0 else "your family"
+            budget_info = user_messages[1]['content'] if len(user_messages) > 1 else "a reasonable"
+            month_info = user_messages[2]['content'] if len(user_messages) > 2 else "summer"
+            
+            reply = f"""✨ **Here's your personalized recommendation!** ✨
+
+Based on {family_info} with a budget of {budget_info} traveling in {month_info}, I recommend **Universal Orlando Resort**.
+
+🎢 **Why Universal is your best value:**
+• Save $1,500+ compared to Disney World
+• Epic Universe opens May 22, 2026 (brand new park!)
+• Thrill rides: VelociCoaster, Hagrid's, and more
+• The Wizarding World of Harry Potter
+
+💡 **Best deal right now:** Premier hotels include FREE Unlimited Express Pass — the pass alone is worth more than the hotel room.
+
+👉 Click below to see current ticket prices and exclusive deals!"""
+        
         else:
-            reply = "Thanks for sharing! Let me help you plan your trip. First, could you tell me how many people are in your family and the ages of any children?"
+            reply = "Tell me about your family — how many people and ages of the kids?"
         
         return jsonify({'reply': reply})
         
