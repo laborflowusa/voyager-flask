@@ -6,6 +6,7 @@ import json
 import requests
 import re
 import time
+import traceback
 
 app = Flask(__name__, static_folder='public', static_url_path='')
 
@@ -109,16 +110,24 @@ def robots():
     return app.response_class(robots_content, mimetype='text/plain')
 
 
-# ========== TEST ENDPOINT ==========
+# ========== TEST ENDPOINTS ==========
 
 @app.route('/api/test-db')
 def test_db():
     try:
-        # Try to count rows in affiliate_links table
         response = supabase.table('affiliate_links').select('*', count='exact').execute()
-        return jsonify({'connected': True, 'count': response.count, 'data': response.data[:3]})  # Show first 3 rows
+        return jsonify({'connected': True, 'count': response.count, 'data': response.data[:3]})
     except Exception as e:
         return jsonify({'connected': False, 'error': str(e)}), 500
+
+
+@app.route('/api/test-key')
+def test_key():
+    key = os.environ.get("OPENROUTER_API_KEY")
+    if key:
+        return jsonify({'status': 'ok', 'key_prefix': key[:20] + '...'})
+    else:
+        return jsonify({'status': 'error', 'message': 'OPENROUTER_API_KEY not found'}), 500
 
 
 # ========== AFFILIATE LINK API ENDPOINTS ==========
@@ -132,7 +141,6 @@ def get_link():
         if not links:
             return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'No links found'})
         selected = random.choice(links)
-        # Increment click count
         supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
         return jsonify({'affiliate_link': selected['url'], 'name': selected['name']})
     except Exception as e:
@@ -158,7 +166,6 @@ def get_link_by_category(category):
 @app.route('/api/links/<page>')
 def get_links_for_page(page):
     try:
-        # Try to filter by page_location column
         response = supabase.table('affiliate_links').select('*').eq('page_location', page).eq('is_active', True).execute()
         links = response.data
         return jsonify(links)
@@ -202,12 +209,14 @@ def voyager_chat():
             return jsonify({'error': 'No messages provided'}), 400
 
         if not OPENROUTER_API_KEY:
+            print("ERROR: OPENROUTER_API_KEY is not set")
             return jsonify({'error': 'OpenRouter API key not configured'}), 500
 
         models = ["openai/gpt-oss-20b:free", "google/gemma-4-31b:free"]
 
         for model in models:
             try:
+                print(f"Attempting model: {model}")
                 resp = requests.post(
                     url="https://openrouter.ai/api/v1/chat/completions",
                     headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}", "Content-Type": "application/json"},
@@ -217,8 +226,10 @@ def voyager_chat():
                         "max_tokens": 1000,
                         "temperature": 0.7
                     },
-                    timeout=15
+                    timeout=30
                 )
+
+                print(f"Response status for {model}: {resp.status_code}")
 
                 if resp.status_code == 200:
                     result = resp.json()
@@ -241,12 +252,17 @@ def voyager_chat():
                             clean_reply = "Here's your personalized recommendation!"
                     
                     return jsonify({'reply': clean_reply, 'recommendation': recommendation})
-            except:
+                else:
+                    print(f"Model {model} failed with status {resp.status_code}: {resp.text[:200]}")
+            except Exception as model_error:
+                print(f"Exception with model {model}: {str(model_error)}")
                 continue
 
         return jsonify({'error': 'All models failed'}), 500
 
     except Exception as e:
+        print(f"UNHANDLED EXCEPTION in voyager_chat: {str(e)}")
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 
