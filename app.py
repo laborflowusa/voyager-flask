@@ -6,7 +6,12 @@ import json
 import requests
 import re
 import time
-import traceback
+import logging
+import sys
+
+# Set up logging to see errors in Render
+logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__, static_folder='public', static_url_path='')
 
@@ -18,6 +23,8 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # OpenRouter API key from environment variable
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
+
+logger.info(f"API Key loaded: {'YES' if OPENROUTER_API_KEY else 'NO'}")
 
 # Updated system prompt for families, couples, and solo travelers
 VOYAGER_SYSTEM_PROMPT = """You are Voyager, a travel assistant for families, couples, and solo travelers planning trips to Orlando theme parks, cruises, and romantic getaways.
@@ -46,7 +53,6 @@ def index():
 
 @app.route('/static/<path:filename>')
 def serve_static(filename):
-    """Serve static files (images, CSS, etc.) from the static folder"""
     return send_from_directory('static', filename)
 
 
@@ -70,7 +76,6 @@ def serve_html(filename):
     return app.send_static_file(f'{filename}.html')
 
 
-# Updated Sitemap route
 @app.route('/sitemap.xml')
 def sitemap():
     base_url = "https://voyager-flask.onrender.com"
@@ -101,7 +106,6 @@ def sitemap():
     return app.response_class(sitemap_content, mimetype='application/xml')
 
 
-# Robots.txt route
 @app.route('/robots.txt')
 def robots():
     robots_content = 'User-agent: *\n'
@@ -116,7 +120,7 @@ def robots():
 def test_db():
     try:
         response = supabase.table('affiliate_links').select('*', count='exact').execute()
-        return jsonify({'connected': True, 'count': response.count, 'data': response.data[:3]})
+        return jsonify({'connected': True, 'count': response.count})
     except Exception as e:
         return jsonify({'connected': False, 'error': str(e)}), 500
 
@@ -132,7 +136,6 @@ def test_key():
 
 # ========== AFFILIATE LINK API ENDPOINTS ==========
 
-# Get random affiliate link (original)
 @app.route('/api/get_link')
 def get_link():
     try:
@@ -147,7 +150,6 @@ def get_link():
         return jsonify({'error': str(e)}), 500
 
 
-# Get link by category (e.g., /api/get_link/amazon)
 @app.route('/api/get_link/<category>')
 def get_link_by_category(category):
     try:
@@ -162,29 +164,24 @@ def get_link_by_category(category):
         return jsonify({'error': str(e)}), 500
 
 
-# Get all links for a specific page (e.g., /api/links/family-cruise)
 @app.route('/api/links/<page>')
 def get_links_for_page(page):
     try:
         response = supabase.table('affiliate_links').select('*').eq('page_location', page).eq('is_active', True).execute()
-        links = response.data
-        return jsonify(links)
+        return jsonify(response.data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 
-# Get Amazon links for a specific page
 @app.route('/api/amazon/<page>')
 def get_amazon_links(page):
     try:
         response = supabase.table('affiliate_links').select('*').eq('category', 'amazon').eq('page_location', page).eq('is_active', True).execute()
-        links = response.data
-        return jsonify(links)
+        return jsonify(response.data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 
-# Track click on a specific link
 @app.route('/api/click/<int:link_id>', methods=['POST'])
 def track_click(link_id):
     try:
@@ -209,60 +206,46 @@ def voyager_chat():
             return jsonify({'error': 'No messages provided'}), 400
 
         if not OPENROUTER_API_KEY:
-            print("ERROR: OPENROUTER_API_KEY is not set")
+            logger.error("OPENROUTER_API_KEY not set!")
             return jsonify({'error': 'OpenRouter API key not configured'}), 500
 
-        models = ["openai/gpt-oss-20b:free", "google/gemma-4-31b:free"]
+        # Try a simpler, more reliable free model first
+        models = ["mistralai/mistral-7b-instruct:free", "openai/gpt-oss-20b:free"]
 
         for model in models:
             try:
-                print(f"Attempting model: {model}")
+                logger.info(f"Trying model: {model}")
+                
                 resp = requests.post(
                     url="https://openrouter.ai/api/v1/chat/completions",
                     headers={"Authorization": f"Bearer {OPENROUTER_API_KEY}", "Content-Type": "application/json"},
                     json={
                         "model": model,
                         "messages": [{"role": "system", "content": VOYAGER_SYSTEM_PROMPT}] + messages,
-                        "max_tokens": 1000,
+                        "max_tokens": 500,
                         "temperature": 0.7
                     },
                     timeout=30
                 )
 
-                print(f"Response status for {model}: {resp.status_code}")
+                logger.info(f"Response status for {model}: {resp.status_code}")
 
                 if resp.status_code == 200:
                     result = resp.json()
                     reply = result['choices'][0]['message']['content']
-                    
-                    # Try to extract JSON
-                    recommendation = None
-                    json_match = re.search(r'\{[^{}]*"recommendation_ready"[^{}]*\}', reply)
-                    if json_match:
-                        try:
-                            recommendation = json.loads(json_match.group())
-                        except:
-                            pass
-                    
-                    # Clean reply: remove the JSON part
-                    clean_reply = reply
-                    if json_match:
-                        clean_reply = reply.replace(json_match.group(), '').strip()
-                        if not clean_reply:
-                            clean_reply = "Here's your personalized recommendation!"
-                    
-                    return jsonify({'reply': clean_reply, 'recommendation': recommendation})
+                    logger.info(f"Got reply: {reply[:100]}...")
+                    return jsonify({'reply': reply})
                 else:
-                    print(f"Model {model} failed with status {resp.status_code}: {resp.text[:200]}")
-            except Exception as model_error:
-                print(f"Exception with model {model}: {str(model_error)}")
+                    logger.warning(f"Model {model} returned {resp.status_code}: {resp.text[:200]}")
+                    
+            except Exception as e:
+                logger.error(f"Error with model {model}: {str(e)}")
                 continue
 
-        return jsonify({'error': 'All models failed'}), 500
+        return jsonify({'error': 'All models failed. Please try again.'}), 500
 
     except Exception as e:
-        print(f"UNHANDLED EXCEPTION in voyager_chat: {str(e)}")
-        traceback.print_exc()
+        logger.error(f"Unhandled exception: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
 
