@@ -202,7 +202,6 @@
       width: 0%;
     }
 
-    /* FIXED: Added main landmark - using main element for accessibility */
     .chat-area {
       flex: 1;
       overflow-y: auto;
@@ -298,95 +297,97 @@
       30% { transform: translateY(-6px); opacity: 1; }
     }
 
-    .rec-card {
-      background: linear-gradient(135deg, rgba(244,168,50,0.08), rgba(232,115,74,0.08));
-      border: 1px solid rgba(244,168,50,0.3);
-      border-radius: 16px;
-      padding: 20px;
-      margin-top: 8px;
+    /* FIXED: Beautiful deal card that actually appears */
+    .deal-card {
+      background: linear-gradient(135deg, #1a2a3a, #0d1520);
+      border: 2px solid var(--accent);
+      border-radius: 20px;
+      padding: 24px;
+      margin: 16px 0;
       animation: msgIn 0.5s ease both;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
 
-    .rec-header {
+    .deal-card-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .rec-badge {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 13px;
-      letter-spacing: 2px;
-      color: var(--accent);
-      background: rgba(244,168,50,0.15);
-      padding: 3px 10px;
-      border-radius: 20px;
-    }
-
-    .rec-park {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .rec-summary {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text);
-      margin-bottom: 14px;
-    }
-
-    .rec-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 16px;
     }
 
-    .rec-stat {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 12px;
+    .deal-card-icon {
+      font-size: 32px;
     }
 
-    .rec-stat-label {
+    .deal-card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--accent);
+    }
+
+    .deal-card-park {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .deal-card-summary {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    .deal-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .deal-stat {
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .deal-stat-label {
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 1px;
-      color: var(--muted);
       text-transform: uppercase;
+      color: var(--accent);
       margin-bottom: 4px;
     }
 
-    .rec-stat-value {
+    .deal-stat-value {
       font-size: 13px;
       font-weight: 600;
       color: var(--success);
     }
 
-    .rec-cta {
+    .deal-btn {
       display: block;
       width: 100%;
-      padding: 14px;
+      padding: 16px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
       text-align: center;
       text-decoration: none;
-      letter-spacing: 0.3px;
-      transition: opacity 0.2s, transform 0.1s;
+      border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
     }
 
-    .rec-cta:hover { opacity: 0.9; transform: translateY(-1px); }
-    .rec-cta:active { transform: translateY(0); }
+    .deal-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(244,168,50,0.3);
+    }
 
     .quick-replies {
       display: flex;
@@ -448,7 +449,6 @@
     .input-box::placeholder { color: var(--muted); }
     .input-box:focus { border-color: rgba(244,168,50,0.4); }
 
-    /* FIXED: Added aria-label to send button for accessibility */
     .send-btn {
       width: 46px;
       height: 46px;
@@ -525,7 +525,7 @@
     }
 
     @media (max-width: 600px) {
-      .rec-stats { grid-template-columns: 1fr; }
+      .deal-stats { grid-template-columns: 1fr; }
       .header { padding: 14px 16px; }
       .nav-links { padding: 10px 16px; gap: 12px; }
       .chat-area { padding: 16px 12px; }
@@ -535,7 +535,6 @@
   </style>
 </head>
 <body>
-<!-- FIXED: Added main landmark for accessibility -->
 <main class="app">
   <div class="header">
     <a href="/" class="logo">
@@ -583,7 +582,6 @@
   <div class="input-area">
     <div class="input-row">
       <textarea class="input-box" id="userInput" placeholder="Tell me about your family..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
-      <!-- FIXED: Added aria-label for screen reader accessibility -->
       <button class="send-btn" id="sendBtn" onclick="sendMessage()" aria-label="Send message">
         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </button>
@@ -605,6 +603,7 @@
   const quickReplies = document.getElementById('quickReplies');
 
   let messages = [];
+  let recommendationShown = false;  // FIXED: Prevent duplicate cards
 
   function autoResize(el) {
     el.style.height = 'auto';
@@ -619,6 +618,7 @@
   }
 
   function sendQuick(text) {
+    if (recommendationShown) return;
     userInput.value = text;
     sendMessage();
   }
@@ -666,19 +666,31 @@
     }, 50);
   }
 
-  function showRecommendation(rec) {
-    const link = "https://gyg.me/KBoe1F8i";
+  // FIXED: Beautiful deal card that actually appears and is clickable
+  function showDealCard(rec) {
+    if (recommendationShown) return;
+    recommendationShown = true;
+    
     const card = document.createElement('div');
-    card.className = 'rec-card';
+    card.className = 'deal-card';
     card.innerHTML = `
-      <div class="rec-header"><span class="rec-badge">✦ VOYAGER PICK</span></div>
-      <div class="rec-park">🎯 ${rec.park || 'Universal Orlando Resort'}</div>
-      <div class="rec-summary">${rec.summary || 'Based on your answers, Universal Orlando offers the best value for your family vacation.'}</div>
-      <div class="rec-stats">
-        <div class="rec-stat"><div class="rec-stat-label">Estimated Savings</div><div class="rec-stat-value">${rec.savings || 'Save ~$1,200 vs Disney'}</div></div>
-        <div class="rec-stat"><div class="rec-stat-label">Best Move Right Now</div><div class="rec-stat-value" style="color: var(--accent); font-size:12px;">${rec.best_deal || 'Book early 2026 rates before Epic Universe opens'}</div></div>
+      <div class="deal-card-header">
+        <span class="deal-card-icon">🎟️</span>
+        <span class="deal-card-title">✦ VOYAGER EXCLUSIVE DEAL</span>
       </div>
-      <a href="${link}" target="_blank" rel="noopener" class="rec-cta">🎟️ See Live Deals & Book Now →</a>
+      <div class="deal-card-park">🎯 ${rec.park || 'Universal Orlando Resort'}</div>
+      <div class="deal-card-summary">${rec.summary || 'Based on your answers, this is the best value for your family vacation in 2026.'}</div>
+      <div class="deal-stats">
+        <div class="deal-stat">
+          <div class="deal-stat-label">💰 Estimated Savings</div>
+          <div class="deal-stat-value">${rec.savings || 'Save ~$1,500 vs Disney'}</div>
+        </div>
+        <div class="deal-stat">
+          <div class="deal-stat-label">⚡ Best Deal Right Now</div>
+          <div class="deal-stat-value">${rec.best_deal || 'Premier hotels include FREE Express Pass'}</div>
+        </div>
+      </div>
+      <a href="https://gyg.me/KBoe1F8i" target="_blank" rel="noopener" class="deal-btn">🎟️ SEE LIVE DEALS & BOOK NOW →</a>
     `;
     chatArea.appendChild(card);
     scrollBottom();
@@ -688,8 +700,25 @@
 
   function resetChat() {
     messages = [];
+    recommendationShown = false;
     progressFill.style.width = '0%';
     chatArea.innerHTML = '';
+    // Restore intro card
+    const introCard = document.createElement('div');
+    introCard.className = 'intro-card';
+    introCard.innerHTML = `
+      <div class="intro-icon">✈️</div>
+      <div class="intro-title">Find Your Family's Perfect Deal</div>
+      <div class="intro-sub">Tell me about your family and I'll scan live pricing across Disney, Universal, hotels, and 50+ partners to find your best option.</div>
+      <div class="intro-tags">
+        <span class="intro-tag">🎢 Theme Parks</span>
+        <span class="intro-tag">🏨 Hotels</span>
+        <span class="intro-tag">🚢 Cruises</span>
+        <span class="intro-tag">💰 Real 2026 Prices</span>
+      </div>
+    `;
+    chatArea.appendChild(introCard);
+    
     quickReplies.innerHTML = `
       <button class="quick-btn" onclick="sendQuick('Family of 4 with kids ages 8 and 11')">👨‍👩‍👧‍👦 Family of 4</button>
       <button class="quick-btn" onclick="sendQuick('We want to visit this summer 2026')">☀️ Summer 2026</button>
@@ -703,7 +732,7 @@
 
   async function sendMessage() {
     const text = userInput.value.trim();
-    if (!text || sendBtn.disabled) return;
+    if (!text || sendBtn.disabled || recommendationShown) return;
 
     if (messages.length === 0) quickReplies.innerHTML = '';
 
@@ -731,17 +760,21 @@
         return;
       }
 
-      if (data.recommendation && data.recommendation.recommendation_ready) {
-        addBotMessage("Here's your personalized recommendation:");
-        showRecommendation(data.recommendation);
-      } else {
-        addBotMessage(data.reply);
-      }
-
+      // Add bot reply to chat
+      addBotMessage(data.reply);
       messages.push({ role: 'assistant', content: data.reply });
+
+      // Update progress bar
       const stepCount = messages.filter(m => m.role === 'user').length;
-      const pct = Math.min((stepCount / 6) * 100, 100);
+      const pct = Math.min((stepCount / 5) * 100, 100);
       progressFill.style.width = pct + '%';
+
+      // FIXED: Show the clickable deal card when recommendation is ready
+      if (data.recommendation && data.recommendation.recommendation_ready && !recommendationShown) {
+        setTimeout(() => {
+          showDealCard(data.recommendation);
+        }, 800);
+      }
 
     } catch (error) {
       console.error('Chat error:', error);
@@ -762,4 +795,3 @@
 
 </body>
 </html>
-```
