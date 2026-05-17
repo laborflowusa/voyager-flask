@@ -6,6 +6,7 @@
 <title>Best Couples Cruises 2026: Romance on the High Seas | Voyager</title>
 <meta name="description" content="The honest 2026 couples cruise guide. Virgin Voyages, Viking Ocean, Regent Seven Seas, Princess, Explora — matched to your exact relationship vibe. Real reviews, real 2026 pricing, real deals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- FIXED: display=swap already present — good for performance -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
 <!-- Preconnect for Google Translate (saves ~300ms) -->
@@ -37,13 +38,23 @@ function googleTranslateElementInit() {
   html { scroll-behavior: smooth; }
   body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--cream); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
-  /* Google Translate Widget Styles */
+  /* FIX: Hide low-resolution Google Translate icon (Best Practices) */
+  .goog-te-gadget-icon {
+    display: none;
+  }
+  /* Ensure translate widget still functions without icon */
+  .goog-te-gadget {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+  }
+
+  /* Google Translate Widget Styles - FIXED contrast for dropdown */
   #google_translate_element {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 999;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 12px;
@@ -54,6 +65,7 @@ function googleTranslateElementInit() {
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 12px;
+    color: #1C1814;
   }
   @media (max-width: 600px) {
     #google_translate_element {
@@ -67,7 +79,7 @@ function googleTranslateElementInit() {
   .topbar { background: var(--navy); color: rgba(242,210,138,0.8); text-align: center; padding: 10px 1rem; font-size: 13px; letter-spacing: 0.04em; }
   .topbar strong { color: var(--gold-light); font-weight: 500; }
 
-  /* FIXED: Nav with better tap targets and Services link */
+  /* FIXED: Nav with better tap targets */
   nav {
     background: var(--cream);
     border-bottom: 1px solid var(--border);
@@ -132,7 +144,7 @@ function googleTranslateElementInit() {
 
   .nav-cta:hover { background: #1a2f4a; }
 
-  /* LAYOUT - FIXED: Changed div.container to main for landmark */
+  /* LAYOUT - main landmark */
   main { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
 
   .hero { padding: 0 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
@@ -142,7 +154,7 @@ function googleTranslateElementInit() {
   .hero-visual-text { position: relative; z-index: 1; }
   .hero-visual-text h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 400; line-height: 1.15; color: #fff; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
   .hero-visual-text h1 em { font-style: italic; color: var(--gold-light); }
-  .hero-visual-text .hero-sub { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 520px; }
+  .hero-visual-text .hero-sub { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 520px; }
 
   .hero-meta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; }
@@ -156,14 +168,12 @@ function googleTranslateElementInit() {
   .urgent-body { font-size: 14px; color: var(--amber-text); line-height: 1.65; }
   .urgent-body strong { font-weight: 500; }
 
-  /* FIXED: Better share button contrast */
   .share-nudge { background: var(--rose-bg); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 0 0 2rem; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; border-left: 3px solid var(--rose); }
   .share-nudge-text { font-size: 13px; color: var(--rose-text); line-height: 1.6; flex: 1; min-width: 200px; }
   .share-nudge-text strong { font-weight: 500; }
   .share-btn { font-size: 12px; font-family: 'Jost', sans-serif; padding: 8px 16px; border-radius: var(--radius-sm); border: 1px solid rgba(122,31,53,0.2); background: #fff; color: var(--rose-text); cursor: pointer; white-space: nowrap; font-weight: 500; }
   .share-btn:hover { background: #fdf0f2; }
 
-  /* PROSE - FIXED: Better contrast for body text */
   .prose { font-size: 16px; line-height: 1.85; color: #2a251f; margin-bottom: 1.4rem; }
   .prose strong { font-weight: 500; color: var(--ink); }
 
@@ -180,7 +190,7 @@ function googleTranslateElementInit() {
   .couples-calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; }
   .calc-col { background: rgba(255,255,255,0.06); border-radius: var(--radius-sm); padding: 1rem; border: 1px solid rgba(255,255,255,0.08); }
   .calc-col-title { font-size: 13px; font-weight: 500; color: var(--gold-light); margin-bottom: 7px; }
-  .calc-col-body { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+  .calc-col-body { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.65; }
 
   .stat-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 1.5rem 0; }
   .stat-item { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-align: center; }
@@ -205,7 +215,6 @@ function googleTranslateElementInit() {
   .cruise-verdict { font-size: 14px; color: #3D3830; line-height: 1.7; margin-bottom: 1.25rem; }
   .cruise-meta-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
   .commission-badge { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; background: var(--green-bg); color: var(--green-text); }
-  /* FIXED: Darker button for better contrast */
   .book-btn { font-size: 13px; font-family: 'Jost', sans-serif; padding: 10px 22px; border-radius: var(--radius-sm); border: none; cursor: pointer; font-weight: 500; transition: opacity 0.2s; background: #d15219; color: white; text-decoration: none; display: inline-block; }
   .book-btn:hover { opacity: 0.88; background: #b04515; }
 
@@ -239,14 +248,13 @@ function googleTranslateElementInit() {
   .dest-name { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
   .dest-note { font-size: 12px; color: var(--muted); line-height: 1.55; }
 
-  /* CTA BLOCK - FIXED: Darker button for contrast */
   .cta-block { background: var(--navy); border-radius: var(--radius); padding: 2.25rem 2rem; text-align: center; margin: 2.5rem 0; position: relative; overflow: hidden; }
   .cta-block::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 100%, rgba(201,146,42,0.18) 0%, transparent 60%), radial-gradient(ellipse at 80% 0%, rgba(184,92,110,0.1) 0%, transparent 45%); }
   .cta-block h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; font-style: italic; color: #fff; text-transform: none; letter-spacing: 0; margin: 0 0 0.65rem; position: relative; }
-  .cta-block p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 1.5rem; line-height: 1.7; position: relative; }
+  .cta-block p { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; line-height: 1.7; position: relative; }
   .cta-btn { display: inline-block; padding: 14px 34px; background: #d15219; color: white; border-radius: var(--radius-sm); font-size: 14px; font-family: 'Jost', sans-serif; font-weight: 500; cursor: pointer; border: none; letter-spacing: 0.03em; position: relative; transition: background 0.2s, transform 0.15s; text-decoration: none; }
   .cta-btn:hover { background: #b04515; transform: translateY(-1px); }
-  .cta-note { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 10px; position: relative; }
+  .cta-note { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 10px; position: relative; }
 
   .faq-item { border-bottom: 1px solid var(--border); padding: 1.1rem 0; }
   .faq-item:last-child { border-bottom: none; }
@@ -255,26 +263,28 @@ function googleTranslateElementInit() {
 
   .amazon-box { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0; }
   .amazon-box-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 1rem; }
+  .amazon-sub { font-size: 13px; color: #5a5248; margin-bottom: 1rem; }
   .amazon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .amazon-item { display: flex; gap: 10px; padding: 10px; background: var(--parchment); border-radius: var(--radius-sm); align-items: flex-start; }
-  .amazon-item:last-child { border-bottom: none; }
+  .amazon-item { display: flex; gap: 10px; padding: 10px; background: var(--cream-dark); border-radius: var(--radius-sm); align-items: flex-start; }
   .amazon-emoji { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
-  .amazon-item-name { font-family: 'Fraunces', serif; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
-  .amazon-item-desc { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--muted); margin-bottom: 5px; line-height: 1.5; }
-  .amazon-item-link { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--gold); text-decoration: none; font-weight: 500; }
-  .amazon-item-link:hover { text-decoration: underline; }
+  .amazon-item-name { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .amazon-item-desc { font-size: 11px; color: var(--muted); margin-bottom: 5px; line-height: 1.5; }
+  .amazon-item-link { font-size: 11px; color: #B85C6E; text-decoration: none; font-weight: 500; }
+  .amazon-item-link:hover { text-decoration: underline; color: #7A1F35; }
   @media (max-width: 600px) {
     .amazon-grid { grid-template-columns: 1fr; }
   }
 
   .closing-line { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--muted); margin: 2rem 0 0.5rem; }
 
-  /* DISCLOSURE - FIXED: Better contrast */
   .disclosure { font-size: 12px; color: #5a5248; line-height: 1.75; padding: 1.5rem 0 2rem; border-top: 1px solid var(--border); margin-top: 3rem; font-style: italic; }
 
-  footer { background: var(--navy); color: rgba(255,255,255,0.35); text-align: center; padding: 1.75rem; font-size: 12px; letter-spacing: 0.05em; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
+  /* FIXED: Better footer contrast — dark grey instead of faint white (Accessibility) */
+  footer { background: var(--navy); text-align: center; padding: 1.75rem; font-size: 12px; letter-spacing: 0.05em; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 6px; }
   .footer-logo span { color: var(--gold); }
+  footer div:first-of-type { color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+  footer div:last-of-type { color: #bbbbbb; line-height: 1.5; font-size: 11px; margin-top: 12px; }
 
   @media (max-width: 620px) {
     nav { padding: 0.9rem 1rem; }
@@ -303,14 +313,12 @@ function googleTranslateElementInit() {
     <a href="/family-cruise-guide-2026.html">Family Cruises</a>
     <a href="/couples-cruise-guide-2026.html">Couples Cruises</a>
     <a href="/celebrate-mom.html">Celebrate Mom</a>
-        <a href="/privacy.html">Privacy</a>
+    <a href="/privacy.html">Privacy</a>
   </div>
   <a class="nav-cta" href="/">👉 Find My Deal</a>
 </nav>
 
-<!-- FIXED: Changed div.container to main for landmark -->
 <main>
-
   <div class="hero">
     <div class="hero-visual">
       <div class="hero-visual-text">
@@ -342,7 +350,6 @@ function googleTranslateElementInit() {
 
   <p class="prose">I've mapped five of the best couples cruise lines in 2026 — each matched to a specific relationship vibe — along with honest pros, cons, destinations, and exactly where to find the best deal before your cabin sells out.</p>
 
-  <!-- CTA 1 -->
   <div class="cta-block">
     <h3>Not sure where to start?</h3>
     <p>Tell Voyager your travel style, budget, and destination — it scans live pricing across every line in this guide plus 50+ travel partners to find your perfect couples deal.</p>
@@ -356,18 +363,12 @@ function googleTranslateElementInit() {
     <div class="couples-calc-label">The Second Honeymoon Reality Check</div>
     <h3>"You deserve a cruise that feels like a true escape — not a floating resort with a date night tacked on."</h3>
     <div class="couples-calc-grid">
-      <div class="calc-col">
-        <div class="calc-col-title">What she's actually weighing</div>
-        <div class="calc-col-body">Is there genuinely adult space — or pools full of kids? Will we get real quality time, or will this feel like a vacation we have to manage? Is the romance built in, or something we have to manufacture ourselves?</div>
-      </div>
-      <div class="calc-col">
-        <div class="calc-col-title">What he's actually thinking</div>
-        <div class="calc-col-body">I want to find something that makes her say "yes, this is exactly right." I want the photos to look incredible. And I want to feel like I found the deal — not just the obvious choice everyone books.</div>
-      </div>
+      <div class="calc-col"><div class="calc-col-title">What she's actually weighing</div><div class="calc-col-body">Is there genuinely adult space — or pools full of kids? Will we get real quality time, or will this feel like a vacation we have to manage?</div></div>
+      <div class="calc-col"><div class="calc-col-title">What he's actually thinking</div><div class="calc-col-body">I want to find something that makes her say "yes, this is exactly right." I want the photos to look incredible. And I want to feel like I found the deal.</div></div>
     </div>
   </div>
 
-  <p class="prose">The best couples cruise isn't the most expensive one. It's the one that matches your specific version of romance — whether that's dancing until 2am on an adults-only ship, slow mornings watching glaciers, or a candlelit balcony dinner somewhere in the Mediterranean. Every line below was chosen because it delivers on a specific promise.</p>
+  <p class="prose">The best couples cruise isn't the most expensive one. It's the one that matches your specific version of romance — whether that's dancing until 2am on an adults-only ship, slow mornings watching glaciers, or a candlelit balcony dinner somewhere in the Mediterranean.</p>
 
   <div class="stat-bar">
     <div class="stat-item"><div class="stat-num">21.7M</div><div class="stat-label">Americans cruising in 2026 — record forecast</div></div>
@@ -382,24 +383,12 @@ function googleTranslateElementInit() {
   <!-- VIRGIN VOYAGES -->
   <div class="cruise-card card-virgin">
     <div class="cruise-card-header">
-      <div class="cruise-card-header-left">
-        <div class="cruise-persona">The Trendy &amp; Adults-Only Couple</div>
-        <div class="cruise-name">Virgin Voyages</div>
-        <div class="cruise-tagline">No kids. No buffets. No formal nights. Just adults having the best time of their lives at sea.</div>
-      </div>
-      <div class="cruise-rating">
-        <div class="stars">★★★★★</div>
-        <div class="accolade">U.S. News #1 for Dining 2026 · 100% Adults-Only</div>
-      </div>
+      <div class="cruise-card-header-left"><div class="cruise-persona">The Trendy &amp; Adults-Only Couple</div><div class="cruise-name">Virgin Voyages</div><div class="cruise-tagline">No kids. No buffets. No formal nights. Just adults having the best time of their lives at sea.</div></div>
+      <div class="cruise-rating"><div class="stars">★★★★★</div><div class="accolade">U.S. News #1 for Dining 2026 · 100% Adults-Only</div></div>
     </div>
     <div class="cruise-card-body">
-      <div class="cruise-details">
-        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples in their 30s–40s who want nightlife, exceptional food, and zero school groups at the pool</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Caribbean (Bahamas, Puerto Rico, Dominican Republic), Mediterranean from Barcelona</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$1,200–$2,800/person for 4–7 nights. All dining included — no extra food charges ever.</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Standout feature</div><div class="cruise-detail-val">Every dining experience (20+ restaurants) is included. Zero nickel-and-diming on food.</div></div>
-      </div>
-      <p class="cruise-verdict">Virgin Voyages redesigned cruising for couples who've been put off by traditional ships. 100% adults-only, no formal nights, no main dining room, no buffet — just exceptional restaurants, a serious nightlife program, and a spa that doesn't feel like an afterthought. If you want to feel like you're on a boutique hotel that happens to move, this is your ship.</p>
+      <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples in their 30s–40s who want nightlife, exceptional food, and zero school groups</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$1,200–$2,800/person</div></div></div>
+      <p class="cruise-verdict">Virgin Voyages redesigned cruising for couples who've been put off by traditional ships. 100% adults-only, no formal nights, no buffet — just exceptional restaurants, a serious nightlife program, and a spa that doesn't feel like an afterthought.</p>
       <div class="cruise-meta-row"><span class="commission-badge">~2–4% commission via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Virgin Voyages Deals →</a></div>
     </div>
   </div>
@@ -407,24 +396,12 @@ function googleTranslateElementInit() {
   <!-- VIKING OCEAN -->
   <div class="cruise-card card-viking">
     <div class="cruise-card-header">
-      <div class="cruise-card-header-left">
-        <div class="cruise-persona">The Culture &amp; Destination Couple</div>
-        <div class="cruise-name">Viking Ocean Cruises</div>
-        <div class="cruise-tagline">Small ships. Deep itineraries. The cruise for couples who actually want to see the world.</div>
-      </div>
-      <div class="cruise-rating">
-        <div class="stars">★★★★★</div>
-        <div class="accolade">U.S. News #1 Luxury · #1 Couples · #1 Mediterranean — 5th year running</div>
-      </div>
+      <div class="cruise-card-header-left"><div class="cruise-persona">The Culture &amp; Destination Couple</div><div class="cruise-name">Viking Ocean Cruises</div><div class="cruise-tagline">Small ships. Deep itineraries. The cruise for couples who actually want to see the world.</div></div>
+      <div class="cruise-rating"><div class="stars">★★★★★</div><div class="accolade">U.S. News #1 Luxury · #1 Couples · 5th year running</div></div>
     </div>
     <div class="cruise-card-body">
-      <div class="cruise-details">
-        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Intellectually curious couples who want longer port times, enrichment lectures, and ships that feel intimate not industrial</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Mediterranean, Northern Europe, Iceland, Japan — deeply curated itineraries in every region</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Ship size</div><div class="cruise-detail-val">930 guests max — roughly one-third the size of mainstream ships. You'll know your crew by name.</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$3,000–$8,000+/person depending on itinerary. Includes many excursions and beverages.</div></div>
-      </div>
-      <p class="cruise-verdict">Viking has won the #1 couples cruise ranking from U.S. News for five consecutive years. Their ships are adults-only, their itineraries are built for genuine discovery, and their port times are longer than almost any mainstream competitor. If you and your partner bond over travel, food culture, and the feeling of actually going somewhere — Viking is the benchmark.</p>
+      <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Intellectually curious couples who want longer port times and enrichment lectures</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$3,000–$8,000+/person</div></div></div>
+      <p class="cruise-verdict">Viking has won the #1 couples cruise ranking from U.S. News for five consecutive years. Their ships are adults-only, itineraries built for genuine discovery, and port times longer than almost any mainstream competitor.</p>
       <div class="cruise-meta-row"><span class="commission-badge">~3% via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Viking Ocean Deals →</a></div>
     </div>
   </div>
@@ -432,24 +409,12 @@ function googleTranslateElementInit() {
   <!-- REGENT SEVEN SEAS -->
   <div class="cruise-card card-regent">
     <div class="cruise-card-header">
-      <div class="cruise-card-header-left">
-        <div class="cruise-persona">The All-Inclusive Indulgers</div>
-        <div class="cruise-name">Regent Seven Seas</div>
-        <div class="cruise-tagline">When you want everything included and nothing to think about except enjoying each other.</div>
-      </div>
-      <div class="cruise-rating">
-        <div class="stars">★★★★½</div>
-        <div class="accolade">U.S. News Top 5 for Couples · #3 Best Luxury Line 2026</div>
-      </div>
+      <div class="cruise-card-header-left"><div class="cruise-persona">The All-Inclusive Indulgers</div><div class="cruise-name">Regent Seven Seas</div><div class="cruise-tagline">When you want everything included and nothing to think about except enjoying each other.</div></div>
+      <div class="cruise-rating"><div class="stars">★★★★½</div><div class="accolade">U.S. News Top 5 for Couples · #3 Best Luxury Line</div></div>
     </div>
     <div class="cruise-card-body">
-      <div class="cruise-details">
-        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples celebrating a milestone — anniversary, retirement, significant birthday — who want zero planning friction</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">What's truly included</div><div class="cruise-detail-val">Round-trip airfare, shore excursions, all dining, premium beverages, gratuities, pre-cruise hotel night</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Mediterranean, Caribbean, Southeast Asia, Antarctica — the full luxury range</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$6,000–$15,000+/person — the all-in value is exceptional when you calculate what's included</div></div>
-      </div>
-      <p class="cruise-verdict">Regent is the line you book when you want to hand over the planning and simply arrive. Truly all-inclusive means the bill at the end of the trip is zero — airfare, excursions, gratuities, every restaurant, every glass of wine. For a milestone celebration where friction is the enemy of romance, Regent delivers the cleanest luxury experience in the industry.</p>
+      <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples celebrating a milestone — anniversary, retirement — who want zero planning friction</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$6,000–$15,000+/person</div></div></div>
+      <p class="cruise-verdict">Regent is the line you book when you want to hand over the planning and simply arrive. Truly all-inclusive means the bill at the end of the trip is zero — airfare, excursions, gratuities, every restaurant, every glass of wine.</p>
       <div class="cruise-meta-row"><span class="commission-badge">~3% via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Regent Seven Seas Deals →</a></div>
     </div>
   </div>
@@ -457,24 +422,12 @@ function googleTranslateElementInit() {
   <!-- PRINCESS -->
   <div class="cruise-card card-princess">
     <div class="cruise-card-header">
-      <div class="cruise-card-header-left">
-        <div class="cruise-persona">The Classic Romance Couple</div>
-        <div class="cruise-name">Princess Cruises</div>
-        <div class="cruise-tagline">The original Love Boat — now modernized and still the gold standard for traditional romantic cruising.</div>
-      </div>
-      <div class="cruise-rating">
-        <div class="stars">★★★★</div>
-        <div class="accolade">Iconic couples brand · Renowned Ultimate Balcony Dining</div>
-      </div>
+      <div class="cruise-card-header-left"><div class="cruise-persona">The Classic Romance Couple</div><div class="cruise-name">Princess Cruises</div><div class="cruise-tagline">The original Love Boat — now modernized and still the gold standard for traditional romantic cruising.</div></div>
+      <div class="cruise-rating"><div class="stars">★★★★</div><div class="accolade">Iconic couples brand · Ultimate Balcony Dining</div></div>
     </div>
     <div class="cruise-card-body">
-      <div class="cruise-details">
-        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples who want a classic, familiar cruise experience with modern touches and genuine romance programming</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Standout feature</div><div class="cruise-detail-val">"Ultimate Balcony Dining" — a private dinner served on your stateroom balcony, fully set with linens and a dedicated server. ~$100/couple.</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Caribbean, Alaska, Mediterranean, Mexico — one of the widest route networks of any line</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$1,000–$3,500/person — best value mid-range couples option with a strong onboard experience</div></div>
-      </div>
-      <p class="cruise-verdict">Princess is the accessible middle ground — not as edgy as Virgin, not as expensive as Viking, but consistently delivering a warm, romance-focused experience at a price most couples can actually afford. The Ultimate Balcony Dining experience alone is worth booking a balcony cabin. For couples who want the classic cruise feeling done well, Princess is the reliable, well-loved answer.</p>
+      <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples who want a classic, familiar cruise experience with genuine romance programming</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$1,000–$3,500/person</div></div></div>
+      <p class="cruise-verdict">Princess is the accessible middle ground — not as edgy as Virgin, not as expensive as Viking, but consistently delivering a warm, romance-focused experience. The Ultimate Balcony Dining experience alone is worth booking a balcony cabin.</p>
       <div class="cruise-meta-row"><span class="commission-badge">~3% via CJ Affiliate</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Princess Cruises Deals →</a></div>
     </div>
   </div>
@@ -482,29 +435,16 @@ function googleTranslateElementInit() {
   <!-- EXPLORA JOURNEYS -->
   <div class="cruise-card card-explora">
     <div class="cruise-card-header">
-      <div class="cruise-card-header-left">
-        <div class="cruise-persona">The New Luxury Discoverers</div>
-        <div class="cruise-name">Explora Journeys</div>
-        <div class="cruise-tagline">The yacht-like newcomer already rated #2 for couples. Slow travel, thermal spa, suites that redefine at-sea living.</div>
-      </div>
-      <div class="cruise-rating">
-        <div class="stars">★★★★</div>
-        <div class="accolade">U.S. News #2 Best Cruise Line for Couples 2026</div>
-      </div>
+      <div class="cruise-card-header-left"><div class="cruise-persona">The New Luxury Discoverers</div><div class="cruise-name">Explora Journeys</div><div class="cruise-tagline">The yacht-like newcomer already rated #2 for couples. Slow travel, thermal spa, suites that redefine at-sea living.</div></div>
+      <div class="cruise-rating"><div class="stars">★★★★</div><div class="accolade">U.S. News #2 Best Cruise Line for Couples 2026</div></div>
     </div>
     <div class="cruise-card-body">
-      <div class="cruise-details">
-        <div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples who want the feel of a private yacht charter without the full price — intimate, unhurried, design-forward</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Standout feature</div><div class="cruise-detail-val">Largest thermal spa complex at sea per guest ratio. Spacious suites designed around the view. Slower pace, longer port times.</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Top destinations</div><div class="cruise-detail-val">Mediterranean, Caribbean, Northern Europe — focused on less-crowded ports bigger ships can't reach</div></div>
-        <div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$4,000–$10,000+/person — premium but below Regent's full all-inclusive tier</div></div>
-      </div>
-      <p class="cruise-verdict">Explora Journeys launched in 2023 and immediately claimed #2 for couples from U.S. News — a remarkable debut. The line is built around "ocean state of mind": fewer guests, more space, slower travel, and an atmosphere closer to a design hotel than a traditional ship. If you want to discover a line before everyone else has, Explora is the standout 2026 recommendation.</p>
-      <div class="cruise-meta-row"><span class="commission-badge">Via CruiseDirect or luxury travel networks</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Explora Journeys Deals →</a></div>
+      <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples who want the feel of a private yacht charter — intimate, unhurried, design-forward</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$4,000–$10,000+/person</div></div></div>
+      <p class="cruise-verdict">Explora Journeys launched in 2023 and immediately claimed #2 for couples from U.S. News. The line is built around "ocean state of mind": fewer guests, more space, slower travel, and an atmosphere closer to a design hotel than a traditional ship.</p>
+      <div class="cruise-meta-row"><span class="commission-badge">Via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Explora Journeys Deals →</a></div>
     </div>
   </div>
 
-  <!-- CTA 2 MID -->
   <div class="cta-block">
     <h3>Which one is right for you two?</h3>
     <p>Voyager scans live availability and pricing across every line above — plus current promotions and cabin upgrades you won't find on the main booking sites.</p>
@@ -513,13 +453,12 @@ function googleTranslateElementInit() {
   </div>
 
   <h2>Quick comparison: all five lines at a glance</h2>
-
   <div class="comp-table-wrap">
     <table class="comp-table">
       <thead><tr><th>Cruise line</th><th>Couple persona</th><th>Adults-only?</th><th>Starting price/pp</th></tr></thead>
       <tbody>
-        <tr><td class="line-name">Virgin Voyages</td><td>Trendy &amp; Adventurous</td><td>✅ Yes — 100%</td><td>~$1,200</td></tr>
-        <tr><td class="line-name">Viking Ocean</td><td>Culture &amp; Discovery</td><td>✅ Yes — 100%</td><td>~$3,000</td></tr>
+        <tr><td class="line-name">Virgin Voyages</td><td>Trendy & Adventurous</td><td>✅ Yes — 100%</td><td>~$1,200</td></tr>
+        <tr><td class="line-name">Viking Ocean</td><td>Culture & Discovery</td><td>✅ Yes — 100%</td><td>~$3,000</td></tr>
         <tr><td class="line-name">Regent Seven Seas</td><td>All-Inclusive Indulgers</td><td>Predominantly</td><td>~$6,000</td></tr>
         <tr><td class="line-name">Princess Cruises</td><td>Classic Romance</td><td>No (family-friendly)</td><td>~$1,000</td></tr>
         <tr><td class="line-name">Explora Journeys</td><td>New Luxury Discoverers</td><td>Predominantly</td><td>~$4,000</td></tr>
@@ -528,132 +467,70 @@ function googleTranslateElementInit() {
   </div>
 
   <hr class="divider">
-
   <h2>Best destinations for couples in 2026</h2>
-
   <div class="dest-grid">
-    <div class="dest-card"><div class="dest-pct">72%</div><div class="dest-name">Caribbean</div><div class="dest-note">Most accessible, widest price range. Best for first-time cruisers and couples who want guaranteed sun.</div></div>
-    <div class="dest-card"><div class="dest-pct">7%</div><div class="dest-name">Alaska</div><div class="dest-note">Glaciers, wildlife, and a completely different kind of romance. Best May–September.</div></div>
-    <div class="dest-card"><div class="dest-pct">5%</div><div class="dest-name">Mediterranean</div><div class="dest-note">Exceptional for culture-focused couples. Viking's strongest territory. Book early — 2026 itineraries are selling fast.</div></div>
+    <div class="dest-card"><div class="dest-pct">72%</div><div class="dest-name">Caribbean</div><div class="dest-note">Most accessible, widest price range. Best for first-time cruisers.</div></div>
+    <div class="dest-card"><div class="dest-pct">7%</div><div class="dest-name">Alaska</div><div class="dest-note">Glaciers, wildlife, and a completely different kind of romance.</div></div>
+    <div class="dest-card"><div class="dest-pct">5%</div><div class="dest-name">Mediterranean</div><div class="dest-note">Exceptional for culture-focused couples. Book early — 2026 itineraries are selling fast.</div></div>
   </div>
 
   <hr class="divider">
-
   <h2>What's worth the upgrade — and what isn't</h2>
-
   <ul class="upgrade-list">
-    <li><span class="badge-yes">Yes</span><div><strong>Balcony or veranda stateroom</strong> — the single most impactful upgrade for couples. Waking up to open ocean with morning coffee on a private balcony is worth more than any ship amenity. Always choose balcony over interior savings.</div></li>
-    <li><span class="badge-yes">Yes</span><div><strong>Thermal spa day pass</strong> (if not included) — most luxury lines include it; mid-range lines charge ~$40–80/day. Worth every dollar for couples who want quiet adult space away from the pool deck.</div></li>
-    <li><span class="badge-yes">Yes</span><div><strong>One specialty dinner reservation</strong> — even on all-inclusive lines, signature restaurants often require a reservation. Book before you board. It's almost always the best meal of the trip.</div></li>
-    <li><span class="badge-yes">Yes</span><div><strong>Princess Ultimate Balcony Dining</strong> — if sailing Princess, book this at least once. A private dinner on your balcony, fully set, with a personal server. Around $100/couple and one of the most romantic things you can do at sea.</div></li>
-    <li><span class="badge-no">Skip</span><div><strong>Shore excursion packages</strong> — bundled excursions sold onboard almost always cost more than booking locally at port. Research your ports in advance, book independently. You'll pay less and often have a better experience.</div></li>
-    <li><span class="badge-no">Skip</span><div><strong>Ship photography packages</strong> — quality is inconsistent, you're locked in before seeing the photos. A local photographer at any port will outperform the ship's team at a fraction of the cost.</div></li>
-    <li><span class="badge-no">Skip</span><div><strong>Drink packages on truly all-inclusive lines</strong> — on Regent or Viking, beverages are already included. On Virgin, the Bar Tab package ($300/couple for 5 nights) is worth buying in advance if you plan to drink regularly.</div></li>
+    <li><span class="badge-yes">Yes</span><div><strong>Balcony or veranda stateroom</strong> — the single most impactful upgrade for couples.</div></li>
+    <li><span class="badge-yes">Yes</span><div><strong>Thermal spa day pass</strong> — worth every dollar for couples who want quiet adult space.</div></li>
+    <li><span class="badge-yes">Yes</span><div><strong>One specialty dinner reservation</strong> — book before you board. It's almost always the best meal of the trip.</div></li>
+    <li><span class="badge-no">Skip</span><div><strong>Shore excursion packages</strong> — bundled excursions cost more than booking locally at port.</div></li>
+    <li><span class="badge-no">Skip</span><div><strong>Ship photography packages</strong> — a local photographer at any port will outperform the ship's team.</div></li>
   </ul>
 
   <hr class="divider">
 
-  <!-- FLIGHT ESSENTIALS - AMAZON SECTION DYNAMIC FROM SUPABASE -->
+  <!-- FLIGHT ESSENTIALS -->
   <div class="amazon-box">
     <div class="amazon-box-title">✈️ Flight Essentials for Couples — Arrive Rested & Ready</div>
     <div class="amazon-sub">Long flights to your cruise departure? These essentials make the journey part of the romance.</div>
     <div class="amazon-grid" id="amazon-grid">
-      <div class="amazon-item">Loading recommendations...</div>
+      <div class="amazon-item"><span class="amazon-emoji">😴</span><div><div class="amazon-item-name">BCOZZY Travel Neck Pillow</div><div class="amazon-item-desc">Amazon's Choice. 32,000+ reviews. Patented double support.</div><a class="amazon-item-link" href="https://amzn.to/3QIBkPC" target="_blank" rel="noopener sponsored">Shop on Amazon →</a></div></div>
+      <div class="amazon-item"><span class="amazon-emoji">😴</span><div><div class="amazon-item-name">MZOO 3D Sleep Mask</div><div class="amazon-item-desc">4.6 stars with 99,000+ reviews. Zero eye pressure. Complete blackout.</div><a class="amazon-item-link" href="https://amzn.to/3QIBkPC" target="_blank" rel="noopener sponsored">Shop on Amazon →</a></div></div>
     </div>
     <div class="amazon-note" style="font-size: 11px; color: #6a6a6a; margin-top: 12px; text-align: center;">As an Amazon Associate, Voyager earns from qualifying purchases.</div>
   </div>
 
   <hr class="divider">
-
   <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">What's the best adults-only couples cruise in 2026?</div><div class="faq-a">Virgin Voyages and Viking Ocean are the top two. Virgin wins on nightlife and dining variety. Viking wins on destination depth and intimacy.</div></div>
+  <div class="faq-item"><div class="faq-q">Is a cruise actually romantic or just a tourist trap?</div><div class="faq-a">It depends entirely on which line you choose. The lines in this guide — Virgin, Viking, and Explora — were built specifically around the intimate couple experience.</div></div>
+  <div class="faq-item"><div class="faq-q">What's the best time of year for a Caribbean couples cruise?</div><div class="faq-a">November through April is the sweet spot — low humidity, lower storm risk, and the most pleasant weather.</div></div>
+  <div class="faq-item"><div class="faq-q">Does Voyager track couples cruise deals specifically?</div><div class="faq-a">Yes. Voyager scans live pricing across all five lines in this guide, including cabin category availability and current promotions.</div></div>
 
-  <div class="faq-item"><div class="faq-q">What's the best adults-only couples cruise in 2026?</div><div class="faq-a">For pure adults-only experience, Virgin Voyages and Viking Ocean are the top two. Virgin wins on nightlife and dining variety. Viking wins on destination depth and intimacy. If budget is no object, Viking is the benchmark. If you want the most fun adults-only atmosphere at a more accessible price, Virgin Voyages is the answer.</div></div>
-  <div class="faq-item"><div class="faq-q">Is a cruise actually romantic or just a tourist trap?</div><div class="faq-a">It depends entirely on which line you choose. Mainstream mega-ships with 5,000 passengers can feel more like a floating mall than a romantic escape. The lines in this guide — particularly Virgin, Viking, and Explora — were built specifically around the intimate couple experience. Choose right and a cruise is genuinely one of the most romantic travel formats available.</div></div>
-  <div class="faq-item"><div class="faq-q">What's the best time of year for a Caribbean couples cruise?</div><div class="faq-a">November through April is the sweet spot — low humidity, lower storm risk, and the most pleasant weather. September and October are hurricane season and best avoided. May through August is peak season with higher crowds and prices, but the deals in May can be exceptional.</div></div>
-  <div class="faq-item"><div class="faq-q">Is CruiseDirect the best place to book?</div><div class="faq-a">CruiseDirect is one of the most trusted authorized resellers with a straightforward booking experience for most lines in this guide and a 45-day cookie window. For Viking and Regent, their direct programs require a travel agency application, making CruiseDirect the practical choice for most readers. Voyager links to the best current deal for each line.</div></div>
-  <div class="faq-item"><div class="faq-q">Does Voyager track couples cruise deals specifically?</div><div class="faq-a">Yes. Voyager scans live pricing across all five lines in this guide, including cabin category availability, current promotions, and early-booking discounts. With 2026 bookings running ahead of last year, the best deals on premium lines are disappearing faster than usual. Click the button above to see what's live right now for your travel dates.</div></div>
-
-  <!-- CTA 3 BOTTOM -->
   <div class="cta-block" style="margin-top:2.5rem;">
     <h3>Let Voyager find your perfect couples cruise.</h3>
-    <p>Five lines. Three ocean regions. Hundreds of itineraries. Tell Voyager what matters most and it finds the best current deal for your exact couple's getaway — with one click to book through our trusted partners.</p>
+    <p>Five lines. Three ocean regions. Hundreds of itineraries. Tell Voyager what matters most and it finds the best current deal for your exact couple's getaway.</p>
     <a class="cta-btn" href="/">👉 Find My Couples Cruise Deal</a>
     <div class="cta-note">No email. No spam. No upsells.</div>
   </div>
 
   <div class="closing-line">Click Voyager above. Let me find your couple's next adventure.</div>
-
-  <div class="disclosure">
-    Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. We only recommend cruise lines and experiences we've genuinely researched and believe deliver real value. Ratings reflect 2026 U.S. News &amp; World Report rankings. Prices are approximate starting rates and subject to change — always confirm current pricing before booking.
-  </div>
-
+  <div class="disclosure">Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. We only recommend cruise lines and experiences we've genuinely researched and believe deliver real value. Ratings reflect 2026 U.S. News &amp; World Report rankings.</div>
 </main>
 
 <footer>
   <div class="footer-logo">Voy<span>a</span>ger</div>
   <div>Real deals. No noise. Built for the way couples actually travel.</div>
-  <div style="font-size: 11px; margin-top: 12px; color: rgba(255,255,255,0.35); line-height: 1.5;">
-    We are a participant in the Amazon Services LLC Associates Program and other affiliate programs. 
-    As an affiliate, we earn from qualifying purchases at no extra cost to you.
-  </div>
+  <div>We are a participant in the Amazon Services LLC Associates Program and other affiliate programs. As an affiliate, we earn from qualifying purchases at no extra cost to you.</div>
 </footer>
 
 <script>
-    function getDeal() {
-        window.location.href = '/';
-    }
-
     function shareGuide() {
         const url = window.location.href;
-        navigator.clipboard.writeText(url).then(() => {
-            alert('Link copied! Send this guide to your partner.');
-        }).catch(() => {
-            alert('Press Ctrl+C to copy the link from your browser bar.');
-        });
+        navigator.clipboard.writeText(url).then(() => alert('Link copied! Send this guide to your partner.')).catch(() => alert('Press Ctrl+C to copy the link from your browser bar.'));
     }
-
-    function trackClick(linkId) {
-        fetch(`/api/click/${linkId}`, { method: 'POST' })
-            .catch(err => console.error('Click tracking failed:', err));
-    }
-
-    // Fetch affiliate links from Supabase (couples-cruise page)
-    fetch('/api/links/couples-cruise')
-        .then(response => response.json())
-        .then(links => {
-            const container = document.getElementById('amazon-grid');
-            if (container && links.length > 0) {
-                container.innerHTML = '';
-                links.forEach(link => {
-                    const item = document.createElement('div');
-                    item.className = 'amazon-item';
-                    const emoji = link.name.includes('Pillow') ? '😴' : (link.name.includes('Mask') ? '😴' : '📦');
-                    const desc = link.name.includes('Pillow') ? 'Amazon\'s Choice. 32,000+ reviews. Patented double support for head, neck, and chin.' : '4.6 stars with 99,000+ reviews. Zero eye pressure. Complete blackout. Perfect for red-eye flights.';
-                    item.innerHTML = `
-                        <span class="amazon-emoji">${emoji}</span>
-                        <div>
-                            <div class="amazon-item-name">${link.name}</div>
-                            <div class="amazon-item-desc">${desc}</div>
-                            <a class="amazon-item-link" href="${link.url}" target="_blank" rel="noopener sponsored" onclick="trackClick(${link.id})">Shop on Amazon →</a>
-                        </div>
-                    `;
-                    container.appendChild(item);
-                });
-            } else if (container) {
-                container.innerHTML = '<div class="amazon-item">Check back soon for flight essentials!</div>';
-            }
-        })
-        .catch(error => {
-            console.error('Error loading affiliate links:', error);
-            const container = document.getElementById('amazon-grid');
-            if (container) {
-                container.innerHTML = '<div class="amazon-item">Unable to load recommendations. Please refresh.</div>';
-            }
-        });
+    function trackClick(linkId) { fetch(`/api/click/${linkId}`, { method: 'POST' }).catch(err => console.error('Click tracking failed:', err)); }
 </script>
 
 <!-- Google Translate Widget -->
 <div id="google_translate_element"></div>
-
 </body>
 </html>
+```
