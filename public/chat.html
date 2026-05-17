@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Voyager — Find My Deal</title>
+  <title>Voyager — Find My Deal | AI Travel Assistant</title>
   <meta name="verification" content="9f524bb0698e027c6a06487ed314bd2f" />
-  <meta name="robots" content="noindex, nofollow" />
+  
+  <!-- FIXED: SEO - removed noindex to allow indexing, added meta description -->
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Voyager AI Deal Finder — Your personal travel assistant. Get instant recommendations for Disney, Universal, cruises, hotels, and destinations. Free, no sign-up required, real 2026 pricing." />
+  
   <!-- Google Translate Script -->
   <script type="text/javascript">
   function googleTranslateElementInit() {
@@ -40,6 +44,15 @@
       color: var(--text);
       font-family: 'DM Sans', sans-serif;
       overflow: hidden;
+    }
+
+    /* FIXED: Hide low-res Google Translate icon (Best Practices) */
+    .goog-te-gadget-icon {
+      display: none;
+    }
+    .goog-te-gadget {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
     }
 
     body::before {
@@ -153,7 +166,7 @@
       bottom: 20px;
       right: 20px;
       z-index: 999;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.75);
       padding: 8px 12px;
       border-radius: 8px;
       font-size: 12px;
@@ -164,6 +177,7 @@
       padding: 4px 8px;
       border-radius: 4px;
       font-size: 12px;
+      color: #1a1a2e;
     }
     @media (max-width: 600px) {
       #google_translate_element {
@@ -188,6 +202,7 @@
       width: 0%;
     }
 
+    /* FIXED: Added main landmark - using main element for accessibility */
     .chat-area {
       flex: 1;
       overflow-y: auto;
@@ -433,6 +448,7 @@
     .input-box::placeholder { color: var(--muted); }
     .input-box:focus { border-color: rgba(244,168,50,0.4); }
 
+    /* FIXED: Added aria-label to send button for accessibility */
     .send-btn {
       width: 46px;
       height: 46px;
@@ -498,7 +514,6 @@
       color: var(--muted);
     }
 
-    /* Chat footer disclosure */
     .chat-footer {
       padding: 10px 20px;
       text-align: center;
@@ -520,7 +535,8 @@
   </style>
 </head>
 <body>
-<div class="app">
+<!-- FIXED: Added main landmark for accessibility -->
+<main class="app">
   <div class="header">
     <a href="/" class="logo">
       <div class="logo-icon">🧭</div>
@@ -536,7 +552,7 @@
     <a href="/family-cruise-guide-2026.html">Family Cruise Guide</a>
     <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
     <a href="/celebrate-mom.html">Celebrate Mom</a>
-        <a href="/privacy.html">Privacy</a>
+    <a href="/privacy.html">Privacy</a>
   </div>
 
   <div class="progress-bar">
@@ -567,7 +583,8 @@
   <div class="input-area">
     <div class="input-row">
       <textarea class="input-box" id="userInput" placeholder="Tell me about your family..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
-      <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+      <!-- FIXED: Added aria-label for screen reader accessibility -->
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()" aria-label="Send message">
         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </button>
     </div>
@@ -578,7 +595,7 @@
     We are a participant in the Amazon Services LLC Associates Program and other affiliate programs. 
     As an affiliate, we earn from qualifying purchases at no extra cost to you.
   </div>
-</div>
+</main>
 
 <script>
   const chatArea = document.getElementById('chatArea');
@@ -617,9 +634,15 @@
   function addUserMessage(text) {
     const msg = document.createElement('div');
     msg.className = 'message user';
-    msg.innerHTML = `<div class="avatar user">👤</div><div class="bubble">${text}</div>`;
+    msg.innerHTML = `<div class="avatar user">👤</div><div class="bubble">${escapeHtml(text)}</div>`;
     chatArea.appendChild(msg);
     scrollBottom();
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
   }
 
   function showTyping() {
@@ -739,3 +762,4 @@
 
 </body>
 </html>
+```
