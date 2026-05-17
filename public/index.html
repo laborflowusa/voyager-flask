@@ -38,6 +38,23 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     
     <style>
+        /* Skip link CSS */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #10b981;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+            font-weight: 600;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
@@ -137,7 +154,6 @@
             font-size: 2.5rem;
             margin-bottom: 15px;
         }
-        /* FIXED: Darker button for better contrast (passes WCAG) */
         .cta-button {
             display: inline-block;
             background: #8a3010;
@@ -210,6 +226,10 @@
 </head>
 <body>
 
+<!-- SKIP LINK FIX (Issue #4) -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- HEADING SEQUENCE FIX (Issue #3) - Added proper H1/H2 hierarchy -->
 <nav class="nav-links" aria-label="Main navigation">
     <a href="/">Home</a>
     <a href="/chat.html">AI Chat</a>
@@ -226,7 +246,7 @@
     <div class="tagline">Real travel deals. Honest advice. No spam.</div>
 </header>
 
-<main>
+<main id="main-content">
     <div class="intro">
         <h2>Helping Families & Couples Find the Best Travel Deals Since 2026</h2>
         <p>VOYAGER-X compares live pricing across 50+ travel partners including Disney World, Universal Orlando, cruises, and hotels. We publish original research, honest cost breakdowns, and upgrade recommendations – so you know exactly what to expect before you book.</p>
@@ -239,26 +259,26 @@
     <h2 style="text-align: center;">What We Offer</h2>
     <div class="feature-grid">
         <div class="feature-card">
-            <div class="feature-icon">🎢</div>
+            <div class="feature-icon" role="img" aria-label="Roller coaster emoji representing theme parks">🎢</div>
             <h3>Theme Park Comparisons</h3>
             <p>Disney World vs. Universal Orlando – real 2026 ticket prices and honest advice.</p>
             <a href="/universal-vs-disney.html">Read the guide →</a>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🚢</div>
+            <div class="feature-icon" role="img" aria-label="Cruise ship emoji representing cruise guides">🚢</div>
             <h3>Cruise Guides</h3>
             <p>Family cruises, couples cruises, and insider tips to save money.</p>
             <a href="/family-cruise-guide-2026.html">Family Cruises</a> | 
             <a href="/couples-cruise-guide-2026.html">Couples Cruises</a>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🌹</div>
+            <div class="feature-icon" role="img" aria-label="Rose emoji representing celebrate mom">🌹</div>
             <h3>Celebrate Mom</h3>
             <p>Any day of the year – cruises, hotel getaways, spa experiences, and more.</p>
             <a href="/celebrate-mom.html">Give Her a Moment →</a>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🤖</div>
+            <div class="feature-icon" role="img" aria-label="Robot emoji representing AI deal finder">🤖</div>
             <h3>AI Deal Finder</h3>
             <p>Tell Voyager about your family – get a personalized recommendation in seconds.</p>
             <a href="/chat.html">Try the AI assistant →</a>
