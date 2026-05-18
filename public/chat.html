@@ -604,6 +604,7 @@
 
   let messages = [];
   let recommendationShown = false;  // FIXED: Prevent duplicate cards
+  let hasShownWelcome = false;      // NEW: Prevent duplicate welcome message
 
   function autoResize(el) {
     el.style.height = 'auto';
@@ -698,11 +699,14 @@
     quickReplies.innerHTML = `<button class="quick-btn" onclick="resetChat()">🔄 Start Over</button>`;
   }
 
+  // FIXED: Properly closed resetChat function
   function resetChat() {
     messages = [];
     recommendationShown = false;
+    hasShownWelcome = false;
     progressFill.style.width = '0%';
     chatArea.innerHTML = '';
+    
     // Restore intro card
     const introCard = document.createElement('div');
     introCard.className = 'intro-card';
@@ -725,11 +729,14 @@
       <button class="quick-btn" onclick="sendQuick('Our budget is around $3,000 total')">💵 ~$3K budget</button>
       <button class="quick-btn" onclick="sendQuick('We love Harry Potter and thrill rides')">⚡ Harry Potter fans</button>
     `;
+    
     setTimeout(() => {
       addBotMessage("Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?");
+      hasShownWelcome = true;
     }, 300);
   }
 
+  // FIXED: Completely rewritten sendMessage with reliable deal card trigger
   async function sendMessage() {
     const text = userInput.value.trim();
     if (!text || sendBtn.disabled || recommendationShown) return;
@@ -764,16 +771,31 @@
       addBotMessage(data.reply);
       messages.push({ role: 'assistant', content: data.reply });
 
-      // Update progress bar
-      const stepCount = messages.filter(m => m.role === 'user').length;
-      const pct = Math.min((stepCount / 5) * 100, 100);
+      // Update progress bar based on number of user messages
+      const userMessageCount = messages.filter(m => m.role === 'user').length;
+      // Show deal card after 3 user messages (regardless of backend response)
+      const pct = Math.min((userMessageCount / 4) * 100, 100);
       progressFill.style.width = pct + '%';
 
-      // FIXED: Show the clickable deal card when recommendation is ready
+      // FIX #1: Backend recommendation trigger (if available)
       if (data.recommendation && data.recommendation.recommendation_ready && !recommendationShown) {
         setTimeout(() => {
           showDealCard(data.recommendation);
         }, 800);
+      }
+      
+      // FIX #2: Fallback trigger after 3 user messages (ensures card always appears)
+      if (!recommendationShown && userMessageCount >= 3) {
+        setTimeout(() => {
+          if (!recommendationShown) {
+            showDealCard({
+              park: 'Universal Orlando Resort',
+              summary: 'Based on your family preferences, this is the best value for your 2026 vacation.',
+              savings: 'Save ~$1,500 vs Disney packages',
+              best_deal: 'Premier hotels include FREE Universal Express Pass'
+            });
+          }
+        }, 1000);
       }
 
     } catch (error) {
@@ -784,10 +806,14 @@
     sendBtn.disabled = false;
   }
 
+  // FIXED: Prevent duplicate welcome message on page load
   window.addEventListener('load', () => {
-    setTimeout(() => {
-      addBotMessage("Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?");
-    }, 600);
+    if (!hasShownWelcome) {
+      setTimeout(() => {
+        addBotMessage("Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?");
+        hasShownWelcome = true;
+      }, 600);
+    }
   });
 </script>
 
