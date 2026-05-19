@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dorney Park 2026 Guide — Insider Tips, Tickets & What Locals Know | Voyager</title>
+<meta name="description" content="Everything you need for an epic Dorney Park day in 2026. Ride guide, water park tips, money-saving tricks, and what locals know that tourists don't. Opens May 8.">
+<meta property="og:title" content="Dorney Park 2026 — The Insider's Guide to Rides, Water Park & Local Tips">
+<meta property="og:description" content="Real local knowledge. Ride Steel Force, cool off at Wildwater Kingdom, and save money with insider tricks. 2026 season starts May 8.">
+<meta property="og:url" content="https://voyager-flask.onrender.com/dorney-park.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dorney Park 2026 — Insider's Guide">
+<meta name="twitter:description" content="Local tips, ride guide, and money-saving tricks for Dorney Park & Wildwater Kingdom. Opens May 8.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0D0D0D;
+  --ink2: #1A1A1A;
+  --paper: #F5F0E8;
+  --paper2: #EDE8DF;
+  --red: #D63B2F;
+  --red2: #B52E23;
+  --sky: #1B6CA8;
+  --sky2: #144F7D;
+  --yellow: #F2C94C;
+  --white: #FDFCFA;
+  --muted: #6B6560;
+  --border: rgba(13,13,13,0.1);
+  --r: 10px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.topbar {
+  background: var(--ink);
+  color: var(--yellow);
+  text-align: center;
+  padding: 10px 1rem;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+nav {
+  background: var(--white);
+  border-bottom: 2px solid var(--ink);
+  padding: 14px 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+}
+.nav-logo span { color: var(--red); }
+
+.nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--red); }
+
+.nav-cta {
+  background: var(--red);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--red2); }
+
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: 'DORNEY';
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(120px, 20vw, 220px);
+  color: rgba(255,255,255,0.03);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 20px, var(--yellow) 20px, var(--yellow) 40px, var(--sky) 40px, var(--sky) 60px);
+}
+
+.hero-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-label {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 .line2 { color: var(--yellow); display: block; }
+.hero h1 .line3 { color: var(--sky); display: block; font-size: 0.5em; letter-spacing: 0.1em; }
+
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.hero-stat {
+  border-left: 3px solid var(--red);
+  padding-left: 12px;
+}
+.hero-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--yellow);
+}
+.hero-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.5);
+}
+
+.hero-desc {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  color: rgba(245,240,232,0.75);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--red2); transform: translateY(-2px); }
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--paper);
+  padding: 14px 28px;
+  border-radius: 4px;
+  border: 2px solid rgba(245,240,232,0.3);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); }
+
+.ticker {
+  background: var(--yellow);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 25s linear infinite;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.section-title em {
+  font-style: italic;
+  font-family: 'Newsreader', serif;
+  color: var(--red);
+}
+
+.facts-strip {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2.5rem 1.5rem;
+  margin: 3rem 0 0;
+}
+
+.facts-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+}
+
+.fact-item {
+  padding: 1rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+.fact-item:last-child { border-right: none; }
+.fact-icon { font-size: 1.5rem; margin-bottom: 8px; }
+.fact-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--yellow);
+  line-height: 1;
+}
+.fact-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,240,232,0.5); margin-top: 4px; }
+
+.insider-alert {
+  background: var(--sky);
+  color: white;
+  border-radius: var(--r);
+  padding: 1.5rem 2rem;
+  margin: 2.5rem 0;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+.alert-icon { font-size: 2rem; flex-shrink: 0; }
+.alert-title { font-weight: 800; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
+.alert-body { font-size: 14px; opacity: 0.9; line-height: 1.6; }
+.alert-body strong { color: var(--yellow); }
+
+.ticket-cta {
+  background: var(--red);
+  border-radius: var(--r);
+  padding: 2.5rem;
+  margin: 2.5rem 0;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+
+.ticket-cta-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.ticket-cta-body { font-size: 14px; opacity: 0.9; line-height: 1.6; }
+.ticket-cta-body strong { color: var(--yellow); }
+
+.ticket-cta-right { text-align: center; flex-shrink: 0; }
+
+.ticket-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--yellow);
+}
+.ticket-price-note { font-size: 11px; opacity: 0.7; margin-bottom: 12px; }
+
+.btn-white {
+  display: inline-block;
+  background: white;
+  color: var(--red2);
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-white:hover { background: var(--yellow); color: var(--ink); }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 2rem 0;
+}
+
+.card {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card ul { list-style: none; padding: 0; }
+.card li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.card li:last-child { border-bottom: none; }
+.card li::before { content: '→'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+
+.rides-section { padding: 3rem 0; }
+
+.ride-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
+  margin: 2rem 0;
+}
+
+.ride-card {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.ride-card:hover { transform: translateY(-4px); }
+
+.ride-card-top {
+  background: var(--ink);
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ride-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  color: var(--yellow);
+  line-height: 1.1;
+}
+
+.ride-badge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.badge-thrill { background: var(--red); color: white; }
+.badge-family { background: var(--sky); color: white; }
+.badge-water { background: #00B4D8; color: white; }
+.badge-classic { background: var(--yellow); color: var(--ink); }
+
+.ride-card-body { padding: 1.25rem; }
+.ride-stat-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.ride-stat { font-size: 11px; }
+.ride-stat-key { font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.ride-stat-val { font-weight: 800; color: var(--ink); }
+.ride-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.tips-section {
+  background: var(--ink2);
+  color: var(--paper);
+  padding: 3rem 1.5rem;
+  margin: 3rem 0;
+}
+
+.tips-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 2rem;
+}
+
+.tip-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r);
+  padding: 1.25rem;
+}
+.tip-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: rgba(242,201,76,0.2);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.tip-title { font-weight: 800; font-size: 14px; margin-bottom: 6px; color: var(--yellow); }
+.tip-body { font-size: 13px; color: rgba(245,240,232,0.65); line-height: 1.65; }
+
+.savings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.savings-table th {
+  background: var(--ink);
+  color: var(--yellow);
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.savings-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+
+.savings-table tr:last-child td { border-bottom: none; }
+.savings-table tr:hover td { background: var(--paper2); }
+
+.price-gate { color: var(--muted); text-decoration: line-through; }
+.price-online { color: var(--red); font-weight: 800; }
+.savings-pill {
+  display: inline-block;
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 1.5rem 0;
+}
+
+.pack-item {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  transition: transform 0.2s;
+}
+.pack-item:hover { transform: translateY(-3px); }
+.pack-emoji { font-size: 2rem; flex-shrink: 0; }
+.pack-name { font-weight: 800; font-size: 14px; margin-bottom: 4px; }
+.pack-why { font-size: 12px; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
+.pack-link {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--red);
+  text-decoration: none;
+}
+.pack-link:hover { text-decoration: underline; }
+
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 1.5rem 0;
+}
+
+.hotel-card {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  padding: 1.25rem;
+}
+.hotel-tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+.hotel-name { font-weight: 800; font-size: 1rem; margin-bottom: 6px; }
+.hotel-desc { font-size: 12px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+.hotel-link {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sky);
+  text-decoration: none;
+}
+.hotel-link:hover { text-decoration: underline; }
+
+.hack-box {
+  border: 3px solid var(--ink);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin: 2rem 0;
+}
+.hack-header {
+  background: var(--ink);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hack-header-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--yellow);
+  letter-spacing: 0.08em;
+}
+.hack-badge {
+  background: var(--red);
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+.hack-body {
+  background: var(--white);
+  padding: 1.5rem;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink2);
+}
+.hack-body strong { color: var(--red); }
+.hack-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sky);
+  text-decoration: none;
+}
+.hack-link:hover { text-decoration: underline; }
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 1.5rem 0;
+}
+.sched-card {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.sched-top {
+  background: var(--ink);
+  padding: 10px 14px;
+}
+.sched-month {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  color: var(--yellow);
+}
+.sched-body { padding: 12px 14px; }
+.sched-dates { font-weight: 800; font-size: 13px; margin-bottom: 4px; }
+.sched-hours { font-size: 12px; color: var(--muted); }
+
+.faq-list { margin: 1.5rem 0; }
+.faq-item {
+  border-bottom: 2px solid var(--ink);
+  padding: 1.25rem 0;
+}
+.faq-item:first-child { border-top: 2px solid var(--ink); }
+.faq-q {
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.faq-q::after { content: '+'; font-size: 1.5rem; color: var(--red); flex-shrink: 0; }
+.faq-q.open::after { content: '−'; }
+.faq-a {
+  font-family: 'Newsreader', serif;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  display: none;
+  padding-top: 4px;
+}
+.faq-a.visible { display: block; }
+
+.final-cta {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4rem 2rem;
+  text-align: center;
+  margin: 3rem 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '🎢';
+  position: absolute;
+  font-size: 200px;
+  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.final-cta-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.final-cta-title span { color: var(--yellow); }
+
+.final-cta-sub {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  color: rgba(245,240,232,0.65);
+  font-style: italic;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.disclosure {
+  background: var(--paper2);
+  border-top: 2px solid var(--border);
+  padding: 1.5rem;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+  text-align: center;
+}
+
+footer {
+  background: var(--ink);
+  color: rgba(245,240,232,0.4);
+  text-align: center;
+  padding: 2rem;
+  font-size: 12px;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  color: rgba(245,240,232,0.8);
+  margin-bottom: 6px;
+}
+.footer-logo span { color: var(--red); }
+
+@media (max-width: 700px) {
+  .two-col { grid-template-columns: 1fr; }
+  .ticket-cta { grid-template-columns: 1fr; }
+  .ticket-cta-right { text-align: left; }
+  nav { padding: 0.9rem 1rem; }
+  .nav-links { display: none; }
+  .hero { padding: 3rem 1.5rem; }
+  .facts-inner { grid-template-columns: repeat(2, 1fr); }
+  .fact-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">🎢 Dorney Park opens May 8, 2026 — Buy tickets online and save up to 40% vs. gate price</div>
+
+<nav>
+  <a class="nav-logo" href="/">VOY<span>A</span>GER</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/chat.html">AI Chat</a>
+    <a href="/universal-vs-disney.html">Universal vs Disney</a>
+    <a href="/family-cruise-guide-2026.html">Family Cruises</a>
+    <a href="/celebrate-mom.html">Celebrate Mom</a>
+  </div>
+  <a class="nav-cta" href="https://www.cheaptickets.com/?cid=4861279&q=Dorney+Park" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Nav CTA')">🎟 Get Tickets →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">2026 Insider's Guide · Allentown, PA</div>
+    <h1>
+      Dorney Park
+      <span class="line2">& Wildwater</span>
+      <span class="line3">Everything You Need to Know Before You Go</span>
+    </h1>
+    <div class="hero-meta">
+      <div class="hero-stat">
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-label">Parks, 1 Ticket</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">World-Class Coasters</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">40%</div>
+        <div class="hero-stat-label">Saved Online vs Gate</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">May 8</div>
+        <div class="hero-stat-label">2026 Opening Day</div>
+      </div>
+    </div>
+    <p class="hero-desc">Two parks, one price. The Lehigh Valley's best day out — and one of the most underrated theme parks in the Northeast.</p>
+    <div class="hero-btns">
+      <a href="https://www.cheaptickets.com/?cid=4861279&q=Dorney+Park" target="_blank" rel="sponsored nofollow" class="btn-primary" onclick="trackAffiliateClick('Hero Primary')">🎟 Buy Discounted Tickets</a>
+      <a href="#rides" class="btn-secondary">See the Rides ↓</a>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    🎢 STEEL FORCE — 200FT DROP AT 75MPH &nbsp;·&nbsp; 💦 WILDWATER KINGDOM OPENS MAY 23 &nbsp;·&nbsp; ⭐ RIDE TALON BEFORE 11AM — ZERO WAIT &nbsp;·&nbsp; 🎟 ONLINE TICKETS UP TO 40% OFF GATE PRICE &nbsp;·&nbsp; 🍕 BRING AN EMPTY STOMACH — FUNNEL CAKE WORTH THE WAIT &nbsp;·&nbsp; 🚗 ARRIVE BEFORE 10AM FOR FREE FRONT-ROW PARKING &nbsp;·&nbsp; 🎢 STEEL FORCE — 200FT DROP AT 75MPH &nbsp;·&nbsp; 💦 WILDWATER KINGDOM OPENS MAY 23 &nbsp;·&nbsp; ⭐ RIDE TALON BEFORE 11AM — ZERO WAIT &nbsp;·&nbsp; 🎟 ONLINE TICKETS UP TO 40% OFF GATE PRICE &nbsp;·&nbsp; 🍕 BRING AN EMPTY STOMACH — FUNNEL CAKE WORTH THE WAIT &nbsp;·&nbsp; 🚗 ARRIVE BEFORE 10AM FOR FREE FRONT-ROW PARKING &nbsp;·&nbsp;
+  </div>
+</div>
+
+<div class="facts-strip">
+  <div class="facts-inner">
+    <div class="fact-item"><div class="fact-icon">📅</div><div class="fact-num">May 8</div><div class="fact-label">Park Opens 2026</div></div>
+    <div class="fact-item"><div class="fact-icon">💧</div><div class="fact-num">May 23</div><div class="fact-label">Wildwater Opens</div></div>
+    <div class="fact-item"><div class="fact-icon">🕙</div><div class="fact-num">10–8</div><div class="fact-label">Typical Daily Hours</div></div>
+    <div class="fact-item"><div class="fact-icon">📍</div><div class="fact-num">18042</div><div class="fact-label">Allentown, PA</div></div>
+    <div class="fact-item"><div class="fact-icon">🎢</div><div class="fact-num">5</div><div class="fact-label">Major Coasters</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="insider-alert" style="margin-top: 3rem;">
+    <div class="alert-icon">📍</div>
+    <div>
+      <div class="alert-title">Local Knowledge — You're Already Close</div>
+      <div class="alert-body">Dorney Park is right here in Allentown off Route 222. <strong>Arrive before 10am</strong> — parking fills fast and front-row spots disappear by 10:30. The park is walkable from multiple Lehigh Valley hotels. If you're a local, check for resident discount programs through Cedar Fair / Six Flags — they often run Lehigh Valley-specific promos.</div>
+    </div>
+  </div>
+
+  <div class="ticket-cta">
+    <div>
+      <div class="ticket-cta-title">Stop Paying Full Price at the Gate</div>
+      <div class="ticket-cta-body">Gate admission can run <strong>$79.99+</strong> per person. Buy online through CheapTickets before your visit and knock up to <strong>40% off</strong> — same ticket, same access, same day. One ticket covers both Dorney Park and Wildwater Kingdom.</div>
+    </div>
+    <div class="ticket-cta-right">
+      <div class="ticket-price">$44+</div>
+      <div class="ticket-price-note">vs. $79+ at the gate</div>
+      <a href="https://www.cheaptickets.com/?cid=4861279&q=Dorney+Park" target="_blank" rel="sponsored nofollow" class="btn-white" onclick="trackAffiliateClick('Ticket CTA')">🎟 Get Discounted Tickets →</a>
+    </div>
+  </div>
+
+  <section id="rides" class="rides-section">
+    <div class="section-label">The Coasters</div>
+    <div class="section-title">Five Rides Worth <em>the Drive</em></div>
+
+    <div class="ride-grid">
+      <div class="ride-card"><div class="ride-card-top"><div><div class="ride-name">Steel Force</div></div><div class="ride-badge badge-thrill">Thrill</div></div><div class="ride-card-body"><div class="ride-stat-row"><div class="ride-stat"><div class="ride-stat-key">Height</div><div class="ride-stat-val">200 ft</div></div><div class="ride-stat"><div class="ride-stat-key">Speed</div><div class="ride-stat-val">75 mph</div></div><div class="ride-stat"><div class="ride-stat-key">Type</div><div class="ride-stat-val">Hypercoaster</div></div></div><div class="ride-desc">The flagship. One of the longest steel coasters on the East Coast. The first drop is relentless — hit this first thing in the morning before the line doubles.</div></div></div>
+      <div class="ride-card"><div class="ride-card-top"><div><div class="ride-name">Hydra the Revenge</div></div><div class="ride-badge badge-thrill">Thrill</div></div><div class="ride-card-body"><div class="ride-stat-row"><div class="ride-stat"><div class="ride-stat-key">Inversions</div><div class="ride-stat-val">7</div></div><div class="ride-stat"><div class="ride-stat-key">Type</div><div class="ride-stat-val">Floorless</div></div></div><div class="ride-desc">Floorless coaster with a pre-lift inversion — your feet are dangling before you even start climbing. Seven total inversions. Smoother than it looks.</div></div></div>
+      <div class="ride-card"><div class="ride-card-top"><div><div class="ride-name">Talon</div></div><div class="ride-badge badge-thrill">Thrill</div></div><div class="ride-card-body"><div class="ride-stat-row"><div class="ride-stat"><div class="ride-stat-key">Type</div><div class="ride-stat-val">Inverted</div></div><div class="ride-stat"><div class="ride-stat-key">Speed</div><div class="ride-stat-val">58 mph</div></div></div><div class="ride-desc">The local favorite. Inverted — your legs hang free, nothing below your feet. Fast, smooth, and relentless through four inversions. Shorter wait than Steel Force most days.</div></div></div>
+      <div class="ride-card"><div class="ride-card-top"><div><div class="ride-name">Possessed</div></div><div class="ride-badge badge-thrill">Thrill</div></div><div class="ride-card-body"><div class="ride-stat-row"><div class="ride-stat"><div class="ride-stat-key">Height</div><div class="ride-stat-val">410 ft spike</div></div><div class="ride-stat"><div class="ride-stat-key">Launch</div><div class="ride-stat-val">Both ways</div></div></div><div class="ride-desc">Launches you forward up a 410ft twisted spike, then backward up a straight tower. The backward drop is the moment that gets everyone. Short ride, long memory.</div></div></div>
+      <div class="ride-card"><div class="ride-card-top"><div><div class="ride-name">Thunderhawk</div></div><div class="ride-badge badge-classic">Classic</div></div><div class="ride-card-body"><div class="ride-stat-row"><div class="ride-stat"><div class="ride-stat-key">Built</div><div class="ride-stat-val">1923</div></div><div class="ride-stat"><div class="ride-stat-key">Type</div><div class="ride-stat-val">Wooden</div></div></div><div class="ride-desc">Over 100 years old and still running. The classic wooden rattle and roar that theme parks have forgotten how to build. A must-ride for anyone who appreciates coaster history.</div></div></div>
+      <div class="ride-card"><div class="ride-card-top"><div><div class="ride-name">Aqua Racer</div></div><div class="ride-badge badge-water">Water</div></div><div class="ride-card-body"><div class="ride-stat-row"><div class="ride-stat"><div class="ride-stat-key">Location</div><div class="ride-stat-val">Wildwater Kingdom</div></div><div class="ride-stat"><div class="ride-stat-key">Lanes</div><div class="ride-stat-val">8</div></div></div><div class="ride-desc">Eight-lane mat racing slide. You race other people down head-first. Wildwater's most competitive ride — expect trash talk in the queue. Open from May 23.</div></div></div>
+    </div>
+
+    <div class="two-col" style="margin-top: 2rem;">
+      <div class="card"><div class="card-title">👨‍👩‍👧 For Families & Kids</div><ul><li>Planet Snoopy — 8 dedicated kids rides</li><li>Woodstock Express — starter coaster for first-timers</li><li>Wave Swinger — classic swing ride, all ages</li><li>Musik Express — great for tweens</li><li>Wildwater Cove wave pool — easy win for the whole family</li></ul></div>
+      <div class="card"><div class="card-title">💧 Wildwater Kingdom Picks</div><ul><li>Aqua Racer — 8-lane racing mat slide</li><li>Patriot's Plunge — high-speed enclosed tube ride</li><li>Lightning Falls — family raft ride</li><li>Runaway River — lazy river, great for a break</li><li>Wildwater Cove — wave pool, open all day</li></ul></div>
+    </div>
+  </section>
+</div>
+
+<section class="tips-section">
+  <div class="tips-inner">
+    <div class="section-label" style="color: var(--yellow);">From Someone Who Lives Here</div>
+    <div class="section-title" style="color: var(--paper);">7 Things Locals Know <em>That Tourists Don't</em></div>
+    <div class="tips-grid">
+      <div class="tip-card"><div class="tip-num">01</div><div class="tip-title">Arrive at 9:45am</div><div class="tip-body">Gates open at 10. Being in line before they open means you get 90 minutes of near-empty park. Hit Steel Force and Hydra back to back while everyone else is still parking.</div></div>
+      <div class="tip-card"><div class="tip-num">02</div><div class="tip-title">Tuesday or Wednesday</div><div class="tip-body">Weekend crowds are brutal in July and August. Midweek visits — especially Tuesday and Wednesday — see significantly shorter queues across every major ride.</div></div>
+      <div class="tip-card"><div class="tip-num">03</div><div class="tip-title">Bring a Refillable Bottle</div><div class="tip-body">You can't bring outside food, but refillable water bottles are allowed. Filling stations are throughout the park. In July heat this will save you $20 in bottled water purchases.</div></div>
+      <div class="tip-card"><div class="tip-num">04</div><div class="tip-title">Route 222 North Exit</div><div class="tip-body">Take the Dorney Park Road exit from 222 North for faster parking lot access. Coming from Allentown downtown — it's a 10-minute drive, not 30. People overcomplicate the drive.</div></div>
+      <div class="tip-card"><div class="tip-num">05</div><div class="tip-title">Six Flags Pass Hack</div><div class="tip-body">Dorney is part of the Six Flags network. A Six Flags Gold Pass gets you into Dorney plus Great Adventure in NJ. If you're visiting twice this season, the pass pays for itself.</div></div>
+      <div class="tip-card"><div class="tip-num">06</div><div class="tip-title">Hit Water Park at 3pm</div><div class="tip-body">Most coaster riders head to Wildwater Kingdom in the morning when it's cooler. By 3pm the water park thins out. Flip the script — do coasters first, water park after lunch.</div></div>
+      <div class="tip-card"><div class="tip-num">07</div><div class="tip-title">Locker Near Hydra</div><div class="tip-body">Secure loose items before the major coasters — policy has gotten stricter. Rent a locker near Hydra or Steel Force. $10–15 for the day and it covers everything in that zone.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <div class="section-label" style="margin-top: 3rem;">The Numbers</div>
+  <div class="section-title">How Much You'll <em>Actually Save</em></div>
+
+  <table class="savings-table">
+    <thead><tr><th>Ticket Type</th><th>Gate Price</th><th>Online Price</th><th>Your Savings</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Single Day — Adult</strong></td><td><span class="price-gate">$79.99</span></td><td><span class="price-online">~$44–54</span></td><td><span class="savings-pill">Save ~$30</span></td></tr>
+      <tr><td><strong>Single Day — Child (under 48")</strong></td><td><span class="price-gate">$54.99</span></td><td><span class="price-online">~$34–44</span></td><td><span class="savings-pill">Save ~$15</span></td></tr>
+      <tr><td><strong>Six Flags Gold Pass</strong></td><td>—</td><td><span class="price-online">~$89/season</span></td><td><span class="savings-pill">Best for 2+ visits</span></td></tr>
+      <tr><td><strong>Family of 4 (2 adult + 2 child)</strong></td><td><span class="price-gate">~$270</span></td><td><span class="price-online">~$160–190</span></td><td><span class="savings-pill">Save $80–110</span></td></tr>
+    </tbody>
+  </table>
+
+  <a href="https://www.cheaptickets.com/?cid=4861279&q=Dorney+Park" target="_blank" rel="sponsored nofollow" class="btn-primary" onclick="trackAffiliateClick('Savings Table CTA')" style="display: inline-block; margin-bottom: 2rem;">🎟 Lock In Your Discounted Tickets →</a>
+
+  <div class="hack-box">
+    <div class="hack-header"><div class="hack-header-label">🌟 The Season Pass Calculation</div><div class="hack-badge">Pro Move</div></div>
+    <div class="hack-body">
+      Dorney Park joined the Six Flags family, which unlocks something most people don't realize: a <strong>Six Flags Gold Pass</strong> gets you into Dorney Park plus <strong>Six Flags Great Adventure in New Jersey</strong> — plus every other Six Flags park in the country. If you're planning two or more park visits this season, the Gold Pass pays for itself after your second trip. It also includes free parking at most locations.
+      <br><br>
+      For Lehigh Valley families who visit Dorney more than once a summer, this is the move.
+      <a href="https://www.cheaptickets.com/?cid=4861279&q=Six+Flags+Season+Pass" target="_blank" rel="sponsored nofollow" class="hack-link" onclick="trackAffiliateClick('Six Flags Pass')">Check Current Six Flags Season Pass Prices →</a>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top: 3rem;">2026 Season Calendar</div>
+  <div class="section-title">When to Go</div>
+
+  <div class="schedule-grid">
+    <div class="sched-card"><div class="sched-top"><div class="sched-month">May</div></div><div class="sched-body"><div class="sched-dates">Opens May 8</div><div class="sched-hours">Weekends only until Memorial Day. Wildwater opens May 23.</div></div></div>
+    <div class="sched-card"><div class="sched-top"><div class="sched-month">June</div></div><div class="sched-body"><div class="sched-dates">Daily from mid-June</div><div class="sched-hours">Best month — crowds build but school's not fully out until late June.</div></div></div>
+    <div class="sched-card"><div class="sched-top"><div class="sched-month">July</div></div><div class="sched-body"><div class="sched-dates">Daily · Peak Season</div><div class="sched-hours">Busiest month. Go Tuesday–Wednesday. Arrive before 10am.</div></div></div>
+    <div class="sched-card"><div class="sched-top"><div class="sched-month">August</div></div><div class="sched-body"><div class="sched-dates">Daily · Still Peak</div><div class="sched-hours">Hot and busy but late August crowds drop as school returns.</div></div></div>
+    <div class="sched-card"><div class="sched-top"><div class="sched-month">September</div></div><div class="sched-body"><div class="sched-dates">Closes Sep 7</div><div class="sched-hours">Labor Day weekend is the last hurrah. Wildwater closes earlier.</div></div></div>
+  </div>
+
+  <div class="section-label" style="margin-top: 3rem;">What to Bring</div>
+  <div class="section-title">Pack This. <em>Not That.</em></div>
+
+  <div class="pack-grid">
+    <div class="pack-item"><div class="pack-emoji">🌊</div><div><div class="pack-name">Waterproof Phone Case</div><div class="pack-why">Mandatory for Wildwater. Get soaked on every water ride. Don't risk it.</div><a class="pack-link" href="https://www.amazon.com/s?k=waterproof+phone+pouch+for+swimming&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Waterproof Case')">Shop Amazon →</a></div></div>
+    <div class="pack-item"><div class="pack-emoji">☀️</div><div><div class="pack-name">Water-Resistant SPF 50</div><div class="pack-why">July in the Lehigh Valley is no joke. Reapply every 90 minutes, especially at the water park.</div><a class="pack-link" href="https://www.amazon.com/s?k=sunscreen+spf+50+water+resistant+sport&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Sunscreen')">Shop Amazon →</a></div></div>
+    <div class="pack-item"><div class="pack-emoji">🩴</div><div><div class="pack-name">Water Shoes</div><div class="pack-why">Pool decks hit 120°F in August. Water shoes also keep you moving faster between rides.</div><a class="pack-link" href="https://www.amazon.com/s?k=water+shoes+men+women+quick+dry&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Water Shoes')">Shop Amazon →</a></div></div>
+    <div class="pack-item"><div class="pack-emoji">🎒</div><div><div class="pack-name">Dry Bag / Packing Cubes</div><div class="pack-why">Keep your dry clothes dry when switching between water park and coasters. Worth every penny.</div><a class="pack-link" href="https://www.amazon.com/s?k=dry+bags+waterproof+for+swimming&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Packing Cubes')">Shop Amazon →</a></div></div>
+  </div>
+  <div style="font-size: 11px; color: var(--muted); margin-top: 8px; margin-bottom: 3rem;">As an Amazon Associate, Voyager earns from qualifying purchases at no extra cost to you.</div>
+
+  <div class="section-label">Staying Over?</div>
+  <div class="section-title">Where to Sleep <em>in Allentown</em></div>
+  <p style="color: var(--muted); font-size: 14px; margin-bottom: 1.5rem; font-family: 'Newsreader', serif; font-style: italic;">Several hotels sit within 10–15 minutes of the park. Book early for July — the Lehigh Valley fills up fast on summer weekends.</p>
+
+  <div class="hotel-grid">
+    <div class="hotel-card"><div class="hotel-tag">Best Selection</div><div class="hotel-name">Hotels.com</div><div class="hotel-desc">Filter by pool, breakfast, and exact distance from the park. Best range of options near Route 222.</div><a class="hotel-link" href="https://www.hotels.com/?cid=1702763&q=Allentown+PA" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Hotels.com')">Search Allentown Hotels →</a></div>
+    <div class="hotel-card"><div class="hotel-tag">Best Bundles</div><div class="hotel-name">Expedia</div><div class="hotel-desc">Bundle hotel + rental car for the trip and save up to 30%. Useful if you're coming from out of state.</div><a class="hotel-link" href="https://www.expedia.com/?cid=1874913&q=Allentown+PA" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Expedia')">View Hotel + Car Bundles →</a></div>
+    <div class="hotel-card"><div class="hotel-tag">Flexible Booking</div><div class="hotel-name">Travelocity</div><div class="hotel-desc">45-day booking window gives you more time to commit. Good for planning ahead without locking in immediately.</div><a class="hotel-link" href="https://www.travelocity.com/?cid=1549809&q=Allentown+PA" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Travelocity')">Check Hotel Rates →</a></div>
+  </div>
+
+  <div class="section-label" style="margin-top: 3rem;">Common Questions</div>
+  <div class="section-title"><em>Answered</em> Straight</div>
+
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">When does Dorney Park open for 2026?</div><div class="faq-a">Dorney Park opens Saturday, May 8, 2026. It runs weekends only through Memorial Day weekend, then switches to daily operation from mid-June through Labor Day. Wildwater Kingdom opens May 23. The season wraps up September 7, after which the park runs Halloween-themed weekends.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does one ticket cover both Dorney Park and Wildwater Kingdom?</div><div class="faq-a">Yes. A standard admission ticket gives you access to both parks on the same day. You can go back and forth between the coaster side and the water park as many times as you want. This is what makes Dorney one of the best-value parks in the region.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's the cheapest way to buy tickets?</div><div class="faq-a">Buy online in advance — gate prices run $79.99+ per adult. Online tickets through third-party vendors like CheapTickets can bring that down to $44–54 range. If you're planning two or more visits, a Six Flags Gold Pass (~$89/season) is the best value available and includes Dorney Park plus Great Adventure in NJ.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bring food into the park?</div><div class="faq-a">Outside food and drinks are not permitted inside the park. You can bring a reusable sealed water bottle — there are filling stations throughout the park. Lockers are available near the front entrance if you want to store items in your car and retrieve them for a mid-day break in the parking lot.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which coaster should I ride first?</div><div class="faq-a">Steel Force. It's the longest steel coaster on the East Coast and the wait balloons after 11am. Get there right when the park opens, head straight to Steel Force, then hit Hydra and Talon while the crowd is still settling in. Save Possessed and Thunderhawk for the afternoon when the main coaster lines peak.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a Six Flags pass that covers Dorney Park?</div><div class="faq-a">Yes. Dorney Park is now part of the Six Flags family. A Six Flags Gold Pass or higher includes Dorney Park plus access to other Six Flags properties like Great Adventure in New Jersey. For anyone planning multiple park days this summer, this is worth running the math on.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's the height requirement for the major coasters?</div><div class="faq-a">Steel Force and Hydra require 54". Talon requires 54". Possessed requires 54". Thunderhawk requires 48". Most kiddie rides in Planet Snoopy are designed for children under 48". Wildwater Kingdom slides vary — most require at least 42–48" for the major slides.</div></div>
+  </div>
+
+</div>
+
+<section class="final-cta">
+  <div class="final-cta-title">Ready for<br><span>Opening Day?</span></div>
+  <p class="final-cta-sub">Lock in your tickets before prices climb. May 8 comes fast — and everyone in Allentown knows it.</p>
+  <a href="https://www.cheaptickets.com/?cid=4861279&q=Dorney+Park" target="_blank" rel="sponsored nofollow" class="btn-primary" style="font-size: 14px; padding: 16px 36px;" onclick="trackAffiliateClick('Final CTA')">🎟 Get Discounted Tickets Now →</a>
+  <div style="margin-top: 12px; font-size: 11px; color: rgba(245,240,232,0.4);">Online tickets are up to 40% less than gate price · One ticket = both parks</div>
+</section>
+
+<div class="disclosure">
+  This page contains affiliate links. If you make a purchase through these links, Voyager may earn a commission at no additional cost to you. Affiliate IDs: Amazon (voyagerx20-20) · CheapTickets (4861279) · Hotels.com (1702763) · Expedia (1874913) · Travelocity (1549809). Ticket prices are estimates based on historical pricing and may vary. Always verify current pricing before purchase.
+</div>
+
+<footer>
+  <div class="footer-logo">VOY<span>A</span>GER</div>
+  <div>Real deals. No noise. Built for people who actually live here.</div>
+  <div style="margin-top: 10px; font-size: 11px;">We participate in affiliate programs. As an affiliate, we earn from qualifying purchases.</div>
+</footer>
+
+<script>
+function trackAffiliateClick(linkName) {
+  console.log('Affiliate click:', linkName);
+}
+
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const isOpen = answer.classList.contains('visible');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('visible'));
+  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+  if (!isOpen) {
+    answer.classList.add('visible');
+    el.classList.add('open');
+  }
+}
+</script>
+
+</body>
+</html>
