@@ -21,11 +21,11 @@
     <meta name="twitter:description" content="VOYAGER-X finds the best travel deals for Disney World, Universal Orlando, cruises, and hotels. No email required.">
     <meta name="twitter:image" content="https://voyager-flask.onrender.com/static/voyager-social-preview.png">
     
-    <!-- Preconnect for Google Translate (saves ~300ms) -->
+    <!-- Preconnect for Google Translate -->
     <link rel="preconnect" href="https://translate.googleapis.com">
     <link rel="preconnect" href="https://translate-pa.googleapis.com">
     
-    <!-- Google Translate Script with defer (saves ~880ms on mobile) -->
+    <!-- Google Translate Script -->
     <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -261,6 +261,13 @@
             background: #6a2010;
         }
         
+        /* Loading spinner */
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: #1a4a6f;
+        }
+        
         footer {
             text-align: center;
             padding: 30px;
@@ -296,10 +303,10 @@
 </head>
 <body>
 
-<!-- SKIP LINK FIX (Issue #4) -->
+<!-- SKIP LINK -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- HEADING SEQUENCE FIX (Issue #3) - Added proper H1/H2 hierarchy -->
+<!-- NAVIGATION -->
 <nav class="nav-links" aria-label="Main navigation">
     <a href="/">Home</a>
     <a href="/chat.html">AI Chat</a>
@@ -308,6 +315,7 @@
     <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
     <a href="/celebrate-mom.html">Celebrate Mom</a>
     <a href="/dorney-park.html">🎢 Dorney Park</a>
+    <a href="/luxury-safaris.html">🦁 Luxury Safaris</a>
     <a href="/privacy.html">Privacy</a>
 </nav>
 
@@ -326,38 +334,11 @@
         </div>
     </div>
 
-    <!-- FEATURED DEALS SECTION - NEW -->
+    <!-- FEATURED DEALS SECTION - DYNAMIC FROM SUPABASE -->
     <div class="deals-section">
         <h2>🔥 Featured Travel Deals</h2>
-        <div class="deals-grid">
-            <div class="deal-card">
-                <div class="deal-icon">🎢</div>
-                <div class="deal-title">Universal Orlando Tickets</div>
-                <div class="deal-desc">Epic Universe now open! 8% cash back on tickets.</div>
-                <span class="deal-badge">8% Commission</span>
-                <div><a href="https://www.cheaptickets.com/?cid=4861279&q=Universal+Orlando" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('CheapTickets Universal')">View Tickets →</a></div>
-            </div>
-            <div class="deal-card">
-                <div class="deal-icon">🚢</div>
-                <div class="deal-title">Cruise Deals</div>
-                <div class="deal-desc">$40 commission per booking. Family & couples cruises available.</div>
-                <span class="deal-badge">$40/Cruise</span>
-                <div><a href="https://www.orbitz.com/?cid=4861280&q=cruises" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Orbitz Cruises')">Find Cruises →</a></div>
-            </div>
-            <div class="deal-card">
-                <div class="deal-icon">🏨</div>
-                <div class="deal-title">Orlando Hotels</div>
-                <div class="deal-desc">Book near Disney or Universal. 7% hotel commission.</div>
-                <span class="deal-badge">7% Commission</span>
-                <div><a href="https://www.orbitz.com/?cid=4861280&q=Orlando+Hotels" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Orbitz Hotels')">View Hotels →</a></div>
-            </div>
-            <div class="deal-card">
-                <div class="deal-icon">🌍</div>
-                <div class="deal-title">Luxury African Safaris</div>
-                <div class="deal-desc">Go2Africa — all-inclusive safari vacations.</div>
-                <span class="deal-badge">2% Commission</span>
-                <div><a href="http://www.awin1.com/cread.php?awinmid=24529&awinaffid=2874255" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Go2Africa')">Explore Safaris →</a></div>
-            </div>
+        <div class="deals-grid" id="featured-deals-grid">
+            <div class="loading-spinner">Loading deals...</div>
         </div>
     </div>
 
@@ -417,32 +398,8 @@
     <!-- HOTEL SEARCH SECTION -->
     <div class="deals-section">
         <h2>🏨 Find Hotels Near Your Destination</h2>
-        <div class="deals-grid">
-            <div class="deal-card">
-                <div class="deal-icon">🏨</div>
-                <div class="deal-title">Hotels.com</div>
-                <div class="deal-desc">Earn 4% rewards on every stay. Perfect for cruise ports and theme parks.</div>
-                <div><a href="https://www.hotels.com/?cid=1702763" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Hotels.com')">Search Hotels →</a></div>
-            </div>
-            <div class="deal-card">
-                <div class="deal-icon">✈️</div>
-                <div class="deal-title">Expedia Packages</div>
-                <div class="deal-desc">Flight + hotel bundles. Save up to 30% on Disney and Universal trips.</div>
-                <div><a href="https://www.expedia.com/?cid=1874913" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Expedia')">View Packages →</a></div>
-            </div>
-            <div class="deal-card">
-                <div class="deal-icon">🦁</div>
-                <div class="deal-title">GetYourGuide</div>
-                <div class="deal-desc">Tours, activities, and theme park tickets. 8% cash back.</div>
-                <span class="deal-badge">8% Cash Back</span>
-                <div><a href="https://www.getyourguide.com/?partner_id=Y5RBAVK" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('GetYourGuide')">Book Activities →</a></div>
-            </div>
-            <div class="deal-card">
-                <div class="deal-icon">💆</div>
-                <div class="deal-title">Viator Spa & Tours</div>
-                <div class="deal-desc">Romantic excursions, spa packages, and shore activities.</div>
-                <div><a href="https://www.viator.com/?pid=2874255" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Viator')">Explore Now →</a></div>
-            </div>
+        <div class="deals-grid" id="hotel-deals-grid">
+            <div class="loading-spinner">Loading hotels...</div>
         </div>
     </div>
 
@@ -461,14 +418,123 @@
 </footer>
 
 <script>
+// Helper function to map category to emoji
+function getEmojiForCategory(category) {
+    const emojis = {
+        'tickets': '🎢',
+        'cruises': '🚢',
+        'hotels': '🏨',
+        'safari': '🦁',
+        'packing': '🎒',
+        'essentials': '✈️',
+        'activities': '🏝️',
+        'default': '🔥'
+    };
+    return emojis[category] || emojis.default;
+}
+
+// Helper function to get badge text
+function getBadgeText(program, commission) {
+    if (program === 'CheapTickets') return '8% Cash Back';
+    if (program === 'Orbitz' && commission === 7.0) return '7% Commission';
+    if (program === 'Orbitz' && commission === 7000) return '$40/Cruise';
+    if (program === 'Go2Africa') return '2% Commission';
+    if (program === 'Hotels.com') return '4% Rewards';
+    if (program === 'GetYourGuide') return '8% Cash Back';
+    if (program === 'Viator') return '4%+ Commission';
+    return `${commission}%`;
+}
+
+// Function to load featured deals
+async function loadFeaturedDeals() {
+    const container = document.getElementById('featured-deals-grid');
+    if (!container) return;
+    
+    try {
+        const response = await fetch('/api/affiliate/featured');
+        const deals = await response.json();
+        
+        if (deals.error) {
+            container.innerHTML = '<div class="deal-card">Unable to load deals. Please refresh.</div>';
+            return;
+        }
+        
+        if (deals.length === 0) {
+            container.innerHTML = '<div class="deal-card">No deals available at the moment. Check back soon!</div>';
+            return;
+        }
+        
+        container.innerHTML = '';
+        deals.forEach(deal => {
+            const dealCard = document.createElement('div');
+            dealCard.className = 'deal-card';
+            dealCard.innerHTML = `
+                <div class="deal-icon">${getEmojiForCategory(deal.category)}</div>
+                <div class="deal-title">${deal.name}</div>
+                <div class="deal-desc">${deal.description || 'Check out this special offer!'}</div>
+                <span class="deal-badge">${getBadgeText(deal.affiliate_programs?.name, deal.commission_rate)}</span>
+                <div><a href="${deal.url}" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('${deal.name.replace(/'/g, "\\'")}')">View Deal →</a></div>
+            `;
+            container.appendChild(dealCard);
+        });
+    } catch (error) {
+        console.error('Error loading featured deals:', error);
+        container.innerHTML = '<div class="deal-card">Unable to load deals. Please refresh.</div>';
+    }
+}
+
+// Function to load hotel deals (category: hotels)
+async function loadHotelDeals() {
+    const container = document.getElementById('hotel-deals-grid');
+    if (!container) return;
+    
+    try {
+        const response = await fetch('/api/affiliate/links/category/hotels');
+        const deals = await response.json();
+        
+        if (deals.error) {
+            container.innerHTML = '<div class="deal-card">Unable to load hotels. Please refresh.</div>';
+            return;
+        }
+        
+        if (deals.length === 0) {
+            container.innerHTML = '<div class="deal-card">No hotel deals available at the moment.</div>';
+            return;
+        }
+        
+        container.innerHTML = '';
+        deals.forEach(deal => {
+            const dealCard = document.createElement('div');
+            dealCard.className = 'deal-card';
+            dealCard.innerHTML = `
+                <div class="deal-icon">🏨</div>
+                <div class="deal-title">${deal.name}</div>
+                <div class="deal-desc">${deal.description || 'Find the best rates for your stay.'}</div>
+                <div><a href="${deal.url}" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('${deal.name.replace(/'/g, "\\'")}')">Book Now →</a></div>
+            `;
+            container.appendChild(dealCard);
+        });
+    } catch (error) {
+        console.error('Error loading hotel deals:', error);
+        container.innerHTML = '<div class="deal-card">Unable to load hotels. Please refresh.</div>';
+    }
+}
+
+// Track affiliate clicks
 function trackAffiliateClick(linkName) {
     console.log(`Affiliate click: ${linkName}`);
     fetch('/api/affiliate/click', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ link: linkName, page: 'home' })
+        body: JSON.stringify({ link_name: linkName, page: 'home' })
     }).catch(err => console.error('Tracking failed:', err));
 }
+
+// Load everything when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    loadFeaturedDeals();
+    loadHotelDeals();
+});
 </script>
 
 <div id="google_translate_element"></div>
