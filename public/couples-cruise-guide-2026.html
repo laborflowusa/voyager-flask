@@ -6,14 +6,13 @@
 <title>Best Couples Cruises 2026: Romance on the High Seas | Voyager</title>
 <meta name="description" content="The honest 2026 couples cruise guide. Virgin Voyages, Viking Ocean, Regent Seven Seas, Princess, Explora — matched to your exact relationship vibe. Real reviews, real 2026 pricing, real deals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<!-- FIXED: display=swap already present — good for performance -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Preconnect for Google Translate (saves ~300ms) -->
+<!-- Preconnect for Google Translate -->
 <link rel="preconnect" href="https://translate.googleapis.com">
 <link rel="preconnect" href="https://translate-pa.googleapis.com">
 
-<!-- Google Translate Script with defer (saves ~880ms on mobile) -->
+<!-- Google Translate Script -->
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
@@ -38,17 +37,9 @@ function googleTranslateElementInit() {
   html { scroll-behavior: smooth; }
   body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--cream); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
-  /* FIX: Hide low-resolution Google Translate icon (Best Practices) */
-  .goog-te-gadget-icon {
-    display: none;
-  }
-  /* Ensure translate widget still functions without icon */
-  .goog-te-gadget {
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-  }
+  .goog-te-gadget-icon { display: none; }
+  .goog-te-gadget { font-family: 'Jost', sans-serif; font-size: 12px; }
 
-  /* Google Translate Widget Styles - FIXED contrast for dropdown */
   #google_translate_element {
     position: fixed;
     bottom: 20px;
@@ -75,11 +66,9 @@ function googleTranslateElementInit() {
     }
   }
 
-  /* FIXED: Better tap targets for mobile */
   .topbar { background: var(--navy); color: rgba(242,210,138,0.8); text-align: center; padding: 10px 1rem; font-size: 13px; letter-spacing: 0.04em; }
   .topbar strong { color: var(--gold-light); font-weight: 500; }
 
-  /* FIXED: Nav with better tap targets */
   nav {
     background: var(--cream);
     border-bottom: 1px solid var(--border);
@@ -121,11 +110,8 @@ function googleTranslateElementInit() {
     font-weight: 500;
   }
 
-  .nav-links a:hover {
-    color: var(--gold);
-  }
+  .nav-links a:hover { color: var(--gold); }
 
-  /* FIXED: Darker button for better contrast */
   .nav-cta {
     background: var(--navy);
     color: var(--gold-light);
@@ -144,7 +130,6 @@ function googleTranslateElementInit() {
 
   .nav-cta:hover { background: #1a2f4a; }
 
-  /* LAYOUT - main landmark */
   main { max-width: 780px; margin: 0 auto; padding: 0 1.5rem; }
 
   .hero { padding: 0 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
@@ -261,41 +246,37 @@ function googleTranslateElementInit() {
   .faq-q { font-size: 15px; font-weight: 500; margin-bottom: 6px; color: var(--ink); }
   .faq-a { font-size: 14px; color: var(--muted); line-height: 1.75; }
 
-  .amazon-box { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0; }
-  .amazon-box-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 1rem; }
-  .amazon-sub { font-size: 13px; color: #5a5248; margin-bottom: 1rem; }
-  .amazon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .amazon-item { display: flex; gap: 10px; padding: 10px; background: var(--cream-dark); border-radius: var(--radius-sm); align-items: flex-start; }
-  .amazon-emoji { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
-  .amazon-item-name { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
-  .amazon-item-desc { font-size: 11px; color: var(--muted); margin-bottom: 5px; line-height: 1.5; }
-  .amazon-item-link { font-size: 11px; color: #B85C6E; text-decoration: none; font-weight: 500; }
-  .amazon-item-link:hover { text-decoration: underline; color: #7A1F35; }
+  .affiliate-box { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0; }
+  .affiliate-box-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 1rem; }
+  .affiliate-sub { font-size: 13px; color: #5a5248; margin-bottom: 1rem; }
+  .affiliate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .affiliate-item { display: flex; gap: 10px; padding: 10px; background: var(--cream-dark); border-radius: var(--radius-sm); align-items: flex-start; }
+  .affiliate-emoji { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .affiliate-item-name { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  .affiliate-item-desc { font-size: 11px; color: var(--muted); margin-bottom: 5px; line-height: 1.5; }
+  .affiliate-item-link { font-size: 11px; color: #B85C6E; text-decoration: none; font-weight: 500; }
+  .affiliate-item-link:hover { text-decoration: underline; color: #7A1F35; }
+  .affiliate-badge { font-size: 9px; background: var(--green-bg); color: var(--green-text); padding: 2px 6px; border-radius: 10px; margin-left: 8px; }
+
   @media (max-width: 600px) {
-    .amazon-grid { grid-template-columns: 1fr; }
-  }
-
-  .closing-line { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--muted); margin: 2rem 0 0.5rem; }
-
-  .disclosure { font-size: 12px; color: #5a5248; line-height: 1.75; padding: 1.5rem 0 2rem; border-top: 1px solid var(--border); margin-top: 3rem; font-style: italic; }
-
-  /* FIXED: Better footer contrast — dark grey instead of faint white (Accessibility) */
-  footer { background: var(--navy); text-align: center; padding: 1.75rem; font-size: 12px; letter-spacing: 0.05em; }
-  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 6px; }
-  .footer-logo span { color: var(--gold); }
-  footer div:first-of-type { color: rgba(255,255,255,0.7); margin-bottom: 8px; }
-  footer div:last-of-type { color: #bbbbbb; line-height: 1.5; font-size: 11px; margin-top: 12px; }
-
-  @media (max-width: 620px) {
-    nav { padding: 0.9rem 1rem; }
-    .couples-calc-grid, .cruise-details, .stat-bar, .dest-grid { grid-template-columns: 1fr; }
+    .affiliate-grid, .couples-calc-grid, .cruise-details, .stat-bar, .dest-grid { grid-template-columns: 1fr; }
     .hero-visual { height: 300px; padding: 1.5rem; }
     .hero-visual-text h1 { font-size: 1.6rem; }
     h2 { font-size: 1.45rem; }
     .comp-table { font-size: 11px; }
     .nav-links { gap: 10px; }
     .nav-links a { font-size: 12px; }
+    nav { padding: 0.9rem 1rem; }
   }
+
+  .closing-line { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--muted); margin: 2rem 0 0.5rem; }
+  .disclosure { font-size: 12px; color: #5a5248; line-height: 1.75; padding: 1.5rem 0 2rem; border-top: 1px solid var(--border); margin-top: 3rem; font-style: italic; }
+
+  footer { background: var(--navy); text-align: center; padding: 1.75rem; font-size: 12px; letter-spacing: 0.05em; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: rgba(255,255,255,0.8); margin-bottom: 6px; }
+  .footer-logo span { color: var(--gold); }
+  footer div:first-of-type { color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+  footer div:last-of-type { color: #bbbbbb; line-height: 1.5; font-size: 11px; margin-top: 12px; }
 </style>
 </head>
 <body>
@@ -350,11 +331,12 @@ function googleTranslateElementInit() {
 
   <p class="prose">I've mapped five of the best couples cruise lines in 2026 — each matched to a specific relationship vibe — along with honest pros, cons, destinations, and exactly where to find the best deal before your cabin sells out.</p>
 
+  <!-- ORBITZ CRUISE DEALS CTA - $40 Commission -->
   <div class="cta-block">
-    <h3>Not sure where to start?</h3>
-    <p>Tell Voyager your travel style, budget, and destination — it scans live pricing across every line in this guide plus 50+ travel partners to find your perfect couples deal.</p>
-    <a class="cta-btn" href="/">👉 Find My Couples Deal</a>
-    <div class="cta-note">No email. No spam. Just a real deal for your trip.</div>
+    <h3>🚢 Best Couples Cruise Deals Right Now</h3>
+    <p>Orbitz is offering exclusive cruise savings for couples. Book through Voyager to lock in balcony cabins and suite upgrades at the best rates.</p>
+    <a class="cta-btn" href="https://www.orbitz.com/?cid=4861280&q=cruises" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Orbitz Couples Cruises')">👉 View Couples Cruise Deals →</a>
+    <div class="cta-note">$40 commission per cruise booking • 7% hotel commission also available</div>
   </div>
 
   <h2>The real couples calculation</h2>
@@ -389,7 +371,7 @@ function googleTranslateElementInit() {
     <div class="cruise-card-body">
       <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples in their 30s–40s who want nightlife, exceptional food, and zero school groups</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$1,200–$2,800/person</div></div></div>
       <p class="cruise-verdict">Virgin Voyages redesigned cruising for couples who've been put off by traditional ships. 100% adults-only, no formal nights, no buffet — just exceptional restaurants, a serious nightlife program, and a spa that doesn't feel like an afterthought.</p>
-      <div class="cruise-meta-row"><span class="commission-badge">~2–4% commission via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Virgin Voyages Deals →</a></div>
+      <div class="cruise-meta-row"><span class="commission-badge">~2–4% commission via Travelocity</span><a class="book-btn" href="https://www.travelocity.com/?cid=1549809" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Travelocity Virgin Voyages')">Find Virgin Voyages Deals →</a></div>
     </div>
   </div>
 
@@ -402,7 +384,7 @@ function googleTranslateElementInit() {
     <div class="cruise-card-body">
       <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Intellectually curious couples who want longer port times and enrichment lectures</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$3,000–$8,000+/person</div></div></div>
       <p class="cruise-verdict">Viking has won the #1 couples cruise ranking from U.S. News for five consecutive years. Their ships are adults-only, itineraries built for genuine discovery, and port times longer than almost any mainstream competitor.</p>
-      <div class="cruise-meta-row"><span class="commission-badge">~3% via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Viking Ocean Deals →</a></div>
+      <div class="cruise-meta-row"><span class="commission-badge">~3% via Orbitz</span><a class="book-btn" href="https://www.orbitz.com/?cid=4861280&q=Viking+Cruises" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Orbitz Viking')">Find Viking Ocean Deals →</a></div>
     </div>
   </div>
 
@@ -415,7 +397,7 @@ function googleTranslateElementInit() {
     <div class="cruise-card-body">
       <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples celebrating a milestone — anniversary, retirement — who want zero planning friction</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$6,000–$15,000+/person</div></div></div>
       <p class="cruise-verdict">Regent is the line you book when you want to hand over the planning and simply arrive. Truly all-inclusive means the bill at the end of the trip is zero — airfare, excursions, gratuities, every restaurant, every glass of wine.</p>
-      <div class="cruise-meta-row"><span class="commission-badge">~3% via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Regent Seven Seas Deals →</a></div>
+      <div class="cruise-meta-row"><span class="commission-badge">~3% via Expedia</span><a class="book-btn" href="https://www.expedia.com/?cid=1874913" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Expedia Regent')">Find Regent Seven Seas Deals →</a></div>
     </div>
   </div>
 
@@ -428,7 +410,7 @@ function googleTranslateElementInit() {
     <div class="cruise-card-body">
       <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples who want a classic, familiar cruise experience with genuine romance programming</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$1,000–$3,500/person</div></div></div>
       <p class="cruise-verdict">Princess is the accessible middle ground — not as edgy as Virgin, not as expensive as Viking, but consistently delivering a warm, romance-focused experience. The Ultimate Balcony Dining experience alone is worth booking a balcony cabin.</p>
-      <div class="cruise-meta-row"><span class="commission-badge">~3% via CJ Affiliate</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Princess Cruises Deals →</a></div>
+      <div class="cruise-meta-row"><span class="commission-badge">~3% via Travelocity</span><a class="book-btn" href="https://www.travelocity.com/?cid=1549809" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Travelocity Princess')">Find Princess Cruises Deals →</a></div>
     </div>
   </div>
 
@@ -441,7 +423,7 @@ function googleTranslateElementInit() {
     <div class="cruise-card-body">
       <div class="cruise-details"><div class="cruise-detail"><div class="cruise-detail-label">Best for</div><div class="cruise-detail-val">Couples who want the feel of a private yacht charter — intimate, unhurried, design-forward</div></div><div class="cruise-detail"><div class="cruise-detail-label">Price range</div><div class="cruise-detail-val">~$4,000–$10,000+/person</div></div></div>
       <p class="cruise-verdict">Explora Journeys launched in 2023 and immediately claimed #2 for couples from U.S. News. The line is built around "ocean state of mind": fewer guests, more space, slower travel, and an atmosphere closer to a design hotel than a traditional ship.</p>
-      <div class="cruise-meta-row"><span class="commission-badge">Via CruiseDirect</span><a class="book-btn" href="https://www.cruisedirect.com" target="_blank" rel="noopener">Find Explora Journeys Deals →</a></div>
+      <div class="cruise-meta-row"><span class="commission-badge">Via Orbitz</span><a class="book-btn" href="https://www.orbitz.com/?cid=4861280" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Orbitz Explora')">Find Explora Journeys Deals →</a></div>
     </div>
   </div>
 
@@ -486,15 +468,40 @@ function googleTranslateElementInit() {
 
   <hr class="divider">
 
-  <!-- FLIGHT ESSENTIALS -->
-  <div class="amazon-box">
-    <div class="amazon-box-title">✈️ Flight Essentials for Couples — Arrive Rested & Ready</div>
-    <div class="amazon-sub">Long flights to your cruise departure? These essentials make the journey part of the romance.</div>
-    <div class="amazon-grid" id="amazon-grid">
-      <div class="amazon-item"><span class="amazon-emoji">😴</span><div><div class="amazon-item-name">BCOZZY Travel Neck Pillow</div><div class="amazon-item-desc">Amazon's Choice. 32,000+ reviews. Patented double support.</div><a class="amazon-item-link" href="https://amzn.to/3QIBkPC" target="_blank" rel="noopener sponsored">Shop on Amazon →</a></div></div>
-      <div class="amazon-item"><span class="amazon-emoji">😴</span><div><div class="amazon-item-name">MZOO 3D Sleep Mask</div><div class="amazon-item-desc">4.6 stars with 99,000+ reviews. Zero eye pressure. Complete blackout.</div><a class="amazon-item-link" href="https://amzn.to/3QIBkPC" target="_blank" rel="noopener sponsored">Shop on Amazon →</a></div></div>
+  <!-- FLIGHT ESSENTIALS - AMAZON AFFILIATE LINKS -->
+  <div class="affiliate-box">
+    <div class="affiliate-box-title">✈️ Flight Essentials for Couples — Arrive Rested & Ready</div>
+    <div class="affiliate-sub">Long flights to your cruise departure? These essentials make the journey part of the romance.</div>
+    <div class="affiliate-grid">
+      <div class="affiliate-item"><span class="affiliate-emoji">😴</span><div><div class="affiliate-item-name">BCOZZY Travel Neck Pillow</div><div class="affiliate-item-desc">Amazon's Choice. 32,000+ reviews. Patented double support.</div><a class="affiliate-item-link" href="https://www.amazon.com/dp/B07KMLXYJ9?tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('BCOZZY Pillow')">Shop on Amazon →</a></div></div>
+      <div class="affiliate-item"><span class="affiliate-emoji">😴</span><div><div class="affiliate-item-name">MZOO 3D Sleep Mask</div><div class="affiliate-item-desc">4.6 stars with 99,000+ reviews. Zero eye pressure. Complete blackout.</div><a class="affiliate-item-link" href="https://www.amazon.com/dp/B07W12T2G9?tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('MZOO Mask')">Shop on Amazon →</a></div></div>
+      <div class="affiliate-item"><span class="affiliate-emoji">🧳</span><div><div class="affiliate-item-name">Personalized Leather Luggage Tag</div><div class="affiliate-item-desc">Couples set — easy to spot on the carousel.</div><a class="affiliate-item-link" href="https://www.amazon.com/dp/B07V1H7X5Z?tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Luggage Tags')">Shop on Amazon →</a></div></div>
+      <div class="affiliate-item"><span class="affiliate-emoji">🔌</span><div><div class="affiliate-item-name">European Travel Plug Adapter</div><div class="affiliate-item-desc">For Mediterranean cruises — works in 150+ countries.</div><a class="affiliate-item-link" href="https://www.amazon.com/dp/B07QK3C5GF?tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Travel Adapter')">Shop on Amazon →</a></div></div>
     </div>
-    <div class="amazon-note" style="font-size: 11px; color: #6a6a6a; margin-top: 12px; text-align: center;">As an Amazon Associate, Voyager earns from qualifying purchases.</div>
+    <div style="font-size: 11px; color: #6a6a6a; margin-top: 12px; text-align: center;">As an Amazon Associate, Voyager earns from qualifying purchases.</div>
+  </div>
+
+  <!-- ROMANTIC ACTIVITIES - GetYourGuide & Viator -->
+  <div class="affiliate-box">
+    <div class="affiliate-box-title">🌹 Romantic Shore Excursions & Couples Activities</div>
+    <div class="affiliate-sub">Book these before you sail to lock in availability and save up to 20%.</div>
+    <div class="affiliate-grid">
+      <div class="affiliate-item"><span class="affiliate-emoji">🌅</span><div><div class="affiliate-item-name">Sunset Sailing & Champagne</div><div class="affiliate-item-desc">Private sunset cruise in Santorini, St. Lucia, or Key West</div><a class="affiliate-item-link" href="https://www.getyourguide.com/?partner_id=Y5RBAVK" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('GetYourGuide Sunset')">Book on GetYourGuide →</a><span class="affiliate-badge">8% Cash Back</span></div></div>
+      <div class="affiliate-item"><span class="affiliate-emoji">💆</span><div><div class="affiliate-item-name">Couples Spa Package</div><div class="affiliate-item-desc">Massage & thermal suite access — perfect for sea days</div><a class="affiliate-item-link" href="https://www.viator.com/?pid=2874255" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Viator Spa')">Book on Viator →</a><span class="affiliate-badge">4%+ Commission</span></div></div>
+      <div class="affiliate-item"><span class="affiliate-emoji">🍷</span><div><div class="affiliate-item-name">Wine Tasting Experience</div><div class="affiliate-item-desc">Mediterranean ports — Tuscany, Santorini, Bordeaux</div><a class="affiliate-item-link" href="https://www.getyourguide.com/?partner_id=Y5RBAVK" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('GetYourGuide Wine')">Book on GetYourGuide →</a><span class="affiliate-badge">8% Cash Back</span></div></div>
+      <div class="affiliate-item"><span class="affiliate-emoji">📸</span><div><div class="affiliate-item-name">Private Photo Shoot</div><div class="affiliate-item-desc">Professional photos at your port destination</div><a class="affiliate-item-link" href="https://www.viator.com/?pid=2874255" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Viator Photo')">Book on Viator →</a><span class="affiliate-badge">4%+ Commission</span></div></div>
+    </div>
+  </div>
+
+  <!-- HOTEL SECTION - For pre/post cruise romance -->
+  <div class="affiliate-box">
+    <div class="affiliate-box-title">🏨 Romantic Hotels Before or After Your Cruise</div>
+    <div class="affiliate-sub">Extend the romance with a luxury hotel stay in Miami, Venice, Barcelona, or Seattle.</div>
+    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 15px;">
+      <a href="https://www.hotels.com/?cid=1702763" target="_blank" rel="sponsored nofollow" class="book-btn" style="background: #2D5FAA;" onclick="trackAffiliateClick('Hotels.com Romance')">🏨 Search Hotels.com →</a>
+      <a href="https://www.expedia.com/?cid=1874913" target="_blank" rel="sponsored nofollow" class="book-btn" style="background: #0066FF;" onclick="trackAffiliateClick('Expedia Romance')">🌍 Expedia Packages →</a>
+    </div>
+    <div class="cta-note" style="color: #6a6a6a; margin-top: 12px; text-align: center;">4% commission on hotel bookings • 45-day cookie window</div>
   </div>
 
   <hr class="divider">
@@ -504,15 +511,16 @@ function googleTranslateElementInit() {
   <div class="faq-item"><div class="faq-q">What's the best time of year for a Caribbean couples cruise?</div><div class="faq-a">November through April is the sweet spot — low humidity, lower storm risk, and the most pleasant weather.</div></div>
   <div class="faq-item"><div class="faq-q">Does Voyager track couples cruise deals specifically?</div><div class="faq-a">Yes. Voyager scans live pricing across all five lines in this guide, including cabin category availability and current promotions.</div></div>
 
+  <!-- FINAL CTA - CheapTickets for pre/post cruise theme parks -->
   <div class="cta-block" style="margin-top:2.5rem;">
-    <h3>Let Voyager find your perfect couples cruise.</h3>
-    <p>Five lines. Three ocean regions. Hundreds of itineraries. Tell Voyager what matters most and it finds the best current deal for your exact couple's getaway.</p>
-    <a class="cta-btn" href="/">👉 Find My Couples Cruise Deal</a>
-    <div class="cta-note">No email. No spam. No upsells.</div>
+    <h3>🎟️ Adding Universal or Disney to Your Cruise?</h3>
+    <p>Orlando cruise? Add a few days at the parks. CheapTickets offers 8% cash back on theme park tickets.</p>
+    <a class="cta-btn" href="https://www.cheaptickets.com/?cid=4861279&q=Universal+Orlando" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('CheapTickets Parks')">🎢 View Theme Park Tickets →</a>
+    <div class="cta-note">8% commission on tickets • Save $50+ on a couple's park visit</div>
   </div>
 
   <div class="closing-line">Click Voyager above. Let me find your couple's next adventure.</div>
-  <div class="disclosure">Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. We only recommend cruise lines and experiences we've genuinely researched and believe deliver real value. Ratings reflect 2026 U.S. News &amp; World Report rankings.</div>
+  <div class="disclosure">Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. We only recommend cruise lines and experiences we've genuinely researched and believe deliver real value. Ratings reflect 2026 U.S. News &amp; World Report rankings. Amazon Associates ID: voyagerx20-20 | Orbitz CID: 4861280 | Travelocity CID: 1549809 | Hotels.com CID: 1702763 | Expedia CID: 1874913 | CheapTickets CID: 4861279 | GetYourGuide Partner ID: Y5RBAVK | Viator AWIN: 2874255</div>
 </main>
 
 <footer>
@@ -522,15 +530,27 @@ function googleTranslateElementInit() {
 </footer>
 
 <script>
+    // ========== AFFILIATE TRACKING ==========
     function shareGuide() {
         const url = window.location.href;
         navigator.clipboard.writeText(url).then(() => alert('Link copied! Send this guide to your partner.')).catch(() => alert('Press Ctrl+C to copy the link from your browser bar.'));
     }
-    function trackClick(linkId) { fetch(`/api/click/${linkId}`, { method: 'POST' }).catch(err => console.error('Click tracking failed:', err)); }
+    
+    function trackAffiliateClick(linkName) {
+        console.log(`Affiliate click: ${linkName}`);
+        // Optional: Send to analytics endpoint
+        fetch('/api/affiliate/click', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ link: linkName, page: 'couples-cruise-guide' })
+        }).catch(err => console.error('Tracking failed:', err));
+    }
+    
+    function trackClick(linkId) { 
+        fetch(`/api/click/${linkId}`, { method: 'POST' }).catch(err => console.error('Click tracking failed:', err)); 
+    }
 </script>
 
-<!-- Google Translate Widget -->
 <div id="google_translate_element"></div>
 </body>
 </html>
-```
