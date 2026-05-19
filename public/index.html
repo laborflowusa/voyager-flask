@@ -192,6 +192,75 @@
         .blog-card a:hover {
             color: #8a3010;
         }
+        
+        /* Featured Deals Section */
+        .deals-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .deals-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .deal-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: transform 0.2s;
+        }
+        .deal-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .deal-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .deal-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a4a6f;
+            margin-bottom: 8px;
+        }
+        .deal-desc {
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 12px;
+        }
+        .deal-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .deal-link {
+            display: inline-block;
+            background: #8a3010;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .deal-link:hover {
+            background: #6a2010;
+        }
+        
         footer {
             text-align: center;
             padding: 30px;
@@ -221,6 +290,7 @@
             main { padding: 15px; }
             .nav-links { gap: 10px; padding: 10px 16px; }
             .nav-links a { font-size: 11px; }
+            .deals-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -255,25 +325,60 @@
         </div>
     </div>
 
+    <!-- FEATURED DEALS SECTION - NEW -->
+    <div class="deals-section">
+        <h2>🔥 Featured Travel Deals</h2>
+        <div class="deals-grid">
+            <div class="deal-card">
+                <div class="deal-icon">🎢</div>
+                <div class="deal-title">Universal Orlando Tickets</div>
+                <div class="deal-desc">Epic Universe now open! 8% cash back on tickets.</div>
+                <span class="deal-badge">8% Commission</span>
+                <div><a href="https://www.cheaptickets.com/?cid=4861279&q=Universal+Orlando" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('CheapTickets Universal')">View Tickets →</a></div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-icon">🚢</div>
+                <div class="deal-title">Cruise Deals</div>
+                <div class="deal-desc">$40 commission per booking. Family & couples cruises available.</div>
+                <span class="deal-badge">$40/Cruise</span>
+                <div><a href="https://www.orbitz.com/?cid=4861280&q=cruises" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Orbitz Cruises')">Find Cruises →</a></div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-icon">🏨</div>
+                <div class="deal-title">Orlando Hotels</div>
+                <div class="deal-desc">Book near Disney or Universal. 7% hotel commission.</div>
+                <span class="deal-badge">7% Commission</span>
+                <div><a href="https://www.orbitz.com/?cid=4861280&q=Orlando+Hotels" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Orbitz Hotels')">View Hotels →</a></div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-icon">🌍</div>
+                <div class="deal-title">Luxury African Safaris</div>
+                <div class="deal-desc">Go2Africa — all-inclusive safari vacations.</div>
+                <span class="deal-badge">2% Commission</span>
+                <div><a href="http://www.awin1.com/cread.php?awinmid=24529&awinaffid=2874255" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Go2Africa')">Explore Safaris →</a></div>
+            </div>
+        </div>
+    </div>
+
     <h2 style="text-align: center;">What We Offer</h2>
     <div class="feature-grid">
         <div class="feature-card">
             <div class="feature-icon" role="img" aria-label="Roller coaster emoji representing theme parks">🎢</div>
             <h3>Theme Park Comparisons</h3>
-            <p>Disney World vs. Universal Orlando – real 2026 ticket prices and honest advice.</p>
+            <p>Disney World vs. Universal Orlando – real 2026 ticket prices and honest advice. CheapTickets offers 8% cash back.</p>
             <a href="/universal-vs-disney.html">Read the guide →</a>
         </div>
         <div class="feature-card">
             <div class="feature-icon" role="img" aria-label="Cruise ship emoji representing cruise guides">🚢</div>
             <h3>Cruise Guides</h3>
-            <p>Family cruises, couples cruises, and insider tips to save money.</p>
+            <p>Family cruises, couples cruises, and insider tips to save money. Orbitz: $40 per cruise commission.</p>
             <a href="/family-cruise-guide-2026.html">Family Cruises</a> | 
             <a href="/couples-cruise-guide-2026.html">Couples Cruises</a>
         </div>
         <div class="feature-card">
             <div class="feature-icon" role="img" aria-label="Rose emoji representing celebrate mom">🌹</div>
             <h3>Celebrate Mom</h3>
-            <p>Any day of the year – cruises, hotel getaways, spa experiences, and more.</p>
+            <p>Any day of the year – cruises, hotel getaways, spa experiences, and more. Hotels.com: 4% commission.</p>
             <a href="/celebrate-mom.html">Give Her a Moment →</a>
         </div>
         <div class="feature-card">
@@ -288,17 +393,17 @@
     <div class="blog-links">
         <div class="blog-card">
             <h3>🎢 Universal vs. Disney</h3>
-            <p>Which park saves you $1,200+? We crunched the numbers for 2026.</p>
+            <p>Which park saves you $1,200+? We crunched the numbers for 2026. CheapTickets: 8% cash back on tickets.</p>
             <a href="/universal-vs-disney.html">Read Universal vs. Disney guide →</a>
         </div>
         <div class="blog-card">
             <h3>🚢 Family Cruise Guide</h3>
-            <p>Disney, Royal Caribbean, Carnival, Norwegian, MSC – rated by real parents.</p>
+            <p>Disney, Royal Caribbean, Carnival, Norwegian, MSC – rated by real parents. Orbitz: $40 per cruise.</p>
             <a href="/family-cruise-guide-2026.html">Read Family Cruise guide →</a>
         </div>
         <div class="blog-card">
             <h3>💍 Couples Cruise Guide</h3>
-            <p>Romance on the high seas – five cruise lines matched to your vibe.</p>
+            <p>Romance on the high seas – five cruise lines matched to your vibe. Travelocity: 45-day cookie window.</p>
             <a href="/couples-cruise-guide-2026.html">Read Couples Cruise guide →</a>
         </div>
         <div class="blog-card">
@@ -308,8 +413,40 @@
         </div>
     </div>
 
+    <!-- HOTEL SEARCH SECTION -->
+    <div class="deals-section">
+        <h2>🏨 Find Hotels Near Your Destination</h2>
+        <div class="deals-grid">
+            <div class="deal-card">
+                <div class="deal-icon">🏨</div>
+                <div class="deal-title">Hotels.com</div>
+                <div class="deal-desc">Earn 4% rewards on every stay. Perfect for cruise ports and theme parks.</div>
+                <div><a href="https://www.hotels.com/?cid=1702763" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Hotels.com')">Search Hotels →</a></div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-icon">✈️</div>
+                <div class="deal-title">Expedia Packages</div>
+                <div class="deal-desc">Flight + hotel bundles. Save up to 30% on Disney and Universal trips.</div>
+                <div><a href="https://www.expedia.com/?cid=1874913" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Expedia')">View Packages →</a></div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-icon">🦁</div>
+                <div class="deal-title">GetYourGuide</div>
+                <div class="deal-desc">Tours, activities, and theme park tickets. 8% cash back.</div>
+                <span class="deal-badge">8% Cash Back</span>
+                <div><a href="https://www.getyourguide.com/?partner_id=Y5RBAVK" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('GetYourGuide')">Book Activities →</a></div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-icon">💆</div>
+                <div class="deal-title">Viator Spa & Tours</div>
+                <div class="deal-desc">Romantic excursions, spa packages, and shore activities.</div>
+                <div><a href="https://www.viator.com/?pid=2874255" target="_blank" rel="sponsored nofollow" class="deal-link" onclick="trackAffiliateClick('Viator')">Explore Now →</a></div>
+            </div>
+        </div>
+    </div>
+
     <div class="disclosure">
-        Disclosure: VOYAGER-X uses affiliate links. If you book through our links, we may earn a commission at no extra cost to you. We only recommend what we have researched and <strong>believe</strong> delivers real value.
+        Disclosure: VOYAGER-X uses affiliate links. If you book through our links, we may earn a commission at no extra cost to you. We only recommend what we have researched and <strong>believe</strong> delivers real value. Affiliate IDs: Amazon: voyagerx20-20 | Orbitz: 4861280 | Hotels.com: 1702763 | CheapTickets: 4861279 | GetYourGuide: Y5RBAVK | Viator: 2874255 | Expedia: 1874913 | Travelocity: 1549809
     </div>
 </main>
 
@@ -321,6 +458,17 @@
     As an affiliate, we earn from qualifying purchases at no extra cost to you.
 </div>
 </footer>
+
+<script>
+function trackAffiliateClick(linkName) {
+    console.log(`Affiliate click: ${linkName}`);
+    fetch('/api/affiliate/click', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ link: linkName, page: 'home' })
+    }).catch(err => console.error('Tracking failed:', err));
+}
+</script>
 
 <div id="google_translate_element"></div>
 
