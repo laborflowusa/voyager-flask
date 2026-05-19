@@ -23,7 +23,7 @@ SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
 if not SUPABASE_URL:
     SUPABASE_URL = "https://asgtixmtfcqpkwzlxihu.supabase.co"
 if not SUPABASE_KEY:
-    SUPABASE_KEY = "YOUR_ANON_KEY_HERE"  # Replace with your actual anon key
+    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzZ3RpeG10ZmNxcGt3emx4aWh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjQzODcsImV4cCI6MjA5NDc0MDM4N30.qTfRv139CP2H4e16cGiQdXfPk17r5ekelLUI68M_KFA"  
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
