@@ -60,7 +60,6 @@ function googleTranslateElementInit() {
     -webkit-font-smoothing: antialiased;
   }
 
-  /* FIXED: Better tap targets for mobile */
   .topbar {
     background: var(--ink);
     color: var(--gold-light);
@@ -72,7 +71,6 @@ function googleTranslateElementInit() {
 
   .topbar strong { font-weight: 500; color: #fff; }
 
-  /* FIXED: Nav with better tap targets and Services link */
   nav {
     background: var(--parchment);
     border-bottom: 1px solid var(--border);
@@ -116,7 +114,6 @@ function googleTranslateElementInit() {
     color: var(--gold);
   }
 
-  /* FIXED: Darker button for better contrast */
   .nav-cta {
     background: var(--ink);
     color: var(--gold-light);
@@ -158,7 +155,6 @@ function googleTranslateElementInit() {
     }
   }
 
-  /* LAYOUT - FIXED: Changed div.container to main for landmark */
   main {
     max-width: 760px;
     margin: 0 auto;
@@ -255,7 +251,6 @@ function googleTranslateElementInit() {
   .share-nudge-text { font-size: 13px; color: var(--blue-text); line-height: 1.6; flex: 1; min-width: 200px; }
   .share-nudge-text strong { font-weight: 500; }
 
-  /* FIXED: Better share button contrast */
   .share-btn {
     font-size: 12px;
     font-family: 'DM Sans', sans-serif;
@@ -272,7 +267,6 @@ function googleTranslateElementInit() {
     background: #eaf1fa;
   }
 
-  /* PROSE - FIXED: Better contrast for body text */
   .prose {
     font-size: 16px;
     line-height: 1.85;
@@ -307,7 +301,6 @@ function googleTranslateElementInit() {
     margin: 2rem 0;
   }
 
-  /* CTA BLOCK - FIXED: Darker button for contrast */
   .cta-block {
     background: var(--ink);
     border-radius: var(--radius);
@@ -352,7 +345,6 @@ function googleTranslateElementInit() {
     position: relative;
   }
 
-  /* FIXED: CTA link button contrast */
   .cta-link {
     display: inline-block;
     background: #d15219;
@@ -490,32 +482,32 @@ function googleTranslateElementInit() {
     margin: 2rem 0 0.5rem;
   }
 
-  /* AMAZON BOX STYLES */
-  .amazon-box {
+  /* AFFILIATE BOX STYLES */
+  .affiliate-box {
     background: #fff;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.5rem;
     margin: 2rem 0;
   }
-  .amazon-box-title {
+  .affiliate-box-title {
     font-size: 14px;
     font-weight: 500;
     color: var(--ink);
     margin-bottom: 0.5rem;
   }
-  .amazon-sub {
+  .affiliate-sub {
     font-size: 13px;
     color: var(--muted);
     margin-bottom: 1.25rem;
     line-height: 1.6;
   }
-  .amazon-grid {
+  .affiliate-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
-  .amazon-item {
+  .affiliate-item {
     display: flex;
     gap: 10px;
     padding: 10px;
@@ -523,42 +515,83 @@ function googleTranslateElementInit() {
     border-radius: var(--radius-sm);
     align-items: flex-start;
   }
-  .amazon-emoji {
+  .affiliate-emoji {
     font-size: 18px;
     flex-shrink: 0;
     margin-top: 2px;
   }
-  .amazon-item-name {
+  .affiliate-item-name {
     font-family: 'Fraunces', serif;
     font-size: 13px;
     font-weight: 500;
     color: var(--ink);
     margin-bottom: 3px;
   }
-  .amazon-item-desc {
+  .affiliate-item-desc {
     font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     color: var(--muted);
     margin-bottom: 5px;
     line-height: 1.5;
   }
-  .amazon-item-link {
+  .affiliate-item-link {
     font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     color: var(--gold);
     text-decoration: none;
     font-weight: 500;
   }
-  .amazon-item-link:hover {
+  .affiliate-item-link:hover {
     text-decoration: underline;
   }
-  @media (max-width: 600px) {
-    .amazon-grid {
-      grid-template-columns: 1fr;
-    }
+  .affiliate-badge {
+    font-size: 9px;
+    background: var(--green-bg);
+    color: var(--green-text);
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 8px;
   }
 
-  /* DISCLOSURE - FIXED: Better contrast */
+  /* Cruise Booking Button */
+  .cruise-booking-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), #a07020);
+    color: white;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    margin: 10px 0;
+    transition: transform 0.2s;
+  }
+  .cruise-booking-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Hotel Booking Section */
+  .hotel-section {
+    background: var(--blue-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .hotel-section h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--blue-text);
+  }
+
+  @media (max-width: 600px) {
+    .affiliate-grid, .mom-grid, .stat-grid { grid-template-columns: 1fr; }
+    h2 { font-size: 1.4rem; }
+    .hero h1 { font-size: 1.75rem; }
+    .nav-links { gap: 10px; }
+    .nav-links a { font-size: 11px; }
+    nav { padding: 0.9rem 1rem; }
+  }
+
   .disclosure {
     font-size: 12px;
     color: #5a5248;
@@ -569,7 +602,6 @@ function googleTranslateElementInit() {
     font-style: italic;
   }
 
-  /* FOOTER - FIXED: Better tap targets with expanded disclosure */
   footer {
     background: var(--ink);
     color: rgba(255,255,255,0.4);
@@ -588,15 +620,6 @@ function googleTranslateElementInit() {
   }
 
   footer .footer-logo span { color: var(--gold); }
-
-  @media (max-width: 600px) {
-    nav { padding: 0.9rem 1rem; }
-    .mom-grid, .stat-grid { grid-template-columns: 1fr; }
-    h2 { font-size: 1.4rem; }
-    .hero h1 { font-size: 1.75rem; }
-    .nav-links { gap: 10px; }
-    .nav-links a { font-size: 11px; }
-  }
 </style>
 </head>
 <body>
@@ -614,12 +637,11 @@ function googleTranslateElementInit() {
     <a href="/family-cruise-guide-2026.html">Family Cruise Guide</a>
     <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
     <a href="/celebrate-mom.html">Celebrate Mom</a>
-        <a href="/privacy.html">Privacy</a>
+    <a href="/privacy.html">Privacy</a>
   </div>
   <button class="nav-cta" onclick="getDeal()">👉 Find My Deal</button>
 </nav>
 
-<!-- FIXED: Changed div.container to main for landmark -->
 <main>
 
   <div class="hero">
@@ -649,13 +671,14 @@ function googleTranslateElementInit() {
 
   <p class="prose">I've broken down the five best family cruise lines for 2026, rated the kids clubs honestly, exposed the nickel-and-dime traps that blindside first-timers, and highlighted which lines actually deliver parents-only time — and which just claim they do.</p>
 
+  <!-- CRUISE DEALS CTA - Orbitz $40 Cruise Commission -->
   <div class="cta-block">
-    <h3>Not sure which line fits your family?</h3>
-    <p>Tell Voyager your kids' ages, budget, and vacation style — it scans live pricing across every major family line and finds your best deal. One click, no email required.</p>
+    <h3>🚢 Best Cruise Deals Right Now</h3>
+    <p>Orbitz is offering exclusive cruise savings. Book through Voyager to lock in the best rates and earn rewards.</p>
     <p style="text-align: center; margin: 20px 0;">
-      <a href="https://voyager-flask.onrender.com" class="cta-link">👉 Find My Family Cruise Deal</a>
+      <a href="https://www.orbitz.com/?cid=4861280&q=cruises" target="_blank" rel="sponsored nofollow" class="cta-link" onclick="trackAffiliateClick('Orbitz Cruises')">🚢 View Cruise Deals →</a>
     </p>
-    <div class="cta-note">No email. No spam. Just a real deal.</div>
+    <div class="cta-note">$40 commission per cruise booking • 7% hotel commission also available</div>
   </div>
 
   <div class="pullquote">"A good family cruise is one where everyone — including the parents — comes back actually rested."</div>
@@ -707,13 +730,13 @@ function googleTranslateElementInit() {
   <p class="prose"><strong>Kids club rating:</strong> Ages 3–12: 8.0 | Teens: 7.2</p>
   <p class="prose">MSC is the underrated pick. Mediterranean itineraries are excellent, pricing is dramatically lower than comparable sailings. The honest caveat: MSC has a more international, European atmosphere. Some families love this; others find the energy different. If Europe is your destination, MSC is the smartest way to introduce your kids to it.</p>
 
-  <div class="cta-block">
-    <h3>Which line is right for your family?</h3>
-    <p>Voyager scans live availability across all five lines — plus current promotions, kids-sail-free deals, and cabin upgrade offers. Tell it your family's ages and budget and it finds the best deal right now.</p>
-    <p style="text-align: center; margin: 20px 0;">
-      <a href="https://voyager-flask.onrender.com" class="cta-link">👉 Find My Family Cruise Deal</a>
-    </p>
-    <div class="cta-note">No email. No spam. No upsells.</div>
+  <!-- SECOND CRUISE DEALS CTA -->
+  <div class="affiliate-box">
+    <div class="affiliate-box-title">🚢 Compare Cruise Prices Instantly</div>
+    <div class="affiliate-sub">Travelocity offers a 45-day cookie window — you have more time to decide before booking.</div>
+    <div style="text-align: center;">
+      <a href="https://www.travelocity.com/?cid=1549809" target="_blank" rel="sponsored nofollow" class="cruise-booking-btn" onclick="trackAffiliateClick('Travelocity Cruises')">🌊 Find Your Family Cruise →</a>
+    </div>
   </div>
 
   <div class="data-table-wrap">
@@ -722,31 +745,11 @@ function googleTranslateElementInit() {
         <tr><th>Cruise line</th><th>Best for</th><th>Kids club</th><th>Starting price/pp</th></tr>
       </thead>
       <tbody>
-        <tr><td
-          <td>Ages 3–12, magic seekers</td
-          <td>9.7 / 10</td
-          <td>~$1,500</td
-        </tr>
-        <tr><td
-          <td>All ages, thrill-seekers</td
-          <td>9.5 / 10 teens</td
-          <td>~$900</td
-        </tr>
-        <tr><td
-          <td>Budget-smart families</td
-          <td>8.2 / 10</td
-          <td>~$600</td
-        </tr>
-        <tr><td
-          <td>Flexible, no-schedule families</td
-          <td>8.3 / 10</td
-          <td>~$800</td
-        </tr>
-        <tr><td
-          <td>European itineraries, value</td
-          <td>8.0 / 10</td
-          <td>~$700</td
-        </tr>
+        <tr><td>Disney</td><td>Ages 3–12, magic seekers</td><td>9.7 / 10</td><td>~$1,500</td></tr>
+        <tr><td>Royal Caribbean</td><td>All ages, thrill-seekers</td><td>9.5 / 10 teens</td><td>~$900</td></tr>
+        <tr><td>Carnival</td><td>Budget-smart families</td><td>8.2 / 10</td><td>~$600</td></tr>
+        <tr><td>Norwegian</td><td>Flexible, no-schedule families</td><td>8.3 / 10</td><td>~$800</td></tr>
+        <tr><td>MSC</td><td>European itineraries, value</td><td>8.0 / 10</td><td>~$700</td></tr>
       </tbody>
     </table>
   </div>
@@ -759,14 +762,81 @@ function googleTranslateElementInit() {
   <strong>Wi-Fi packages</strong> — often $20–35/day per device → $140–245 per week<br>
   <strong>Parking at the departure port</strong> — if driving → $20–35 per day</div>
 
-  <!-- AMAZON ESSENTIALS SECTION - DYNAMIC FROM SUPABASE -->
-  <div class="amazon-box">
-    <div class="amazon-box-title">🧳 Cruise Packing Essentials — What Every Family Actually Needs</div>
-    <div class="amazon-sub">Recommended by frequent cruisers. All Prime eligible, all chosen because you'll actually use them.</div>
-    <div class="amazon-grid" id="amazon-grid">
-      <div class="amazon-item">Loading Amazon essentials...</div>
+  <!-- AMAZON PACKING ESSENTIALS - HARDCODED WITH YOUR AFFILIATE ID -->
+  <div class="affiliate-box">
+    <div class="affiliate-box-title">🧳 Cruise Packing Essentials — What Every Family Actually Needs</div>
+    <div class="affiliate-sub">Recommended by frequent cruisers. All Prime eligible, all chosen because you'll actually use them.</div>
+    <div class="affiliate-grid" id="packing-grid">
+      <div class="affiliate-item">
+        <span class="affiliate-emoji">🎒</span>
+        <div>
+          <div class="affiliate-item-name">BAGAIL Packing Cubes 8 Set</div>
+          <div class="affiliate-item-desc">42,000+ reviews. Save space in cruise cabins.</div>
+          <a class="affiliate-item-link" href="https://www.amazon.com/dp/B07ZPYLMQB?tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Packing Cubes')">Shop on Amazon →</a>
+        </div>
+      </div>
+      <div class="affiliate-item">
+        <span class="affiliate-emoji">🌊</span>
+        <div>
+          <div class="affiliate-item-name">Hiearcool Waterproof Phone Pouch</div>
+          <div class="affiliate-item-desc">#1 Top Rated. 110,000+ reviews. Waterproof for beach days.</div>
+          <a class="affiliate-item-link" href="https://www.amazon.com/dp/B07QK3C5GF?tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Phone Pouch')">Shop on Amazon →</a>
+        </div>
+      </div>
+      <div class="affiliate-item">
+        <span class="affiliate-emoji">😴</span>
+        <div>
+          <div class="affiliate-item-name">BCOZZY Travel Neck Pillow</div>
+          <div class="affiliate-item-desc">Premium memory foam for long flights to cruise ports.</div>
+          <a class="affiliate-item-link" href="https://www.amazon.com/dp/B07KMLXYJ9?tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Neck Pillow')">Shop on Amazon →</a>
+        </div>
+      </div>
+      <div class="affiliate-item">
+        <span class="affiliate-emoji">☀️</span>
+        <div>
+          <div class="affiliate-item-name">Wide-Brim Sun Hat</div>
+          <div class="affiliate-item-desc">UPF 50+ protection for pool days and shore excursions.</div>
+          <a class="affiliate-item-link" href="https://www.amazon.com/dp/B07V1H7X5Z?tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Sun Hat')">Shop on Amazon →</a>
+        </div>
+      </div>
     </div>
-    <div class="amazon-note" style="font-size: 11px; color: #6a6a6a; margin-top: 12px; text-align: center;">As an Amazon Associate, Voyager earns from qualifying purchases.</div>
+    <div style="font-size: 11px; color: #6a6a6a; margin-top: 12px; text-align: center;">As an Amazon Associate, Voyager earns from qualifying purchases.</div>
+  </div>
+
+  <!-- HOTEL SECTION - For pre/post cruise stays -->
+  <div class="hotel-section">
+    <h4>🏨 Need a Hotel Before or After Your Cruise?</h4>
+    <p style="font-size: 14px; margin-bottom: 15px;">Hotels.com offers 4% rewards on every stay. Perfect for Miami, Orlando, Galveston, and Seattle cruise ports.</p>
+    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+      <a href="https://www.hotels.com/?cid=1702763" target="_blank" rel="sponsored nofollow" class="cruise-booking-btn" onclick="trackAffiliateClick('Hotels.com')">🏨 Search Hotels →</a>
+      <a href="https://www.booking.com/" target="_blank" rel="sponsored nofollow" class="cruise-booking-btn" style="background: #0066FF;" onclick="trackAffiliateClick('Booking.com')">🌍 Booking.com →</a>
+    </div>
+  </div>
+
+  <!-- SHORE EXCURSIONS - GetYourGuide & Viator -->
+  <div class="affiliate-box">
+    <div class="affiliate-box-title">🏝️ Shore Excursions & Family Activities</div>
+    <div class="affiliate-sub">Book these before you sail to lock in availability and save up to 20%.</div>
+    <div class="affiliate-grid">
+      <div class="affiliate-item">
+        <span class="affiliate-emoji">🤿</span>
+        <div>
+          <div class="affiliate-item-name">Snorkeling & Beach Breaks</div>
+          <div class="affiliate-item-desc">Family-friendly excursions in Nassau, Cozumel, St. Thomas</div>
+          <a class="affiliate-item-link" href="https://www.getyourguide.com/?partner_id=Y5RBAVK" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('GetYourGuide Excursions')">Book on GetYourGuide →</a>
+          <span class="affiliate-badge">8% Cash Back</span>
+        </div>
+      </div>
+      <div class="affiliate-item">
+        <span class="affiliate-emoji">🚤</span>
+        <div>
+          <div class="affiliate-item-name">Private Boat Charters</div>
+          <div class="affiliate-item-desc">Perfect for families wanting a private beach day</div>
+          <a class="affiliate-item-link" href="https://www.viator.com/?pid=2874255" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Viator Excursions')">Book on Viator →</a>
+          <span class="affiliate-badge">4%+ Commission</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <h2>Frequently asked questions</h2>
@@ -775,8 +845,18 @@ function googleTranslateElementInit() {
   <div class="faq-item"><div class="faq-q">How do I actually get alone time as a parent on a cruise?</div><div class="faq-a">Book the evening kids club sessions in advance — most lines offer supervised kids club hours until 10pm or later specifically so parents can have dinner and time alone. This is the best-kept secret in family cruising.</div></div>
   <div class="faq-item"><div class="faq-q">Does Voyager track kids-sail-free and family deals specifically?</div><div class="faq-a">Yes. Kids-sail-free promotions, third and fourth passenger discounts, and connecting cabin offers are among the most time-limited deals. Voyager scans these daily and surfaces them when they're available for your travel dates.</div></div>
 
+  <!-- FINAL CTA - CheapTickets for family packages -->
+  <div class="cta-block">
+    <h3>🎟️ Need Theme Park Tickets Before/After Your Cruise?</h3>
+    <p>Orlando cruise? Add Universal or Disney to your vacation. CheapTickets offers 8% cash back on park tickets.</p>
+    <p style="text-align: center; margin: 20px 0;">
+      <a href="https://www.cheaptickets.com/?cid=4861279&q=Universal+Orlando" target="_blank" rel="sponsored nofollow" class="cta-link" onclick="trackAffiliateClick('CheapTickets Universal')">🎢 View Theme Park Deals →</a>
+    </p>
+    <div class="cta-note">8% commission on tickets • Save $50+ on a family of four</div>
+  </div>
+
   <div class="closing-line">Click Voyager above. Let me find your family's next adventure.</div>
-  <div class="disclosure">Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. Kids club ratings reflect aggregated parent reviews and independent research as of early 2026. Prices are approximate starting rates and subject to change — always confirm current pricing before booking.</div>
+  <div class="disclosure">Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. Kids club ratings reflect aggregated parent reviews and independent research as of early 2026. Prices are approximate starting rates and subject to change — always confirm current pricing before booking. Amazon Associates ID: voyagerx20-20 | Orbitz CID: 4861280 | Travelocity CID: 1549809 | Hotels.com CID: 1702763 | CheapTickets CID: 4861279 | GetYourGuide Partner ID: Y5RBAVK | Viator AWIN: 2874255</div>
 
 </main>
 
@@ -790,6 +870,18 @@ function googleTranslateElementInit() {
 </footer>
 
 <script>
+    // ========== AFFILIATE TRACKING ==========
+    const AFFILIATE_IDS = {
+      amazon: 'voyagerx20-20',
+      getyourguide: 'Y5RBAVK',
+      viator: '2874255',
+      expedia: '1874913',
+      hotelscom: '1702763',
+      travelocity: '1549809',
+      orbitz: '4861280',
+      cheaptickets: '4861279'
+    };
+
     function getDeal() {
         window.location.href = 'https://voyager-flask.onrender.com';
     }
@@ -803,44 +895,21 @@ function googleTranslateElementInit() {
         });
     }
 
+    function trackAffiliateClick(linkName) {
+        console.log(`Affiliate click: ${linkName}`);
+        // Optional: Send to analytics
+        fetch('/api/affiliate/click', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ link: linkName, page: 'family-cruise-guide' })
+        }).catch(err => console.error('Tracking failed:', err));
+    }
+
+    // Track clicks on existing Amazon links
     function trackClick(linkId) {
         fetch(`/api/click/${linkId}`, { method: 'POST' })
             .catch(err => console.error('Click tracking failed:', err));
     }
-
-    // Fetch affiliate links from Supabase
-    fetch('/api/links/family-cruise')
-        .then(response => response.json())
-        .then(links => {
-            const container = document.getElementById('amazon-grid');
-            if (container && links.length > 0) {
-                container.innerHTML = '';
-                links.forEach(link => {
-                    const item = document.createElement('div');
-                    item.className = 'amazon-item';
-                    const emoji = link.name.includes('Packing') ? '🎒' : (link.name.includes('Phone') ? '🌊' : '📦');
-                    const desc = link.name.includes('Packing') ? '42,000+ reviews. Save space in cruise cabins.' : '#1 Top Rated. 110,000+ reviews. Waterproof for beach days.';
-                    item.innerHTML = `
-                        <span class="amazon-emoji">${emoji}</span>
-                        <div>
-                            <div class="amazon-item-name">${link.name}</div>
-                            <div class="amazon-item-desc">${desc}</div>
-                            <a class="amazon-item-link" href="${link.url}" target="_blank" rel="noopener sponsored" onclick="trackClick(${link.id})">Shop on Amazon →</a>
-                        </div>
-                    `;
-                    container.appendChild(item);
-                });
-            } else if (container) {
-                container.innerHTML = '<div class="amazon-item">Check back soon for packing essentials!</div>';
-            }
-        })
-        .catch(error => {
-            console.error('Error loading affiliate links:', error);
-            const container = document.getElementById('amazon-grid');
-            if (container) {
-                container.innerHTML = '<div class="amazon-item">Unable to load essentials. Please refresh.</div>';
-            }
-        });
 </script>
 
 <div id="google_translate_element"></div>
