@@ -15,16 +15,24 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__, static_folder='public', static_url_path='')
 
-# Supabase credentials
-SUPABASE_URL = "https://kwuidjidzeehevigvgwb.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3dWlkamlkemVlaGV2aWd2Z3diIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MjMxNzMsImV4cCI6MjA5MjI5OTE3M30.1HRlRYVgc4-Br_T70-SwlVGGluUtLZLi6-9h7SWxpb0"
+# Supabase credentials - Using environment variables for security
+SUPABASE_URL = os.environ.get('SUPABASE_URL')
+SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
+
+# Fallback for testing (remove in production)
+if not SUPABASE_URL:
+    SUPABASE_URL = "https://kwuidjidzeehevigvgwb.supabase.co"
+if not SUPABASE_KEY:
+    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3dWlkamlkemVlaGV2aWd2Z3diIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MjMxNzMsImV4cCI6MjA5MjI5OTE3M30.1HRlRYVgc4-Br_T70-SwlVGGluUtLZLi6-9h7SWxpb0"
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # OpenRouter API key from environment variable
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 
-logger.info(f"API Key loaded: {'YES' if OPENROUTER_API_KEY else 'NO'}")
+logger.info(f"Supabase URL: {'YES' if SUPABASE_URL else 'NO'}")
+logger.info(f"Supabase Key: {'YES' if SUPABASE_KEY else 'NO'}")
+logger.info(f"OpenRouter API Key: {'YES' if OPENROUTER_API_KEY else 'NO'}")
 
 # Updated system prompt for families, couples, and solo travelers
 VOYAGER_SYSTEM_PROMPT = """You are Voyager, a travel assistant for families, couples, and solo travelers planning trips to Orlando theme parks, cruises, and romantic getaways.
@@ -86,6 +94,8 @@ def sitemap():
         "/family-cruise-guide-2026.html",
         "/couples-cruise-guide-2026.html",
         "/celebrate-mom.html",
+        "/dorney-park.html",
+        "/luxury-safaris.html",
         "/privacy.html"
     ]
     today = time.strftime('%Y-%m-%d')
@@ -97,8 +107,6 @@ def sitemap():
         sitemap_content += f'    <lastmod>{today}</lastmod>\n'
         if page == "/":
             sitemap_content += '    <priority>1.0</priority>\n'
-        elif page in ["/universal-vs-disney.html", "/family-cruise-guide-2026.html", "/couples-cruise-guide-2026.html"]:
-            sitemap_content += '    <priority>0.9</priority>\n'
         else:
             sitemap_content += '    <priority>0.8</priority>\n'
         sitemap_content += '  </url>\n'
@@ -134,17 +142,74 @@ def test_key():
         return jsonify({'status': 'error', 'message': 'OPENROUTER_API_KEY not found'}), 500
 
 
-# ========== AFFILIATE LINK API ENDPOINTS ==========
+# ========== AFFILIATE API ENDPOINTS ==========
+
+@app.route('/api/affiliate/links')
+def get_all_affiliate_links():
+    """Get all active affiliate links"""
+    try:
+        response = supabase.table('affiliate_links').select('*, affiliate_programs(*)').eq('active', True).order('sort_order').execute()
+        return jsonify(response.data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/affiliate/links/page/<page_name>')
+def get_links_by_page(page_name):
+    """Get affiliate links for a specific page"""
+    try:
+        response = supabase.table('affiliate_links').select('*, affiliate_programs(*)').eq('page', page_name).eq('active', True).order('sort_order').execute()
+        return jsonify(response.data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/affiliate/links/category/<category>')
+def get_links_by_category(category):
+    """Get affiliate links by category"""
+    try:
+        response = supabase.table('affiliate_links').select('*, affiliate_programs(*)').eq('category', category).eq('active', True).order('sort_order').execute()
+        return jsonify(response.data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/affiliate/click', methods=['POST'])
+def track_affiliate_click():
+    """Track affiliate link clicks"""
+    try:
+        data = request.json
+        response = supabase.table('click_tracking').insert({
+            'affiliate_link_id': data.get('link_id'),
+            'page': data.get('page'),
+            'ip_address': request.remote_addr,
+            'user_agent': request.headers.get('User-Agent')
+        }).execute()
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/affiliate/featured')
+def get_featured_deals():
+    """Get featured deals for homepage"""
+    try:
+        response = supabase.table('affiliate_links').select('*, affiliate_programs(*)').eq('active', True).limit(6).order('sort_order').execute()
+        return jsonify(response.data)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# ========== LEGACY AFFILIATE ENDPOINTS (Keep for compatibility) ==========
 
 @app.route('/api/get_link')
 def get_link():
     try:
-        response = supabase.table('affiliate_links').select('*').eq('is_active', True).execute()
+        response = supabase.table('affiliate_links').select('*').eq('active', True).execute()
         links = response.data
         if not links:
             return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'No links found'})
         selected = random.choice(links)
-        supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
         return jsonify({'affiliate_link': selected['url'], 'name': selected['name']})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -153,12 +218,11 @@ def get_link():
 @app.route('/api/get_link/<category>')
 def get_link_by_category(category):
     try:
-        response = supabase.table('affiliate_links').select('*').eq('category', category).eq('is_active', True).execute()
+        response = supabase.table('affiliate_links').select('*').eq('category', category).eq('active', True).execute()
         links = response.data
         if not links:
             return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': f'No links found for category: {category}'}), 404
         selected = random.choice(links)
-        supabase.table('affiliate_links').update({'clicks': selected['clicks'] + 1}).eq('id', selected['id']).execute()
         return jsonify({'affiliate_link': selected['url'], 'name': selected['name'], 'category': category})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -167,7 +231,7 @@ def get_link_by_category(category):
 @app.route('/api/links/<page>')
 def get_links_for_page(page):
     try:
-        response = supabase.table('affiliate_links').select('*').eq('page_location', page).eq('is_active', True).execute()
+        response = supabase.table('affiliate_links').select('*').eq('page', page).eq('active', True).execute()
         return jsonify(response.data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -176,7 +240,7 @@ def get_links_for_page(page):
 @app.route('/api/amazon/<page>')
 def get_amazon_links(page):
     try:
-        response = supabase.table('affiliate_links').select('*').eq('category', 'amazon').eq('page_location', page).eq('is_active', True).execute()
+        response = supabase.table('affiliate_links').select('*').eq('category', 'packing').eq('page', page).eq('active', True).execute()
         return jsonify(response.data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -185,11 +249,10 @@ def get_amazon_links(page):
 @app.route('/api/click/<int:link_id>', methods=['POST'])
 def track_click(link_id):
     try:
-        response = supabase.table('affiliate_links').select('clicks').eq('id', link_id).execute()
+        response = supabase.table('affiliate_links').select('*').eq('id', link_id).execute()
         if response.data:
-            current_clicks = response.data[0]['clicks']
-            supabase.table('affiliate_links').update({'clicks': current_clicks + 1}).eq('id', link_id).execute()
-        return jsonify({'success': True})
+            return jsonify({'success': True})
+        return jsonify({'error': 'Link not found'}), 404
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -205,11 +268,11 @@ def voyager_chat():
         if not messages:
             return jsonify({'error': 'No messages provided'}), 400
         
-        # Count how many user messages have been sent (excluding the initial bot greeting)
+        # Count how many user messages have been sent
         user_messages = [m for m in messages if m['role'] == 'user']
         stage = len(user_messages)
         
-        # Stage 1: Ask about family size and ages
+        # Stage-based responses
         if stage == 0:
             reply = "Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?"
         
