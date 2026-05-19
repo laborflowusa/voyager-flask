@@ -389,6 +389,58 @@
       box-shadow: 0 8px 20px rgba(244,168,50,0.3);
     }
 
+    /* Affiliate Links Section */
+    .affiliate-sidebar {
+      background: linear-gradient(135deg, #0d1520, #0a0f18);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .affiliate-sidebar h3 {
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .affiliate-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .affiliate-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .affiliate-item a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .affiliate-item a:hover {
+      color: var(--accent);
+    }
+
+    .affiliate-badge {
+      font-size: 10px;
+      background: rgba(244,168,50,0.15);
+      padding: 2px 8px;
+      border-radius: 12px;
+      color: var(--accent);
+    }
+
     .quick-replies {
       display: flex;
       flex-wrap: wrap;
@@ -570,6 +622,17 @@
         <span class="intro-tag">💰 Real 2026 Prices</span>
       </div>
     </div>
+
+    <!-- AFFILIATE DEALS SIDEBAR -->
+    <div class="affiliate-sidebar" id="affiliateDeals">
+      <h3>🔥 HOT DEALS RIGHT NOW</h3>
+      <div class="affiliate-links" id="affiliateLinksContainer">
+        <!-- Affiliate links will load here -->
+        <div class="affiliate-item">
+          <a href="#" id="defaultDealLink">Loading best deals...</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="quick-replies" id="quickReplies">
@@ -596,6 +659,59 @@
 </main>
 
 <script>
+  // ========== AFFILIATE CONFIGURATION ==========
+  // YOUR AFFILIATE IDs - All 12 Working Programs
+  const AFFILIATE_CONFIG = {
+    amazon: 'voyagerx20-20',
+    getyourguide: 'Y5RBAVK',
+    viator: 'awinmid=11018&awinaffid=2874255',
+    go2africa: 'awinmid=24529&awinaffid=2874255',
+    tripster: 'awinmid=86791&awinaffid=2874255',
+    expedia: '1874913',
+    hotelscom: '1702763',
+    travelocity: '1549809',
+    orbitz: '4861280',
+    cheaptickets: '4861279',
+    klook: '722155',
+    klook_promo: 'TPKLOOKTA5'
+  };
+
+  // Affiliate links data
+  const AFFILIATE_LINKS = [
+    { name: '🎟️ Universal Orlando Tickets', url: `https://www.cheaptickets.com/?cid=${AFFILIATE_CONFIG.cheaptickets}&q=Universal+Orlando`, badge: '8% OFF' },
+    { name: '🏰 Disney World Tickets', url: `https://www.cheaptickets.com/?cid=${AFFILIATE_CONFIG.cheaptickets}&q=Disney+World`, badge: '8% OFF' },
+    { name: '🚢 Cruise Deals - Save $40', url: `https://www.orbitz.com/?cid=${AFFILIATE_CONFIG.orbitz}&q=cruises`, badge: '$40 OFF' },
+    { name: '🏨 Hotels Near Parks', url: `https://www.hotels.com/?cid=${AFFILIATE_CONFIG.hotelscom}`, badge: '4% BACK' },
+    { name: '🦁 Luxury African Safaris', url: `http://www.awin1.com/cread.php?${AFFILIATE_CONFIG.go2africa}`, badge: '2% CASH' },
+    { name: '🎢 Dorney Park Tickets', url: `https://www.cheaptickets.com/?cid=${AFFILIATE_CONFIG.cheaptickets}&q=Dorney+Park`, badge: '8% OFF' },
+    { name: '✈️ Flight + Hotel Packages', url: `https://www.expedia.com/?cid=${AFFILIATE_CONFIG.expedia}`, badge: 'SAVE BIG' },
+    { name: '🌍 Klook 5% Promo', url: `https://www.klook.com/?pid=${AFFILIATE_CONFIG.klook}`, badge: 'CODE: TPKLOOKTA5' }
+  ];
+
+  // Load affiliate links into sidebar
+  function loadAffiliateLinks() {
+    const container = document.getElementById('affiliateLinksContainer');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    AFFILIATE_LINKS.forEach(link => {
+      const item = document.createElement('div');
+      item.className = 'affiliate-item';
+      item.innerHTML = `
+        <a href="${link.url}" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('${link.name}')">${link.name}</a>
+        <span class="affiliate-badge">${link.badge}</span>
+      `;
+      container.appendChild(item);
+    });
+  }
+
+  // Track affiliate clicks (optional - for analytics)
+  function trackAffiliateClick(linkName) {
+    console.log(`Affiliate click: ${linkName}`);
+    // You can add analytics tracking here later
+  }
+
+  // ========== CHAT FUNCTIONALITY ==========
   const chatArea = document.getElementById('chatArea');
   const userInput = document.getElementById('userInput');
   const sendBtn = document.getElementById('sendBtn');
@@ -603,8 +719,8 @@
   const quickReplies = document.getElementById('quickReplies');
 
   let messages = [];
-  let recommendationShown = false;  // FIXED: Prevent duplicate cards
-  let hasShownWelcome = false;      // NEW: Prevent duplicate welcome message
+  let recommendationShown = false;
+  let hasShownWelcome = false;
 
   function autoResize(el) {
     el.style.height = 'auto';
@@ -667,7 +783,6 @@
     }, 50);
   }
 
-  // FIXED: Beautiful deal card that actually appears and is clickable
   function showDealCard(rec) {
     if (recommendationShown) return;
     recommendationShown = true;
@@ -688,10 +803,10 @@
         </div>
         <div class="deal-stat">
           <div class="deal-stat-label">⚡ Best Deal Right Now</div>
-          <div class="deal-stat-value">${rec.best_deal || 'Premier hotels include FREE Express Pass'}</div>
+          <div class="deal-stat-value">${rec.best_deal || 'Book through Voyager for exclusive rates'}</div>
         </div>
       </div>
-      <a href="https://gyg.me/KBoe1F8i" target="_blank" rel="noopener" class="deal-btn">🎟️ SEE LIVE DEALS & BOOK NOW →</a>
+      <a href="https://www.cheaptickets.com/?cid=${AFFILIATE_CONFIG.cheaptickets}&q=Universal+Orlando" target="_blank" rel="sponsored nofollow" class="deal-btn">🎟️ SEE LIVE DEALS & BOOK NOW →</a>
     `;
     chatArea.appendChild(card);
     scrollBottom();
@@ -699,7 +814,6 @@
     quickReplies.innerHTML = `<button class="quick-btn" onclick="resetChat()">🔄 Start Over</button>`;
   }
 
-  // FIXED: Properly closed resetChat function
   function resetChat() {
     messages = [];
     recommendationShown = false;
@@ -707,7 +821,6 @@
     progressFill.style.width = '0%';
     chatArea.innerHTML = '';
     
-    // Restore intro card
     const introCard = document.createElement('div');
     introCard.className = 'intro-card';
     introCard.innerHTML = `
@@ -723,6 +836,14 @@
     `;
     chatArea.appendChild(introCard);
     
+    // Reload affiliate sidebar
+    const affiliateSidebar = document.createElement('div');
+    affiliateSidebar.className = 'affiliate-sidebar';
+    affiliateSidebar.id = 'affiliateDeals';
+    affiliateSidebar.innerHTML = '<h3>🔥 HOT DEALS RIGHT NOW</h3><div class="affiliate-links" id="affiliateLinksContainer"></div>';
+    chatArea.appendChild(affiliateSidebar);
+    loadAffiliateLinks();
+    
     quickReplies.innerHTML = `
       <button class="quick-btn" onclick="sendQuick('Family of 4 with kids ages 8 and 11')">👨‍👩‍👧‍👦 Family of 4</button>
       <button class="quick-btn" onclick="sendQuick('We want to visit this summer 2026')">☀️ Summer 2026</button>
@@ -736,7 +857,6 @@
     }, 300);
   }
 
-  // FIXED: Completely rewritten sendMessage with reliable deal card trigger
   async function sendMessage() {
     const text = userInput.value.trim();
     if (!text || sendBtn.disabled || recommendationShown) return;
@@ -767,24 +887,19 @@
         return;
       }
 
-      // Add bot reply to chat
       addBotMessage(data.reply);
       messages.push({ role: 'assistant', content: data.reply });
 
-      // Update progress bar based on number of user messages
       const userMessageCount = messages.filter(m => m.role === 'user').length;
-      // Show deal card after 3 user messages (regardless of backend response)
       const pct = Math.min((userMessageCount / 4) * 100, 100);
       progressFill.style.width = pct + '%';
 
-      // FIX #1: Backend recommendation trigger (if available)
       if (data.recommendation && data.recommendation.recommendation_ready && !recommendationShown) {
         setTimeout(() => {
           showDealCard(data.recommendation);
         }, 800);
       }
       
-      // FIX #2: Fallback trigger after 3 user messages (ensures card always appears)
       if (!recommendationShown && userMessageCount >= 3) {
         setTimeout(() => {
           if (!recommendationShown) {
@@ -792,7 +907,7 @@
               park: 'Universal Orlando Resort',
               summary: 'Based on your family preferences, this is the best value for your 2026 vacation.',
               savings: 'Save ~$1,500 vs Disney packages',
-              best_deal: 'Premier hotels include FREE Universal Express Pass'
+              best_deal: 'Book through Voyager for exclusive rates'
             });
           }
         }, 1000);
@@ -806,8 +921,8 @@
     sendBtn.disabled = false;
   }
 
-  // FIXED: Prevent duplicate welcome message on page load
   window.addEventListener('load', () => {
+    loadAffiliateLinks();
     if (!hasShownWelcome) {
       setTimeout(() => {
         addBotMessage("Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?");
