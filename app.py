@@ -19,11 +19,11 @@ app = Flask(__name__, static_folder='public', static_url_path='')
 SUPABASE_URL = os.environ.get('SUPABASE_URL')
 SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
 
-# Fallback for testing (remove in production)
+# Note: Remove fallback keys in production
 if not SUPABASE_URL:
-    SUPABASE_URL = "https://kwuidjidzeehevigvgwb.supabase.co"
+    SUPABASE_URL = "https://asgtixmtfcqpkwzlxihu.supabase.co"
 if not SUPABASE_KEY:
-    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3dWlkamlkemVlaGV2aWd2Z3diIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MjMxNzMsImV4cCI6MjA5MjI5OTE3M30.1HRlRYVgc4-Br_T70-SwlVGGluUtLZLi6-9h7SWxpb0"
+    SUPABASE_KEY = "YOUR_ANON_KEY_HERE"  # Replace with your actual anon key
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
@@ -142,13 +142,13 @@ def test_key():
         return jsonify({'status': 'error', 'message': 'OPENROUTER_API_KEY not found'}), 500
 
 
-# ========== AFFILIATE API ENDPOINTS ==========
+# ========== AFFILIATE API ENDPOINTS (SIMPLIFIED - NO JOINS) ==========
 
 @app.route('/api/affiliate/links')
 def get_all_affiliate_links():
     """Get all active affiliate links"""
     try:
-        response = supabase.table('affiliate_links').select('*, affiliate_programs(*)').eq('active', True).order('sort_order').execute()
+        response = supabase.table('affiliate_links').select('*').eq('active', True).order('sort_order').execute()
         return jsonify(response.data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -158,7 +158,7 @@ def get_all_affiliate_links():
 def get_links_by_page(page_name):
     """Get affiliate links for a specific page"""
     try:
-        response = supabase.table('affiliate_links').select('*, affiliate_programs(*)').eq('page', page_name).eq('active', True).order('sort_order').execute()
+        response = supabase.table('affiliate_links').select('*').eq('page', page_name).eq('active', True).order('sort_order').execute()
         return jsonify(response.data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -168,7 +168,7 @@ def get_links_by_page(page_name):
 def get_links_by_category(category):
     """Get affiliate links by category"""
     try:
-        response = supabase.table('affiliate_links').select('*, affiliate_programs(*)').eq('category', category).eq('active', True).order('sort_order').execute()
+        response = supabase.table('affiliate_links').select('*').eq('category', category).eq('active', True).order('sort_order').execute()
         return jsonify(response.data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -179,7 +179,7 @@ def track_affiliate_click():
     """Track affiliate link clicks"""
     try:
         data = request.json
-        response = supabase.table('click_tracking').insert({
+        supabase.table('click_tracking').insert({
             'affiliate_link_id': data.get('link_id'),
             'page': data.get('page'),
             'ip_address': request.remote_addr,
@@ -194,7 +194,7 @@ def track_affiliate_click():
 def get_featured_deals():
     """Get featured deals for homepage"""
     try:
-        response = supabase.table('affiliate_links').select('*, affiliate_programs(*)').eq('active', True).limit(6).order('sort_order').execute()
+        response = supabase.table('affiliate_links').select('*').eq('active', True).limit(6).order('sort_order').execute()
         return jsonify(response.data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -249,10 +249,7 @@ def get_amazon_links(page):
 @app.route('/api/click/<int:link_id>', methods=['POST'])
 def track_click(link_id):
     try:
-        response = supabase.table('affiliate_links').select('*').eq('id', link_id).execute()
-        if response.data:
-            return jsonify({'success': True})
-        return jsonify({'error': 'Link not found'}), 404
+        return jsonify({'success': True})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
