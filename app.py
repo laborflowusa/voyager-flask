@@ -90,16 +90,21 @@ def voyager_chat():
         user_messages = [m for m in messages if m['role'] == 'user']
         user_message_count = len(user_messages)
         
-        if user_message_count == 1:
+        # Question sequence (4 questions before deal card)
+        if user_message_count == 0:
+            reply = "Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?"
+        elif user_message_count == 1:
             reply = "Great! What's your budget for the trip?"
         elif user_message_count == 2:
             reply = "When are you planning to travel?"
         elif user_message_count == 3:
             reply = "What kind of experiences do you want? Thrill rides, shows, or character meet-and-greets?"
         else:
+            # After 4+ messages, show recommendation and deal card
             reply = "Based on your family's needs, I recommend Universal Orlando Resort! It saves families $1,500+ compared to Disney. Epic Universe opens May 22, 2026!"
         
-        show_deal = user_message_count >= 3
+        # Show deal card after 4 or more user messages
+        show_deal = user_message_count >= 4
         response_data = {'reply': reply, 'showDeal': show_deal}
         
         if show_deal:
