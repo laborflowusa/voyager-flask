@@ -90,9 +90,6 @@ def voyager_chat():
         user_messages = [m for m in messages if m['role'] == 'user']
         user_message_count = len(user_messages)
         
-        last_message = user_messages[-1]['content'] if user_messages else ""
-        
-        # Simple response for now - will work immediately
         if user_message_count == 1:
             reply = "Great! What's your budget for the trip?"
         elif user_message_count == 2:
