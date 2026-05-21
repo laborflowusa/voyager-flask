@@ -23,12 +23,16 @@ SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
 if not SUPABASE_URL:
     SUPABASE_URL = "https://asgtixmtfcqpkwzlxihu.supabase.co"
 if not SUPABASE_KEY:
-    SUPABASE_KEY = "YOUR_SUPABASE_ANON_KEY_HERE"
+    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzZ3RpeG10ZmNxcGt3emx4aWh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjQzODcsImV4cCI6MjA5NDc0MDM4N30.qTfRv139CP2H4e16cGiQdXfPk17r5ekelLUI68M_KFA
+"
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # OpenRouter API key from environment variable
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
+
+if not OPENROUTER_API_KEY:
+    logger.error("OPENROUTER_API_KEY not found - AI chat will not work properly")
 
 logger.info(f"Supabase URL: {'YES' if SUPABASE_URL else 'NO'}")
 logger.info(f"Supabase Key: {'YES' if SUPABASE_KEY else 'NO'}")
