@@ -23,7 +23,7 @@ SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
 if not SUPABASE_URL:
     SUPABASE_URL = "https://asgtixmtfcqpkwzlxihu.supabase.co"
 if not SUPABASE_KEY:
-    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzZ3RpeG10ZmNxcGt3emx4aWh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjQzODcsImV4cCI6MjA5NDc0MDM4N30.qTfRv139CP2H4e16cGiQdXfPk17r5ekelLUI68M_KFA"  
+    SUPABASE_KEY = "YOUR_SUPABASE_ANON_KEY_HERE"
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
@@ -33,25 +33,6 @@ OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 logger.info(f"Supabase URL: {'YES' if SUPABASE_URL else 'NO'}")
 logger.info(f"Supabase Key: {'YES' if SUPABASE_KEY else 'NO'}")
 logger.info(f"OpenRouter API Key: {'YES' if OPENROUTER_API_KEY else 'NO'}")
-
-# Updated system prompt for families, couples, and solo travelers
-VOYAGER_SYSTEM_PROMPT = """You are Voyager, a travel assistant for families, couples, and solo travelers planning trips to Orlando theme parks, cruises, and romantic getaways.
-
-First, detect the traveler type from the user's first message:
-- If they mention kids or "family" → Family trip
-- If they mention "honeymoon", "anniversary", "couple", "romantic" → Couples trip
-- If they mention "alone", "solo", "by myself" → Solo trip
-
-Then ask questions based on traveler type:
-
-FOR FAMILY: family size & kids ages, budget, travel month, must-do experiences, park preference.
-FOR COUPLES: number of adults, budget, travel month, romantic must-haves (fine dining, spas, adult pools), preferred vibe (luxury, adventure, relaxation).
-FOR SOLO: budget, travel month, interests (thrill rides, shows, relaxation), desired pace.
-
-After 5 answers, output ONLY this JSON, nothing else:
-{"recommendation_ready":true,"traveler_type":"family","park":"Universal","summary":"2 sentences tailored to traveler type","savings":"Save $X","best_deal":"Tip","affiliate_category":"universal_tickets"}
-
-One question at a time. Keep responses short. Detect language automatically."""
 
 
 @app.route('/')
@@ -254,10 +235,11 @@ def track_click(link_id):
         return jsonify({'error': str(e)}), 500
 
 
-# ========== AI CHAT ENDPOINT - WITH STATE TRACKING ==========
+# ========== AI CHAT ENDPOINT - WITH OPENROUTER AI ==========
 
 @app.route('/api/voyager-chat', methods=['POST'])
 def voyager_chat():
+    """AI chat endpoint using OpenRouter"""
     try:
         data = request.get_json()
         messages = data.get('messages', [])
@@ -265,48 +247,136 @@ def voyager_chat():
         if not messages:
             return jsonify({'error': 'No messages provided'}), 400
         
-        # Count how many user messages have been sent
+        # Count user messages to know when to show deal card
         user_messages = [m for m in messages if m['role'] == 'user']
-        stage = len(user_messages)
+        user_message_count = len(user_messages)
         
-        # Stage-based responses
-        if stage == 0:
-            reply = "Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?"
+        # Extract budget and family info from conversation
+        family_info = "your family"
+        budget_info = "a reasonable budget"
+        destination_info = ""
         
-        elif stage == 1:
-            reply = "What's your overall budget for the trip?"
+        for msg in user_messages:
+            content = msg['content'].lower()
+            if 'budget' in content or '$' in content:
+                budget_info = msg['content']
+            if 'family' in content or 'kids' in content or 'people' in content:
+                family_info = msg['content']
+            if 'universal' in content:
+                destination_info = "Universal Orlando"
+            elif 'disney' in content:
+                destination_info = "Disney World"
+            elif 'cruise' in content:
+                destination_info = "a cruise"
         
-        elif stage == 2:
-            reply = "When are you planning to visit? (Month or season)"
+        # System prompt that guides the AI
+        system_prompt = """You are Voyager, a friendly, enthusiastic travel assistant helping families plan trips to Disney World, Universal Orlando, and cruises.
+
+IMPORTANT RULES:
+1. Keep responses VERY short (2-3 sentences max)
+2. Be warm and helpful, like a friend giving advice
+3. When someone mentions budget concerns, recommend Universal over Disney (saves $1,500+)
+4. Mention Epic Universe (opens May 22, 2026) for Universal trips
+5. NEVER ask for email, phone number, or personal info
+6. After 3-4 messages, say something like "I've found a great deal for you!"
+
+CRUISE KNOWLEDGE:
+- Disney Cruise Line: Best for kids 3-12, premium pricing
+- Royal Caribbean: Best for teens and activities
+- Carnival: Best budget option
+- Norwegian: Freestyle cruising, no set dining times
+- MSC: Best for European itineraries
+
+THEME PARK KNOWLEDGE:
+- Universal Orlando: Better value, thrilling rides, Harry Potter
+- Disney World: Better for kids under 10, magical atmosphere
+- Epic Universe opens May 22, 2026 with Super Nintendo World
+
+Be conversational. Use emojis occasionally. Keep it fun!"""
         
-        elif stage == 3:
-            reply = "What are the must-do experiences or attractions for your family? (e.g., thrill rides, characters, shows, Harry Potter)"
+        # Prepare messages for OpenRouter
+        openrouter_messages = [{"role": "system", "content": system_prompt}]
         
-        elif stage >= 4:
-            # Extract info from previous messages
-            family_info = user_messages[0]['content'] if len(user_messages) > 0 else "your family"
-            budget_info = user_messages[1]['content'] if len(user_messages) > 1 else "a reasonable"
-            month_info = user_messages[2]['content'] if len(user_messages) > 2 else "summer"
+        # Add conversation history (last 8 messages to save tokens)
+        for msg in messages[-8:]:
+            openrouter_messages.append(msg)
+        
+        # Check if API key exists
+        if not OPENROUTER_API_KEY:
+            logger.error("OPENROUTER_API_KEY not found in environment")
+            # Fallback response
+            if user_message_count <= 1:
+                fallback_reply = "Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?"
+            elif user_message_count == 2:
+                fallback_reply = "What's your overall budget for the trip?"
+            elif user_message_count == 3:
+                fallback_reply = "When are you planning to visit? (Month or season)"
+            elif user_message_count == 4:
+                fallback_reply = "What are the must-do experiences or attractions for your family?"
+            else:
+                fallback_reply = f"Based on {family_info} with {budget_info}, I recommend Universal Orlando Resort. It saves families $1,500+ compared to Disney!"
             
-            reply = f"""✨ **Here's your personalized recommendation!** ✨
-
-Based on {family_info} with a budget of {budget_info} traveling in {month_info}, I recommend **Universal Orlando Resort**.
-
-🎢 **Why Universal is your best value:**
-• Save $1,500+ compared to Disney World
-• Epic Universe opens May 22, 2026 (brand new park!)
-• Thrill rides: VelociCoaster, Hagrid's, and more
-• The Wizarding World of Harry Potter
-
-💡 **Best deal right now:** Premier hotels include FREE Unlimited Express Pass — the pass alone is worth more than the hotel room.
-
-👉 Click below to see current ticket prices and exclusive deals!"""
+            return jsonify({'reply': fallback_reply})
         
-        else:
-            reply = "Tell me about your family — how many people and ages of the kids?"
+        # Call OpenRouter API
+        response = requests.post(
+            url="https://openrouter.ai/api/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "openai/gpt-3.5-turbo",  # Cheap but good model
+                "messages": openrouter_messages,
+                "max_tokens": 250,
+                "temperature": 0.8,
+            },
+            timeout=10
+        )
         
-        return jsonify({'reply': reply})
+        result = response.json()
         
+        if "error" in result:
+            logger.error(f"OpenRouter error: {result}")
+            # Fallback response
+            fallback_reply = "Sorry, I'm having a moment. Can you tell me more about what you're looking for?"
+            return jsonify({'reply': fallback_reply})
+        
+        ai_reply = result['choices'][0]['message']['content']
+        
+        # Determine if we should show a deal card (after 3+ user messages)
+        show_deal = user_message_count >= 3
+        
+        response_data = {
+            'reply': ai_reply,
+            'showDeal': show_deal
+        }
+        
+        # Add deal card if ready
+        if show_deal:
+            # Determine which park to recommend based on conversation
+            park_recommendation = "Universal Orlando Resort"
+            savings_text = "Save ~$1,500 vs Disney packages"
+            
+            if "disney" in str(messages).lower():
+                park_recommendation = "Walt Disney World"
+                savings_text = "Magical experiences for younger kids"
+            elif "cruise" in str(messages).lower():
+                park_recommendation = "Royal Caribbean or Disney Cruise Line"
+                savings_text = "Kids sail free promotions available"
+            
+            response_data['deal'] = {
+                'park': park_recommendation,
+                'summary': f'Based on {family_info} with {budget_info}, this is the best value for your 2026 vacation.',
+                'savings': savings_text,
+                'best_deal': 'Book through Voyager for exclusive rates'
+            }
+        
+        return jsonify(response_data)
+        
+    except requests.exceptions.Timeout:
+        logger.error("OpenRouter API timeout")
+        return jsonify({'reply': "I'm thinking... Tell me more about your family's travel plans!"})
     except Exception as e:
         logger.error(f"Error in chat: {str(e)}")
         return jsonify({'error': str(e)}), 500
