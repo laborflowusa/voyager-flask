@@ -15,28 +15,35 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__, static_folder='public', static_url_path='')
 
-# Supabase credentials - Using environment variables for security
+# ========== SUPABASE CREDENTIALS ==========
+# Using environment variables for security - NO hardcoded fallbacks
 SUPABASE_URL = os.environ.get('SUPABASE_URL')
 SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
 
-# Note: Remove fallback keys in production
+# Validate credentials are present
 if not SUPABASE_URL:
-    SUPABASE_URL = "https://asgtixmtfcqpkwzlxihu.supabase.co"
+    logger.error("❌ SUPABASE_URL not found in environment variables!")
 if not SUPABASE_KEY:
-    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzZ3RpeG10ZmNxcGt3emx4aWh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjQzODcsImV4cCI6MjA5NDc0MDM4N30.qTfRv139CP2H4e16cGiQdXfPk17r5ekelLUI68M_KFA
-"
+    logger.error("❌ SUPABASE_KEY not found in environment variables!")
 
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+# Initialize Supabase client only if credentials exist
+if SUPABASE_URL and SUPABASE_KEY:
+    supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+    logger.info("✅ Supabase client initialized successfully")
+else:
+    supabase = None
+    logger.error("❌ Supabase client NOT initialized - missing credentials")
 
-# OpenRouter API key from environment variable
+# ========== OPENROUTER API KEY ==========
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 
-if not OPENROUTER_API_KEY:
-    logger.error("OPENROUTER_API_KEY not found - AI chat will not work properly")
-
-logger.info(f"Supabase URL: {'YES' if SUPABASE_URL else 'NO'}")
-logger.info(f"Supabase Key: {'YES' if SUPABASE_KEY else 'NO'}")
-logger.info(f"OpenRouter API Key: {'YES' if OPENROUTER_API_KEY else 'NO'}")
+# ========== SERVICE STATUS LOGGING ==========
+logger.info("=" * 50)
+logger.info("🚀 VOYAGER API STARTING")
+logger.info(f"📊 Supabase URL: {'✅ FOUND' if SUPABASE_URL else '❌ MISSING'}")
+logger.info(f"🔑 Supabase Key: {'✅ FOUND' if SUPABASE_KEY else '❌ MISSING'}")
+logger.info(f"🤖 OpenRouter Key: {'✅ FOUND' if OPENROUTER_API_KEY else '❌ MISSING'}")
+logger.info("=" * 50)
 
 
 @app.route('/')
@@ -111,6 +118,8 @@ def robots():
 
 @app.route('/api/test-db')
 def test_db():
+    if not supabase:
+        return jsonify({'connected': False, 'error': 'Supabase client not initialized'}), 500
     try:
         response = supabase.table('affiliate_links').select('*', count='exact').execute()
         return jsonify({'connected': True, 'count': response.count})
@@ -127,11 +136,13 @@ def test_key():
         return jsonify({'status': 'error', 'message': 'OPENROUTER_API_KEY not found'}), 500
 
 
-# ========== AFFILIATE API ENDPOINTS (SIMPLIFIED - NO JOINS) ==========
+# ========== AFFILIATE API ENDPOINTS ==========
 
 @app.route('/api/affiliate/links')
 def get_all_affiliate_links():
     """Get all active affiliate links"""
+    if not supabase:
+        return jsonify({'error': 'Supabase client not initialized'}), 500
     try:
         response = supabase.table('affiliate_links').select('*').eq('active', True).order('sort_order').execute()
         return jsonify(response.data)
@@ -142,6 +153,8 @@ def get_all_affiliate_links():
 @app.route('/api/affiliate/links/page/<page_name>')
 def get_links_by_page(page_name):
     """Get affiliate links for a specific page"""
+    if not supabase:
+        return jsonify({'error': 'Supabase client not initialized'}), 500
     try:
         response = supabase.table('affiliate_links').select('*').eq('page', page_name).eq('active', True).order('sort_order').execute()
         return jsonify(response.data)
@@ -152,6 +165,8 @@ def get_links_by_page(page_name):
 @app.route('/api/affiliate/links/category/<category>')
 def get_links_by_category(category):
     """Get affiliate links by category"""
+    if not supabase:
+        return jsonify({'error': 'Supabase client not initialized'}), 500
     try:
         response = supabase.table('affiliate_links').select('*').eq('category', category).eq('active', True).order('sort_order').execute()
         return jsonify(response.data)
@@ -162,6 +177,8 @@ def get_links_by_category(category):
 @app.route('/api/affiliate/click', methods=['POST'])
 def track_affiliate_click():
     """Track affiliate link clicks"""
+    if not supabase:
+        return jsonify({'error': 'Supabase client not initialized'}), 500
     try:
         data = request.json
         supabase.table('click_tracking').insert({
@@ -178,6 +195,8 @@ def track_affiliate_click():
 @app.route('/api/affiliate/featured')
 def get_featured_deals():
     """Get featured deals for homepage"""
+    if not supabase:
+        return jsonify({'error': 'Supabase client not initialized'}), 500
     try:
         response = supabase.table('affiliate_links').select('*').eq('active', True).limit(6).order('sort_order').execute()
         return jsonify(response.data)
@@ -189,6 +208,8 @@ def get_featured_deals():
 
 @app.route('/api/get_link')
 def get_link():
+    if not supabase:
+        return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'Supabase not initialized'}), 500
     try:
         response = supabase.table('affiliate_links').select('*').eq('active', True).execute()
         links = response.data
@@ -202,6 +223,8 @@ def get_link():
 
 @app.route('/api/get_link/<category>')
 def get_link_by_category(category):
+    if not supabase:
+        return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'Supabase not initialized'}), 500
     try:
         response = supabase.table('affiliate_links').select('*').eq('category', category).eq('active', True).execute()
         links = response.data
@@ -215,6 +238,8 @@ def get_link_by_category(category):
 
 @app.route('/api/links/<page>')
 def get_links_for_page(page):
+    if not supabase:
+        return jsonify({'error': 'Supabase not initialized'}), 500
     try:
         response = supabase.table('affiliate_links').select('*').eq('page', page).eq('active', True).execute()
         return jsonify(response.data)
@@ -224,6 +249,8 @@ def get_links_for_page(page):
 
 @app.route('/api/amazon/<page>')
 def get_amazon_links(page):
+    if not supabase:
+        return jsonify({'error': 'Supabase not initialized'}), 500
     try:
         response = supabase.table('affiliate_links').select('*').eq('category', 'packing').eq('page', page).eq('active', True).execute()
         return jsonify(response.data)
@@ -330,7 +357,7 @@ Be conversational. Use emojis occasionally. Keep it fun!"""
                 "Content-Type": "application/json",
             },
             json={
-                "model": "openai/gpt-3.5-turbo",  # Cheap but good model
+                "model": "openai/gpt-3.5-turbo",
                 "messages": openrouter_messages,
                 "max_tokens": 250,
                 "temperature": 0.8,
@@ -342,7 +369,6 @@ Be conversational. Use emojis occasionally. Keep it fun!"""
         
         if "error" in result:
             logger.error(f"OpenRouter error: {result}")
-            # Fallback response
             fallback_reply = "Sorry, I'm having a moment. Can you tell me more about what you're looking for?"
             return jsonify({'reply': fallback_reply})
         
@@ -358,7 +384,6 @@ Be conversational. Use emojis occasionally. Keep it fun!"""
         
         # Add deal card if ready
         if show_deal:
-            # Determine which park to recommend based on conversation
             park_recommendation = "Universal Orlando Resort"
             savings_text = "Save ~$1,500 vs Disney packages"
             
