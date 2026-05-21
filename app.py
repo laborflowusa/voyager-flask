@@ -1,415 +1,894 @@
-from flask import Flask, jsonify, request, send_from_directory
-from supabase import create_client
-import random
-import os
-import json
-import requests
-import re
-import time
-import logging
-import sys
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voyager — Find My Deal | AI Travel Assistant</title>
+  <meta name="description" content="Voyager AI Deal Finder — Your personal travel assistant. Get instant recommendations for Disney, Universal, cruises, hotels, and destinations. Free, no sign-up required, real 2026 pricing." />
+  
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
-# Set up logging to see errors in Render
-logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
-logger = logging.getLogger(__name__)
+  <style>
+    /* Your existing styles here - keeping them unchanged */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-app = Flask(__name__, static_folder='public', static_url_path='')
+    :root {
+      --night: #080c14;
+      --deep: #0d1525;
+      --card: #111827;
+      --border: #1e2d45;
+      --accent: #f4a832;
+      --accent2: #e8734a;
+      --sky: #4a9eff;
+      --text: #e8edf5;
+      --muted: #7a8fa8;
+      --success: #34d399;
+    }
 
-# ========== SUPABASE CREDENTIALS ==========
-# Using environment variables for security - NO hardcoded fallbacks
-SUPABASE_URL = os.environ.get('SUPABASE_URL')
-SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
+    html, body {
+      height: 100%;
+      background: var(--night);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow: hidden;
+    }
 
-# Validate credentials are present
-if not SUPABASE_URL:
-    logger.error("❌ SUPABASE_URL not found in environment variables!")
-if not SUPABASE_KEY:
-    logger.error("❌ SUPABASE_KEY not found in environment variables!")
+    .goog-te-gadget-icon { display: none; }
+    .goog-te-gadget { font-family: 'DM Sans', sans-serif; font-size: 12px; }
 
-# Initialize Supabase client only if credentials exist
-if SUPABASE_URL and SUPABASE_KEY:
-    supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-    logger.info("✅ Supabase client initialized successfully")
-else:
-    supabase = None
-    logger.error("❌ Supabase client NOT initialized - missing credentials")
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 10%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 35%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 85%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 70%, rgba(255,255,255,0.6) 0%, transparent 100%),
+        radial-gradient(2px 2px at 25% 45%, rgba(244,168,50,0.3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 60% 25%, rgba(74,158,255,0.2) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-# ========== OPENROUTER API KEY ==========
-OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(13,21,37,0.9) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-# ========== SERVICE STATUS LOGGING ==========
-logger.info("=" * 50)
-logger.info("🚀 VOYAGER API STARTING")
-logger.info(f"📊 Supabase URL: {'✅ FOUND' if SUPABASE_URL else '❌ MISSING'}")
-logger.info(f"🔑 Supabase Key: {'✅ FOUND' if SUPABASE_KEY else '❌ MISSING'}")
-logger.info(f"🤖 OpenRouter Key: {'✅ FOUND' if OPENROUTER_API_KEY else '❌ MISSING'}")
-logger.info("=" * 50)
+    .app {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 780px;
+      margin: 0 auto;
+    }
 
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px 14px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(12px);
+      flex-shrink: 0;
+    }
 
-@app.route('/')
-def index():
-    return app.send_static_file('index.html')
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
 
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
 
-@app.route('/static/<path:filename>')
-def serve_static(filename):
-    return send_from_directory('static', filename)
+    .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--text);
+    }
 
+    .header-badge {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      background: rgba(244,168,50,0.12);
+      border: 1px solid rgba(244,168,50,0.25);
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
 
-@app.route('/privacy.html')
-def privacy():
-    return app.send_static_file('privacy.html')
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      padding: 12px 24px;
+      background: rgba(8,12,20,0.9);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
+    #google_translate_element {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background: rgba(0,0,0,0.75);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    #google_translate_element select {
+      background: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #1a1a2e;
+    }
+    @media (max-width: 600px) {
+      #google_translate_element {
+        bottom: 10px;
+        right: 10px;
+        padding: 4px 8px;
+      }
+    }
 
-@app.route('/chat.html')
-def chat():
-    return app.send_static_file('chat.html')
+    .progress-bar {
+      height: 2px;
+      background: var(--border);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
 
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 0.6s ease;
+      width: 0%;
+    }
 
-@app.route('/blog/<path:filename>')
-def serve_blog(filename):
-    return app.send_static_file(f'blog/{filename}')
+    .chat-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scroll-behavior: smooth;
+    }
 
+    .chat-area::-webkit-scrollbar { width: 4px; }
+    .chat-area::-webkit-scrollbar-track { background: transparent; }
+    .chat-area::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
-@app.route('/<path:filename>.html')
-def serve_html(filename):
-    return app.send_static_file(f'{filename}.html')
+    .message {
+      display: flex;
+      gap: 12px;
+      animation: msgIn 0.35s ease both;
+      max-width: 88%;
+    }
 
+    @keyframes msgIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-@app.route('/sitemap.xml')
-def sitemap():
-    base_url = "https://voyager-flask.onrender.com"
-    pages = [
-        "/",
-        "/chat.html",
-        "/universal-vs-disney.html",
-        "/family-cruise-guide-2026.html",
-        "/couples-cruise-guide-2026.html",
-        "/celebrate-mom.html",
-        "/dorney-park.html",
-        "/luxury-safaris.html",
-        "/privacy.html"
-    ]
-    today = time.strftime('%Y-%m-%d')
-    sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    sitemap_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    for page in pages:
-        sitemap_content += '  <url>\n'
-        sitemap_content += f'    <loc>{base_url}{page}</loc>\n'
-        sitemap_content += f'    <lastmod>{today}</lastmod>\n'
-        if page == "/":
-            sitemap_content += '    <priority>1.0</priority>\n'
-        else:
-            sitemap_content += '    <priority>0.8</priority>\n'
-        sitemap_content += '  </url>\n'
-    sitemap_content += '</urlset>'
-    return app.response_class(sitemap_content, mimetype='application/xml')
+    .message.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
 
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      margin-top: 2px;
+    }
 
-@app.route('/robots.txt')
-def robots():
-    robots_content = 'User-agent: *\n'
-    robots_content += 'Allow: /\n'
-    robots_content += 'Sitemap: https://voyager-flask.onrender.com/sitemap.xml\n'
-    return app.response_class(robots_content, mimetype='text/plain')
+    .avatar.bot {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
 
+    .avatar.user {
+      background: linear-gradient(135deg, var(--sky), #6366f1);
+    }
 
-# ========== TEST ENDPOINTS ==========
+    .bubble {
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      max-width: 100%;
+    }
 
-@app.route('/api/test-db')
-def test_db():
-    if not supabase:
-        return jsonify({'connected': False, 'error': 'Supabase client not initialized'}), 500
-    try:
-        response = supabase.table('affiliate_links').select('*', count='exact').execute()
-        return jsonify({'connected': True, 'count': response.count})
-    except Exception as e:
-        return jsonify({'connected': False, 'error': str(e)}), 500
+    .message.bot .bubble {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-top-left-radius: 4px;
+      color: var(--text);
+    }
 
+    .message.user .bubble {
+      background: linear-gradient(135deg, rgba(74,158,255,0.2), rgba(99,102,241,0.2));
+      border: 1px solid rgba(74,158,255,0.3);
+      border-top-right-radius: 4px;
+      color: var(--text);
+    }
 
-@app.route('/api/test-key')
-def test_key():
-    key = os.environ.get("OPENROUTER_API_KEY")
-    if key:
-        return jsonify({'status': 'ok', 'key_prefix': key[:20] + '...'})
-    else:
-        return jsonify({'status': 'error', 'message': 'OPENROUTER_API_KEY not found'}), 500
+    .typing {
+      display: flex;
+      gap: 5px;
+      padding: 14px 16px;
+    }
 
+    .typing span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: bounce 1.2s infinite;
+    }
 
-# ========== AFFILIATE API ENDPOINTS ==========
+    .typing span:nth-child(2) { animation-delay: 0.2s; background: var(--accent2); }
+    .typing span:nth-child(3) { animation-delay: 0.4s; background: var(--sky); }
 
-@app.route('/api/affiliate/links')
-def get_all_affiliate_links():
-    """Get all active affiliate links"""
-    if not supabase:
-        return jsonify({'error': 'Supabase client not initialized'}), 500
-    try:
-        response = supabase.table('affiliate_links').select('*').eq('active', True).order('sort_order').execute()
-        return jsonify(response.data)
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
 
+    .deal-card {
+      background: linear-gradient(135deg, #1a2a3a, #0d1520);
+      border: 2px solid var(--accent);
+      border-radius: 20px;
+      padding: 24px;
+      margin: 16px 0;
+      animation: msgIn 0.5s ease both;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
 
-@app.route('/api/affiliate/links/page/<page_name>')
-def get_links_by_page(page_name):
-    """Get affiliate links for a specific page"""
-    if not supabase:
-        return jsonify({'error': 'Supabase client not initialized'}), 500
-    try:
-        response = supabase.table('affiliate_links').select('*').eq('page', page_name).eq('active', True).order('sort_order').execute()
-        return jsonify(response.data)
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    .deal-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
 
+    .deal-card-icon { font-size: 32px; }
+    .deal-card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--accent);
+    }
+    .deal-card-park {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .deal-card-summary {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+    .deal-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .deal-stat {
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .deal-stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .deal-stat-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--success);
+    }
+    .deal-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .deal-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(244,168,50,0.3);
+    }
 
-@app.route('/api/affiliate/links/category/<category>')
-def get_links_by_category(category):
-    """Get affiliate links by category"""
-    if not supabase:
-        return jsonify({'error': 'Supabase client not initialized'}), 500
-    try:
-        response = supabase.table('affiliate_links').select('*').eq('category', category).eq('active', True).order('sort_order').execute()
-        return jsonify(response.data)
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    .affiliate-sidebar {
+      background: linear-gradient(135deg, #0d1520, #0a0f18);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .affiliate-sidebar h3 {
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .affiliate-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .affiliate-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .affiliate-item a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .affiliate-item a:hover {
+      color: var(--accent);
+    }
+    .affiliate-badge {
+      font-size: 10px;
+      background: rgba(244,168,50,0.15);
+      padding: 2px 8px;
+      border-radius: 12px;
+      color: var(--accent);
+    }
 
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 20px 10px;
+      flex-shrink: 0;
+    }
+    .quick-btn {
+      padding: 7px 14px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quick-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(244,168,50,0.08);
+    }
 
-@app.route('/api/affiliate/click', methods=['POST'])
-def track_affiliate_click():
-    """Track affiliate link clicks"""
-    if not supabase:
-        return jsonify({'error': 'Supabase client not initialized'}), 500
-    try:
-        data = request.json
-        supabase.table('click_tracking').insert({
-            'affiliate_link_id': data.get('link_id'),
-            'page': data.get('page'),
-            'ip_address': request.remote_addr,
-            'user_agent': request.headers.get('User-Agent')
-        }).execute()
-        return jsonify({'success': True})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    .input-area {
+      padding: 14px 20px 20px;
+      background: rgba(8,12,20,0.9);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .input-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    .input-box {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      resize: none;
+      min-height: 46px;
+      max-height: 120px;
+      line-height: 1.5;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .input-box:focus { border-color: rgba(244,168,50,0.4); }
+    .send-btn {
+      width: 46px;
+      height: 46px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s, transform 0.1s;
+      flex-shrink: 0;
+    }
+    .send-btn:hover { opacity: 0.9; transform: scale(1.04); }
+    .send-btn:active { transform: scale(0.97); }
+    .send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .send-btn svg { width: 18px; height: 18px; fill: #fff; }
+    .input-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+      text-align: center;
+    }
+    .intro-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      margin: 8px 0 4px;
+      animation: msgIn 0.5s ease both;
+    }
+    .intro-icon { font-size: 36px; margin-bottom: 12px; }
+    .intro-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .intro-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 380px;
+      margin: 0 auto 20px;
+    }
+    .intro-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .intro-tag {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .chat-footer {
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 10px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: rgba(8,12,20,0.6);
+      flex-shrink: 0;
+    }
+    @media (max-width: 600px) {
+      .deal-stats { grid-template-columns: 1fr; }
+      .header { padding: 14px 16px; }
+      .nav-links { padding: 10px 16px; gap: 12px; }
+      .chat-area { padding: 16px 12px; }
+      .input-area { padding: 12px 12px 16px; }
+      .quick-replies { padding: 0 12px 8px; }
+    }
+  </style>
+</head>
+<body>
+<main class="app">
+  <div class="header">
+    <a href="/" class="logo">
+      <div class="logo-icon">🧭</div>
+      <span class="logo-text">Voyager</span>
+    </a>
+    <div class="header-badge">AI Deal Finder</div>
+  </div>
 
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/chat.html">AI Chat</a>
+    <a href="/universal-vs-disney.html">Universal vs. Disney</a>
+    <a href="/family-cruise-guide-2026.html">Family Cruise Guide</a>
+    <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
+    <a href="/celebrate-mom.html">Celebrate Mom</a>
+    <a href="/dorney-park.html">🎢 Dorney Park</a>
+    <a href="/luxury-safaris.html">🦁 Luxury Safaris</a>
+    <a href="/privacy.html">Privacy</a>
+  </div>
 
-@app.route('/api/affiliate/featured')
-def get_featured_deals():
-    """Get featured deals for homepage"""
-    if not supabase:
-        return jsonify({'error': 'Supabase client not initialized'}), 500
-    try:
-        response = supabase.table('affiliate_links').select('*').eq('active', True).limit(6).order('sort_order').execute()
-        return jsonify(response.data)
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
 
+  <div class="chat-area" id="chatArea">
+    <div class="intro-card">
+      <div class="intro-icon">✈️</div>
+      <div class="intro-title">Find Your Family's Perfect Deal</div>
+      <div class="intro-sub">Tell me about your family and I'll scan live pricing across Disney, Universal, hotels, and 50+ partners to find your best option.</div>
+      <div class="intro-tags">
+        <span class="intro-tag">🎢 Theme Parks</span>
+        <span class="intro-tag">🏨 Hotels</span>
+        <span class="intro-tag">🚢 Cruises</span>
+        <span class="intro-tag">💰 Real 2026 Prices</span>
+      </div>
+    </div>
 
-# ========== LEGACY AFFILIATE ENDPOINTS (Keep for compatibility) ==========
+    <div class="affiliate-sidebar" id="affiliateDeals">
+      <h3>🔥 HOT DEALS RIGHT NOW</h3>
+      <div class="affiliate-links" id="affiliateLinksContainer">
+        <!-- Affiliate links will load here -->
+      </div>
+    </div>
+  </div>
 
-@app.route('/api/get_link')
-def get_link():
-    if not supabase:
-        return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'Supabase not initialized'}), 500
-    try:
-        response = supabase.table('affiliate_links').select('*').eq('active', True).execute()
-        links = response.data
-        if not links:
-            return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'No links found'})
-        selected = random.choice(links)
-        return jsonify({'affiliate_link': selected['url'], 'name': selected['name']})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+  <div class="quick-replies" id="quickReplies">
+    <button class="quick-btn" onclick="sendQuick('Family of 4 with kids ages 8 and 11')">👨‍👩‍👧‍👦 Family of 4</button>
+    <button class="quick-btn" onclick="sendQuick('We want to visit this summer 2026')">☀️ Summer 2026</button>
+    <button class="quick-btn" onclick="sendQuick('Our budget is around $3,000 total')">💵 ~$3K budget</button>
+    <button class="quick-btn" onclick="sendQuick('We love Harry Potter and thrill rides')">⚡ Harry Potter fans</button>
+  </div>
 
+  <div class="input-area">
+    <div class="input-row">
+      <textarea class="input-box" id="userInput" placeholder="Tell me about your family..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()" aria-label="Send message">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div class="input-hint">No email required · Free to use · Real deals</div>
+  </div>
 
-@app.route('/api/get_link/<category>')
-def get_link_by_category(category):
-    if not supabase:
-        return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': 'Supabase not initialized'}), 500
-    try:
-        response = supabase.table('affiliate_links').select('*').eq('category', category).eq('active', True).execute()
-        links = response.data
-        if not links:
-            return jsonify({'affiliate_link': 'https://example.com/no-links', 'error': f'No links found for category: {category}'}), 404
-        selected = random.choice(links)
-        return jsonify({'affiliate_link': selected['url'], 'name': selected['name'], 'category': category})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+  <div class="chat-footer">
+    We are a participant in the Amazon Services LLC Associates Program and other affiliate programs. 
+    As an affiliate, we earn from qualifying purchases at no extra cost to you.
+  </div>
+</main>
 
+<script>
+  // ========== AFFILIATE CONFIGURATION ==========
+  const AFFILIATE_CONFIG = {
+    amazon: 'voyagerx20-20',
+    getyourguide: 'Y5RBAVK',
+    viator: 'awinmid=11018&awinaffid=2874255',
+    go2africa: 'awinmid=24529&awinaffid=2874255',
+    tripster: 'awinmid=86791&awinaffid=2874255',
+    expedia: '1874913',
+    hotelscom: '1702763',
+    travelocity: '1549809',
+    orbitz: '4861280',
+    cheaptickets: '4861279',
+    klook: '722155',
+    klook_promo: 'TPKLOOKTA5'
+  };
 
-@app.route('/api/links/<page>')
-def get_links_for_page(page):
-    if not supabase:
-        return jsonify({'error': 'Supabase not initialized'}), 500
-    try:
-        response = supabase.table('affiliate_links').select('*').eq('page', page).eq('active', True).execute()
-        return jsonify(response.data)
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+  const AFFILIATE_LINKS = [
+    { name: '🎟️ Universal Orlando Tickets', url: `https://www.cheaptickets.com/?cid=${AFFILIATE_CONFIG.cheaptickets}&q=Universal+Orlando`, badge: '8% OFF' },
+    { name: '🏰 Disney World Tickets', url: `https://www.cheaptickets.com/?cid=${AFFILIATE_CONFIG.cheaptickets}&q=Disney+World`, badge: '8% OFF' },
+    { name: '🚢 Cruise Deals - Save $40', url: `https://www.orbitz.com/?cid=${AFFILIATE_CONFIG.orbitz}&q=cruises`, badge: '$40 OFF' },
+    { name: '🏨 Hotels Near Parks', url: `https://www.hotels.com/?cid=${AFFILIATE_CONFIG.hotelscom}`, badge: '4% BACK' },
+    { name: '🦁 Luxury African Safaris', url: `http://www.awin1.com/cread.php?${AFFILIATE_CONFIG.go2africa}`, badge: '2% CASH' },
+    { name: '🎢 Dorney Park Tickets', url: `https://www.cheaptickets.com/?cid=${AFFILIATE_CONFIG.cheaptickets}&q=Dorney+Park`, badge: '8% OFF' },
+    { name: '✈️ Flight + Hotel Packages', url: `https://www.expedia.com/?cid=${AFFILIATE_CONFIG.expedia}`, badge: 'SAVE BIG' },
+    { name: '🌍 Klook 5% Promo', url: `https://www.klook.com/?pid=${AFFILIATE_CONFIG.klook}`, badge: 'CODE: TPKLOOKTA5' }
+  ];
 
+  function loadAffiliateLinks() {
+    const container = document.getElementById('affiliateLinksContainer');
+    if (!container) return;
+    container.innerHTML = '';
+    AFFILIATE_LINKS.forEach(link => {
+      const item = document.createElement('div');
+      item.className = 'affiliate-item';
+      item.innerHTML = `
+        <a href="${link.url}" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('${link.name}')">${link.name}</a>
+        <span class="affiliate-badge">${link.badge}</span>
+      `;
+      container.appendChild(item);
+    });
+  }
 
-@app.route('/api/amazon/<page>')
-def get_amazon_links(page):
-    if not supabase:
-        return jsonify({'error': 'Supabase not initialized'}), 500
-    try:
-        response = supabase.table('affiliate_links').select('*').eq('category', 'packing').eq('page', page).eq('active', True).execute()
-        return jsonify(response.data)
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+  function trackAffiliateClick(linkName) {
+    console.log(`Affiliate click: ${linkName}`);
+  }
 
+  // ========== CHAT FUNCTIONALITY ==========
+  const chatArea = document.getElementById('chatArea');
+  const userInput = document.getElementById('userInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const progressFill = document.getElementById('progressFill');
+  const quickReplies = document.getElementById('quickReplies');
 
-@app.route('/api/click/<int:link_id>', methods=['POST'])
-def track_click(link_id):
-    try:
-        return jsonify({'success': True})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+  let messages = [];
+  let recommendationShown = false;
+  let hasShownWelcome = false;
 
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+  }
 
-# ========== AI CHAT ENDPOINT - WITH OPENROUTER AI ==========
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
 
-@app.route('/api/voyager-chat', methods=['POST'])
-def voyager_chat():
-    """AI chat endpoint using OpenRouter"""
-    try:
-        data = request.get_json()
-        messages = data.get('messages', [])
-        
-        if not messages:
-            return jsonify({'error': 'No messages provided'}), 400
-        
-        # Count user messages to know when to show deal card
-        user_messages = [m for m in messages if m['role'] == 'user']
-        user_message_count = len(user_messages)
-        
-        # Extract budget and family info from conversation
-        family_info = "your family"
-        budget_info = "a reasonable budget"
-        destination_info = ""
-        
-        for msg in user_messages:
-            content = msg['content'].lower()
-            if 'budget' in content or '$' in content:
-                budget_info = msg['content']
-            if 'family' in content or 'kids' in content or 'people' in content:
-                family_info = msg['content']
-            if 'universal' in content:
-                destination_info = "Universal Orlando"
-            elif 'disney' in content:
-                destination_info = "Disney World"
-            elif 'cruise' in content:
-                destination_info = "a cruise"
-        
-        # System prompt that guides the AI
-        system_prompt = """You are Voyager, a friendly, enthusiastic travel assistant helping families plan trips to Disney World, Universal Orlando, and cruises.
+  function sendQuick(text) {
+    if (recommendationShown) return;
+    userInput.value = text;
+    sendMessage();
+  }
 
-IMPORTANT RULES:
-1. Keep responses VERY short (2-3 sentences max)
-2. Be warm and helpful, like a friend giving advice
-3. When someone mentions budget concerns, recommend Universal over Disney (saves $1,500+)
-4. Mention Epic Universe (opens May 22, 2026) for Universal trips
-5. NEVER ask for email, phone number, or personal info
-6. After 3-4 messages, say something like "I've found a great deal for you!"
+  function addBotMessage(text) {
+    const msg = document.createElement('div');
+    msg.className = 'message bot';
+    msg.innerHTML = `<div class="avatar bot">🧭</div><div class="bubble">${text.replace(/\n/g, '<br>')}</div>`;
+    chatArea.appendChild(msg);
+    scrollBottom();
+  }
 
-CRUISE KNOWLEDGE:
-- Disney Cruise Line: Best for kids 3-12, premium pricing
-- Royal Caribbean: Best for teens and activities
-- Carnival: Best budget option
-- Norwegian: Freestyle cruising, no set dining times
-- MSC: Best for European itineraries
+  function addUserMessage(text) {
+    const msg = document.createElement('div');
+    msg.className = 'message user';
+    msg.innerHTML = `<div class="avatar user">👤</div><div class="bubble">${escapeHtml(text)}</div>`;
+    chatArea.appendChild(msg);
+    scrollBottom();
+  }
 
-THEME PARK KNOWLEDGE:
-- Universal Orlando: Better value, thrilling rides, Harry Potter
-- Disney World: Better for kids under 10, magical atmosphere
-- Epic Universe opens May 22, 2026 with Super Nintendo World
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
 
-Be conversational. Use emojis occasionally. Keep it fun!"""
-        
-        # Prepare messages for OpenRouter
-        openrouter_messages = [{"role": "system", "content": system_prompt}]
-        
-        # Add conversation history (last 8 messages to save tokens)
-        for msg in messages[-8:]:
-            openrouter_messages.append(msg)
-        
-        # Check if API key exists
-        if not OPENROUTER_API_KEY:
-            logger.error("OPENROUTER_API_KEY not found in environment")
-            # Fallback response
-            if user_message_count <= 1:
-                fallback_reply = "Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?"
-            elif user_message_count == 2:
-                fallback_reply = "What's your overall budget for the trip?"
-            elif user_message_count == 3:
-                fallback_reply = "When are you planning to visit? (Month or season)"
-            elif user_message_count == 4:
-                fallback_reply = "What are the must-do experiences or attractions for your family?"
-            else:
-                fallback_reply = f"Based on {family_info} with {budget_info}, I recommend Universal Orlando Resort. It saves families $1,500+ compared to Disney!"
-            
-            return jsonify({'reply': fallback_reply})
-        
-        # Call OpenRouter API
-        response = requests.post(
-            url="https://openrouter.ai/api/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": "openai/gpt-3.5-turbo",
-                "messages": openrouter_messages,
-                "max_tokens": 250,
-                "temperature": 0.8,
-            },
-            timeout=10
-        )
-        
-        result = response.json()
-        
-        if "error" in result:
-            logger.error(f"OpenRouter error: {result}")
-            fallback_reply = "Sorry, I'm having a moment. Can you tell me more about what you're looking for?"
-            return jsonify({'reply': fallback_reply})
-        
-        ai_reply = result['choices'][0]['message']['content']
-        
-        # Determine if we should show a deal card (after 3+ user messages)
-        show_deal = user_message_count >= 3
-        
-        response_data = {
-            'reply': ai_reply,
-            'showDeal': show_deal
-        }
-        
-        # Add deal card if ready
-        if show_deal:
-            park_recommendation = "Universal Orlando Resort"
-            savings_text = "Save ~$1,500 vs Disney packages"
-            
-            if "disney" in str(messages).lower():
-                park_recommendation = "Walt Disney World"
-                savings_text = "Magical experiences for younger kids"
-            elif "cruise" in str(messages).lower():
-                park_recommendation = "Royal Caribbean or Disney Cruise Line"
-                savings_text = "Kids sail free promotions available"
-            
-            response_data['deal'] = {
-                'park': park_recommendation,
-                'summary': f'Based on {family_info} with {budget_info}, this is the best value for your 2026 vacation.',
-                'savings': savings_text,
-                'best_deal': 'Book through Voyager for exclusive rates'
-            }
-        
-        return jsonify(response_data)
-        
-    except requests.exceptions.Timeout:
-        logger.error("OpenRouter API timeout")
-        return jsonify({'reply': "I'm thinking... Tell me more about your family's travel plans!"})
-    except Exception as e:
-        logger.error(f"Error in chat: {str(e)}")
-        return jsonify({'error': str(e)}), 500
+  function showTyping() {
+    const el = document.createElement('div');
+    el.className = 'message bot';
+    el.id = 'typing';
+    el.innerHTML = `<div class="avatar bot">🧭</div><div class="bubble typing"><span></span><span></span><span></span></div>`;
+    chatArea.appendChild(el);
+    scrollBottom();
+    return el;
+  }
 
+  function removeTyping() {
+    const el = document.getElementById('typing');
+    if (el) el.remove();
+  }
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+  function scrollBottom() {
+    setTimeout(() => {
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }, 50);
+  }
+
+  function showDealCard(rec) {
+    if (recommendationShown) return;
+    recommendationShown = true;
+    
+    const card = document.createElement('div');
+    card.className = 'deal-card';
+    card.innerHTML = `
+      <div class="deal-card-header">
+        <span class="deal-card-icon">🎟️</span>
+        <span class="deal-card-title">✦ VOYAGER EXCLUSIVE DEAL</span>
+      </div>
+      <div class="deal-card-park">🎯 ${rec.park || 'Universal Orlando Resort'}</div>
+      <div class="deal-card-summary">${rec.summary || 'Based on your answers, this is the best value for your family vacation in 2026.'}</div>
+      <div class="deal-stats">
+        <div class="deal-stat">
+          <div class="deal-stat-label">💰 Estimated Savings</div>
+          <div class="deal-stat-value">${rec.savings || 'Save ~$1,500 vs Disney'}</div>
+        </div>
+        <div class="deal-stat">
+          <div class="deal-stat-label">⚡ Best Deal Right Now</div>
+          <div class="deal-stat-value">${rec.best_deal || 'Premier hotels include FREE Express Pass'}</div>
+        </div>
+      </div>
+      <a href="https://www.cheaptickets.com/?cid=${AFFILIATE_CONFIG.cheaptickets}&q=Universal+Orlando" target="_blank" rel="sponsored nofollow" class="deal-btn">🎟️ SEE LIVE DEALS & BOOK NOW →</a>
+    `;
+    chatArea.appendChild(card);
+    scrollBottom();
+    progressFill.style.width = '100%';
+    quickReplies.innerHTML = `<button class="quick-btn" onclick="resetChat()">🔄 Start Over</button>`;
+  }
+
+  function resetChat() {
+    messages = [];
+    recommendationShown = false;
+    hasShownWelcome = false;
+    progressFill.style.width = '0%';
+    chatArea.innerHTML = '';
+    
+    const introCard = document.createElement('div');
+    introCard.className = 'intro-card';
+    introCard.innerHTML = `
+      <div class="intro-icon">✈️</div>
+      <div class="intro-title">Find Your Family's Perfect Deal</div>
+      <div class="intro-sub">Tell me about your family and I'll scan live pricing across Disney, Universal, hotels, and 50+ partners to find your best option.</div>
+      <div class="intro-tags">
+        <span class="intro-tag">🎢 Theme Parks</span>
+        <span class="intro-tag">🏨 Hotels</span>
+        <span class="intro-tag">🚢 Cruises</span>
+        <span class="intro-tag">💰 Real 2026 Prices</span>
+      </div>
+    `;
+    chatArea.appendChild(introCard);
+    
+    const affiliateSidebar = document.createElement('div');
+    affiliateSidebar.className = 'affiliate-sidebar';
+    affiliateSidebar.id = 'affiliateDeals';
+    affiliateSidebar.innerHTML = '<h3>🔥 HOT DEALS RIGHT NOW</h3><div class="affiliate-links" id="affiliateLinksContainer"></div>';
+    chatArea.appendChild(affiliateSidebar);
+    loadAffiliateLinks();
+    
+    quickReplies.innerHTML = `
+      <button class="quick-btn" onclick="sendQuick('Family of 4 with kids ages 8 and 11')">👨‍👩‍👧‍👦 Family of 4</button>
+      <button class="quick-btn" onclick="sendQuick('We want to visit this summer 2026')">☀️ Summer 2026</button>
+      <button class="quick-btn" onclick="sendQuick('Our budget is around $3,000 total')">💵 ~$3K budget</button>
+      <button class="quick-btn" onclick="sendQuick('We love Harry Potter and thrill rides')">⚡ Harry Potter fans</button>
+    `;
+    
+    setTimeout(() => {
+      addBotMessage("Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?");
+      hasShownWelcome = true;
+    }, 300);
+  }
+
+  async function sendMessage() {
+    const text = userInput.value.trim();
+    if (!text || sendBtn.disabled || recommendationShown) return;
+
+    if (messages.length === 0) quickReplies.innerHTML = '';
+
+    addUserMessage(text);
+    userInput.value = '';
+    userInput.style.height = 'auto';
+    sendBtn.disabled = true;
+
+    messages.push({ role: 'user', content: text });
+    const typing = showTyping();
+
+    try {
+      console.log('Sending message to API:', messages);
+      
+      const response = await fetch('/api/voyager-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: messages })
+      });
+
+      console.log('Response status:', response.status);
+      
+      const data = await response.json();
+      console.log('Response data:', data);
+      
+      removeTyping();
+
+      if (data.error) {
+        console.error('API returned error:', data.error);
+        addBotMessage("Sorry, I'm having trouble connecting. Please try again.");
+        sendBtn.disabled = false;
+        return;
+      }
+
+      addBotMessage(data.reply);
+      messages.push({ role: 'assistant', content: data.reply });
+
+      const userMessageCount = messages.filter(m => m.role === 'user').length;
+      const pct = Math.min((userMessageCount / 4) * 100, 100);
+      progressFill.style.width = pct + '%';
+
+      if (data.recommendation && data.recommendation.recommendation_ready && !recommendationShown) {
+        setTimeout(() => {
+          showDealCard(data.recommendation);
+        }, 800);
+      }
+      
+      if (!recommendationShown && userMessageCount >= 3) {
+        setTimeout(() => {
+          if (!recommendationShown) {
+            showDealCard({
+              park: 'Universal Orlando Resort',
+              summary: 'Based on your family preferences, this is the best value for your 2026 vacation.',
+              savings: 'Save ~$1,500 vs Disney packages',
+              best_deal: 'Premier hotels include FREE Universal Express Pass'
+            });
+          }
+        }, 1000);
+      }
+
+    } catch (error) {
+      console.error('Fetch error:', error);
+      removeTyping();
+      addBotMessage("Sorry, I'm having trouble connecting. Please try again.");
+    }
+    sendBtn.disabled = false;
+  }
+
+  window.addEventListener('load', () => {
+    loadAffiliateLinks();
+    if (!hasShownWelcome) {
+      setTimeout(() => {
+        addBotMessage("Hey there! 👋 I'm Voyager — your family travel deal finder.\n\nFirst up — how many people are in your group, and how old are the kids?");
+        hasShownWelcome = true;
+      }, 600);
+    }
+  });
+</script>
+
+<div id="google_translate_element"></div>
+
+</body>
+</html>
