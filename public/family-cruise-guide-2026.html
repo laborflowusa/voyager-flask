@@ -3,12 +3,903 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Family Cruises 2026: The Honest Parent's Guide | Voyager</title>
-<meta name="description" content="21.7 million families will cruise in 2026. Real kids club ratings, hidden fee warnings, and which cruise line actually gives parents a break. Disney to Carnival, we rate them all.">
+<title>Best Family Cruises 2026 — The Complete Planning Guide | Voyager</title>
+<meta name="description" content="The definitive family cruise guide for 2026. Caribbean, Mediterranean, and Alaska. What to book, when to go, which cruise lines work for every age, and how to save thousands.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<!-- Google tag (gtag.js) -->
+:root {
+  --ocean: #0A2342;
+  --ocean2: #0D2E57;
+  --wave: #1A6FB0;
+  --wave2: #1258A0;
+  --aqua: #00B4D8;
+  --aqua2: #0096C7;
+  --coral: #FF6B6B;
+  --coral2: #E85555;
+  --sand: #FFF9F0;
+  --sand2: #F5EFE4;
+  --gold: #FFD166;
+  --white: #FFFFFF;
+  --ink: #0A0E1A;
+  --ink2: #1C2333;
+  --muted: #6B7A99;
+  --border: rgba(10,35,66,0.1);
+  --r: 12px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--sand);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  background: var(--ocean);
+  color: var(--aqua);
+  text-align: center;
+  padding: 10px 1rem;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.topbar strong { color: var(--gold); }
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ocean);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--coral); }
+.nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--wave); }
+.nav-cta {
+  background: var(--coral);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--coral2); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--ocean);
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Animated waves */
+.hero-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  overflow: hidden;
+}
+.wave-layer {
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 300%;
+  height: 100%;
+}
+.wave-layer svg { width: 100%; height: 100%; }
+.wave-1 { animation: waveMove 8s linear infinite; opacity: 0.4; }
+.wave-2 { animation: waveMove 12s linear infinite reverse; opacity: 0.25; bottom: -20px; }
+.wave-3 { animation: waveMove 6s linear infinite; opacity: 0.15; bottom: -10px; }
+@keyframes waveMove { from { transform: translateX(0); } to { transform: translateX(33.33%); } }
+
+/* Ocean depth gradient */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 20%, rgba(0,180,216,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 70%, rgba(26,111,176,0.15) 0%, transparent 50%),
+    linear-gradient(180deg, #040D1A 0%, #0A2342 30%, #0D3566 60%, #0E4A7A 85%, #0A3560 100%);
+}
+
+/* Floating elements */
+.hero-float {
+  position: absolute;
+  font-size: 5rem;
+  opacity: 0.06;
+  animation: float 6s ease-in-out infinite;
+}
+.hero-float:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; font-size: 4rem; }
+.hero-float:nth-child(2) { top: 25%; right: 10%; animation-delay: 2s; font-size: 6rem; }
+.hero-float:nth-child(3) { top: 55%; left: 15%; animation-delay: 4s; font-size: 3rem; }
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 2rem 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,180,216,0.15);
+  border: 1px solid rgba(0,180,216,0.3);
+  border-radius: 20px;
+  padding: 6px 16px;
+  margin-bottom: 1.5rem;
+}
+.hero-eyebrow-dot { width: 6px; height: 6px; background: var(--aqua); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.hero-eyebrow-text { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--aqua); }
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+.hero h1 .accent { color: var(--gold); font-style: italic; display: block; }
+.hero h1 .small-line {
+  font-size: 0.28em;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  display: block;
+  margin-top: 1.2rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.h-stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.h-stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+}
+
+.hero-desc {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  max-width: 580px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-block;
+  background: var(--coral);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--coral2); transform: translateY(-2px); }
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--aqua);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  border-top: 2px solid var(--ocean);
+  border-bottom: 2px solid var(--ocean);
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 30s linear infinite;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ocean);
+}
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── WRAP ── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ── LABELS & TITLES ── */
+.section-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::before { content: ''; width: 20px; height: 2px; background: var(--coral); flex-shrink: 0; }
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.section-title em { font-style: italic; color: var(--wave); }
+
+/* ── STATS STRIP ── */
+.stats-strip {
+  background: var(--ocean2);
+  padding: 2.5rem 1.5rem;
+}
+.stats-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.stat-item {
+  padding: 1rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  text-align: center;
+}
+.stat-item:last-child { border-right: none; }
+.stat-icon { font-size: 1.5rem; margin-bottom: 6px; }
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-top: 4px;
+}
+
+/* ── CRUISE CTA ── */
+.cruise-cta {
+  background: linear-gradient(135deg, var(--wave) 0%, var(--ocean) 100%);
+  border-radius: var(--r);
+  padding: 2.5rem;
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+.cruise-cta-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--aqua);
+  margin-bottom: 8px;
+}
+.cruise-cta-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.cruise-cta-body { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.65; }
+.cruise-cta-body strong { color: var(--gold); }
+.cruise-cta-right { text-align: center; flex-shrink: 0; }
+.cruise-price {
+  font-family: 'Fraunces', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.cruise-price-note { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
+.btn-white {
+  display: inline-block;
+  background: white;
+  color: var(--wave2);
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-white:hover { background: var(--gold); color: var(--ocean); }
+
+/* ── DESTINATION CARDS ── */
+.dest-section {
+  padding: 3rem 0;
+}
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin: 2rem 0;
+}
+.dest-card {
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--white);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.dest-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(10,35,66,0.12); }
+
+.dest-visual {
+  height: 200px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+}
+.caribbean .dest-visual {
+  background: linear-gradient(160deg, #0A2342 0%, #0D4A7A 25%, #0096C7 55%, #00B4D8 72%, #48CAE4 85%, #90E0EF 100%);
+}
+.mediterranean .dest-visual {
+  background: linear-gradient(155deg, #0A1830 0%, #1A3A6A 25%, #2E5FA0 45%, #4A8AC0 60%, #C4894A 78%, #E8C060 92%, #F5D878 100%);
+}
+.alaska .dest-visual {
+  background: linear-gradient(150deg, #0A1420 0%, #0A2030 20%, #1A3040 40%, #2A5060 58%, #4A8080 72%, #90C0B0 85%, #C0E0D0 100%);
+}
+
+.dest-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,35,66,0.75) 0%, transparent 55%);
+}
+.dest-flag {
+  position: relative;
+  z-index: 1;
+}
+.dest-name {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+.dest-tagline {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 3px;
+}
+.dest-body { padding: 1.5rem; }
+.dest-badge {
+  display: inline-block;
+  background: rgba(0,180,216,0.1);
+  border: 1px solid rgba(0,180,216,0.25);
+  color: var(--wave);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.dest-desc {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.dest-list { list-style: none; padding: 0; margin-bottom: 14px; }
+.dest-list li {
+  font-size: 13px;
+  color: var(--ink2);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+}
+.dest-list li::before { content: '→'; color: var(--coral); font-weight: 700; flex-shrink: 0; }
+.dest-list li:last-child { border-bottom: none; }
+.dest-link {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wave);
+  text-decoration: none;
+}
+.dest-link:hover { text-decoration: underline; }
+
+/* ── CRUISE LINES ── */
+.lines-section {
+  background: var(--ocean);
+  padding: 4rem 1.5rem;
+}
+.lines-inner { max-width: 1100px; margin: 0 auto; }
+.lines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 2rem;
+}
+.line-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.line-card:hover { border-color: rgba(0,180,216,0.35); background: rgba(0,180,216,0.05); }
+.line-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.line-best {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--aqua);
+  margin-bottom: 10px;
+}
+.line-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 12px; }
+.line-pros { list-style: none; padding: 0; }
+.line-pros li {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  padding: 4px 0;
+  display: flex;
+  gap: 8px;
+}
+.line-pros li::before { content: '✓'; color: var(--aqua); font-weight: 700; flex-shrink: 0; }
+
+/* ── AGE GUIDE ── */
+.age-section { padding: 3rem 0; }
+.age-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 2rem 0;
+}
+.age-card {
+  background: var(--white);
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.age-header {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.age-young .age-header { background: linear-gradient(135deg, #FF6B6B, #FF8E53); }
+.age-tween .age-header { background: linear-gradient(135deg, #1A6FB0, #00B4D8); }
+.age-multi .age-header { background: linear-gradient(135deg, #2D5A27, #4A8B3A); }
+.age-icon { font-size: 1.8rem; }
+.age-label {
+  font-weight: 800;
+  font-size: 14px;
+  color: white;
+  line-height: 1.2;
+}
+.age-sub { font-size: 10px; color: rgba(255,255,255,0.75); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.age-body { padding: 1.25rem; }
+.age-list { list-style: none; padding: 0; }
+.age-list li {
+  font-size: 13px;
+  color: var(--ink2);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.age-list li::before { content: '★'; color: var(--gold); font-size: 10px; flex-shrink: 0; margin-top: 3px; }
+.age-list li:last-child { border-bottom: none; }
+.age-tip {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: rgba(0,180,216,0.06);
+  border-left: 3px solid var(--aqua);
+  border-radius: 0 6px 6px 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.age-tip strong { color: var(--wave); }
+
+/* ── INSIDER TIPS ── */
+.tips-section {
+  background: var(--ink2);
+  padding: 4rem 1.5rem;
+}
+.tips-inner { max-width: 1100px; margin: 0 auto; }
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 2.5rem;
+}
+.tip-card {
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.tip-card::before {
+  content: var(--n);
+  position: absolute;
+  top: -15px;
+  right: 10px;
+  font-family: 'Fraunces', serif;
+  font-size: 5rem;
+  color: rgba(255,209,102,0.06);
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+}
+.tip-icon { font-size: 1.5rem; margin-bottom: 10px; }
+.tip-title { font-weight: 800; font-size: 14px; color: var(--gold); margin-bottom: 6px; }
+.tip-body { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+.tip-body strong { color: rgba(255,255,255,0.8); }
+
+/* ── SAVINGS TABLE ── */
+.savings-section { padding: 3rem 0; }
+.savings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border: 2px solid var(--ocean);
+  border-radius: var(--r);
+  overflow: hidden;
+  font-size: 14px;
+}
+.savings-table th {
+  background: var(--ocean);
+  color: var(--gold);
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.savings-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+.savings-table tr:last-child td { border-bottom: none; }
+.savings-table tr:hover td { background: var(--sand2); }
+.price-high { color: var(--muted); text-decoration: line-through; font-size: 12px; }
+.price-low { color: var(--coral); font-weight: 800; }
+.save-pill {
+  display: inline-block;
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+/* ── WHAT'S INCLUDED ── */
+.included-section {
+  background: var(--sand2);
+  padding: 4rem 1.5rem;
+}
+.included-inner { max-width: 1100px; margin: 0 auto; }
+.included-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 2rem 0;
+}
+.included-card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+.included-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.included-card ul { list-style: none; padding: 0; }
+.included-card li {
+  font-size: 13px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  color: var(--ink2);
+}
+.included-card li::before { content: '✓'; color: var(--wave); font-weight: 800; flex-shrink: 0; }
+.included-card li.no::before { content: '✗'; color: var(--coral); }
+.included-card li:last-child { border-bottom: none; }
+
+/* ── PACKING ── */
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 2rem 0;
+}
+.pack-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pack-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(10,35,66,0.1); }
+.pack-emoji { font-size: 2rem; flex-shrink: 0; }
+.pack-name { font-weight: 800; font-size: 14px; margin-bottom: 4px; color: var(--ink); }
+.pack-why { font-size: 12px; color: var(--muted); margin-bottom: 8px; line-height: 1.5; }
+.pack-link {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--coral);
+  text-decoration: none;
+}
+.pack-link:hover { text-decoration: underline; }
+
+/* ── HOTEL SECTION ── */
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 2rem 0;
+}
+.hotel-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.5rem;
+}
+.hotel-tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 6px;
+}
+.hotel-name { font-weight: 800; font-size: 1rem; margin-bottom: 6px; color: var(--ink); }
+.hotel-desc { font-size: 12px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+.hotel-link {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--wave);
+  text-decoration: none;
+}
+.hotel-link:hover { text-decoration: underline; }
+
+/* ── FAQ ── */
+.faq-list { margin: 1.5rem 0; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--ink);
+}
+.faq-q::after { content: '+'; font-size: 1.4rem; color: var(--coral); flex-shrink: 0; }
+.faq-q.open::after { content: '−'; }
+.faq-a {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.8;
+  display: none;
+  padding-top: 8px;
+}
+.faq-a.visible { display: block; }
+
+/* ── FINAL CTA ── */
+.final-cta {
+  background: var(--ocean);
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: '🚢';
+  position: absolute;
+  font-size: 300px;
+  opacity: 0.03;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.final-cta-inner { position: relative; z-index: 1; max-width: 620px; margin: 0 auto; }
+.final-cta-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.final-cta-title span { color: var(--gold); font-style: italic; }
+.final-cta-sub {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+/* ── DISCLOSURE & FOOTER ── */
+.disclosure {
+  background: var(--sand2);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+  text-align: center;
+}
+footer {
+  background: var(--ocean);
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  padding: 2rem;
+  font-size: 12px;
+}
+.footer-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 6px;
+}
+.footer-logo span { color: var(--coral); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .cruise-cta { grid-template-columns: 1fr; }
+  .included-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2.8rem; }
+}
+
+/* ── GA4 ── */
+</style>
+
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMFFZKWQM8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -16,904 +907,654 @@
   gtag('js', new Date());
   gtag('config', 'G-BMFFZKWQM8');
 </script>
-
-<!-- Preconnect for Google Translate -->
-<link rel="preconnect" href="https://translate.googleapis.com">
-<link rel="preconnect" href="https://translate-pa.googleapis.com">
-
-<!-- Google Translate Script -->
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en',
-    includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
-
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --gold: #C9922A;
-    --gold-light: #F2D28A;
-    --ink: #1A1714;
-    --ink-soft: #3D3830;
-    --parchment: #FAF7F2;
-    --parchment-dark: #F0EBE0;
-    --muted: #7A7167;
-    --border: rgba(26,23,20,0.12);
-    --green: #2D6A4F;
-    --green-bg: #EAF4EE;
-    --green-text: #1A4731;
-    --red-bg: #FAEAEA;
-    --red-text: #7A1F1F;
-    --amber-bg: #FEF3DC;
-    --amber-text: #7A4F00;
-    --blue-bg: #EAF1FA;
-    --blue-text: #1A3F6F;
-    --radius: 10px;
-    --radius-sm: 6px;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    background: var(--parchment);
-    color: var(--ink);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .topbar {
-    background: var(--ink);
-    color: var(--gold-light);
-    text-align: center;
-    padding: 10px 1rem;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-  }
-
-  .topbar strong { font-weight: 500; color: #fff; }
-
-  nav {
-    background: var(--parchment);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .nav-logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-    text-decoration: none;
-  }
-
-  .nav-logo span { color: var(--gold); }
-
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    transition: color 0.2s;
-    padding: 8px 4px;
-  }
-
-  .nav-links a:hover {
-    color: var(--gold);
-  }
-
-  .nav-cta {
-    background: var(--ink);
-    color: var(--gold-light);
-    border: none;
-    padding: 10px 22px;
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    cursor: pointer;
-    letter-spacing: 0.03em;
-    transition: background 0.2s;
-    text-decoration: none;
-    display: inline-block;
-  }
-
-  .nav-cta:hover { background: #2a2420; }
-
-  #google_translate_element {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-    background: rgba(0,0,0,0.7);
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 12px;
-  }
-  #google_translate_element select {
-    background: white;
-    border: none;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-  }
-  @media (max-width: 600px) {
-    #google_translate_element {
-      bottom: 10px;
-      right: 10px;
-      padding: 4px 8px;
-    }
-  }
-
-  main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  .hero {
-    padding: 3.5rem 0 2.5rem;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 1.25rem;
-  }
-
-  .tag {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 4px 11px;
-    border-radius: 20px;
-  }
-
-  .tag-amber { background: var(--amber-bg); color: var(--amber-text); }
-  .tag-blue { background: var(--blue-bg); color: var(--blue-text); }
-  .tag-green { background: var(--green-bg); color: var(--green-text); }
-
-  .hero h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
-    font-weight: 400;
-    line-height: 1.18;
-    color: var(--ink);
-    margin-bottom: 1.1rem;
-    letter-spacing: -0.02em;
-  }
-
-  .hero h1 em { font-style: italic; color: var(--gold); }
-
-  .hero-sub {
-    font-size: 16px;
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 600px;
-    margin-bottom: 1.25rem;
-  }
-
-  .meta {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-  }
-
-  .urgent {
-    background: var(--amber-bg);
-    border: 1px solid rgba(122,79,0,0.2);
-    border-radius: var(--radius);
-    padding: 1rem 1.25rem;
-    margin: 1.5rem 0 2rem;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  .urgent-icon { font-size: 18px; flex-shrink: 0; }
-
-  .urgent-body { font-size: 14px; color: var(--amber-text); line-height: 1.65; }
-  .urgent-body strong { font-weight: 500; }
-
-  .share-nudge {
-    background: var(--blue-bg);
-    border-radius: var(--radius);
-    padding: 1rem 1.25rem;
-    margin: 1.5rem 0;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    border-left: 3px solid #4A90D9;
-  }
-
-  .share-nudge-text { font-size: 13px; color: var(--blue-text); line-height: 1.6; flex: 1; min-width: 200px; }
-  .share-nudge-text strong { font-weight: 500; }
-
-  .share-btn {
-    font-size: 12px;
-    font-family: 'DM Sans', sans-serif;
-    padding: 8px 16px;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(26,63,111,0.25);
-    background: #fff;
-    color: #1a3f6f;
-    cursor: pointer;
-    white-space: nowrap;
-    font-weight: 500;
-  }
-  .share-btn:hover {
-    background: #eaf1fa;
-  }
-
-  .prose {
-    font-size: 16px;
-    line-height: 1.85;
-    color: #2a251f;
-    margin-bottom: 1.4rem;
-  }
-
-  .prose strong { font-weight: 500; color: var(--ink); }
-
-  h2 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--ink);
-    margin: 2.75rem 0 0.9rem;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-  }
-
-  h3 {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 2rem 0 0.75rem;
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 2rem 0;
-  }
-
-  .cta-block {
-    background: var(--ink);
-    border-radius: var(--radius);
-    padding: 2rem;
-    text-align: center;
-    margin: 2.5rem 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-block::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 100%, rgba(201,146,42,0.15) 0%, transparent 60%);
-  }
-
-  .cta-block h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    font-style: italic;
-    letter-spacing: -0.01em;
-    text-transform: none;
-    color: #fff;
-    margin: 0 0 0.6rem;
-    position: relative;
-  }
-
-  .cta-block p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.55);
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-    position: relative;
-  }
-
-  .cta-note {
-    font-size: 12px;
-    color: rgba(255,255,255,0.35);
-    margin-top: 10px;
-    position: relative;
-  }
-
-  .cta-link {
-    display: inline-block;
-    background: #d15219;
-    color: white;
-    padding: 14px 32px;
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    font-weight: 500;
-    transition: background 0.2s;
-  }
-  .cta-link:hover {
-    background: #b04515;
-  }
-
-  .data-table-wrap { overflow-x: auto; margin: 1.25rem 0; }
-
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    min-width: 480px;
-  }
-
-  .data-table th {
-    text-align: left;
-    padding: 10px 14px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-bottom: 1px solid var(--border);
-    background: var(--parchment-dark);
-  }
-
-  .data-table td {
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--border);
-    color: var(--ink-soft);
-    vertical-align: middle;
-    line-height: 1.5;
-  }
-
-  .data-table tr:last-child td {
-    border-bottom: none;
-    font-weight: 500;
-    color: var(--ink);
-    background: var(--parchment-dark);
-  }
-
-  .mom-callout {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    background: #fff;
-  }
-
-  .mom-callout-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1rem;
-  }
-
-  .mom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-  .mom-col { background: var(--parchment-dark); border-radius: var(--radius-sm); padding: 1rem; }
-
-  .mom-col-title { font-size: 13px; font-weight: 500; margin-bottom: 8px; color: var(--ink); }
-
-  .mom-col-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
-
-  .stat-grid {
-    display: flex;
-    gap: 12px;
-    margin: 1.5rem 0;
-    flex-wrap: wrap;
-  }
-
-  .stat-card {
-    flex: 1;
-    background: #fff;
-    padding: 1.2rem;
-    border-radius: var(--radius);
-    text-align: center;
-    border: 1px solid var(--border);
-  }
-
-  .stat-number {
-    font-family: 'Fraunces', serif;
-    font-size: 1.8rem;
-    font-weight: 500;
-    color: var(--gold);
-    line-height: 1.2;
-  }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-
-  .pullquote {
-    font-family: 'Fraunces', serif;
-    font-size: 1.25rem;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--ink);
-    border-left: 3px solid var(--gold);
-    padding: 0.5rem 0 0.5rem 1.5rem;
-    margin: 2rem 0;
-    line-height: 1.65;
-  }
-
-  .faq-item {
-    border-bottom: 1px solid var(--border);
-    padding: 1.1rem 0;
-  }
-
-  .faq-item:last-child { border-bottom: none; }
-
-  .faq-q { font-size: 15px; font-weight: 500; margin-bottom: 6px; color: var(--ink); }
-
-  .faq-a { font-size: 14px; color: var(--muted); line-height: 1.75; }
-
-  .closing-line {
-    text-align: center;
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--muted);
-    margin: 2rem 0 0.5rem;
-  }
-
-  .affiliate-box {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin: 2rem 0;
-  }
-  .affiliate-box-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-  }
-  .affiliate-sub {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-  }
-  .affiliate-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .affiliate-item {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    background: var(--parchment);
-    border-radius: var(--radius-sm);
-    align-items: flex-start;
-  }
-  .affiliate-emoji {
-    font-size: 18px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .affiliate-item-name {
-    font-family: 'Fraunces', serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 3px;
-  }
-  .affiliate-item-desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 5px;
-    line-height: 1.5;
-  }
-  .affiliate-item-link {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    color: var(--gold);
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .affiliate-item-link:hover {
-    text-decoration: underline;
-  }
-  .affiliate-badge {
-    font-size: 9px;
-    background: var(--green-bg);
-    color: var(--green-text);
-    padding: 2px 6px;
-    border-radius: 10px;
-    margin-left: 8px;
-  }
-
-  .cruise-booking-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--gold), #a07020);
-    color: white;
-    padding: 12px 24px;
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    font-weight: 600;
-    margin: 10px 0;
-    transition: transform 0.2s;
-  }
-  .cruise-booking-btn:hover {
-    transform: translateY(-2px);
-  }
-
-  .hotel-section {
-    background: var(--blue-bg);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin: 2rem 0;
-  }
-  .hotel-section h4 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: var(--blue-text);
-  }
-
-  .dynamic-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  @media (max-width: 600px) {
-    .affiliate-grid, .dynamic-grid, .mom-grid, .stat-grid { grid-template-columns: 1fr; }
-    h2 { font-size: 1.4rem; }
-    .hero h1 { font-size: 1.75rem; }
-    .nav-links { gap: 10px; }
-    .nav-links a { font-size: 11px; }
-    nav { padding: 0.9rem 1rem; }
-  }
-
-  .disclosure {
-    font-size: 12px;
-    color: #5a5248;
-    line-height: 1.75;
-    padding: 1.5rem 0 2rem;
-    border-top: 1px solid var(--border);
-    margin-top: 3rem;
-    font-style: italic;
-  }
-
-  footer {
-    background: var(--ink);
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-  }
-
-  footer .footer-logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 6px;
-  }
-
-  footer .footer-logo span { color: var(--gold); }
-</style>
 </head>
 <body>
 
-<div class="topbar">
-  21.7 million Americans will sail in 2026 — up 4.5% from last year. Family cabins are selling fast. <strong>Voyager</strong> tracks live availability daily.
-</div>
+<!-- TOPBAR -->
+<div class="topbar">🚢 <strong>2026 Family Cruise Guide</strong> — Caribbean, Mediterranean & Alaska · Save up to 40% booking online</div>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">Voy<span>a</span>ger</div>
+  <a class="nav-logo" href="/">Voy<span>a</span>ger</a>
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/chat.html">AI Chat</a>
-    <a href="/universal-vs-disney.html">Universal vs. Disney</a>
-    <a href="/family-cruise-guide-2026.html">Family Cruise Guide</a>
-    <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
-    <a href="/celebrate-mom.html">Celebrate Mom</a>
-    <a href="/dorney-park.html">🎢 Dorney Park</a>
-    <a href="/luxury-safaris.html">🦁 Luxury Safaris</a>
-    <a href="/privacy.html">Privacy</a>
+    <a href="/universal-vs-disney.html">Universal vs Disney</a>
+    <a href="/couples-cruise-guide-2026.html">Couples Cruises</a>
+   <a href="/dorney-park.html">🎢 Dorney Park</a>
+   <a href="/luxury-safaris.html">🦁 Safaris</a>
   </div>
-  <a class="nav-cta" href="/">👉 Find My Deal</a>
+  <a class="nav-cta" href="https://www.anrdoezrs.net/click-965192-7299361" target="_blank" rel="sponsored nofollow" onclick="trackClick('Nav CTA', 'CruiseDirect')">🚢 Find Your Cruise →</a>
 </nav>
 
-<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-float">🚢</div>
+  <div class="hero-float">🐬</div>
+  <div class="hero-float">🌊</div>
 
-  <div class="hero">
-    <div class="hero-tags">
-      <span class="tag tag-blue">Family Travel</span>
-      <span class="tag tag-amber">Summer 2026</span>
-      <span class="tag tag-green">Kids Club Ratings</span>
+  <div class="hero-waves">
+    <div class="wave-layer wave-1">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,60 C150,100 350,0 600,60 C850,120 1050,20 1200,60 L1200,120 L0,120 Z" fill="rgba(0,180,216,0.3)"/>
+      </svg>
     </div>
-    <h1>Family Cruises 2026:<br><em>The Honest Parent's Guide</em></h1>
-    <p class="hero-sub">21.7 million families will cruise in 2026. Real kids club quality, nickel‑and‑dime traps, and which line actually gives mom and dad a break. Disney to Carnival, we rate them all.</p>
-    <div class="meta">Published April 2026 &nbsp;·&nbsp; 12 min read &nbsp;·&nbsp; Kids club ratings updated for 2026</div>
-  </div>
-
-  <div class="urgent">
-    <div class="urgent-icon">⚡</div>
-    <div class="urgent-body">
-      <strong>Record demand for summer 2026 sailings.</strong> Family suites and connecting cabins are already disappearing for spring break and summer weeks. If you're planning to sail, the deal window is open now.
+    <div class="wave-layer wave-2">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,40 C200,80 400,10 600,50 C800,90 1000,30 1200,40 L1200,120 L0,120 Z" fill="rgba(26,111,176,0.25)"/>
+      </svg>
+    </div>
+    <div class="wave-layer wave-3">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,80 C100,40 300,90 500,70 C700,50 900,80 1200,70 L1200,120 L0,120 Z" fill="rgba(10,35,66,0.4)"/>
+      </svg>
     </div>
   </div>
 
-  <div class="share-nudge">
-    <div class="share-nudge-text"><strong>Forward this to your partner.</strong> It answers the real questions — "Will the kids be bored?" "Will we get any alone time?" "What's actually worth the extra money?"</div>
-    <button class="share-btn" onclick="shareGuide()">Send this guide ↗</button>
-  </div>
-
-  <p class="prose">You're not looking for a floating casino with a pool. You're looking for a vacation where every single person has a genuinely good time — and you also get to feel like you're on vacation, not just managing logistics.</p>
-
-  <p class="prose">I've broken down the five best family cruise lines for 2026, rated the kids clubs honestly, exposed the nickel-and-dime traps that blindside first-timers, and highlighted which lines actually deliver parents-only time — and which just claim they do.</p>
-
-  <!-- CRUISE DEALS CTA - CruiseDirect (3% commission, 45-day cookie) -->
-  <div class="cta-block">
-    <h3>🚢 Best Family Cruise Deals Right Now</h3>
-    <p>CruiseDirect offers exclusive savings on family cruises with a 45-day cookie window and 3% commission. Book through Voyager to lock in the best rates for your family.</p>
-    <div style="text-align: center; margin: 20px 0;">
-      <a href="https://www.anrdoezrs.net/click-965192-7299361" target="_blank" rel="sponsored nofollow" class="cta-link" onclick="trackAffiliateClick('CruiseDirect Family Cruises')">🚢 Find Your Family Cruise →</a>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      <div class="hero-eyebrow-text">The Definitive Guide · 2026 Season</div>
     </div>
-    <div class="cta-note">3% commission • 45-day cookie window • Best price guaranteed</div>
-  </div>
-
-  <div class="pullquote">"A good family cruise is one where everyone — including the parents — comes back actually rested."</div>
-
-  <div class="mom-callout">
-    <div class="mom-callout-label">The honest parent calculation</div>
-    <div class="mom-grid">
-      <div class="mom-col">
-        <div class="mom-col-title">What moms are really weighing</div>
-        <div class="mom-col-body">Is the kids club trustworthy and actually engaging? Will I get any real downtime? Is this going to cost me $3,000 more than the advertised price? Will I come home feeling rested?</div>
+    <h1>
+      The Best
+      <span class="accent">Family Cruises</span>
+      <span class="small-line">Caribbean · Mediterranean · Alaska · Every Age Group Covered</span>
+    </h1>
+    <div class="hero-stats">
+      <div>
+        <div class="h-stat-num">3</div>
+        <div class="h-stat-label">Destinations</div>
       </div>
-      <div class="mom-col">
-        <div class="mom-col-title">What dads are really thinking</div>
-        <div class="mom-col-body">I want the kids to be thrilled. I want my partner to actually relax. I want to not feel upsold every time I turn around. I want to feel like I found the right ship — not the default.</div>
+      <div>
+        <div class="h-stat-num">All</div>
+        <div class="h-stat-label">Ages Covered</div>
+      </div>
+      <div>
+        <div class="h-stat-num">$500+</div>
+        <div class="h-stat-label">Avg Family Savings</div>
+      </div>
+      <div>
+        <div class="h-stat-num">2026</div>
+        <div class="h-stat-label">Season Ready</div>
+      </div>
+    </div>
+    <p class="hero-desc">A cruise is the only vacation where one price covers your hotel, food, entertainment, and transportation — simultaneously. Here's how to pick the right one for your family.</p>
+    <div class="hero-btns">
+      <a href="https://www.anrdoezrs.net/click-965192-7299361" target="_blank" rel="sponsored nofollow" class="btn-primary" onclick="trackClick('Hero Primary', 'CruiseDirect')">🚢 Search Family Cruises</a>
+      <a href="#destinations" class="btn-outline">See Destinations ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    🚢 CARIBBEAN CRUISES FROM $299/PERSON &nbsp;·&nbsp; 🐬 KIDS SAIL FREE ON SELECT SAILINGS &nbsp;·&nbsp; 🌊 ALASKA CRUISES FROM $599 &nbsp;·&nbsp; 🏖️ NASSAU · COZUMEL · ST THOMAS &nbsp;·&nbsp; ⭐ BOOK 6 MONTHS AHEAD FOR BEST CABIN SELECTION &nbsp;·&nbsp; 🎉 ONBOARD KIDS CLUBS INCLUDED ON ALL MAJOR LINES &nbsp;·&nbsp; 🚢 CARIBBEAN CRUISES FROM $299/PERSON &nbsp;·&nbsp; 🐬 KIDS SAIL FREE ON SELECT SAILINGS &nbsp;·&nbsp; 🌊 ALASKA CRUISES FROM $599 &nbsp;·&nbsp; 🏖️ NASSAU · COZUMEL · ST THOMAS &nbsp;·&nbsp; ⭐ BOOK 6 MONTHS AHEAD FOR BEST CABIN SELECTION &nbsp;·&nbsp; 🎉 ONBOARD KIDS CLUBS INCLUDED ON ALL MAJOR LINES &nbsp;·&nbsp;
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-icon">🍽️</div><div class="stat-num">All</div><div class="stat-lbl">Meals Included</div></div>
+    <div class="stat-item"><div class="stat-icon">🎭</div><div class="stat-num">24/7</div><div class="stat-lbl">Entertainment</div></div>
+    <div class="stat-item"><div class="stat-icon">🏊</div><div class="stat-num">5+</div><div class="stat-lbl">Pools Per Ship</div></div>
+    <div class="stat-item"><div class="stat-icon">🧒</div><div class="stat-num">Free</div><div class="stat-lbl">Kids Clubs</div></div>
+    <div class="stat-item"><div class="stat-icon">🌍</div><div class="stat-num">3–7</div><div class="stat-lbl">Ports Per Trip</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- MAIN CTA -->
+  <div class="cruise-cta">
+    <div>
+      <div class="cruise-cta-eyebrow">CruiseDirect — Official Partner</div>
+      <div class="cruise-cta-title">One Search.<br>Every Major Cruise Line.</div>
+      <div class="cruise-cta-body">CruiseDirect searches Royal Caribbean, Carnival, Norwegian, Disney, MSC, and more in one place. Filter by destination, departure port, length, and price. <strong>Families save an average of $400–$800</strong> booking online vs. walking into a travel agent.</div>
+    </div>
+    <div class="cruise-cta-right">
+      <div class="cruise-price">$299+</div>
+      <div class="cruise-price-note">per person Caribbean cruises</div>
+      <a href="https://www.anrdoezrs.net/click-965192-7299361" target="_blank" rel="sponsored nofollow" class="btn-white" onclick="trackClick('Main CTA', 'CruiseDirect')">🚢 Search Cruises Now →</a>
+    </div>
+  </div>
+
+  <!-- DESTINATIONS -->
+  <section id="destinations" class="dest-section">
+    <div class="section-label">Where You're Going</div>
+    <div class="section-title">Three Destinations.<br><em>Three Different Trips.</em></div>
+    <p style="color:var(--muted); font-family:'Fraunces',serif; font-style:italic; font-size:1.05rem; max-width:580px; line-height:1.75;">Caribbean for sun and value. Mediterranean for culture and wonder. Alaska for adventure that changes how your kids see the world.</p>
+
+    <div class="dest-grid">
+      <div class="dest-card caribbean">
+        <div class="dest-visual">
+          <div class="dest-flag">
+            <div class="dest-name">Caribbean</div>
+            <div class="dest-tagline">🏖️ The Classic Family Choice</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="dest-badge">Most Popular · Best Value</div>
+          <p class="dest-desc">Warm water, white sand, and ports that feel designed for families. The Caribbean is where most families cruise first — and why most come back.</p>
+          <ul class="dest-list">
+            <li>Nassau, Bahamas — short sail from Florida, crystal water</li>
+            <li>Cozumel, Mexico — snorkeling, ruins, easy with kids</li>
+            <li>St. Thomas, USVI — no passport required for Americans</li>
+            <li>Labadee / Perfect Day — private Royal Caribbean islands</li>
+            <li>7-night cruises from $299–$599/person</li>
+          </ul>
+          <a href="https://www.anrdoezrs.net/click-965192-7299361" target="_blank" rel="sponsored nofollow" class="dest-link" onclick="trackClick('Caribbean Dest', 'CruiseDirect')">Search Caribbean Family Cruises →</a>
+        </div>
+      </div>
+
+      <div class="dest-card mediterranean">
+        <div class="dest-visual">
+          <div class="dest-flag">
+            <div class="dest-name">Mediterranean</div>
+            <div class="dest-tagline">🏛️ History Comes Alive</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="dest-badge">Premium · Educational · Memorable</div>
+          <p class="dest-desc">Rome, Barcelona, Santorini, Dubrovnik. The Mediterranean turns a history lesson into something kids actually remember. Best for families with tweens and teens.</p>
+          <ul class="dest-list">
+            <li>Rome (Civitavecchia) — Colosseum, Vatican, gelato</li>
+            <li>Barcelona — Gaudí, beaches, La Boqueria market</li>
+            <li>Santorini — the photos are real, the sunsets are better</li>
+            <li>Dubrovnik — Game of Thrones walls, Adriatic swimming</li>
+            <li>10–12 night cruises from $699–$1,200/person</li>
+          </ul>
+          <a href="https://www.anrdoezrs.net/click-965192-7299361" target="_blank" rel="sponsored nofollow" class="dest-link" onclick="trackClick('Mediterranean Dest', 'CruiseDirect')">Search Mediterranean Cruises →</a>
+        </div>
+      </div>
+
+      <div class="dest-card alaska">
+        <div class="dest-visual">
+          <div class="dest-flag">
+            <div class="dest-name">Alaska</div>
+            <div class="dest-tagline">🐋 Wild, Real, Unforgettable</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="dest-badge">Adventure · Wildlife · Summer Season</div>
+          <p class="dest-desc">Glaciers calving into the sea. Humpback whales breaching 20 feet from the ship. Bald eagles everywhere. Alaska is the cruise that makes kids put their phones down — voluntarily.</p>
+          <ul class="dest-list">
+            <li>Glacier Bay — UNESCO World Heritage, active glaciers</li>
+            <li>Juneau — whale watching, dog sledding year-round</li>
+            <li>Skagway — Gold Rush history, White Pass railway</li>
+            <li>Ketchikan — salmon, totem poles, rainforest</li>
+            <li>7-night cruises from $599–$899/person</li>
+          </ul>
+          <a href="https://www.anrdoezrs.net/click-965192-7299361" target="_blank" rel="sponsored nofollow" class="dest-link" onclick="trackClick('Alaska Dest', 'CruiseDirect')">Search Alaska Family Cruises →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CRUISE LINES -->
+<section class="lines-section">
+  <div class="lines-inner">
+    <div class="section-label" style="color:var(--aqua);">The Lines</div>
+    <div class="section-title" style="color:white;">Which Cruise Line <em>Is Right for Your Family?</em></div>
+    <p style="color:rgba(255,255,255,0.45); font-family:'Fraunces',serif; font-style:italic; font-size:1rem; max-width:560px; margin:0.5rem 0 0; line-height:1.75;">Not all cruise lines are built the same. Here's the honest breakdown by age group and travel style.</p>
+
+    <div class="lines-grid">
+      <div class="line-card">
+        <div class="line-name">Royal Caribbean</div>
+        <div class="line-best">Best for: Tweens, Teens & Thrill Seekers</div>
+        <div class="line-desc">The most activity-packed ships afloat. Surf simulators, rock climbing walls, go-karts, waterslides, and the largest kids clubs in the industry. If your kids need stimulation, this is your line.</div>
+        <ul class="line-pros">
+          <li>Perfect Day at CocoCay — private island, massive waterpark</li>
+          <li>Adventure Ocean kids club — infants through teens</li>
+          <li>Icon of the Seas — most amenities of any ship ever built</li>
+        </ul>
+      </div>
+
+      <div class="line-card">
+        <div class="line-name">Disney Cruise Line</div>
+        <div class="line-best">Best for: Young Kids (Under 10)</div>
+        <div class="line-desc">Premium priced but worth it for families with young children. Character experiences, age-specific clubs from 3 months up, and adult-only areas for parents. The gold standard for under-10 cruising.</div>
+        <ul class="line-pros">
+          <li>Character meet-and-greets every day of the cruise</li>
+          <li>Oceaneers Club — the best kids club at sea, period</li>
+          <li>Castaway Cay — Disney's private island in the Bahamas</li>
+        </ul>
+      </div>
+
+      <div class="line-card">
+        <div class="line-name">Norwegian Cruise Line</div>
+        <div class="line-best">Best for: Flexible Families, Multi-Gen Groups</div>
+        <div class="line-desc">Freestyle dining means no set dinner times — perfect for families with unpredictable kids. Strong onboard entertainment, good value, and the "Free at Sea" promotions can save families hundreds.</div>
+        <ul class="line-pros">
+          <li>Freestyle dining — eat when and where you want</li>
+          <li>Free at Sea — specialty dining, drink packages, excursions</li>
+          <li>Haven suites for multi-generational groups needing space</li>
+        </ul>
+      </div>
+
+      <div class="line-card">
+        <div class="line-name">Carnival Cruise Line</div>
+        <div class="line-best">Best for: Budget Families, First Cruisers</div>
+        <div class="line-desc">The most affordable major line with genuinely good family programming. Camp Ocean kids clubs, waterslides on every ship, and Caribbean itineraries from nearly every major East and Gulf Coast port.</div>
+        <ul class="line-pros">
+          <li>Most affordable entry point for family cruising</li>
+          <li>Camp Ocean — structured programming for all ages</li>
+          <li>Departs from more US ports than any other line</li>
+        </ul>
+      </div>
+
+      <div class="line-card">
+        <div class="line-name">MSC Cruises</div>
+        <div class="line-best">Best for: Mediterranean, International Experience</div>
+        <div class="line-desc">Europe's largest cruise line and the best choice for Mediterranean itineraries. Kids sail free on many sailings, and the European service style gives families a genuinely different experience.</div>
+        <ul class="line-pros">
+          <li>Kids sail free — frequently runs on European itineraries</li>
+          <li>Best Mediterranean port selection of any line</li>
+          <li>MSC Yacht Club for multigenerational groups wanting luxury</li>
+        </ul>
+      </div>
+
+      <div class="line-card">
+        <div class="line-name">Holland America</div>
+        <div class="line-best">Best for: Multi-Gen, Alaska, Older Kids</div>
+        <div class="line-desc">The best Alaska cruise line, full stop. More time in port, slower pace, and a mature onboard culture that works perfectly for multi-generational trips where grandparents are in the group.</div>
+        <ul class="line-pros">
+          <li>Finest Alaska itineraries — Glacier Bay, Denali extensions</li>
+          <li>Club HAL kids program well-suited to 8–17</li>
+          <li>Quieter, more relaxed atmosphere for mixed-age groups</li>
+        </ul>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="stat-grid">
-    <div class="stat-card"><div class="stat-number">21.7M</div><div class="stat-label">Americans cruising in 2026 — all‑time record forecast</div></div>
-    <div class="stat-card"><div class="stat-number">72%</div><div class="stat-label">of U.S. passengers choose the Caribbean — widest family options</div></div>
-    <div class="stat-card"><div class="stat-number">$914</div><div class="stat-label">Average hidden add‑on cost per family if you're not careful</div></div>
-  </div>
+<div class="wrap">
 
-  <h2>The five best family cruise lines for 2026</h2>
+  <!-- AGE GUIDE -->
+  <section class="age-section">
+    <div class="section-label">By Age Group</div>
+    <div class="section-title">What Works for <em>Every Member</em> of Your Family</div>
+    <p style="color:var(--muted); font-family:'Fraunces',serif; font-style:italic; font-size:1rem; max-width:560px; margin:0.5rem 0 1.5rem; line-height:1.75;">The biggest mistake families make is booking without thinking about what each age group actually needs on a ship.</p>
 
-  <h3>✨ Disney Cruise Line — The Magic & Under‑10 Family</h3>
-  <p class="prose"><strong>Best for:</strong> Families with kids ages 3–12 who are Disney obsessed. The character meet-and-greets alone justify the premium for this age group.</p>
-  <p class="prose"><strong>Kids club rating:</strong> Ages 3–10: 9.7 | Teens: 8.5</p>
-  <p class="prose">Disney Cruise Line is the only line where the ship itself is the destination. Character dining, Broadway-caliber shows, the Oceaneer Club (which kids genuinely don't want to leave), and Castaway Cay combine to create an experience no other line can replicate for young children. The adults-only areas are genuinely excellent, meaning parents actually do get downtime. It costs more. It's worth it for the right family at the right age.</p>
+    <div class="age-grid">
+      <div class="age-card">
+        <div class="age-header age-young">
+          <div class="age-icon">👶</div>
+          <div>
+            <div class="age-label">Little Ones</div>
+            <div class="age-sub">Ages 0–9</div>
+          </div>
+        </div>
+        <div class="age-body">
+          <ul class="age-list">
+            <li>Disney Cruise Line is the only right answer for under 5</li>
+            <li>Royal Caribbean Adventure Ocean for ages 3–11</li>
+            <li>Carnival Camp Ocean from age 2</li>
+            <li>Shallow splash zones and kiddie pools on all major ships</li>
+            <li>Nap schedules still work — ship routine is predictable</li>
+          </ul>
+          <div class="age-tip"><strong>Pro tip:</strong> Book a stateroom with a bathtub, not just a shower. With young kids it makes evenings infinitely easier. Not all cabins have them — call to confirm.</div>
+        </div>
+      </div>
 
-  <h3>🏄 Royal Caribbean — The Thrill-Seekers & All‑Ages Family</h3>
-  <p class="prose"><strong>Best for:</strong> Families with wide age ranges — toddlers to teenagers. Royal Caribbean's ships have the most total onboard activities of any line.</p>
-  <p class="prose"><strong>Kids club rating:</strong> Ages 3–12: 9.0 | Teens: 9.5</p>
-  <p class="prose">Royal Caribbean's Icon of the Seas and Wonder of the Seas are the most activity-dense ships ever built — rock climbing, surf simulators, waterslides, ice skating, mini golf, laser tag. Perfect Day at CocoCay is the best private island at sea. Watch for add-on upselling — budget carefully and buy packages in advance online at a 20–30% discount.</p>
+      <div class="age-card">
+        <div class="age-header age-tween">
+          <div class="age-icon">🎮</div>
+          <div>
+            <div class="age-label">Tweens & Teens</div>
+            <div class="age-sub">Ages 10–17</div>
+          </div>
+        </div>
+        <div class="age-body">
+          <ul class="age-list">
+            <li>Royal Caribbean — go-karts, surf simulators, escape rooms</li>
+            <li>Norwegian — teen-specific clubs with more independence</li>
+            <li>Shore excursions become genuinely exciting at this age</li>
+            <li>Zip-lining in Juneau, ATV in Cozumel, snorkeling in Nassau</li>
+            <li>Teen clubs open until midnight — parents get evenings back</li>
+          </ul>
+          <div class="age-tip"><strong>Pro tip:</strong> Give teens a small daily spending budget on their cruise card. It teaches money skills and removes constant negotiation. Most lines allow this setup at check-in.</div>
+        </div>
+      </div>
 
-  <h3>💰 Carnival — The Budget-Smart Family</h3>
-  <p class="prose"><strong>Best for:</strong> Budget-conscious families who want an excellent cruise without paying premium prices. Best first cruise option.</p>
-  <p class="prose"><strong>Kids club rating:</strong> Ages 2–11: 8.2 | Teens: 7.5</p>
-  <p class="prose">Carnival gets a bad reputation it doesn't entirely deserve. The base price is genuinely the best value in the industry for Caribbean family travel. Ships are fun, food is solid, kids programs are well-run. The honest caveat: ships are louder and more party-oriented. The savings are real — a family of four can save $1,500–$2,500 vs. Disney.</p>
+      <div class="age-card">
+        <div class="age-header age-multi">
+          <div class="age-icon">👴</div>
+          <div>
+            <div class="age-label">Multi-Generational</div>
+            <div class="age-sub">Grandparents + Everyone</div>
+          </div>
+        </div>
+        <div class="age-body">
+          <ul class="age-list">
+            <li>Norwegian Haven suites — private complex, butler service</li>
+            <li>Holland America — quieter, accessible, slower paced</li>
+            <li>Connecting staterooms essential — book early, they sell out</li>
+            <li>Mobility considerations: all lines ADA accessible</li>
+            <li>Shared dinner as a group every night — the magic of cruising</li>
+          </ul>
+          <div class="age-tip"><strong>Pro tip:</strong> On multi-gen trips, book a private shore excursion rather than the ship's group tours. A private van for your family moves at your pace and nobody is left behind.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
-  <h3>🕊️ Norwegian — The Freedom & Flexibility Family</h3>
-  <p class="prose"><strong>Best for:</strong> Families who hate rigid schedules. "Freestyle cruising" — no fixed dining times, no dress codes.</p>
-  <p class="prose"><strong>Kids club rating:</strong> Ages 3–12: 8.3 | Teens: 8.0</p>
-  <p class="prose">Norwegian is the right choice for families who bristle at regimented cruising. Kids clubs are well-reviewed, and "Free At Sea" promotions are the best deal in cruising when timed right — they can include free specialty dining, drink packages, and Wi-Fi.</p>
+<!-- INSIDER TIPS -->
+<section class="tips-section">
+  <div class="tips-inner">
+    <div class="section-label" style="color:var(--coral);">Before You Board</div>
+    <div class="section-title" style="color:white;">Nine Things <em>Every Family</em> Should Know</div>
 
-  <h3>🌍 MSC Cruises — The European Experience Family</h3>
-  <p class="prose"><strong>Best for:</strong> Families who want a European cruise experience at a price point significantly below premium lines. Particularly strong for Mediterranean itineraries.</p>
-  <p class="prose"><strong>Kids club rating:</strong> Ages 3–12: 8.0 | Teens: 7.2</p>
-  <p class="prose">MSC is the underrated pick. Mediterranean itineraries are excellent, pricing is dramatically lower than comparable sailings. The honest caveat: MSC has a more international, European atmosphere. Some families love this; others find the energy different. If Europe is your destination, MSC is the smartest way to introduce your kids to it.</p>
-
-  <!-- SECOND CRUISE DEALS CTA - Orbitz (Alternative) -->
-  <div class="affiliate-box">
-    <div class="affiliate-box-title">🚢 Compare Cruise Prices Instantly</div>
-    <div class="affiliate-sub">Orbitz offers $40 commission per cruise booking with a 7-day cookie window.</div>
-    <div style="text-align: center;">
-      <a href="https://www.orbitz.com/?cid=4861280&q=cruises" target="_blank" rel="sponsored nofollow" class="cruise-booking-btn" onclick="trackAffiliateClick('Orbitz Cruises')">🌊 Find Your Family Cruise →</a>
+    <div class="tips-grid">
+      <div class="tip-card" style="--n:'01'">
+        <div class="tip-icon">📅</div>
+        <div class="tip-title">Book 6 Months Out Minimum</div>
+        <div class="tip-body">Connecting cabins, specific deck locations, and early dining times disappear fast. For summer and holiday sailings, <strong>9–12 months</strong> is the right timeline. The itinerary stays the same — the cabin quality does not.</div>
+      </div>
+      <div class="tip-card" style="--n:'02'">
+        <div class="tip-icon">🍕</div>
+        <div class="tip-title">The Main Dining Room Is Free</div>
+        <div class="tip-body">Every ship has a main dining room included in your fare with a full menu, tableside service, and the same food quality as specialty restaurants. <strong>Skip the specialty dining upsell</strong> until your second cruise — the included food is genuinely excellent.</div>
+      </div>
+      <div class="tip-card" style="--n:'03'">
+        <div class="tip-icon">📱</div>
+        <div class="tip-title">Buy the Drink Package Before Boarding</div>
+        <div class="tip-body">Drink packages (including non-alcoholic for kids) are always <strong>10–20% cheaper</strong> if purchased before the sailing date through the cruise line app. Onboard pricing is full retail. Book it the moment it opens — usually 90 days out.</div>
+      </div>
+      <div class="tip-card" style="--n:'04'">
+        <div class="tip-icon">🌊</div>
+        <div class="tip-title">Sea Day Strategy</div>
+        <div class="tip-body">On sea days, the main pool deck is chaos by 10am. <strong>The adults-only areas are almost empty</strong> and right next to the family pool. For multi-gen trips, send grandparents there while parents rotate supervising the kids. Everyone wins.</div>
+      </div>
+      <div class="tip-card" style="--n:'05'">
+        <div class="tip-icon">🏝️</div>
+        <div class="tip-title">Book Shore Excursions Early</div>
+        <div class="tip-body">The whale watching in Juneau, the private beach in Nassau, the ruins tour in Cozumel — they have capacity limits. <strong>Book the moment bookings open</strong>, usually 90 days before sailing. The best excursions sell out weeks ahead of departure.</div>
+      </div>
+      <div class="tip-card" style="--n:'06'">
+        <div class="tip-icon">💊</div>
+        <div class="tip-title">Sea Sickness Is Real — Prepare</div>
+        <div class="tip-body">Even on large ships in calm Caribbean waters, some kids (and adults) get motion sick. <strong>Pack Dramamine or Bonine</strong> and the behind-ear motion sickness patches. Midship cabins on lower decks feel the least movement. Don't find this out on day one.</div>
+      </div>
+      <div class="tip-card" style="--n:'07'">
+        <div class="tip-icon">💰</div>
+        <div class="tip-title">The "Kids Sail Free" Math</div>
+        <div class="tip-body">Kids sail free deals are real but read the fine print. <strong>The third and fourth passenger rate</strong> (which is what kids cruise at) is often already heavily discounted. Compare the "kids free" promotional rate against the standard family rate — sometimes the deal is genuine, sometimes it isn't.</div>
+      </div>
+      <div class="tip-card" style="--n:'08'">
+        <div class="tip-icon">🎒</div>
+        <div class="tip-title">Pack a Day Bag for Each Port</div>
+        <div class="tip-body">Your big luggage stays in the cabin. For every port day, each family member needs a small bag: <strong>sunscreen, water, ID, spending money, medication, and a change of clothes</strong>. You cannot return to the ship for forgotten items — the ship won't wait.</div>
+      </div>
+      <div class="tip-card" style="--n:'09'">
+        <div class="tip-icon">🛳️</div>
+        <div class="tip-title">Arrive the Day Before Embarkation</div>
+        <div class="tip-body">Flying in the morning of your cruise is the single biggest risk in family cruise planning. <strong>One delayed flight = missed ship</strong>. The ship does not wait. Always stay overnight in the embarkation city. This is non-negotiable advice.</div>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="data-table-wrap">
-    <table class="data-table">
+<div class="wrap">
+
+  <!-- SAVINGS TABLE -->
+  <section class="savings-section">
+    <div class="section-label">The Numbers</div>
+    <div class="section-title">What a Family of Four <em>Actually Pays</em></div>
+    <p style="color:var(--muted); font-family:'Fraunces',serif; font-style:italic; font-size:1rem; max-width:560px; margin:0.5rem 0 1.5rem; line-height:1.75;">All-inclusive makes cruises deceiving to price. Here's what each trip type actually costs a family of four (2 adults, 2 kids) — and how to bring it down.</p>
+
+    <table class="savings-table">
       <thead>
-        <tr><th>Cruise line</th><th>Best for</th><th>Kids club</th><th>Starting price/pp</th></tr>
+        <tr>
+          <th>Trip</th>
+          <th>Duration</th>
+          <th>Rack Rate</th>
+          <th>Online Price</th>
+          <th>Savings</th>
+        </tr>
       </thead>
       <tbody>
-        <tr><td>Disney</td><td>Ages 3–12, magic seekers</td><td>9.7 / 10</td><td>~$1,500</td></tr>
-        <tr><td>Royal Caribbean</td><td>All ages, thrill-seekers</td><td>9.5 / 10 teens</td><td>~$900</td></tr>
-        <tr><td>Carnival</td><td>Budget-smart families</td><td>8.2 / 10</td><td>~$600</td></tr>
-        <tr><td>Norwegian</td><td>Flexible, no-schedule families</td><td>8.3 / 10</td><td>~$800</td></tr>
-        <tr><td>MSC</td><td>European itineraries, value</td><td>8.0 / 10</td><td>~$700</td></tr>
+        <tr>
+          <td><strong>Caribbean (Carnival/Royal)</strong></td>
+          <td>5–7 nights</td>
+          <td><span class="price-high">$4,200</span></td>
+          <td><span class="price-low">~$2,800–3,200</span></td>
+          <td><span class="save-pill">Save ~$1,000</span></td>
+        </tr>
+        <tr>
+          <td><strong>Caribbean — Disney</strong></td>
+          <td>7 nights</td>
+          <td><span class="price-high">$7,000</span></td>
+          <td><span class="price-low">~$5,200–6,000</span></td>
+          <td><span class="save-pill">Save ~$1,200</span></td>
+        </tr>
+        <tr>
+          <td><strong>Mediterranean (MSC/Norwegian)</strong></td>
+          <td>10–12 nights</td>
+          <td><span class="price-high">$8,500</span></td>
+          <td><span class="price-low">~$6,000–7,000</span></td>
+          <td><span class="save-pill">Save ~$2,000</span></td>
+        </tr>
+        <tr>
+          <td><strong>Alaska (Holland America)</strong></td>
+          <td>7 nights</td>
+          <td><span class="price-high">$5,600</span></td>
+          <td><span class="price-low">~$4,000–4,800</span></td>
+          <td><span class="save-pill">Save ~$1,200</span></td>
+        </tr>
       </tbody>
     </table>
-  </div>
 
-  <h2>The hidden fees that blindside first-time family cruisers</h2>
-  <p class="prose">This is the section most travel blogs skip. Don't let these catch you off guard — they can add $800–$1,500 to a family of four's total cost.</p>
-  <div class="prose"><strong>Daily gratuities / service charges</strong> — often $18–22 per person per day → ~$504–$616 for a family of four<br>
-  <strong>Specialty dining</strong> — beyond main dining room → $30–60 per person<br>
-  <strong>Drink packages</strong> — even non-alcoholic/soda for kids → $10–25 per day per person<br>
-  <strong>Wi-Fi packages</strong> — often $20–35/day per device → $140–245 per week<br>
-  <strong>Parking at the departure port</strong> — if driving → $20–35 per day</div>
+    <a href="https://www.anrdoezrs.net/click-965192-7299361" target="_blank" rel="sponsored nofollow" class="btn-primary" onclick="trackClick('Savings Table CTA', 'CruiseDirect')" style="display:inline-block; margin-bottom:2rem;">🚢 Find Current Prices on CruiseDirect →</a>
+  </section>
 
-  <!-- CRUISE PACKING ESSENTIALS -->
-  <div class="affiliate-box">
-    <div class="affiliate-box-title">🧳 Cruise Packing Essentials — What Every Family Actually Needs</div>
-    <div class="affiliate-sub">Recommended by frequent cruisers. All Prime eligible, all chosen because you'll actually use them.</div>
-    <div class="dynamic-grid" id="packing-grid">
-      <div class="affiliate-item">
-        <span class="affiliate-emoji">🎒</span>
-        <div>
-          <div class="affiliate-item-name">BAGAIL Packing Cubes 8 Set</div>
-          <div class="affiliate-item-desc">42,000+ reviews. Save space in cruise cabins.</div>
-          <a class="affiliate-item-link" href="https://www.amazon.com/s?k=packing+cubes+for+travel&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Packing Cubes')">Shop on Amazon →</a>
-        </div>
+  <!-- WHAT'S INCLUDED -->
+</div>
+
+<section class="included-section">
+  <div class="included-inner">
+    <div class="section-label">Know Before You Book</div>
+    <div class="section-title">What's Included — <em>and What Isn't</em></div>
+    <p style="color:var(--muted); font-family:'Fraunces',serif; font-style:italic; font-size:1rem; max-width:560px; margin:0.5rem 0 1.5rem; line-height:1.75;">The word "all-inclusive" on a cruise means something specific — and something limited. Know the difference before you board.</p>
+
+    <div class="included-grid">
+      <div class="included-card">
+        <h4>✅ Always Included</h4>
+        <ul>
+          <li>Main dining room — breakfast, lunch, dinner</li>
+          <li>Buffet restaurant — all day, every day</li>
+          <li>Kids club enrollment and programming</li>
+          <li>Onboard entertainment (shows, movies, activities)</li>
+          <li>Swimming pools and waterslides</li>
+          <li>Fitness center access</li>
+          <li>Port taxes and fees (usually)</li>
+        </ul>
       </div>
-      <div class="affiliate-item">
-        <span class="affiliate-emoji">🌊</span>
-        <div>
-          <div class="affiliate-item-name">Waterproof Phone Pouch</div>
-          <div class="affiliate-item-desc">#1 Top Rated. Waterproof for beach days.</div>
-          <a class="affiliate-item-link" href="https://www.amazon.com/s?k=waterproof+phone+pouch+for+swimming&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Phone Pouch')">Shop on Amazon →</a>
-        </div>
-      </div>
-      <div class="affiliate-item">
-        <span class="affiliate-emoji">😴</span>
-        <div>
-          <div class="affiliate-item-name">Travel Neck Pillow</div>
-          <div class="affiliate-item-desc">Memory foam for long flights to cruise ports.</div>
-          <a class="affiliate-item-link" href="https://www.amazon.com/s?k=travel+neck+pillow+memory+foam&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Neck Pillow')">Shop on Amazon →</a>
-        </div>
-      </div>
-      <div class="affiliate-item">
-        <span class="affiliate-emoji">☀️</span>
-        <div>
-          <div class="affiliate-item-name">Wide-Brim Sun Hat</div>
-          <div class="affiliate-item-desc">UPF 50+ protection for pool days and shore excursions.</div>
-          <a class="affiliate-item-link" href="https://www.amazon.com/s?k=wide+brim+sun+hat+upf+50&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Sun Hat')">Shop on Amazon →</a>
-        </div>
+      <div class="included-card">
+        <h4>💳 Usually Costs Extra</h4>
+        <ul>
+          <li class="no">Specialty restaurants ($20–65/person)</li>
+          <li class="no">Alcoholic beverages and sodas</li>
+          <li class="no">Shore excursions</li>
+          <li class="no">Spa treatments</li>
+          <li class="no">Wi-Fi (expect $20–30/day per device)</li>
+          <li class="no">Photos from the ship photographer</li>
+          <li class="no">Gratuities ($18–22/person/day)</li>
+        </ul>
       </div>
     </div>
-    <div style="font-size: 11px; color: #6a6a6a; margin-top: 12px; text-align: center;">As an Amazon Associate, Voyager earns from qualifying purchases.</div>
-  </div>
 
-  <!-- HOTEL SECTION -->
-  <div class="hotel-section" id="hotel-section-container">
-    <h4>🏨 Need a Hotel Before or After Your Cruise?</h4>
-    <div id="hotel-content">
-      <p style="font-size: 14px; margin-bottom: 15px;">Hotels.com offers 4% rewards on every stay. Perfect for Miami, Orlando, Galveston, and Seattle cruise ports.</p>
-      <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
-        <a href="https://www.hotels.com/?cid=1702763" target="_blank" rel="sponsored nofollow" class="cruise-booking-btn" onclick="trackAffiliateClick('Hotels.com')">🏨 Search Hotels →</a>
+    <div style="background:rgba(255,107,107,0.08); border:1px solid rgba(255,107,107,0.2); border-radius:var(--r); padding:1.25rem 1.5rem; font-size:14px; color:var(--muted); line-height:1.7; margin-top:0.5rem;">
+      <strong style="color:var(--coral);">Budget reality check:</strong> For a family of four on a 7-night cruise, add $400–600 for gratuities, $200–400 for Wi-Fi and beverages, and $300–600 for shore excursions. Budget these in before you book — the sticker price on the cabin is not your final cost.
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- PACKING -->
+  <div class="section-label" style="margin-top:3rem;">What to Bring</div>
+  <div class="section-title">Pack This. <em>Leave That.</em></div>
+  <p style="color:var(--muted); font-family:'Fraunces',serif; font-style:italic; font-size:1rem; max-width:560px; margin:0.5rem 0 1rem; line-height:1.75;">Ships have restrictions. Here's what actually makes the trip better.</p>
+
+  <div class="pack-grid">
+    <div class="pack-item">
+      <div class="pack-emoji">🌊</div>
+      <div>
+        <div class="pack-name">Waterproof Phone Case</div>
+        <div class="pack-why">Shore excursions, pool decks, water parks on the ship. Your phone will get wet. Plan for it.</div>
+        <a class="pack-link" href="https://www.amazon.com/s?k=waterproof+phone+pouch+cruise&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackClick('Waterproof Case', 'Amazon')">Shop Amazon →</a>
+      </div>
+    </div>
+    <div class="pack-item">
+      <div class="pack-emoji">☀️</div>
+      <div>
+        <div class="pack-name">Reef-Safe SPF 50 Sunscreen</div>
+        <div class="pack-why">Several Caribbean ports now require reef-safe sunscreen. Plus ship markup on sunscreen is brutal — $22 for a small bottle onboard.</div>
+        <a class="pack-link" href="https://www.amazon.com/s?k=reef+safe+sunscreen+SPF+50&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackClick('Sunscreen', 'Amazon')">Shop Amazon →</a>
+      </div>
+    </div>
+    <div class="pack-item">
+      <div class="pack-emoji">🎒</div>
+      <div>
+        <div class="pack-name">Mesh Beach Bag</div>
+        <div class="pack-why">For port days. Drains fast, dries fast, holds everything. The ship's towels, a change of clothes, snacks, sunscreen — one bag per family.</div>
+        <a class="pack-link" href="https://www.amazon.com/s?k=mesh+beach+bag+family&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackClick('Beach Bag', 'Amazon')">Shop Amazon →</a>
+      </div>
+    </div>
+    <div class="pack-item">
+      <div class="pack-emoji">💊</div>
+      <div>
+        <div class="pack-name">Motion Sickness Patches</div>
+        <div class="pack-why">Behind-the-ear patches work far better than pills for most people. Apply the night before departure. Game-changer for motion-sensitive kids.</div>
+        <a class="pack-link" href="https://www.amazon.com/s?k=motion+sickness+patches+scopolamine&tag=voyagerx20-20" target="_blank" rel="sponsored nofollow" onclick="trackClick('Motion Sickness', 'Amazon')">Shop Amazon →</a>
       </div>
     </div>
   </div>
+  <div style="font-size:11px; color:var(--muted); margin-top:8px; margin-bottom:3rem;">As an Amazon Associate, Voyager earns from qualifying purchases at no extra cost to you.</div>
 
-  <!-- SHORE EXCURSIONS -->
-  <div class="affiliate-box">
-    <div class="affiliate-box-title">🏝️ Shore Excursions & Family Activities</div>
-    <div class="affiliate-sub">Book these before you sail to lock in availability and save up to 20%.</div>
-    <div class="dynamic-grid" id="excursions-grid">
-      <div class="affiliate-item">
-        <span class="affiliate-emoji">🤿</span>
-        <div>
-          <div class="affiliate-item-name">GetYourGuide</div>
-          <div class="affiliate-item-desc">Snorkeling, beach breaks, and family-friendly shore excursions.</div>
-          <a class="affiliate-item-link" href="https://www.getyourguide.com/?partner_id=Y5RBAVK" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('GetYourGuide Excursions')">Book on GetYourGuide →</a>
-          <span class="affiliate-badge">8% Cash Back</span>
-        </div>
-      </div>
-      <div class="affiliate-item">
-        <span class="affiliate-emoji">🚤</span>
-        <div>
-          <div class="affiliate-item-name">Viator</div>
-          <div class="affiliate-item-desc">Private boat charters, VIP tours, and unique experiences.</div>
-          <a class="affiliate-item-link" href="https://www.viator.com/?pid=2874255" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Viator Excursions')">Book on Viator →</a>
-          <span class="affiliate-badge">4%+ Commission</span>
-        </div>
-      </div>
+  <!-- HOTELS -->
+  <div class="section-label">Night Before the Cruise</div>
+  <div class="section-title">Always Stay <em>the Night Before</em></div>
+  <p style="color:var(--muted); font-family:'Fraunces',serif; font-style:italic; font-size:1rem; max-width:560px; margin:0.5rem 0 1.5rem; line-height:1.75;">Miami, Port Canaveral, Galveston, Seattle, Fort Lauderdale — book a hotel near your port the night before. Missing a ship is real. Don't risk it.</p>
+
+  <div class="hotel-grid">
+    <div class="hotel-card">
+      <div class="hotel-tag">Best Selection</div>
+      <div class="hotel-name">Hotels.com</div>
+      <div class="hotel-desc">Filter by cruise port proximity. Best selection near Miami, Fort Lauderdale, and Port Canaveral.</div>
+      <a class="hotel-link" href="https://www.hotels.com/?cid=1702763" target="_blank" rel="sponsored nofollow" onclick="trackClick('Hotels.com', 'Hotels')">Search Port Hotels →</a>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-tag">Best Bundles</div>
+      <div class="hotel-name">Expedia</div>
+      <div class="hotel-desc">Bundle flights + port hotel for the night before. Significant savings when booked together.</div>
+      <a class="hotel-link" href="https://www.expedia.com/?cid=1874913" target="_blank" rel="sponsored nofollow" onclick="trackClick('Expedia', 'Hotels')">View Flight + Hotel Bundles →</a>
+    </div>
+    <div class="hotel-card">
+      <div class="hotel-tag">Flexible Booking</div>
+      <div class="hotel-name">Travelocity</div>
+      <div class="hotel-desc">Good for park-and-cruise hotels — park your car for the week and get shuttled to the pier.</div>
+      <a class="hotel-link" href="https://www.travelocity.com/?cid=1549809" target="_blank" rel="sponsored nofollow" onclick="trackClick('Travelocity', 'Hotels')">Check Park & Cruise Rates →</a>
     </div>
   </div>
 
-  <h2>Frequently asked questions</h2>
-  <div class="faq-item"><div class="faq-q">What's the best family cruise line for kids under 5?</div><div class="faq-a">Disney Cruise Line is the clear answer. The Oceaneer Club accepts children from age 3 and has the highest staff-to-child ratio. Royal Caribbean's Adventure Ocean is also excellent for this age if budget is a concern.</div></div>
-  <div class="faq-item"><div class="faq-q">Which cruise line is best for teenagers?</div><div class="faq-a">Royal Caribbean wins this category clearly. The Vibe teen lounge on their larger ships is genuinely excellent — teens actually want to go there and hang out independently.</div></div>
-  <div class="faq-item"><div class="faq-q">How do I actually get alone time as a parent on a cruise?</div><div class="faq-a">Book the evening kids club sessions in advance — most lines offer supervised kids club hours until 10pm or later specifically so parents can have dinner and time alone. This is the best-kept secret in family cruising.</div></div>
-  <div class="faq-item"><div class="faq-q">Does Voyager track kids-sail-free and family deals specifically?</div><div class="faq-a">Yes. Kids-sail-free promotions, third and fourth passenger discounts, and connecting cabin offers are among the most time-limited deals. Voyager scans these daily and surfaces them when they're available for your travel dates.</div></div>
+  <!-- FAQ -->
+  <div class="section-label" style="margin-top:3rem;">Questions Answered</div>
+  <div class="section-title"><em>Straight Talk</em> on Family Cruising</div>
 
-  <!-- FINAL CTA - THEME PARK TICKETS -->
-  <div class="cta-block" id="theme-park-container">
-    <h3>🎟️ Need Theme Park Tickets Before/After Your Cruise?</h3>
-    <div id="theme-park-content">
-      <p>Orlando cruise? Add Universal or Disney to your vacation. Get 8% cash back on park tickets.</p>
-      <a href="https://www.cheaptickets.com/?cid=4861279&q=Universal+Orlando" target="_blank" rel="sponsored nofollow" class="cta-link" onclick="trackAffiliateClick('CheapTickets Universal')">🎢 View Theme Park Deals →</a>
-      <div class="cta-note">8% commission on tickets • Save $50+ on a family of four</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What age is too young to cruise?</div>
+      <div class="faq-a">Most cruise lines accept infants as young as 6 months old. Disney Cruise Line accepts babies from 3 months. The real question isn't age — it's temperament. If your baby does well with routine and new environments, a cruise works well. Toddlers ages 2–4 are arguably the sweetest age to cruise — the ship is endlessly stimulating for them and they sleep hard. The bigger challenge is connecting cabins, which book out fast.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do kids need a passport to cruise?</div>
+      <div class="faq-a">For closed-loop Caribbean cruises — meaning the ship departs and returns to the same US port — US citizens can travel with an original birth certificate and government-issued ID instead of a passport. However, a passport is strongly recommended because if a medical emergency requires you to fly home from a foreign port, you need one. For any cruise that crosses into international waters and returns to a different port, a passport is required.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is a cruise actually cheaper than a resort vacation?</div>
+      <div class="faq-a">Almost always yes, when you compare apples to apples. A 7-night Caribbean cruise for a family of four at $3,000 includes every meal, entertainment, accommodation, and travel between multiple destinations. The equivalent week at a decent all-inclusive resort in Cancun runs $4,500–6,000 for less variety and one location. The cruise wins on value, especially once kids are old enough for the clubs.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What if my kids get seasick?</div>
+      <div class="faq-a">Modern cruise ships are massive stabilized vessels — a Caribbean sailing on a modern ship in average weather barely registers motion. That said, some children (and adults) are sensitive. Book a midship cabin on a lower deck — this is where the ship moves least. Pack behind-ear scopolamine patches and over-the-counter Bonine. If your child is severely prone to motion sickness, consider the newest, largest ships which have the most stabilization technology.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I find the best family cruise deals?</div>
+      <div class="faq-a">Three strategies work consistently. Book early — 6 to 9 months out — for the best cabin selection at base rates. Book during wave season (January through March) when cruise lines run their deepest annual promotions. And use CruiseDirect to compare across all lines simultaneously rather than checking each line individually. The third and fourth passenger rate is often the variable — compare that number carefully across lines for the same itinerary.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What's the best Caribbean cruise port to depart from?</div>
+      <div class="faq-a">For most East Coast families, Port Canaveral (Orlando) and Miami are the top choices — large selection of ships, competitive pricing, and easy to combine with a theme park visit before or after. For Southeast families, Port Canaveral plus a Disney World day is unbeatable value. For Texas and Midwest families, Galveston's Gulf Coast access makes Carnival sailings especially affordable. The port closest to you almost always wins on total trip cost once you factor in driving vs. flying.</div>
     </div>
   </div>
 
-  <div class="closing-line">Click Voyager above. Let me find your family's next adventure.</div>
-  <div class="disclosure">Disclosure: This post contains affiliate links. If you book through them, Voyager may earn a commission at no extra cost to you. Kids club ratings reflect aggregated parent reviews and independent research as of early 2026. Prices are approximate starting rates and subject to change — always confirm current pricing before booking. Affiliate IDs: Amazon: voyagerx20-20 | CruiseDirect: 965192 | Orbitz: 4861280 | Travelocity: 1549809 | Hotels.com: 1702763 | CheapTickets: 4861279 | GetYourGuide: Y5RBAVK | Viator: 2874255</div>
+</div>
 
-</main>
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <div class="final-cta-title">Your Family's<br><span>Best Trip Yet</span></div>
+    <p class="final-cta-sub">One price. Every meal. Entertainment every night. Multiple destinations. And the whole family talking about it for years. Start searching now — the best cabins go fast.</p>
+    <a href="https://www.anrdoezrs.net/click-965192-7299361" target="_blank" rel="sponsored nofollow" class="btn-primary" style="font-size:14px; padding:16px 36px;" onclick="trackClick('Final CTA', 'CruiseDirect')">🚢 Search Family Cruises on CruiseDirect →</a>
+    <div style="margin-top:12px; font-size:11px; color:rgba(255,255,255,0.3);">Caribbean · Mediterranean · Alaska · All Ages · All Budgets</div>
+  </div>
+</section>
+
+<div class="disclosure">
+  This page contains affiliate links. If you book or purchase through these links, Voyager may earn a commission at no additional cost to you. Affiliate partners: CruiseDirect (CJ Affiliate — ID 965192), Amazon Associates (voyagerx20-20), Hotels.com (1702763), Expedia (1874913), Travelocity (1549809). Cruise pricing is estimated based on current market ranges and varies by sailing date, cabin type, and availability. Always verify current pricing before booking.
+</div>
 
 <footer>
   <div class="footer-logo">Voy<span>a</span>ger</div>
-  <div>Real deals. No noise. Built for families who travel smart.</div>
-  <div style="font-size: 11px; margin-top: 12px; color: rgba(255,255,255,0.35); line-height: 1.5;">
-    We are a participant in the Amazon Services LLC Associates Program and other affiliate programs. 
-    As an affiliate, we earn from qualifying purchases at no extra cost to you.
-  </div>
+  <div>Real travel. Real savings. Built for families who travel smart.</div>
+  <div style="margin-top:10px; font-size:11px;">We participate in affiliate programs. As an affiliate, we earn from qualifying purchases.</div>
 </footer>
 
 <script>
-    // ========== AFFILIATE TRACKING ==========
-    function shareGuide() {
-        const url = window.location.href;
-        navigator.clipboard.writeText(url).then(() => {
-            alert('Link copied! Send this guide to your partner.');
-        }).catch(() => {
-            alert('Press Ctrl+C to copy the link from your browser bar.');
-        });
-    }
+// Supabase click tracking
+const SUPABASE_URL = 'https://asgtixmtfcqpkwzlxihu.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzZ3RpeG10ZmNxcGt3emx4aWh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjQzODcsImV4cCI6MjA5NDc0MDM4N30.qTfRv139CP2H4e16cGiQdXfPk17r5ekelLUI68M_KFA';
 
-    function trackAffiliateClick(linkName) {
-        console.log(`Affiliate click: ${linkName}`);
-        fetch('/api/affiliate/click', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ link: linkName, page: 'family-cruise-guide' })
-        }).catch(err => console.error('Tracking failed:', err));
-    }
+async function trackClick(linkName, partner) {
+  console.log(`Affiliate click: ${linkName} — ${partner}`);
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/click_tracking`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`
+      },
+      body: JSON.stringify({
+        link_name: linkName,
+        partner: partner,
+        page: 'family-cruise-guide-2026',
+        clicked_at: new Date().toISOString()
+      })
+    });
+  } catch(e) {
+    console.log('Tracking error:', e);
+  }
+}
 
-    function trackClick(linkId) {
-        fetch(`/api/click/${linkId}`, { method: 'POST' })
-            .catch(err => console.error('Click tracking failed:', err));
-    }
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const isOpen = answer.classList.contains('visible');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('visible'));
+  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+  if (!isOpen) {
+    answer.classList.add('visible');
+    el.classList.add('open');
+  }
+}
 </script>
-
-<div id="google_translate_element"></div>
 
 </body>
 </html>
