@@ -104,7 +104,7 @@ def voyager_chat():
             reply = "Based on your family's needs, I recommend Universal Orlando Resort! It saves families $1,500+ compared to Disney. Epic Universe opens May 22, 2026!"
         
         # Show deal card after 4 or more user messages
-        show_deal = user_message_count >= 4
+        show_deal = user_message_count >= 5
         response_data = {'reply': reply, 'showDeal': show_deal}
         
         if show_deal:
