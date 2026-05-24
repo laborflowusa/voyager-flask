@@ -84,15 +84,29 @@ nav {
   text-decoration: none;
 }
 .nav-logo span { color: var(--coral); }
-.nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.nav-links {
+    display: flex;
+    gap: 16px;
+    padding: 12px 24px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
 .nav-links a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: color 0.2s;
+    color: #1a4a6f;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+    padding: 8px 4px;
+    white-space: nowrap;
+}
+.nav-links a:hover {
+    color: #d15219;
 }
 .nav-links a:hover { color: var(--wave); }
 .nav-cta {
@@ -897,11 +911,18 @@ footer {
 .footer-logo span { color: var(--coral); }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 700px) {
-  .cruise-cta { grid-template-columns: 1fr; }
-  .included-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-  .hero h1 { font-size: 2.8rem; }
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 8px;
+        padding: 10px 12px;
+    }
+    .nav-links a {
+        font-size: 10px;
+        padding: 6px 2px;
+    }
+    h1 { font-size: 1.8rem; }
+    main { padding: 15px; }
+    .deals-grid { grid-template-columns: 1fr; }
 }
 
 /* ── GA4 ── */
