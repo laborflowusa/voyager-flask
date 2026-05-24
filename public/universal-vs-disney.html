@@ -92,6 +92,9 @@ function googleTranslateElementInit() {
     z-index: 100;
     flex-wrap: wrap;
     gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .nav-logo {
@@ -107,17 +110,20 @@ function googleTranslateElementInit() {
 
   .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     flex-wrap: wrap;
+    align-items: center;
   }
 
   .nav-links a {
-    color: var(--muted);
+    color: #6B6560;
     text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     transition: color 0.2s;
-    padding: 8px 4px;
+    white-space: nowrap;
   }
 
   .nav-links a:hover {
@@ -128,16 +134,17 @@ function googleTranslateElementInit() {
     background: var(--ink);
     color: var(--gold-light);
     border: none;
-    padding: 10px 22px;
+    padding: 8px 20px;
     border-radius: var(--radius-sm);
-    font-size: 13px;
+    font-size: 12px;
     font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     transition: background 0.2s;
     text-decoration: none;
     display: inline-block;
+    white-space: nowrap;
   }
 
   .nav-cta:hover { background: #2a2420; }
@@ -158,13 +165,6 @@ function googleTranslateElementInit() {
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 12px;
-  }
-  @media (max-width: 600px) {
-    #google_translate_element {
-      bottom: 10px;
-      right: 10px;
-      padding: 4px 8px;
-    }
   }
 
   main {
@@ -745,22 +745,10 @@ function googleTranslateElementInit() {
     margin-left: 8px;
   }
 
-  /* Dynamic deals container */
   .dynamic-deals-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-  }
-
-  @media (max-width: 600px) {
-    .affiliate-grid, .dynamic-deals-grid, .upgrade-grid, .decision-grid, .mom-grid { grid-template-columns: 1fr; }
-    .pro-tip { grid-column: 1; }
-    h2 { font-size: 1.4rem; }
-    .hero h1 { font-size: 1.75rem; }
-    .save-hero .save-amount { font-size: 2.75rem; }
-    .nav-links { gap: 10px; }
-    .nav-links a { font-size: 11px; }
-    nav { padding: 0.9rem 1rem; }
   }
 
   .disclosure {
@@ -791,6 +779,41 @@ function googleTranslateElementInit() {
   }
 
   footer .footer-logo span { color: var(--gold); }
+
+  /* Tablet View */
+  @media (max-width: 1000px) {
+    .nav-links {
+      gap: 12px;
+    }
+    .nav-links a {
+      font-size: 10px;
+    }
+    .nav-logo {
+      font-size: 1.3rem;
+    }
+    .nav-cta {
+      padding: 6px 12px;
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .affiliate-grid, .dynamic-deals-grid, .upgrade-grid, .decision-grid, .mom-grid { grid-template-columns: 1fr; }
+    .pro-tip { grid-column: 1; }
+    h2 { font-size: 1.4rem; }
+    .hero h1 { font-size: 1.75rem; }
+    .save-hero .save-amount { font-size: 2.75rem; }
+    .nav-links { display: none; }
+    nav { padding: 0.9rem 1rem; }
+    #google_translate_element {
+      bottom: 10px;
+      right: 10px;
+      padding: 4px 8px;
+    }
+    main {
+      padding: 0 1rem;
+    }
+  }
 </style>
 </head>
 <body>
@@ -810,8 +833,9 @@ function googleTranslateElementInit() {
     <a href="/celebrate-mom.html">Celebrate Mom</a>
     <a href="/dorney-park.html">🎢 Dorney Park</a>
     <a href="/prek-pass.html" style="background: #F2C94C; color: #0B3B2F; padding: 4px 12px; border-radius: 30px;">🎁 FREE Pre-K Pass</a>
+    <a href="/luxury-safaris.html">🦁 Luxury Safaris</a>
     <a href="/privacy.html">Privacy</a>
-</div>
+  </div>
   <a class="nav-cta" href="/">👉 Find My Deal</a>
 </nav>
 
@@ -864,7 +888,7 @@ function googleTranslateElementInit() {
         <tr><td>3-night on-site hotel</td><td>$1,200 (Pop Century)</td><td>$900 (Cabana Bay)</td><td><span class="win-badge">Universal saves $300</span></td></tr>
         <tr><td>Food — quick service, 4 days</td><td>$600</td><td>$520</td><td><span class="win-badge">Universal saves $80</span></td></tr>
         <tr><td>Parking</td><td>$100</td><td>$90</td><td><span class="win-badge">Universal saves $10</span></td></tr>
-        <tr><td>Total base cost</td><td><strong>~$4,134</strong></td><td><strong>~$2,550</strong></td><td><span class="win-badge">Universal saves $1,584</span></td></tr>
+        <tr><td><strong>Total base cost</strong></td><td><strong>~$4,134</strong></td><td><strong>~$2,550</strong></td><td><span class="win-badge">Universal saves $1,584</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -911,17 +935,17 @@ function googleTranslateElementInit() {
   <div class="upgrade-grid">
     <div class="upgrade-col">
       <div class="upgrade-col-title">Walt Disney World</div>
-      <div class="upgrade-item"><span class="badge-yes">Yes</span><div>Lightning Lane Multi Pass ($15–30/day pp) — essential in peak summer or you'll wait 90 minutes for every major ride</div></div>
-      <div class="upgrade-item"><span class="badge-yes">Yes</span><div>Character Dining ($45–65/pp) — genuinely magical for kids under 10. Worth doing once per trip.</div></div>
-      <div class="upgrade-item"><span class="badge-no">Skip</span><div>Park Hopper (+$198–264 total) — sounds great, rarely survives the reality of heat, crowds, and tired kids</div></div>
+      <div class="upgrade-item"><span class="badge-yes">Yes</span><div>Lightning Lane Multi Pass ($15-30/day pp) — essential in peak summer or you'll wait 90 minutes for every major ride</div></div>
+      <div class="upgrade-item"><span class="badge-yes">Yes</span><div>Character Dining ($45-65/pp) — genuinely magical for kids under 10. Worth doing once per trip.</div></div>
+      <div class="upgrade-item"><span class="badge-no">Skip</span><div>Park Hopper (+$198-264 total) — sounds great, rarely survives the reality of heat, crowds, and tired kids</div></div>
       <div class="upgrade-item"><span class="badge-no">Skip</span><div>Memory Maker ($210) — your phone takes better photos and you won't review 80% of them six months later</div></div>
     </div>
     <div class="upgrade-col">
       <div class="upgrade-col-title">Universal Orlando</div>
       <div class="upgrade-item"><span class="badge-yes">Yes</span><div>Park-to-Park ticket (+$45/day pp) — non-negotiable if you want the Hogwarts Express. Don't skip this.</div></div>
-      <div class="upgrade-item"><span class="badge-yes">Yes</span><div>Premier hotel with free Unlimited Express Pass ($400–600/night) — on a 2+ day trip, the included Express Pass typically pays for the entire hotel premium</div></div>
-      <div class="upgrade-item"><span class="badge-yes">Yes</span><div>Express Pass for one day ($90–300/pp) — if not staying on-site, buy it for your single busiest park day</div></div>
-      <div class="upgrade-item"><span class="badge-no">Skip</span><div>VIP Tour ($300–500/pp) — overkill for family trips. Express Pass handles everything you actually need.</div></div>
+      <div class="upgrade-item"><span class="badge-yes">Yes</span><div>Premier hotel with free Unlimited Express Pass ($400-600/night) — on a 2+ day trip, the included Express Pass typically pays for the entire hotel premium</div></div>
+      <div class="upgrade-item"><span class="badge-yes">Yes</span><div>Express Pass for one day ($90-300/pp) — if not staying on-site, buy it for your single busiest park day</div></div>
+      <div class="upgrade-item"><span class="badge-no">Skip</span><div>VIP Tour ($300-500/pp) — overkill for family trips. Express Pass handles everything you actually need.</div></div>
     </div>
     <div class="pro-tip">
       <strong>Pro tip on Universal hotels:</strong> Hard Rock Hotel, Portofino Bay, and Loews Royal Pacific are Universal's Premier-tier properties — every guest in the room receives free Unlimited Express Pass for the length of their stay. <a href="https://www.travelocity.com/?cid=1549809" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Travelocity Universal Hotels')">Check Travelocity for Universal hotel deals →</a>
