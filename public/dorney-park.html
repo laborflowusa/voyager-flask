@@ -11,14 +11,7 @@
 
   gtag('config', 'G-BMFFZKWQM8');
 </script>
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://tpembars.com/NTIyMjQ5.js?t=522249';
-      document.head.appendChild(script);
-  })();
-</script>
+  <!-- FIX: Travelpayouts Drive script REMOVED from <head> (moved to end of <body> to prevent CORS/render-blocking) -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dorney Park 2026 Guide — Insider Tips, Tickets & What Locals Know | Voyager</title>
 <meta name="description" content="Everything you need for an epic Dorney Park day in 2026. Ride guide, water park tips, money-saving tricks, and what locals know that tourists don't. Opens May 8.">
@@ -29,8 +22,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dorney Park 2026 — Insider's Guide">
 <meta name="twitter:description" content="Local tips, ride guide, and money-saving tricks for Dorney Park & Wildwater Kingdom. Opens May 8.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <!-- FIX: Removed preconnect, loading Google Fonts asynchronously to prevent render-blocking -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"></noscript>
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -123,12 +117,14 @@ nav {
 }
 .nav-cta:hover { background: var(--red2); }
 
+/* FIX: Added explicit min-height to hero to reduce layout shift (CLS) */
 .hero {
   background: var(--ink);
   color: var(--paper);
   padding: 5rem 2rem 4rem;
   position: relative;
   overflow: hidden;
+  min-height: 520px;
 }
 
 .hero::before {
@@ -332,9 +328,10 @@ nav {
 }
 .fact-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,240,232,0.5); margin-top: 4px; }
 
+/* FIX: Insider Alert Box - improved contrast (darker text) */
 .insider-alert {
   background: var(--sky);
-  color: white;
+  color: #0A2F44; /* deep navy for high contrast */
   border-radius: var(--r);
   padding: 1.5rem 2rem;
   margin: 2.5rem 0;
@@ -343,16 +340,17 @@ nav {
   align-items: flex-start;
 }
 .alert-icon { font-size: 2rem; flex-shrink: 0; }
-.alert-title { font-weight: 800; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
-.alert-body { font-size: 14px; opacity: 0.9; line-height: 1.6; }
-.alert-body strong { color: var(--yellow); }
+.alert-title { font-weight: 800; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; color: #0A2F44; }
+.alert-body { font-size: 14px; opacity: 0.95; line-height: 1.6; color: #0A2F44; }
+.alert-body strong { color: #F2C94C; }
 
+/* FIX: Ticket CTA Box - dark text for readability */
 .ticket-cta {
   background: var(--red);
   border-radius: var(--r);
   padding: 2.5rem;
   margin: 2.5rem 0;
-  color: white;
+  color: #1A1714; /* solid dark color */
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 2rem;
@@ -365,9 +363,10 @@ nav {
   letter-spacing: 0.03em;
   line-height: 1.1;
   margin-bottom: 8px;
+  color: #1A1714;
 }
 
-.ticket-cta-body { font-size: 14px; opacity: 0.9; line-height: 1.6; }
+.ticket-cta-body { font-size: 14px; opacity: 0.95; line-height: 1.6; color: #1A1714; }
 .ticket-cta-body strong { color: var(--yellow); }
 
 .ticket-cta-right { text-align: center; flex-shrink: 0; }
@@ -378,7 +377,7 @@ nav {
   line-height: 1;
   color: var(--yellow);
 }
-.ticket-price-note { font-size: 11px; opacity: 0.7; margin-bottom: 12px; }
+.ticket-price-note { font-size: 11px; opacity: 0.8; margin-bottom: 12px; color: #1A1714; }
 
 .btn-white {
   display: inline-block;
@@ -477,7 +476,8 @@ nav {
 }
 .badge-thrill { background: var(--red); color: white; }
 .badge-family { background: var(--sky); color: white; }
-.badge-water { background: #00B4D8; color: white; }
+/* FIX: badge-water text color changed to darker for contrast */
+.badge-water { background: #00B4D8; color: #0A2F44; }
 .badge-classic { background: var(--yellow); color: var(--ink); }
 
 .ride-card-body { padding: 1.25rem; }
@@ -516,12 +516,14 @@ nav {
   border-radius: var(--r);
   padding: 1.25rem;
 }
+/* FIX: tip-num text changed to white for visibility */
 .tip-num {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 3rem;
-  color: rgba(242,201,76,0.2);
+  color: #FFFFFF;
   line-height: 1;
   margin-bottom: 8px;
+  opacity: 0.9;
 }
 .tip-title { font-weight: 800; font-size: 14px; margin-bottom: 6px; color: var(--yellow); }
 .tip-body { font-size: 13px; color: rgba(245,240,232,0.65); line-height: 1.65; }
@@ -805,7 +807,7 @@ footer {
   .ticket-cta-right { text-align: left; }
   nav { padding: 0.9rem 1rem; }
   .nav-links { display: none; }
-  .hero { padding: 3rem 1.5rem; }
+  .hero { padding: 3rem 1.5rem; min-height: 480px; }
   .facts-inner { grid-template-columns: repeat(2, 1fr); }
   .fact-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
 }
@@ -813,6 +815,8 @@ footer {
 </head>
 <body>
 
+<!-- FIX: Added main landmark for accessibility -->
+<main id="main-content">
 <div class="topbar" id="topbar">⏰ MEMORIAL DAY SALE: Save up to 50% on Dorney Park tickets & season passes. Ends 5/25! 🎟️</div>
 
 <nav>
@@ -952,7 +956,7 @@ footer {
       <tr><td><strong>Six Flags Gold Pass</strong></td><td>—</span></td><td><span class="price-online">~$105/season</span></td><td><span class="savings-pill">Best for 2+ visits</span></td></tr>
       <tr><td><strong>Family of 4 (2 adult + 2 child)</strong></td><td><span class="price-gate">~$270</span></td><td><span class="price-online">~$160–190</span></td><td><span class="savings-pill">Save $80–110</span></td></tr>
     </tbody>
-  </table>
+   </table>
 
   <a href="https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park" target="_blank" rel="sponsored nofollow" class="btn-primary" onclick="trackAffiliateClick('Savings Table CTA')" style="display: inline-block; margin-bottom: 2rem;">🎟 Lock In Your Discounted Tickets →</a>
 
@@ -1045,6 +1049,7 @@ footer {
   <div>Real deals. No noise. Built for people who actually live here.</div>
   <div style="margin-top: 10px; font-size: 11px;">We participate in affiliate programs. As an affiliate, we earn from qualifying purchases.</div>
 </footer>
+</main>
 
 <script>
 function trackAffiliateClick(linkName) {
@@ -1087,12 +1092,26 @@ function updateMemorialDayCountdown() {
     }
 }
 
-// Update every second
 setInterval(updateMemorialDayCountdown, 1000);
 updateMemorialDayCountdown();
+
+// FIX: Travelpayouts Drive script moved from <head> to end of <body> (prevents CORS/render-blocking)
+(function () {
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = 'https://tpembars.com/NTIyMjQ5.js?t=522249';
+    document.body.appendChild(script);
+})();
 </script>
 
-<div id="google_translate_element"></div>
+<!-- FIX: Google Translate script with async defer to prevent render-blocking -->
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+<div id="google_translate_element" style="display: none;"></div>
 
 </body>
 </html>
