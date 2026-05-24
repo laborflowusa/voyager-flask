@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMFFZKWQM8"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-BMFFZKWQM8');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -802,31 +803,9 @@ footer {
 }
 </style>
 </head>
-  <script>
-// Countdown to May 25, 2026
-function updateCountdown() {
-    const targetDate = new Date('May 25, 2026 23:59:59').getTime();
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-    
-    if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (86400000)) / (3600000));
-        const minutes = Math.floor((diff % 3600000) / 60000);
-        const seconds = Math.floor((diff % 60000) / 1000);
-        
-        const timerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        const topbar = document.querySelector('.topbar');
-        if (topbar && !topbar.innerHTML.includes('remaining')) {
-            topbar.innerHTML = `⏰ MEMORIAL DAY SALE: Save up to 50% | Ends in ${timerText} 🎟️`;
-        }
-    }
-}
-setInterval(updateCountdown, 1000);
-</script>
 <body>
 
-<div class="topbar">⏰ MEMORIAL DAY SALE: Save up to 50% on Dorney Park tickets & season passes. Ends 5/25! 🎟️</div>
+<div class="topbar" id="topbar">⏰ MEMORIAL DAY SALE: Save up to 50% on Dorney Park tickets & season passes. Ends 5/25! 🎟️</div>
 
 <nav>
   <a class="nav-logo" href="/">VOY<span>A</span>GER</a>
@@ -843,21 +822,7 @@ setInterval(updateCountdown, 1000);
   </div>
   <a class="nav-cta" href="https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Nav CTA')">🎟 Get Tickets →</a>
 </nav>
-<!-- MEMORIAL DAY SALE URGENT BANNER -->
-<div style="background: linear-gradient(135deg, #D63B2F, #B52E23); color: white; text-align: center; padding: 12px 1rem; margin: 0;">
-    <div style="font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 5px;">
-        ⏰ MEMORIAL DAY SALE ENDS 5/25 ⏰
-    </div>
-    <div style="font-size: 18px; font-weight: 900;">
-        🎟️ SAVE UP TO 50% on Tickets & Season Passes 🎟️
-    </div>
-    <div style="font-size: 12px; margin-top: 5px; opacity: 0.9;">
-        ⏱️ 1 day, 22 hours, 4 minutes remaining
-    </div>
-    <a href="https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park" target="_blank" rel="sponsored nofollow" style="display: inline-block; background: #F2C94C; color: #0D0D0D; padding: 8px 20px; margin-top: 10px; border-radius: 30px; text-decoration: none; font-weight: 800; font-size: 12px; text-transform: uppercase;" onclick="trackAffiliateClick('Memorial Day Sale Banner')">
-        🎟️ Shop the Sale →
-    </a>
-</div>
+
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-label">2026 Insider's Guide · Allentown, PA</div>
@@ -974,17 +939,20 @@ setInterval(updateCountdown, 1000);
   <table class="savings-table">
     <thead><tr><th>Ticket Type</th><th>Gate Price</th><th>Online Price</th><th>Your Savings</th></tr></thead>
     <tbody>
-      <tr><td><strong>Single Day — Adult</strong></td><td><span class="price-gate">$79.99</span></td><td><span class="price-online">~$44–54</span></td><td><span class="savings-pill">Save ~$30</span></td></tr>
-      <tr><td><strong>Single Day — Child (under 48")</strong></td><td><span class="price-gate">$54.99</span></td><td><span class="price-online">~$34–44</span></td><td><span class="savings-pill">Save ~$15</span></td></tr>
-      <tr><td><strong>Six Flags Gold Pass</strong></td><td>—</span></td><td><span class="price-online">~$89/season</span></td><td><span class="savings-pill">Best for 2+ visits</span></td></tr>
-      <tr><td><strong>Family of 4 (2 adult + 2 child)</strong></td><td><span class="price-gate">~$270</span></td><td><span class="price-online">~$160–190</span></td><td><span class="savings-pill">Save $80–110</span></td></tr>
+      <tr><td><strong>Single Day — Adult</strong></td><td><span class="price-gate">$79.99</span></span></td><td><span class="price-online">~$44–54</span></span></td><td><span class="savings-pill">Save ~$30</span></span></tr>
+      <tr><td><strong>Single Day — Child (under 48")</strong></span></td><td><span class="price-gate">$54.99</span></span></td><td><span class="price-online">~$34–44</span></span></td><td><span class="savings-pill">Save ~$15</span></span></tr>
+      <tr><td><strong>Six Flags Gold Pass</strong></td><td>—</span></td><td><span class="price-online">~$105/season</span></span></td><td><span class="savings-pill">Best for 2+ visits</span></span></tr>
+      <tr><td><strong>Family of 4 (2 adult + 2 child)</strong></td><td><span class="price-gate">~$270</span></span></td><td><span class="price-online">~$160–190</span></span></td><td><span class="savings-pill">Save $80–110</span></span></tr>
     </tbody>
   </table>
 
+  <a href="https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park" target="_blank" rel="sponsored nofollow" class="btn-primary" onclick="trackAffiliateClick('Savings Table CTA')" style="display: inline-block; margin-bottom: 2rem;">🎟 Lock In Your Discounted Tickets →</a>
+
+  <!-- SIX FLAGS GOLD PASS - EAST REGION ACCESS (NEW FOR 2026) -->
   <div class="hack-box" style="margin: 2rem 0; border-color: #C9922A;">
     <div class="hack-header" style="background: #1B6CA8;">
         <div class="hack-header-label">🌟 NEW for 2026: Six Flags Gold Pass</div>
-        <div class="hack-badge" style="background: #F2C94C; color: #0D0D0D;">Pro Move for PA Families</div>
+        <div class="hack-badge" style="background: #F2C94C; color: #0D0D0D;">Game Changer for PA Families</div>
     </div>
     <div class="hack-body">
         <p><strong>Dorney Park is now part of the Six Flags family.</strong> A Six Flags Gold Pass (~$105/year) gets you into <strong>Dorney Park PLUS 7 other East Coast parks</strong> — including <strong>Six Flags Great Adventure in New Jersey</strong> (home to Kingda Ka, El Toro, and the Wild Safari).</p>
@@ -1008,9 +976,6 @@ setInterval(updateCountdown, 1000);
         <div style="font-size: 11px; color: #6B6560; margin-top: 12px;">ℹ️ No affiliate commission — just an honest local's tip. Six Flags doesn't offer an affiliate program, but this info saves PA families real money.</div>
     </div>
 </div>
-
-  <div class="section-label" style="margin-top: 3rem;">2026 Season Calendar</div>
-  <div class="section-title">When to Go</div>
 
   <div class="schedule-grid">
     <div class="sched-card"><div class="sched-top"><div class="sched-month">May</div></div><div class="sched-body"><div class="sched-dates">Opens May 8</div><div class="sched-hours">Weekends only until Memorial Day. Wildwater opens May 23.</div></div></div>
@@ -1047,10 +1012,10 @@ setInterval(updateCountdown, 1000);
   <div class="faq-list">
     <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">When does Dorney Park open for 2026?</div><div class="faq-a">Dorney Park opens Saturday, May 8, 2026. It runs weekends only through Memorial Day weekend, then switches to daily operation from mid-June through Labor Day. Wildwater Kingdom opens May 23. The season wraps up September 7, after which the park runs Halloween-themed weekends.</div></div>
     <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does one ticket cover both Dorney Park and Wildwater Kingdom?</div><div class="faq-a">Yes. A standard admission ticket gives you access to both parks on the same day. You can go back and forth between the coaster side and the water park as many times as you want. This is what makes Dorney one of the best-value parks in the region.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's the cheapest way to buy tickets?</div><div class="faq-a">Buy online in advance — gate prices run $79.99+ per adult. Online tickets through GetYourGuide can save you significantly. If you're planning two or more visits, a Six Flags Gold Pass (~$89/season) is the best value available and includes Dorney Park plus Great Adventure in NJ.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's the cheapest way to buy tickets?</div><div class="faq-a">Buy online in advance — gate prices run $79.99+ per adult. Online tickets through GetYourGuide can save you significantly. If you're planning two or more visits, a Six Flags Gold Pass (~$105/season) is the best value available and includes Dorney Park plus Great Adventure in NJ and other East Coast parks.</div></div>
     <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bring food into the park?</div><div class="faq-a">Outside food and drinks are not permitted inside the park. You can bring a reusable sealed water bottle — there are filling stations throughout the park. Lockers are available near the front entrance if you want to store items in your car and retrieve them for a mid-day break in the parking lot.</div></div>
     <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which coaster should I ride first?</div><div class="faq-a">Steel Force. It's the longest steel coaster on the East Coast and the wait balloons after 11am. Get there right when the park opens, head straight to Steel Force, then hit Hydra and Talon while the crowd is still settling in. Save Possessed and Thunderhawk for the afternoon when the main coaster lines peak.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a Six Flags pass that covers Dorney Park?</div><div class="faq-a">Yes. Dorney Park is now part of the Six Flags family. A Six Flags Gold Pass or higher includes Dorney Park plus access to other Six Flags properties like Great Adventure in New Jersey. For anyone planning multiple park days this summer, this is worth running the math on.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a Six Flags pass that covers Dorney Park?</div><div class="faq-a">Yes. Dorney Park is now part of the Six Flags family. A Six Flags Gold Pass or higher includes Dorney Park plus access to other Six Flags properties like Great Adventure in New Jersey and Kings Dominion. For anyone planning multiple park days this summer, this is worth running the math on.</div></div>
     <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What's the height requirement for the major coasters?</div><div class="faq-a">Steel Force and Hydra require 54". Talon requires 54". Possessed requires 54". Thunderhawk requires 48". Most kiddie rides in Planet Snoopy are designed for children under 48". Wildwater Kingdom slides vary — most require at least 42–48" for the major slides.</div></div>
   </div>
 
@@ -1088,6 +1053,35 @@ function toggleFaq(el) {
     el.classList.add('open');
   }
 }
+
+// Memorial Day Countdown Timer - Updates every second
+function updateMemorialDayCountdown() {
+    const targetDate = new Date('May 25, 2026 23:59:59').getTime();
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+    
+    const topbar = document.getElementById('topbar');
+    if (!topbar) return;
+    
+    if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (86400000)) / (3600000));
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        
+        let timerText = '';
+        if (days > 0) timerText += `${days} day${days !== 1 ? 's' : ''}, `;
+        timerText += `${hours} hour${hours !== 1 ? 's' : ''}, ${minutes} minute${minutes !== 1 ? 's' : ''}, ${seconds} second${seconds !== 1 ? 's' : ''} remaining`;
+        
+        topbar.innerHTML = `⏰ MEMORIAL DAY SALE: Save up to 50% | ${timerText} 🎟️`;
+    } else {
+        topbar.innerHTML = `🎢 MEMORIAL DAY SALE HAS ENDED — Check back for new deals! 🎟️`;
+    }
+}
+
+// Update every second
+setInterval(updateMemorialDayCountdown, 1000);
+updateMemorialDayCountdown();
 </script>
 
 <div id="google_translate_element"></div>
