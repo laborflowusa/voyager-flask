@@ -6,11 +6,30 @@
     <title>Privacy Policy - VOYAGER-X</title>
     <meta name="description" content="VOYAGER-X privacy policy. No spam, no data selling. Learn how we protect your information and use affiliate links responsibly.">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMFFZKWQM8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BMFFZKWQM8');
+    </script>
+
+    <!-- Travelpayouts Drive Script -->
+    <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
+      (function () {
+          var script = document.createElement("script");
+          script.async = 1;
+          script.src = 'https://tpembars.com/NTIyMjQ5.js?t=522249';
+          document.head.appendChild(script);
+      })();
+    </script>
+
     <!-- Preconnect for Google Translate (saves ~300ms) -->
     <link rel="preconnect" href="https://translate.googleapis.com">
     <link rel="preconnect" href="https://translate-pa.googleapis.com">
 
-    <!-- Google Translate Script with defer (saves ~880ms on mobile) -->
+    <!-- Google Translate Script with defer -->
     <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -20,69 +39,115 @@
       }, 'google_translate_element');
     }
     </script>
-    <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://tpembars.com/NTIyMjQ5.js?t=522249';
-      document.head.appendChild(script);
-  })();
-</script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
     <style>
-        /* Navigation Styles */
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            padding: 12px 24px;
-            background: white;
-            border-bottom: 1px solid #ddd;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .nav-links a {
-            color: #1a4a6f;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-            padding: 8px 4px;
-        }
-        .nav-links a:hover {
-            color: #d15219;
+        /* ========== NAVIGATION STYLES (Matching All Pages) ========== */
+        .topbar {
+            background: #0D0D0D;
+            color: #F2C94C;
+            text-align: center;
+            padding: 10px 1rem;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
-        /* FIXED: Better contrast for body text */
+        nav {
+            background: #FDFCFA;
+            border-bottom: 2px solid #0D0D0D;
+            padding: 14px 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #0D0D0D;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+        }
+        .nav-logo span { color: #D63B2F; }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #6B6560;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover { color: #D63B2F; }
+
+        .nav-cta {
+            background: #D63B2F;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: #B52E23; }
+
+        /* ========== MAIN CONTENT STYLES ========== */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
             background: #f0f4f8;
             color: #0a1a2a;
             line-height: 1.7;
         }
+
         .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .privacy-card {
             background: white;
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        /* FIXED: Darker heading for better contrast */
+
         h1 {
             color: #0d2b3e;
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
-        /* FIXED: Darker blue for better contrast */
+
         h2 {
             color: #1a4a6f;
             margin-top: 25px;
             font-size: 1.3rem;
         }
-        /* FIXED: Better link contrast */
+
         a {
             color: #1a4a6f;
             text-decoration: none;
@@ -91,6 +156,7 @@
             color: #d15219;
             text-decoration: underline;
         }
+
         .footer {
             margin-top: 30px;
             font-size: 12px;
@@ -100,7 +166,7 @@
         .footer a {
             color: #1a4a6f;
         }
-        /* FIXED: Darker banner text for better contrast */
+
         .urgency-banner {
             background: #1a4a6f;
             color: white;
@@ -111,7 +177,6 @@
             font-weight: 500;
         }
 
-        /* FIXED: Better contrast for list items */
         ul {
             margin: 1rem 0;
             padding-left: 1.5rem;
@@ -123,6 +188,17 @@
         p {
             color: #2a3a4a;
             margin: 1rem 0;
+        }
+
+        .affiliate-disclosure {
+            background: #f0f4f8;
+            border-left: 3px solid #1a4a6f;
+            padding: 12px 16px;
+            margin: 20px 0;
+            font-size: 12px;
+            color: #2a3a4a;
+            line-height: 1.6;
+            border-radius: 4px;
         }
 
         /* Google Translate Widget Styles */
@@ -143,6 +219,40 @@
             border-radius: 4px;
             font-size: 12px;
         }
+
+        /* Tablet View */
+        @media (max-width: 1000px) {
+            .nav-links {
+                gap: 12px;
+            }
+            .nav-links a {
+                font-size: 10px;
+            }
+            .nav-logo {
+                font-size: 1.3rem;
+            }
+            .nav-cta {
+                padding: 6px 12px;
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                padding: 0.9rem 1rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .container {
+                padding: 15px;
+                margin: 20px auto;
+            }
+            .privacy-card {
+                padding: 20px;
+            }
+        }
+
         @media (max-width: 600px) {
             #google_translate_element {
                 bottom: 10px;
@@ -150,79 +260,86 @@
                 padding: 4px 8px;
             }
         }
-
-        /* Privacy page affiliate disclosure */
-        .affiliate-disclosure {
-            background: #f0f4f8;
-            border-left: 3px solid #1a4a6f;
-            padding: 12px 16px;
-            margin: 20px 0;
-            font-size: 12px;
-            color: #2a3a4a;
-            line-height: 1.6;
-            border-radius: 4px;
-        }
     </style>
 </head>
 <body>
 
-<div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/chat.html">AI Chat</a>
-    <a href="/universal-vs-disney.html">Universal vs. Disney</a>
-    <a href="/family-cruise-guide-2026.html">Family Cruise Guide</a>
-    <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
-    <a href="/celebrate-mom.html">Celebrate Mom</a>
-    <a href="/dorney-park.html">🎢 Dorney Park</a>
-    <a href="/prek-pass.html" style="background: #F2C94C; color: #0B3B2F; padding: 4px 12px; border-radius: 30px;">🎁 FREE Pre-K Pass</a>
-    <a href="/privacy.html">Privacy</a>
-</div>
+<!-- TOPBAR -->
+<div class="topbar">🔒 Your privacy matters. No spam. No data selling. Just real travel deals.</div>
+
+<!-- NAVIGATION BAR -->
+<nav>
+    <a class="nav-logo" href="/">VOY<span>A</span>GER</a>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/chat.html">AI Chat</a>
+        <a href="/universal-vs-disney.html">Universal vs Disney</a>
+        <a href="/family-cruise-guide-2026.html">Family Cruises</a>
+        <a href="/couples-cruise-guide-2026.html">Couples Cruises</a>
+        <a href="/celebrate-mom.html">Celebrate Mom</a>
+        <a href="/dorney-park.html">🎢 Dorney Park</a>
+        <a href="/prek-pass.html" style="background: #F2C94C; color: #0B3B2F; padding: 4px 12px; border-radius: 30px;">🎁 FREE Pre-K Pass</a>
+        <a href="/luxury-safaris.html">🦁 Luxury Safaris</a>
+        <a href="/privacy.html">Privacy</a>
+    </div>
+    <a class="nav-cta" href="https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Nav CTA')">🎟 Get Tickets →</a>
+</nav>
 
 <main>
-<div class="container">
-    <div class="urgency-banner">🔒 Your privacy matters. No spam. No data selling. Just real travel deals.</div>
-    <h1>Privacy Policy</h1>
-    <p><strong>Effective Date:</strong> April 25, 2026</p>
+    <div class="container">
+        <div class="privacy-card">
+            <h1>Privacy Policy</h1>
+            <p><strong>Effective Date:</strong> April 25, 2026</p>
 
-    <div class="affiliate-disclosure">
-        <strong>📢 Affiliate Disclosure:</strong> We are a participant in the Amazon Services LLC Associates Program and other affiliate programs. 
-        As an affiliate, we earn from qualifying purchases at no extra cost to you.
+            <div class="affiliate-disclosure">
+                <strong>📢 Affiliate Disclosure:</strong> We are a participant in the Amazon Services LLC Associates Program and other affiliate programs. 
+                As an affiliate, we earn from qualifying purchases at no extra cost to you.
+            </div>
+
+            <h2>1. Information We Collect</h2>
+            <p>VOYAGER-X collects the following information:</p>
+            <ul>
+                <li><strong>User ID:</strong> A random identifier stored in your browser's local storage to personalize your experience.</li>
+                <li><strong>Usage Data:</strong> Which affiliate links you click and which deals you view.</li>
+            </ul>
+
+            <h2>2. How We Use Your Information</h2>
+            <ul>
+                <li>To personalize travel deals using our AI (Voyager)</li>
+                <li>To improve which offers we show you</li>
+                <li>To track affiliate commissions</li>
+            </ul>
+
+            <h2>3. Cookies & Tracking</h2>
+            <p>We use local storage (not traditional cookies) to remember your preferences. Affiliate links may set third-party cookies from our partners (Travelpayouts, CJ Affiliate, Awin, etc.).</p>
+
+            <h2>4. Third-Party Links</h2>
+            <p>Our site contains affiliate links to travel partners (cruises, hotels, flights, tours, theme parks). Clicking these links redirects you to third-party sites with their own privacy policies.</p>
+
+            <h2>5. Your Rights</h2>
+            <p>You can clear your browser's local storage at any time to reset your user ID. You can also choose not to use the "Find My Deal" feature.</p>
+
+            <h2>6. Contact Us</h2>
+            <p>Email: laborflowusa@gmail.com</p>
+
+            <div class="footer">
+                <a href="/">← Back to VOYAGER-X</a> | <a href="/privacy.html">Privacy Policy</a>
+            </div>
+        </div>
     </div>
-
-    <h2>1. Information We Collect</h2>
-    <p>VOYAGER-X collects the following information:</p>
-    <ul>
-        <li><strong>User ID:</strong> A random identifier stored in your browser's local storage to personalize your experience.</li>
-        <li><strong>Usage Data:</strong> Which affiliate links you click and which deals you view.</li>
-    </ul>
-
-    <h2>2. How We Use Your Information</h2>
-    <ul>
-        <li>To personalize travel deals using our AI (Voyager)</li>
-        <li>To improve which offers we show you</li>
-        <li>To track affiliate commissions</li>
-    </ul>
-
-    <h2>3. Cookies & Tracking</h2>
-    <p>We use local storage (not traditional cookies) to remember your preferences. Affiliate links may set third-party cookies from our partners (Travelpayouts, CJ Affiliate, Awin, etc.).</p>
-
-    <h2>4. Third-Party Links</h2>
-    <p>Our site contains affiliate links to travel partners (cruises, hotels, flights, tours, theme parks). Clicking these links redirects you to third-party sites with their own privacy policies.</p>
-
-    <h2>5. Your Rights</h2>
-    <p>You can clear your browser's local storage at any time to reset your user ID. You can also choose not to use the "Find My Deal" feature.</p>
-
-    <h2>6. Contact Us</h2>
-    <p>Email: laborflowusa@gmail.com</p>
-
-        <div class="footer">
-        <a href="/">← Back to VOYAGER-X</a> | <a href="/privacy.html">Privacy Policy</a>
-    </div>
-</div>
 </main>
 
 <!-- Google Translate Widget -->
 <div id="google_translate_element"></div>
+
+<script>
+function trackAffiliateClick(linkName) {
+    console.log('Affiliate click:', linkName);
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'click', { 'event_category': 'Affiliate Link', 'event_label': linkName });
+    }
+}
+</script>
 
 </body>
 </html>
