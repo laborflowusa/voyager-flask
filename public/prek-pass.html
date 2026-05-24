@@ -18,6 +18,7 @@
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
   * {
@@ -31,12 +32,75 @@
     background: #F4F1EA;
     color: #1A1A1A;
     line-height: 1.5;
-    padding: 2rem 1rem;
   }
 
+  /* ========== NAVIGATION STYLES (Matching Dorney Park) ========== */
+  .topbar {
+    background: #0D0D0D;
+    color: #F2C94C;
+    text-align: center;
+    padding: 10px 1rem;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  nav {
+    background: #FDFCFA;
+    border-bottom: 2px solid #0D0D0D;
+    padding: 14px 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: #0D0D0D;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+  }
+  .nav-logo span { color: #D63B2F; }
+
+  .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .nav-links a {
+    color: #6B6560;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #D63B2F; }
+
+  .nav-cta {
+    background: #D63B2F;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #B52E23; }
+
+  /* ========== MAIN CONTENT STYLES ========== */
   .container {
     max-width: 1000px;
     margin: 0 auto;
+    padding: 2rem 1rem;
   }
 
   .card {
@@ -356,12 +420,7 @@
     color: #8A8A8A;
     font-size: 0.7rem;
     margin-top: 1rem;
-  }
-
-  hr {
-    margin: 1.5rem 0;
-    border: none;
-    border-top: 1px solid #E5E0D5;
+    padding-bottom: 2rem;
   }
 
   @media (max-width: 700px) {
@@ -377,10 +436,39 @@
     .btn-group {
       flex-direction: column;
     }
+    nav {
+      padding: 0.9rem 1rem;
+    }
+    .nav-links {
+      display: none;
+    }
   }
 </style>
 </head>
 <body>
+
+<!-- ========== TOPBAR (Memorial Day Countdown) ========== -->
+<div class="topbar" id="topbar">⏰ MEMORIAL DAY SALE: Save up to 50% on Dorney Park tickets & season passes. Ends 5/25! 🎟️</div>
+
+<!-- ========== NAVIGATION BAR (Same as Dorney Park) ========== -->
+<nav>
+  <a class="nav-logo" href="/">VOY<span>A</span>GER</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/chat.html">AI Chat</a>
+    <a href="/universal-vs-disney.html">Universal vs Disney</a>
+    <a href="/family-cruise-guide-2026.html">Family Cruises</a>
+    <a href="/couples-cruise-guide-2026.html">Couples Cruises</a>
+    <a href="/celebrate-mom.html">Celebrate Mom</a>
+    <a href="/dorney-park.html">🎢 Dorney Park</a>
+    <a href="/prek-pass.html">🎁 Free Pre-K Pass</a>
+    <a href="/luxury-safaris.html">🦁 Luxury Safaris</a>
+    <a href="/privacy.html">Privacy</a>
+  </div>
+  <a class="nav-cta" href="https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Nav CTA')">🎟 Get Tickets →</a>
+</nav>
+
+<!-- ========== MAIN CONTENT ========== -->
 <div class="container">
   <div class="card">
     
@@ -458,7 +546,7 @@
         </div>
       </div>
 
-      <!-- STEPS SECTION (UPDATED) -->
+      <!-- STEPS SECTION -->
       <div class="steps-section">
         <div class="steps-title">📋 HOW TO CLAIM THE FREE PRE-K PASS (READ ALL STEPS)</div>
         
@@ -492,7 +580,7 @@
         </div>
       </div>
 
-      <!-- WHAT'S INCLUDED / NOT INCLUDED (UPDATED) -->
+      <!-- WHAT'S INCLUDED / NOT INCLUDED -->
       <div class="two-col">
         <div class="info-box-green">
           <strong>✅ INCLUDED</strong><br>
@@ -512,7 +600,7 @@
         </div>
       </div>
 
-      <!-- GOLD PASS BENEFITS BOX -->
+      <!-- GOLD PASS BENEFITS -->
       <div class="gold-pass-box">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
           <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;">🥇 2026 GOLD PASS</div>
@@ -548,7 +636,7 @@
         As long as the Pre-K Pass is <strong>activated BEFORE your child turns 6</strong>, it will remain valid for unlimited visits all season in 2026 at the participating parks. You do not lose access on their birthday.
       </div>
 
-      <!-- FULL PARK LIST (22 PARKS) -->
+      <!-- FULL PARK LIST -->
       <h3 style="margin: 1.5rem 0 0.5rem;">🎢 22 PARTICIPATING PARKS</h3>
       <div class="featured-park">
         ★ <strong>Dorney Park & Wildwater Kingdom — Allentown, PA</strong>
@@ -599,7 +687,7 @@
         <strong>👨‍👩‍👧‍👦 Limit:</strong> Maximum of <strong>two (2) Pre-K Passes</strong> per valid 2026 Silver, Gold, or Prestige Season Pass or Membership.
       </div>
 
-      <!-- FAQ SECTION (COMPLETE) -->
+      <!-- FAQ SECTION -->
       <h3 style="margin: 1.5rem 0 0.5rem;">❓ Frequently Asked Questions</h3>
       <div style="border: 1px solid #E5E0D5; border-radius: 12px; overflow: hidden; margin: 1rem 0;">
         <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What is the Pre-K Pass? <span>+</span></div><div class="faq-answer">The Pre-K Pass is FREE for kids ages 3–5 and includes unlimited visits all season in 2026 to 22 participating parks. Not valid for park buyouts or separately ticketed events.</div></div>
@@ -644,7 +732,37 @@ function toggleFaq(el) {
   el.querySelector('span').textContent = isOpen ? '+' : '−';
 }
 
-// Google Analytics tracking for affiliate links
+function trackAffiliateClick(linkName) {
+  console.log('Affiliate click:', linkName);
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'click', { 'event_category': 'Affiliate Link', 'event_label': linkName });
+  }
+}
+
+// Update Memorial Day countdown
+function updateMemorialDayCountdown() {
+    const targetDate = new Date('May 25, 2026 23:59:59').getTime();
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+    const topbar = document.getElementById('topbar');
+    if (!topbar) return;
+    if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (86400000)) / (3600000));
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        let timerText = '';
+        if (days > 0) timerText += `${days} day${days !== 1 ? 's' : ''}, `;
+        timerText += `${hours} hour${hours !== 1 ? 's' : ''}, ${minutes} minute${minutes !== 1 ? 's' : ''}, ${seconds} second${seconds !== 1 ? 's' : ''} remaining`;
+        topbar.innerHTML = `⏰ MEMORIAL DAY SALE: Save up to 50% | ${timerText} 🎟️`;
+    } else {
+        topbar.innerHTML = `🎢 Dorney Park opens May 8, 2026 — Buy tickets online and save vs. gate price`;
+    }
+}
+setInterval(updateMemorialDayCountdown, 1000);
+updateMemorialDayCountdown();
+
+// Track all affiliate links
 document.querySelectorAll('a[href*="amazon.com"], a[href*="getyourguide.com"], a[href*="hotels.com"], a[href*="expedia.com"], a[href*="travelocity.com"]').forEach(link => {
   link.addEventListener('click', function() {
     if (typeof gtag !== 'undefined') {
