@@ -94,6 +94,9 @@ function googleTranslateElementInit() {
     z-index: 100;
     flex-wrap: wrap;
     gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .nav-logo {
@@ -106,14 +109,21 @@ function googleTranslateElementInit() {
   }
   .nav-logo span { color: var(--sunset); }
 
-  .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .nav-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
   .nav-links a {
-    color: var(--muted);
+    color: #6B6560;
     text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     transition: color 0.2s;
-    padding: 8px 4px;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: var(--sunset); }
 
@@ -121,16 +131,17 @@ function googleTranslateElementInit() {
     background: var(--sunset);
     color: white;
     border: none;
-    padding: 10px 22px;
+    padding: 8px 20px;
     border-radius: var(--radius-sm);
-    font-size: 13px;
+    font-size: 12px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     text-decoration: none;
     display: inline-block;
     transition: background 0.2s;
+    white-space: nowrap;
   }
   .nav-cta:hover { background: var(--sunset-dark); }
 
@@ -151,15 +162,12 @@ function googleTranslateElementInit() {
     border-radius: 4px;
     font-size: 12px;
   }
-  @media (max-width: 600px) {
-    #google_translate_element {
-      bottom: 10px;
-      right: 10px;
-      padding: 4px 8px;
-    }
-  }
 
-  main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
 
   .hero {
     padding: 3rem 0 2rem;
@@ -388,12 +396,40 @@ function googleTranslateElementInit() {
   }
   .footer-logo span { color: var(--sunset); }
 
+  /* Tablet View */
+  @media (max-width: 1000px) {
+    .nav-links {
+      gap: 12px;
+    }
+    .nav-links a {
+      font-size: 10px;
+    }
+    .nav-logo {
+      font-size: 1.3rem;
+    }
+    .nav-cta {
+      padding: 6px 12px;
+      font-size: 10px;
+    }
+  }
+
   @media (max-width: 700px) {
     .season-grid, .packing-grid { grid-template-columns: 1fr; }
     nav { padding: 0.9rem 1rem; }
-    .nav-links { gap: 10px; }
-    .nav-links a { font-size: 11px; }
+    .nav-links { display: none; }
     h2 { font-size: 1.5rem; }
+    .hero { padding: 2rem 0 1rem; }
+  }
+
+  @media (max-width: 600px) {
+    #google_translate_element {
+      bottom: 10px;
+      right: 10px;
+      padding: 4px 8px;
+    }
+    main {
+      padding: 0 1rem;
+    }
   }
 </style>
 </head>
@@ -597,6 +633,9 @@ function googleTranslateElementInit() {
 <script>
 function trackAffiliateClick(linkName) {
     console.log(`Affiliate click: ${linkName}`);
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'affiliate_click', { 'link_name': linkName });
+    }
     fetch('/api/affiliate/click', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
