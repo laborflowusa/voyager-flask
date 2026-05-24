@@ -20,6 +20,16 @@
     gtag('config', 'G-BMFFZKWQM8');
   </script>
   
+  <!-- Travelpayouts Drive Script -->
+  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://tpembars.com/NTIyMjQ5.js?t=522249';
+      document.head.appendChild(script);
+  })();
+  </script>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dorney Park 2026 Guide — Insider Tips, Tickets & What Locals Know | Voyager</title>
   <meta name="description" content="Everything you need for an epic Dorney Park day in 2026. Ride guide, water park tips, money-saving tricks, and what locals know that tourists don't. Opens May 8.">
@@ -71,7 +81,7 @@ body {
   overflow-x: hidden;
 }
 
-/* HEADING HIERARCHY - Proper semantic headings */
+/* HEADING HIERARCHY */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: inherit;
@@ -138,18 +148,21 @@ nav {
   z-index: 100;
   flex-wrap: wrap;
   gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .nav-logo {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: var(--ink);
   text-decoration: none;
   letter-spacing: 0.08em;
 }
 .nav-logo span { color: var(--red); }
 
-.nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
@@ -158,15 +171,16 @@ nav {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 .nav-links a:hover { color: var(--red); }
 
 .nav-cta {
   background: var(--red);
   color: white;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -829,6 +843,23 @@ footer {
 }
 .footer-logo span { color: var(--red); }
 
+/* Tablet View */
+@media (max-width: 1000px) {
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-links a {
+    font-size: 10px;
+  }
+  .nav-logo {
+    font-size: 1.3rem;
+  }
+  .nav-cta {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+}
+
 @media (max-width: 700px) {
   .two-col { grid-template-columns: 1fr; }
   .ticket-cta { grid-template-columns: 1fr; }
@@ -941,7 +972,7 @@ footer {
       <tr><td><strong>Six Flags Gold Pass</strong></td><td>—</td><td><span class="price-online">~$105/season</span></td><td><span class="savings-pill">Best for 2+ visits</span></td></tr>
       <tr><td><strong>Family of 4 (2 adult + 2 child)</strong></td><td><span class="price-gate">~$270</span></td><td><span class="price-online">~$160–190</span></td><td><span class="savings-pill">Save $80–110</span></td></tr>
     </tbody>
-   </table>
+  </table>
 
   <a href="https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park" target="_blank" rel="sponsored nofollow" class="btn-primary" onclick="trackAffiliateClick('Savings Table CTA')" style="display: inline-block; margin-bottom: 2rem;">🎟 Lock In Your Discounted Tickets →</a>
 
@@ -1035,6 +1066,7 @@ function trackAffiliateClick(linkName) {
   if (typeof gtag === 'function') {
     gtag('event', 'affiliate_click', { 'link_name': linkName });
   }
+  console.log('Affiliate click:', linkName);
 }
 
 function toggleFaq(el) {
@@ -1072,9 +1104,7 @@ function updateMemorialDayCountdown() {
 }
 timerInterval = setInterval(updateMemorialDayCountdown, 1000);
 updateMemorialDayCountdown();
-
-// CORS-causing scripts removed: tpembars.com and Google Translate
 </script>
+
 </body>
-</html>
 </html>
