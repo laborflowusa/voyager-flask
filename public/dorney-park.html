@@ -802,9 +802,31 @@ footer {
 }
 </style>
 </head>
+  <script>
+// Countdown to May 25, 2026
+function updateCountdown() {
+    const targetDate = new Date('May 25, 2026 23:59:59').getTime();
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+    
+    if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (86400000)) / (3600000));
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        
+        const timerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        const topbar = document.querySelector('.topbar');
+        if (topbar && !topbar.innerHTML.includes('remaining')) {
+            topbar.innerHTML = `⏰ MEMORIAL DAY SALE: Save up to 50% | Ends in ${timerText} 🎟️`;
+        }
+    }
+}
+setInterval(updateCountdown, 1000);
+</script>
 <body>
 
-<div class="topbar">🎢 Dorney Park opens May 8, 2026 — Buy tickets online and save vs. gate price</div>
+<div class="topbar">⏰ MEMORIAL DAY SALE: Save up to 50% on Dorney Park tickets & season passes. Ends 5/25! 🎟️</div>
 
 <nav>
   <a class="nav-logo" href="/">VOY<span>A</span>GER</a>
