@@ -939,10 +939,10 @@ footer {
   <table class="savings-table">
     <thead><tr><th>Ticket Type</th><th>Gate Price</th><th>Online Price</th><th>Your Savings</th></tr></thead>
     <tbody>
-      <tr><td><strong>Single Day — Adult</strong></td><td><span class="price-gate">$79.99</span></span></td><td><span class="price-online">~$44–54</span></span></td><td><span class="savings-pill">Save ~$30</span></span></tr>
-      <tr><td><strong>Single Day — Child (under 48")</strong></span></td><td><span class="price-gate">$54.99</span></span></td><td><span class="price-online">~$34–44</span></span></td><td><span class="savings-pill">Save ~$15</span></span></tr>
-      <tr><td><strong>Six Flags Gold Pass</strong></td><td>—</span></td><td><span class="price-online">~$105/season</span></span></td><td><span class="savings-pill">Best for 2+ visits</span></span></tr>
-      <tr><td><strong>Family of 4 (2 adult + 2 child)</strong></td><td><span class="price-gate">~$270</span></span></td><td><span class="price-online">~$160–190</span></span></td><td><span class="savings-pill">Save $80–110</span></span></tr>
+      <tr><td><strong>Single Day — Adult</strong></td><td><span class="price-gate">$79.99</span></td><td><span class="price-online">~$44–54</span></td><td><span class="savings-pill">Save ~$30</span></td></tr>
+      <tr><td><strong>Single Day — Child (under 48")</strong></td><td><span class="price-gate">$54.99</span></td><td><span class="price-online">~$34–44</span></td><td><span class="savings-pill">Save ~$15</span></td></tr>
+      <tr><td><strong>Six Flags Gold Pass</strong></td><td>—</span></td><td><span class="price-online">~$105/season</span></td><td><span class="savings-pill">Best for 2+ visits</span></td></tr>
+      <tr><td><strong>Family of 4 (2 adult + 2 child)</strong></td><td><span class="price-gate">~$270</span></td><td><span class="price-online">~$160–190</span></td><td><span class="savings-pill">Save $80–110</span></td></tr>
     </tbody>
   </table>
 
@@ -975,7 +975,7 @@ footer {
         <a href="https://www.sixflags.com/" target="_blank" rel="nofollow" class="hack-link" onclick="trackAffiliateClick('Six Flags Gold Pass')">Check Gold Pass Prices on SixFlags.com →</a>
         <div style="font-size: 11px; color: #6B6560; margin-top: 12px;">ℹ️ No affiliate commission — just an honest local's tip. Six Flags doesn't offer an affiliate program, but this info saves PA families real money.</div>
     </div>
-</div>
+  </div>
 
   <div class="schedule-grid">
     <div class="sched-card"><div class="sched-top"><div class="sched-month">May</div></div><div class="sched-body"><div class="sched-dates">Opens May 8</div><div class="sched-hours">Weekends only until Memorial Day. Wildwater opens May 23.</div></div></div>
@@ -1054,7 +1054,7 @@ function toggleFaq(el) {
   }
 }
 
-// Memorial Day Countdown Timer - Updates every second
+// Live Memorial Day Countdown Timer
 function updateMemorialDayCountdown() {
     const targetDate = new Date('May 25, 2026 23:59:59').getTime();
     const now = new Date().getTime();
@@ -1075,7 +1075,7 @@ function updateMemorialDayCountdown() {
         
         topbar.innerHTML = `⏰ MEMORIAL DAY SALE: Save up to 50% | ${timerText} 🎟️`;
     } else {
-        topbar.innerHTML = `🎢 MEMORIAL DAY SALE HAS ENDED — Check back for new deals! 🎟️`;
+        topbar.innerHTML = `🎢 Dorney Park opens May 8, 2026 — Buy tickets online and save vs. gate price`;
     }
 }
 
