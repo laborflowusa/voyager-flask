@@ -68,18 +68,26 @@
     z-index: 100;
     flex-wrap: wrap;
     gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #0D0D0D;
     text-decoration: none;
     letter-spacing: 0.08em;
   }
   .nav-logo span { color: #D63B2F; }
 
-  .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .nav-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
   .nav-links a {
     color: #6B6560;
     text-decoration: none;
@@ -88,15 +96,16 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: color 0.2s;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: #D63B2F; }
 
   .nav-cta {
     background: #D63B2F;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -431,6 +440,23 @@
     font-size: 0.7rem;
     margin-top: 1rem;
     padding-bottom: 2rem;
+  }
+
+  /* Tablet View */
+  @media (max-width: 1000px) {
+    .nav-links {
+      gap: 12px;
+    }
+    .nav-links a {
+      font-size: 10px;
+    }
+    .nav-logo {
+      font-size: 1.3rem;
+    }
+    .nav-cta {
+      padding: 6px 12px;
+      font-size: 10px;
+    }
   }
 
   @media (max-width: 700px) {
