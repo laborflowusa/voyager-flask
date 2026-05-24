@@ -21,11 +21,10 @@
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Voyager — Find My Deal | AI Travel Assistant</title>
   <meta name="verification" content="9f524bb0698e027c6a06487ed314bd2f" />
   
-  <!-- FIXED: SEO - removed noindex to allow indexing, added meta description -->
+  <!-- SEO - added meta description -->
   <meta name="robots" content="index, follow" />
   <meta name="description" content="Voyager AI Deal Finder — Your personal travel assistant. Get instant recommendations for Disney, Universal, cruises, hotels, and destinations. Free, no sign-up required, real 2026 pricing." />
   
@@ -65,7 +64,7 @@
       overflow: hidden;
     }
 
-    /* FIXED: Hide low-res Google Translate icon (Best Practices) */
+    /* Hide low-res Google Translate icon */
     .goog-te-gadget-icon {
       display: none;
     }
@@ -114,6 +113,79 @@
       margin: 0 auto;
     }
 
+    /* ========== NAVIGATION STYLES (Matching All Pages) ========== */
+    .topbar {
+      background: #0D0D0D;
+      color: #F2C94C;
+      text-align: center;
+      padding: 10px 1rem;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    nav {
+      background: #FDFCFA;
+      border-bottom: 2px solid #0D0D0D;
+      padding: 14px 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: #0D0D0D;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+    }
+    .nav-logo span { color: #D63B2F; }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #6B6560;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: #D63B2F; }
+
+    .nav-cta {
+      background: #D63B2F;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #B52E23; }
+
     .header {
       display: flex;
       align-items: center;
@@ -161,31 +233,6 @@
       letter-spacing: 0.5px;
     }
 
-    .nav-links {
-    display: flex;
-    gap: 16px;
-    padding: 12px 24px;
-    background: white;
-    border-bottom: 1px solid #ddd;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
-.nav-links a {
-    color: #1a4a6f;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    transition: color 0.2s;
-    padding: 8px 4px;
-    white-space: nowrap;
-}
-.nav-links a:hover {
-    color: #d15219;
-}
-
     #google_translate_element {
       position: fixed;
       bottom: 20px;
@@ -203,13 +250,6 @@
       border-radius: 4px;
       font-size: 12px;
       color: #1a1a2e;
-    }
-    @media (max-width: 600px) {
-      #google_translate_element {
-        bottom: 10px;
-        right: 10px;
-        padding: 4px 8px;
-      }
     }
 
     .progress-bar {
@@ -322,7 +362,6 @@
       30% { transform: translateY(-6px); opacity: 1; }
     }
 
-    /* FIXED: Beautiful deal card that actually appears */
     .deal-card {
       background: linear-gradient(135deg, #1a2a3a, #0d1520);
       border: 2px solid var(--accent);
@@ -414,7 +453,6 @@
       box-shadow: 0 8px 20px rgba(244,168,50,0.3);
     }
 
-    /* Affiliate Links Section */
     .affiliate-sidebar {
       background: linear-gradient(135deg, #0d1520, #0a0f18);
       border: 1px solid var(--border);
@@ -601,17 +639,69 @@
       flex-shrink: 0;
     }
 
-    @media (max-width: 600px) {
+    /* Tablet View */
+    @media (max-width: 1000px) {
+      .nav-links {
+        gap: 12px;
+      }
+      .nav-links a {
+        font-size: 10px;
+      }
+      .nav-logo {
+        font-size: 1.3rem;
+      }
+      .nav-cta {
+        padding: 6px 12px;
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 0.9rem 1rem;
+      }
+      .nav-links {
+        display: none;
+      }
       .deal-stats { grid-template-columns: 1fr; }
       .header { padding: 14px 16px; }
-      .nav-links { padding: 10px 16px; gap: 12px; }
       .chat-area { padding: 16px 12px; }
       .input-area { padding: 12px 12px 16px; }
       .quick-replies { padding: 0 12px 8px; }
     }
+
+    @media (max-width: 600px) {
+      #google_translate_element {
+        bottom: 10px;
+        right: 10px;
+        padding: 4px 8px;
+      }
+    }
   </style>
 </head>
 <body>
+
+<!-- TOPBAR -->
+<div class="topbar">⏰ MEMORIAL DAY SALE: Save up to 50% on Dorney Park tickets & season passes. Ends 5/25! 🎟️</div>
+
+<!-- NAVIGATION BAR -->
+<nav>
+  <a class="nav-logo" href="/">VOY<span>A</span>GER</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/chat.html">AI Chat</a>
+    <a href="/universal-vs-disney.html">Universal vs Disney</a>
+    <a href="/family-cruise-guide-2026.html">Family Cruises</a>
+    <a href="/couples-cruise-guide-2026.html">Couples Cruises</a>
+    <a href="/celebrate-mom.html">Celebrate Mom</a>
+    <a href="/dorney-park.html">🎢 Dorney Park</a>
+    <a href="/prek-pass.html" style="background: #F2C94C; color: #0B3B2F; padding: 4px 12px; border-radius: 30px;">🎁 FREE Pre-K Pass</a>
+    <a href="/luxury-safaris.html">🦁 Luxury Safaris</a>
+    <a href="/privacy.html">Privacy</a>
+  </div>
+  <a class="nav-cta" href="https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park" target="_blank" rel="sponsored nofollow" onclick="trackAffiliateClick('Nav CTA')">🎟 Get Tickets →</a>
+</nav>
+
 <main class="app">
   <div class="header">
     <a href="/" class="logo">
@@ -619,19 +709,6 @@
       <span class="logo-text">Voyager</span>
     </a>
     <div class="header-badge">AI Deal Finder</div>
-  </div>
-
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/chat.html">AI Chat</a>
-    <a href="/universal-vs-disney.html">Universal vs. Disney</a>
-    <a href="/family-cruise-guide-2026.html">Family Cruise Guide</a>
-    <a href="/couples-cruise-guide-2026.html">Couples Cruise Guide</a>
-    <a href="/celebrate-mom.html">Celebrate Mom</a>
-    <a href="/dorney-park.html">🎢 Dorney Park</a>
-    <a href="/prek-pass.html" style="background: #F2C94C; color: #0B3B2F; padding: 4px 12px; border-radius: 30px;">🎁 FREE Pre-K Pass</a>
-    <a href="/luxury-safaris.html">🦁 Luxury Safaris</a>
-    <a href="/privacy.html">Privacy</a>
   </div>
 
   <div class="progress-bar">
@@ -688,7 +765,7 @@
 
 <script>
   // ========== AFFILIATE CONFIGURATION ==========
-  // YOUR AFFILIATE IDs - All 12 Working Programs
+  // YOUR AFFILIATE IDs - All Working Programs
   const AFFILIATE_CONFIG = {
     amazon: 'voyagerx20-20',
     getyourguide: 'Y5RBAVK',
@@ -733,10 +810,12 @@
     });
   }
 
-  // Track affiliate clicks (optional - for analytics)
+  // Track affiliate clicks
   function trackAffiliateClick(linkName) {
     console.log(`Affiliate click: ${linkName}`);
-    // You can add analytics tracking here later
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'click', { 'event_category': 'Affiliate Link', 'event_label': linkName });
+    }
   }
 
   // ========== CHAT FUNCTIONALITY ==========
