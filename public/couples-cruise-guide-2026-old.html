@@ -114,23 +114,28 @@ function googleTranslateElementInit() {
 
   .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 16px;
+    padding: 12px 24px;
+    background: white;
+    border-bottom: 1px solid #ddd;
     flex-wrap: wrap;
-  }
-
-  .nav-links a {
-    color: var(--muted);
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+.nav-links a {
+    color: #1a4a6f;
     text-decoration: none;
     font-size: 13px;
     font-weight: 500;
     transition: color 0.2s;
     padding: 8px 4px;
-  }
-
-  .nav-links a:hover {
-    color: var(--gold);
-  }
-
+    white-space: nowrap;
+}
+.nav-links a:hover {
+    color: #d15219;
+}
   .nav-cta {
     background: var(--ink);
     color: var(--gold-light);
