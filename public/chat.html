@@ -1,40 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BMFFZKWQM8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Voyager AI — Your Personal Travel Deal Finder</title>
+    <meta name="description" content="Tell Voyager about your trip — group size, budget, travel dates, and what you love — and get a personalized travel deal recommendation with real savings.">
+    
+    <!-- AI Agent Discovery -->
+    <link rel="canonical" href="https://voyager-flask.onrender.com/chat.html">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph for social AI agents -->
+    <meta property="og:title" content="Voyager AI — Personal Travel Deal Finder">
+    <meta property="og:description" content="Get personalized travel recommendations based on your group, budget, and preferences.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://voyager-flask.onrender.com/chat.html">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  gtag('config', 'G-BMFFZKWQM8');
-</script>
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://tpembars.com/NTIyMjQ5.js?t=522249';
-      document.head.appendChild(script);
-  })();
-</script>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voyager — Find My Deal | AI Travel Assistant</title>
-  <meta name="verification" content="9f524bb0698e027c6a06487ed314bd2f" />
-  
-  <!-- SEO - added meta description -->
-  <meta name="robots" content="index, follow" />
-  <meta name="description" content="Voyager AI Deal Finder — Your personal travel assistant. Get instant recommendations for Disney, Universal, cruises, hotels, and destinations. Free, no sign-up required, real 2026 pricing." />
-  
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'es,fr,de,it,pt,zh-CN,ar,ru,ja,ko',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        .chat-container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 85vh;
+            max-height: 800px;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 24px;
+            text-align: center;
+        }
+
+        .chat-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .chat-header p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .progress-container {
+            padding: 12px 24px;
+            background: #f7f7fc;
+            border-bottom: 1px solid #e5e5ea;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e5e5ea;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 10px;
+            color: #8e8e93;
+        }
+
+        .messages-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .message {
+            display: flex;
+            flex-direction: column;
+            max-width: 80%;
+        }
+
+        .message.user {
+            align-self: flex-end;
+        }
+
+        .message.assistant {
+            align-self: flex-start;
+        }
+
+        .message-bubble {
+            padding: 12px 16px;
+            border-radius: 20px;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .message.user .message-bubble {
+            background: #667eea;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.assistant .message-bubble {
+            background: #f0f0f5;
+            color: #1c1c1e;
+            border-bottom-left-radius: 4px;
+        }
+
+        .deal-card {
+            margin-top: 12px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid #e0e4e8;
+        }
+
+        .deal-card h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .deal-card p {
+            font-size: 13px;
+            color: #3a3a3e;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .deal-savings {
+            display: inline-block;
+            background: #34c759;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+
+        .book-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 8px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .book-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .input-container {
+            padding: 16px 24px;
+            background: white;
+            border-top: 1px solid #e5e5ea;
+            display: flex;
+            gap: 12px;
+        }
+
+        .input-container input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #e5e5ea;
+            border-radius: 30px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-container input:focus {
+            border-color: #667eea;
+        }
+
+        .input-container button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .input-container button:hover {
+            background: #5a67d8;
+        }
+
+        .input-container button:disabled {
+            background: #c7c7cc;
+            cursor: not-allowed;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 8px 0;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: #8e8e93;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            background: #e9ecef;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .tag:hover {
+            background: #d4d8dd;
+        }
+
+        @media (max-width: 600px) {
+            .chat-container {
+                height: 95vh;
+                border-radius: 16px;
+            }
+            
+            .message {
+                max-width: 90%;
+            }
+            
+            .messages-container {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>🧭 Voyager AI</h1>
+            <p>Your personal travel deal finder</p>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-steps">
+                <span id="step1">👥 Group</span>
+                <span id="step2">💰 Budget</span>
+                <span id="step3">📅 When</span>
+                <span id="step4">🎯 Vibe</span>
+            </div>
+        </div>
+        
+        <div class="messages-container" id="messagesContainer">
+            <div class="message assistant">
+                <div class="message-bubble">
+                    Hey there! 👋 I'm Voyager — your travel deal finder.<br><br>
+                    First up — how many people are in your group, and how old are the kids (if any)?
+                </div>
+            </div>
+        </div>
+        
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Type your answer here..." autocomplete="off">
+            <button id="sendBtn">Send →</button>
+        </div>
+    </div>
+
+    <script>
+        let conversationHistory = [];
+        let messageCount = 0;
+        let isWaiting = false;
+
+        const progressFill = document.getElementById('progressFill');
+        const messagesContainer = document.getElementById('messagesContainer');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        function updateProgress(count) {
+            let percent = 0;
+            if (count === 0) percent = 0;
+            else if (count === 1) percent = 25;
+            else if (count === 2) percent = 50;
+            else if (count === 3) percent = 75;
+            else if (count >= 4) percent = 100;
+            
+            progressFill.style.width = percent + '%';
+            
+            // Update step colors
+            const steps = ['step1', 'step2', 'step3', 'step4'];
+            steps.forEach((step, index) => {
+                const el = document.getElementById(step);
+                if (el) {
+                    if (count > index) {
+                        el.style.color = '#34c759';
+                        el.style.fontWeight = 'bold';
+                    } else if (count === index) {
+                        el.style.color = '#667eea';
+                        el.style.fontWeight = 'bold';
+                    } else {
+                        el.style.color = '#8e8e93';
+                        el.style.fontWeight = 'normal';
+                    }
+                }
+            });
+        }
+
+        function addMessage(role, content, deal = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.innerHTML = content.replace(/\n/g, '<br>');
+            messageDiv.appendChild(bubble);
+            
+            if (deal && role === 'assistant') {
+                const dealCard = document.createElement('div');
+                dealCard.className = 'deal-card';
+                dealCard.innerHTML = `
+                    <h4>🎯 ${escapeHtml(deal.park || 'Your Deal')}</h4>
+                    <p>${escapeHtml(deal.summary || '')}</p>
+                    ${deal.savings ? `<div class="deal-savings">💰 ${escapeHtml(deal.savings)}</div>` : ''}
+                    <p><strong>🔥 Best Deal:</strong> ${escapeHtml(deal.best_deal || 'Limited time offer')}</p>
+                    <a href="${deal.url || '#'}" target="_blank" rel="sponsored nofollow" class="book-btn" onclick="trackAffiliateClick('${deal.destination || 'deal'}')">📖 Book Now →</a>
+                `;
+                messageDiv.appendChild(dealCard);
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        function showTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message assistant';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-bubble">
+                    <div class="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            `;
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTyping() {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+        }
+
+        async function trackAffiliateClick(destination) {
+            console.log('Affiliate click:', destination);
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'affiliate_click', { 'destination': destination });
+            }
+        }
+
+        async function sendMessage() {
+            if (isWaiting) return;
+            
+            const userInput = messageInput.value.trim();
+            if (!userInput) return;
+            
+            // Add user message
+            addMessage('user', userInput);
+            conversationHistory.push({ role: 'user', content: userInput });
+            messageCount++;
+            updateProgress(messageCount);
+            
+            // Clear input
+            messageInput.value = '';
+            
+            // Show typing indicator
+            isWaiting = true;
+            sendBtn.disabled = true;
+            showTyping();
+            
+            try {
+                const response = await fetch('/api/voyager-chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        messages: conversationHistory
+                    })
+                });
+                
+                const data = await response.json();
+                hideTyping();
+                
+                // Add assistant response
+                addMessage('assistant', data.reply, data.showDeal ? data.deal : null);
+                conversationHistory.push({ role: 'assistant', content: data.reply });
+                
+                // If conversation is complete, show quick action tags
+                if (data.conversation_stage === 'complete') {
+                    addQuickActionTags();
+                }
+                
+                messageCount = conversationHistory.filter(m => m.role === 'user').length;
+                updateProgress(messageCount);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                hideTyping();
+                addMessage('assistant', 'Sorry, I hit a snag. Could you try again?');
+            } finally {
+                isWaiting = false;
+                sendBtn.disabled = false;
+                messageInput.focus();
+            }
+        }
+        
+        function addQuickActionTags() {
+            const tags = [
+                { text: '🎢 Dorney Park deals', dest: 'dorney' },
+                { text: '🎡 Universal vs Disney', dest: 'universal' },
+                { text: '🚢 Best cruises', dest: 'cruise' },
+                { text: '🏨 Hotel deals', dest: 'hotel' }
+            ];
+            
+            const tagContainer = document.createElement('div');
+            tagContainer.className = 'tag-container';
+            
+            tags.forEach(tag => {
+                const tagEl = document.createElement('span');
+                tagEl.className = 'tag';
+                tagEl.textContent = tag.text;
+                tagEl.onclick = () => {
+                    messageInput.value = `Tell me more about ${tag.text}`;
+                    sendMessage();
+                };
+                tagContainer.appendChild(tagEl);
+            });
+            
+            const lastMessage = messagesContainer.lastElementChild;
+            if (lastMessage && lastMessage.classList.contains('message') && lastMessage.classList.contains('assistant')) {
+                lastMessage.appendChild(tagContainer);
+            }
+        }
+
+        // Event listeners
+        sendBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+        
+        // Focus input on load
+        messageInput.focus();
+        
+        // Track page view
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', { 'page_title': 'Voyager AI Chat' });
+        }
+        
+        // Remove tpembars.com injection
+        console.log('Voyager AI Chat ready — agentic search optimized');
+    </script>
+</body>
+  </html>      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
     }, 'google_translate_element');
   }
   </script>
