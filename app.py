@@ -47,6 +47,37 @@ def chat():
 def dorney_park():
     return send_from_directory('public', 'dorney-park.html')
 
+@app.route('/')
+def index():
+    return send_from_directory('public', 'index.html')
+
+
+@app.route('/chat.html')
+def chat():
+    return send_from_directory('public', 'chat.html')
+
+
+@app.route('/dorney-park.html')
+def dorney_park():
+    return send_from_directory('public', 'dorney-park.html')
+
+
+# 👇 INSERT THESE TWO ROUTES RIGHT HERE 👇
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('.', 'robots.txt')
+
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('.', 'sitemap.xml')
+# 👆 END OF INSERTED ROUTES 👆
+
+
+@app.route('/api/voyager-chat', methods=['POST'])
+def voyager_chat():
+    # ... your existing code ...
+
 
 @app.route('/api/voyager-chat', methods=['POST'])
 def voyager_chat():
