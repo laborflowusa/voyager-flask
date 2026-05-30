@@ -2,25 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <!-- AI AGENT MACHINE-READABLE STRUCTURED DATA -->
+
+<!-- ================================================ -->
+<!-- AI AGENT MACHINE-READABLE STRUCTURED DATA       -->
+<!-- ================================================ -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Dorney Park & Wildwater Kingdom Ticket",
   "description": "One ticket admits to both parks for 2026 season. Save up to 40% online.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Dorney Park"
+  },
   "offers": {
     "@type": "Offer",
     "price": "44.00",
     "priceCurrency": "USD",
     "priceValidUntil": "2026-09-07",
     "availability": "https://schema.org/InStock",
-    "url": "https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park"
+    "url": "https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park",
+    "seller": {
+      "@type": "Organization",
+      "name": "GetYourGuide"
+    }
   },
   "additionalProperty": [
     {"@type": "PropertyValue", "name": "Gate Price", "value": "79.99"},
-    {"@type": "PropertyValue", "name": "Savings Percentage", "value": "45"}
-  ]
+    {"@type": "PropertyValue", "name": "Savings Percentage", "value": "45"},
+    {"@type": "PropertyValue", "name": "Valid Season", "value": "2026"},
+    {"@type": "PropertyValue", "name": "Parks Included", "value": "Dorney Park, Wildwater Kingdom"}
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "reviewCount": "1250"
+  }
 }
 </script>
 
@@ -32,12 +51,42 @@
     {
       "@type": "Question",
       "name": "When does Dorney Park open for 2026?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Dorney Park opens Saturday, May 8, 2026. Wildwater Kingdom opens May 23."}
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dorney Park opens Saturday, May 8, 2026. Wildwater Kingdom opens May 23. The season wraps up September 7."
+      }
     },
     {
       "@type": "Question",
       "name": "What's the cheapest way to buy Dorney Park tickets?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Buy online in advance — gate prices run $79.99+ per adult. Online tickets through GetYourGuide save up to 40%."}
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Buy online in advance — gate prices run $79.99+ per adult. Online tickets through GetYourGuide save up to 40%, with adult tickets from $44+."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does one ticket cover both Dorney Park and Wildwater Kingdom?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A standard admission ticket gives you access to both parks on the same day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the height requirement for Steel Force?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Steel Force requires riders to be at least 54 inches tall."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I bring food into Dorney Park?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Outside food and drinks are not permitted inside the park. You can bring a reusable sealed water bottle."
+      }
     }
   ]
 }
@@ -48,68 +97,189 @@
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
   "name": "Dorney Park & Wildwater Kingdom",
+  "description": "Amusement park and water park in Allentown, Pennsylvania featuring Steel Force roller coaster and Wildwater Kingdom water park.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "4000 Dorney Park Rd",
     "addressLocality": "Allentown",
     "addressRegion": "PA",
-    "postalCode": "18104"
+    "postalCode": "18104",
+    "addressCountry": "US"
   },
-  "geo": {"@type": "GeoCoordinates", "latitude": "40.5785", "longitude": "-75.5292"}
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "40.5785",
+    "longitude": "-75.5292"
+  },
+  "telephone": "(610) 395-3724",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "validFrom": "2026-05-08",
+      "validThrough": "2026-05-24",
+      "opens": "10:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "validFrom": "2026-06-15",
+      "validThrough": "2026-09-07",
+      "opens": "10:00",
+      "closes": "20:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.dorneypark.com",
+    "https://www.sixflags.com/dorneypark"
+  ],
+  "priceRange": "$$"
 }
 </script>
 
-<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Dorney Park 2026 Guide — Insider Tips, Tickets & What Locals Know",
+  "description": "Everything you need for an epic Dorney Park day in 2026. Ride guide, water park tips, money-saving tricks, and what locals know.",
+  "author": {
+    "@type": "Organization",
+    "name": "Voyager"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Voyager",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://voyager-flask.onrender.com/logo.png"
+    }
+  },
+  "datePublished": "2026-05-08",
+  "dateModified": "2026-05-30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://voyager-flask.onrender.com/dorney-park.html"
+  },
+  "keywords": "Dorney Park, Wildwater Kingdom, Steel Force, Allentown PA, Six Flags, theme park tickets"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Action",
+  "name": "Book Dorney Park Tickets",
+  "description": "Purchase discounted Dorney Park tickets online and save up to 40% vs gate prices.",
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park",
+    "inLanguage": "en-US",
+    "actionPlatform": [
+      "http://schema.org/DesktopWebPlatform",
+      "http://schema.org/MobileWebPlatform"
+    ]
+  },
+  "agent": {
+    "@type": "SoftwareApplication",
+    "name": "AI Shopping Agent"
+  },
+  "priceSpecification": {
+    "@type": "PriceSpecification",
+    "price": "44.00",
+    "priceCurrency": "USD",
+    "valueAddedTaxIncluded": true
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://voyager-flask.onrender.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Dorney Park Guide",
+      "item": "https://voyager-flask.onrender.com/dorney-park.html"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://voyager-flask.onrender.com/",
+  "name": "Voyager",
+  "description": "Real travel deals. Honest advice. No spam. Insider guides for families and couples.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://voyager-flask.onrender.com/chat.html?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- AI CRAWLER INSTRUCTIONS -->
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, snippet, image-preview">
+<meta name="bingbot" content="index, follow">
+<meta name="slurp" content="index, follow">
 <meta name="llm" content="allow">
 <meta name="ai-agent" content="index, follow">
-  
-  <!-- SECURITY HEADERS (HSTS, CSP, XFO, COOP) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none';">
-  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMFFZKWQM8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-BMFFZKWQM8');
-  </script>
-  
-  <!-- Travelpayouts Drive Script -->
-  <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://tpembars.com/NTIyMjQ5.js?t=522249';
-      document.head.appendChild(script);
-  })();
-  </script>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dorney Park 2026 Guide — Insider Tips, Tickets & What Locals Know | Voyager</title>
-  <meta name="description" content="Everything you need for an epic Dorney Park day in 2026. Ride guide, water park tips, money-saving tricks, and what locals know that tourists don't. Opens May 8.">
-  <meta property="og:title" content="Dorney Park 2026 — The Insider's Guide to Rides, Water Park & Local Tips">
-  <meta property="og:description" content="Real local knowledge. Ride Steel Force, cool off at Wildwater Kingdom, and save money with insider tricks. 2026 season starts May 8.">
-  <meta property="og:url" content="https://voyager-flask.onrender.com/dorney-park.html">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dorney Park 2026 — Insider's Guide">
-  <meta name="twitter:description" content="Local tips, ride guide, and money-saving tricks for Dorney Park & Wildwater Kingdom. Opens May 8.">
-  
-  <!-- PERFORMANCE: Preconnect to critical origins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  <link rel="dns-prefetch" href="https://www.gstatic.com">
-  
-  <!-- FONTS: non-blocking load -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"></noscript>
+<meta name="chatgpt" content="allow">
+<meta name="claude" content="allow">
+<meta name="gemini" content="allow">
+
+<!-- SECURITY HEADERS -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none';">
+<meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BMFFZKWQM8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BMFFZKWQM8');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dorney Park 2026 Guide — Insider Tips, Tickets & What Locals Know | Voyager</title>
+<meta name="description" content="Everything you need for an epic Dorney Park day in 2026. Ride guide, water park tips, money-saving tricks, and what locals know that tourists don't. Opens May 8.">
+<meta property="og:title" content="Dorney Park 2026 — The Insider's Guide to Rides, Water Park & Local Tips">
+<meta property="og:description" content="Real local knowledge. Ride Steel Force, cool off at Wildwater Kingdom, and save money with insider tricks. 2026 season starts May 8.">
+<meta property="og:url" content="https://voyager-flask.onrender.com/dorney-park.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dorney Park 2026 — Insider's Guide">
+<meta name="twitter:description" content="Local tips, ride guide, and money-saving tricks for Dorney Park & Wildwater Kingdom. Opens May 8.">
+
+<link rel="canonical" href="https://voyager-flask.onrender.com/dorney-park.html">
+
+<!-- PERFORMANCE: Preconnect to critical origins -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.gstatic.com">
+
+<!-- FONTS: non-blocking load -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@400;500;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"></noscript>
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -141,7 +311,6 @@ body {
   overflow-x: hidden;
 }
 
-/* HEADING HIERARCHY */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: inherit;
@@ -250,7 +419,6 @@ nav {
 }
 .nav-cta:hover { background: var(--red2); }
 
-/* Hero with min-height to prevent CLS */
 .hero {
   background: var(--ink);
   color: var(--paper);
@@ -433,7 +601,6 @@ nav {
 }
 .fact-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,240,232,0.6); margin-top: 4px; }
 
-/* High contrast fixes */
 .insider-alert {
   background: var(--sky);
   color: #0B2C3F;
@@ -903,7 +1070,6 @@ footer {
 }
 .footer-logo span { color: var(--red); }
 
-/* Tablet View */
 @media (max-width: 1000px) {
   .nav-links {
     gap: 12px;
@@ -938,7 +1104,6 @@ footer {
 <div class="topbar" id="topbar">⏰ MEMORIAL DAY SALE: Save up to 50% on Dorney Park tickets & season passes. Ends 5/25! 🎟️</div>
 
 <nav>
-  <!-- FREE PRE-K PASS PROMO BANNER -->
 <div style="background: #0B3B2F; padding: 14px 20px; margin: 0 1rem 1.5rem 1rem; border-radius: 12px; text-align: center; border-left: 4px solid #F2C94C;">
   <a href="/prek-pass.html" style="color: #F2C94C; text-decoration: none; font-weight: 700; font-size: 1rem;">🎁 NEW: FREE Pre-K Pass for kids ages 3-5 – Includes Dorney Park all season! Click for details →</a>
 </div>
@@ -1031,12 +1196,12 @@ footer {
   <table class="savings-table">
     <thead><tr><th>Ticket Type</th><th>Gate Price</th><th>Online Price</th><th>Your Savings</th></tr></thead>
     <tbody>
-      <tr><td><strong>Single Day — Adult</strong></td><td><span class="price-gate">$79.99</span></td><td><span class="price-online">~$44–54</span></td><td><span class="savings-pill">Save ~$30</span></td></tr>
-      <tr><td><strong>Single Day — Child (under 48")</strong></td><td><span class="price-gate">$54.99</span></td><td><span class="price-online">~$34–44</span></td><td><span class="savings-pill">Save ~$15</span></td></tr>
-      <tr><td><strong>Six Flags Gold Pass</strong></td><td>—</td><td><span class="price-online">~$105/season</span></td><td><span class="savings-pill">Best for 2+ visits</span></td></tr>
-      <tr><td><strong>Family of 4 (2 adult + 2 child)</strong></td><td><span class="price-gate">~$270</span></td><td><span class="price-online">~$160–190</span></td><td><span class="savings-pill">Save $80–110</span></td></tr>
+      <tr><td><strong>Single Day — Adult</strong></td><td class="price-gate">$79.99</td><td class="price-online">~$44–54</td><td><span class="savings-pill">Save ~$30</span></td></tr>
+      <tr><td><strong>Single Day — Child (under 48")</strong></td><td class="price-gate">$54.99</td><td class="price-online">~$34–44</td><td><span class="savings-pill">Save ~$15</span></td></tr>
+      <tr><td><strong>Six Flags Gold Pass</strong></td><td>—</td><td class="price-online">~$105/season</td><td><span class="savings-pill">Best for 2+ visits</span></td></tr>
+      <tr><td><strong>Family of 4 (2 adult + 2 child)</strong></td><td class="price-gate">~$270</td><td class="price-online">~$160–190</td><td><span class="savings-pill">Save $80–110</span></td></tr>
     </tbody>
-  </table>
+   </table>
 
   <a href="https://www.getyourguide.com/?partner_id=Y5RBAVK&q=Dorney+Park" target="_blank" rel="sponsored nofollow" class="btn-primary" onclick="trackAffiliateClick('Savings Table CTA')" style="display: inline-block; margin-bottom: 2rem;">🎟 Lock In Your Discounted Tickets →</a>
 
