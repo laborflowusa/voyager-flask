@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+Allow: /public/
+Allow: /public/chat.html
+Allow: /public/dorney-park.html
+Allow: /public/universal-vs-disney.html
+Allow: /public/family-cruise-guide-2026.html
+Allow: /public/couples-cruise-guide-2026.html
+Allow: /public/luxury-safaris.html
+Allow: /public/celebrate-mom.html
+Allow: /public/privacy.html
+Disallow: /api/
+
+# AI crawler directives
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://voyager-flask.onrender.com/sitemap.xml
